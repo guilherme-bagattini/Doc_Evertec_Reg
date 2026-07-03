@@ -1,0 +1,19 @@
+tema,id_referencia,bloco,descricao,prioridade,status,sugestao_dono,observacao
+Modelagem e versionamento,SQFUNDOS-41062,Fundacao tecnica,Fechar estrategia minima de versionamento no MVP,Alta,Em aberto,Produto+Dados,Conflito entre regra de versao e simplificacao do MVP
+Infraestrutura,SQFUNDOS-40704,Fundacao tecnica,Validar baseline de infra para suportar logs e auditoria,Media,Em aberto,Arquitetura+DevOps,Confirmar capacidade para crescimento de execucoes
+Scraping,SQFUNDOS-42167,Web scraping,Confirmar cobertura inicial de fontes e regras de retry,Alta,Em andamento,Produto+Backend,Mapear fontes criticas para operacao
+Epico scraping,SQFUNDOS-41058,Web scraping,Definir criterios de pronto por regulador/fonte,Media,Em aberto,Produto+QA,Evitar ambiguidades entre coleta e curadoria
+Configuracoes,SQFUNDOS-42160,Administracao,Padronizar regras de salvamento e confirmacao na UX,Media,Em aberto,UX+Frontend,Reduzir friccao por excesso de modal
+Modulos,SQFUNDOS-42161,Administracao,Revisar fluxo de desvinculo de fonte antes de apagar modulo,Media,Em aberto,Produto+Frontend,Adicionar mensagens mais objetivas de bloqueio
+Empresas,SQFUNDOS-42162,Administracao,Validar regras de ativacao/inativacao com justificativa,Alta,Em andamento,Produto+Backend,Governanca contratual e trilha de decisao
+Execucoes,SQFUNDOS-42168,Administracao,Garantir que edicoes afetem apenas execucoes futuras,Alta,Em andamento,Backend+QA,Caso critico de regressao operacional
+Regulador e Fontes,SQFUNDOS-42169,Administracao,Consolidar regras de descarte automatico por fonte,Alta,Em aberto,Produto+IA,Padronizar formato de expressoes e validacoes
+Curadoria,SQFUNDOS-42504,Curadoria,Formalizar fluxo de gravar vs aprovar e excecoes,Alta,Em aberto,Produto+UX,Definir tratamento para aprovacao indevida
+Curadoria logs,SQFUNDOS-42507,Curadoria,Confirmar visibilidade de status e transicoes de curadoria,Media,Em aberto,Produto+Frontend,Evitar duvida operacional sobre estados
+Dashboard tecnico,SQFUNDOS-42496,Execucoes e Logs,Definir escopo minimo de visao operacional para MVP,Media,Em aberto,Produto+UX,Mesmo simples, ajuda na triagem diaria
+Logs e observabilidade,SQFUNDOS-42494,Execucoes e Logs,Padronizar taxonomia de erro para UI e log tecnico,Alta,Em aberto,Backend+SRE,Erro generico na UI precisa detalhe no log
+Dominio cliente,SQFUNDOS-43084,Configuracoes do Cliente,Validar fronteira entre pertinencia por area e impacto por produto,Alta,Em aberto,Produto+IA,Conceito chave para entendimento do dominio
+Dominio cliente,SQFUNDOS-43085,Configuracoes do Cliente,Definir obrigatoriedade minima de documentacao por entidade,Media,Em aberto,Produto+UX,Evitar bloqueio excessivo de cadastro
+Especificacao funcional,SQFUNDOS-43094,Configuracoes do Cliente,Transformar criterios em checklist de aceite por tela,Media,Em aberto,Produto+QA,Aumenta previsibilidade de homologacao
+Escopo ampliado,SD-269875,Configuracoes do Cliente,Alinhar escopo e dependencia para integracoes externas,Media,Em aberto,Produto+Arquitetura,Jira, Teams e outros canais
+Dashboard e dominio,SD-267482,Execucoes e Logs,Definir prioridade real do dashboard no roadmap,Baixa,Em aberto,Produto,Diferenciar necessidade operacional de nice-to-have
