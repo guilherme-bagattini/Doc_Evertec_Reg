@@ -109,15 +109,30 @@ Utilizacao mede uso. Risco mede urgencia. Maturidade mede contexto. Prioridade m
 
 | Cliente | Utilizacao | Risco | Maturidade | Prioridade | Leitura resumida |
 | --- | --- | --- | --- | --- | --- |
+| Capsicum Assets | 1 estrela | Vermelho | Nivel 2 | Urgente | Desengajamento claro, ameaca de descontinuacao, ja em contato com concorrentes, demanda urgente de personalizacao, PLD e automacoes. |
 | Algarve Investimentos | 1 estrela | Vermelho | Nivel 3 | Alta | Cliente antigo, baixo uso, percepcao de perda de aderencia do produto, comparacao desfavoravel com IA e insatisfacao com Documentos. |
 | AWR Capital | 2 estrelas | Amarelo | Nivel 2 | Alta | Baixo uso, mas com interesse real em retomar, abertura para treinamento e chance concreta de ativacao. |
 | Nivi Capital | 1 estrela - excecao pre-operacional | Amarelo | Nivel 1 | Media | Nao usa porque ainda nao iniciou a operacao. Ha intencao de uso quando houver captacao, crescimento da equipe e inicio dos fundos. |
 
 ## Qual cliente merece mais atencao agora
 
-### 1. Algarve Investimentos
+### 1. Capsicum Assets
 
-E o caso mais sensivel neste momento.
+E o caso mais critico e urgente.
+
+Motivos:
+
+- desengajamento claro com a plataforma
+- ameaca explicita de descontinuacao
+- ja em contato com concorrentes
+- pressao para melhorias urgentes
+- conhecimento incompleto do que o Compliasset oferece
+- risco iminente de perder o contrato
+- demandas especificas nao atendidas (PLD, automacoes, APIs)
+
+### 2. Algarve Investimentos
+
+E o segundo caso mais sensivel neste momento.
 
 Motivos:
 

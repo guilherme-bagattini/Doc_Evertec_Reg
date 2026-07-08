@@ -1,0 +1,2492 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Clientes Compliasset - Estudo Compli</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #2c3e50;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.8em;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #555;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .date-info {
+            color: #999;
+            font-size: 0.95em;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .tab-button {
+            padding: 12px 24px;
+            border: 2px solid white;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        .tab-button.active {
+            background: white;
+            color: #667eea;
+            border-color: white;
+        }
+
+        .tab-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: slideIn 0.4s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 16px;
+            font-size: 1.4em;
+            font-weight: 700;
+        }
+
+        .card p {
+            color: #555;
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        .card-number {
+            font-size: 2.4em;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 24px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 6px 6px 6px 0;
+            letter-spacing: 0.3px;
+        }
+
+        .badge-stars {
+            background: #fff4e6;
+            color: #d97706;
+        }
+
+        .badge-risk-green {
+            background: #d1fae5;
+            color: #047857;
+        }
+
+        .badge-risk-yellow {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .badge-risk-red {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .badge-priority-low {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .badge-priority-medium {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .badge-priority-high {
+            background: #fca5a5;
+            color: #991b1b;
+        }
+
+        .badge-priority-urgent {
+            background: #fca5a5;
+            color: #7f1d1d;
+            font-weight: 700;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .info-row {
+            margin: 16px 0;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #667eea;
+            min-width: 140px;
+            font-size: 0.95em;
+        }
+
+        .info-value {
+            color: #333;
+            flex: 1;
+            text-align: right;
+            padding-left: 20px;
+            font-weight: 500;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        .chart-container {
+            background: white;
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            position: relative;
+            min-height: 420px;
+        }
+
+        .chart-container h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+
+        .table-container {
+            background: white;
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            overflow-x: auto;
+            margin-bottom: 30px;
+        }
+
+        .table-container h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #f8fafc;
+            color: #667eea;
+            padding: 14px;
+            text-align: left;
+            font-weight: 700;
+            border-bottom: 2px solid #667eea;
+            font-size: 0.95em;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #e8eef5;
+            font-weight: 500;
+        }
+
+        tr:hover {
+            background: #f8fafc;
+        }
+
+        .matrix-container {
+            background: white;
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+            overflow-x: auto;
+        }
+
+        .matrix-title {
+            color: #667eea;
+            margin-bottom: 24px;
+            font-size: 1.25em;
+            font-weight: 700;
+        }
+
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: 150px 1fr 1fr;
+            grid-template-rows: 60px 1fr 1fr;
+            gap: 12px;
+            min-width: 600px;
+        }
+
+        .matrix-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            border-radius: 8px;
+            font-size: 0.95em;
+        }
+
+        .matrix-cell {
+            border: 2px solid #ddd;
+            padding: 16px;
+            border-radius: 8px;
+            min-height: 100px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .matrix-cell.quick-win {
+            background: #ecfdf5;
+            border-color: #10b981;
+            color: #065f46;
+        }
+
+        .matrix-cell.strategic {
+            background: #eff6ff;
+            border-color: #3b82f6;
+            color: #1e3a8a;
+        }
+
+        .matrix-cell.fill-in {
+            background: #fffbeb;
+            border-color: #f59e0b;
+            color: #78350f;
+        }
+
+        .matrix-cell.avoid {
+            background: #fef2f2;
+            border-color: #ef4444;
+            color: #7f1d1d;
+        }
+
+        .client-detail {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+
+        .client-detail h3 {
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px 24px;
+            margin: -32px -32px 24px -32px;
+            border-radius: 12px 12px 0 0;
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+
+        .section-title {
+            color: #667eea;
+            font-weight: 700;
+            margin-top: 28px;
+            margin-bottom: 14px;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::before {
+            content: "▸";
+            font-size: 1.3em;
+        }
+
+        .item-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .item-list li {
+            margin: 10px 0;
+            padding-left: 24px;
+            position: relative;
+            color: #444;
+            font-weight: 500;
+            line-height: 1.7;
+        }
+
+        .item-list li:before {
+            content: "→";
+            position: absolute;
+            left: 4px;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .quick-wins {
+            background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%);
+            padding: 24px;
+            border-radius: 12px;
+            border-left: 5px solid #10b981;
+            margin-bottom: 30px;
+        }
+
+        .quick-wins h3 {
+            color: #065f46;
+            margin-bottom: 18px;
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+
+        .quick-win-item {
+            background: white;
+            padding: 16px 18px;
+            margin: 12px 0;
+            border-left: 4px solid #10b981;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+        }
+
+        .quick-win-item strong {
+            color: #065f46;
+            font-weight: 700;
+        }
+
+        .quick-win-item p {
+            color: #444;
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
+        .risk-matrix {
+            position: relative;
+            width: 100%;
+            min-height: 500px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+        }
+
+        .risk-matrix-axis {
+            position: absolute;
+            font-weight: 700;
+            color: #667eea;
+            font-size: 0.95em;
+        }
+
+        .risk-matrix-x {
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .risk-matrix-y {
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+            transform-origin: left center;
+        }
+
+        .risk-bubble {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .risk-bubble:hover {
+            transform: scale(1.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .risk-bubble.low {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border: 3px solid #10b981;
+            color: #065f46;
+        }
+
+        .risk-bubble.medium {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 3px solid #f59e0b;
+            color: #78350f;
+        }
+
+        .risk-bubble.high {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border: 3px solid #ef4444;
+            color: #7f1d1d;
+        }
+
+        .footer {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .legend {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .legend-box {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .tab-button {
+                display: none;
+            }
+            .tab-content {
+                display: block !important;
+            }
+            .tabs {
+                display: none;
+            }
+        }
+
+        .client-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #f0f0f0;
+            padding-bottom: 12px;
+        }
+
+        .client-tab-button {
+            padding: 10px 18px;
+            border: 2px solid #e8eef5;
+            background: #f8fafc;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .client-tab-button.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .client-tab-button:hover:not(:disabled) {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .client-tab-button:disabled {
+            background: #e8eef5;
+            color: #999;
+            cursor: not-allowed;
+            opacity: 0.6;
+            border-color: #d0d7e8;
+        }
+
+        .client-subtab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .client-subtab-content.active {
+            display: block;
+        }
+
+        /* Abas principais dentro de Clientes */
+        .clients-main-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 16px;
+            margin-bottom: 32px;
+        }
+
+        .clients-main-tab-button {
+            padding: 12px 24px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .clients-main-tab-button:hover {
+            background: #f8fafc;
+            transform: translateY(-2px);
+        }
+
+        .clients-main-tab-button.active-main {
+            background: #667eea;
+            color: white;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .clients-main-tab-content {
+            display: none;
+            animation: slideIn 0.4s ease;
+        }
+
+        .clients-main-tab-content.active-main {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .transcript-box {
+            background: #f8fafc;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 18px 0;
+            max-height: 600px;
+            overflow-y: auto;
+            font-size: 0.95em;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .transcript-box p {
+            margin: 12px 0;
+        }
+
+        .speaker {
+            font-weight: 700;
+            color: #667eea;
+            margin-top: 14px;
+            margin-bottom: 6px;
+            font-size: 0.98em;
+        }
+
+        .speaker-content {
+            margin-left: 20px;
+            color: #555;
+            padding: 10px;
+            background: white;
+            border-radius: 6px;
+            border-left: 3px solid #e0e7ff;
+            font-style: italic;
+        }
+
+        .understanding-box {
+            background: #eff6ff;
+            border-left: 5px solid #0d6efd;
+            padding: 22px;
+            border-radius: 8px;
+            margin: 18px 0;
+            box-shadow: 0 2px 8px rgba(13, 110, 253, 0.1);
+        }
+
+        .understanding-box h4 {
+            color: #0d6efd;
+            margin-bottom: 12px;
+            font-size: 1.05em;
+            font-weight: 700;
+        }
+
+        .understanding-item {
+            margin: 12px 0;
+            padding-left: 24px;
+            position: relative;
+            color: #333;
+            font-weight: 500;
+            line-height: 1.7;
+        }
+
+        .understanding-item:before {
+            content: "▸";
+            position: absolute;
+            left: 4px;
+            color: #0d6efd;
+            font-size: 1.2em;
+        }
+
+        .client-selector-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .clients-main-tab-button {
+            padding: 12px 24px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        .clients-main-tab-button.active-main {
+            background: #667eea;
+            color: white;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .clients-main-tab-button:hover {
+            background: #f8fafc;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .cards-grid, .charts-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .tabs {
+                flex-direction: column;
+            }
+            .tab-button {
+                width: 100%;
+            }
+            .client-tabs {
+                flex-direction: column;
+            }
+            .client-tab-button {
+                width: 100%;
+            }
+            .clients-main-tabs {
+                flex-direction: column;
+            }
+            .clients-main-tab-button {
+                width: 100%;
+            }
+            .info-row {
+                flex-direction: column;
+            }
+            .info-value {
+                text-align: left;
+                margin-top: 6px;
+                padding-left: 0;
+            }
+            header {
+                padding: 24px;
+            }
+            .client-detail {
+                padding: 20px;
+            }
+            .client-detail h3 {
+                margin: -20px -20px 18px -20px;
+                padding: 16px 20px;
+            }
+        }
+    </style>
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.8em;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #555;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .date-info {
+            color: #999;
+            font-size: 0.95em;
+        }
+
+        /* Remover duplicações - estilos já presentes acima */
+        }
+
+        .quick-win-item strong {
+            color: #155724;
+        }
+
+        /* Estilos antigos removidos - versão atualizada acima */
+
+        @media print {
+            body {
+                background: white;
+            }
+            .tab-button {
+                display: none;
+            }
+            .tab-content {
+                display: block !important;
+            }
+            .tabs {
+                display: none;
+            }
+        }
+
+        /* Estilos antigos removidos - versão atualizada acima */
+
+        /* Abas principais dentro de Clientes */
+        /* Estilos antigos removidos - versão atualizada acima */
+
+        /* Estilos antigos removidos - versão atualizada acima */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Dashboard Clientes Compliasset</h1>
+            <p class="subtitle">Estudo Clientes Compli - Consolidação de Entrevistas e Análises</p>
+            <p class="date-info">Atualizado: 08 de julho de 2026</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="switchTab('visao-geral')">Visão Geral</button>
+            <button class="tab-button" onclick="switchTab('clientes')">Clientes</button>
+            <button class="tab-button" onclick="switchTab('analise')">Análise Comparativa</button>
+            <button class="tab-button" onclick="switchTab('quick-wins')">Quick Wins & Ações</button>
+            <button class="tab-button" onclick="switchTab('matriz-priorizacao')">Matriz de Priorização</button>
+            <button class="tab-button" onclick="switchTab('riscos')">Mapa de Riscos</button>
+        </div>
+
+        <!-- TAB: VISÃO GERAL -->
+        <div id="visao-geral" class="tab-content active">
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>📈 Total de Clientes</h3>
+                    <div style="font-size: 2.5em; color: #667eea; font-weight: bold;">5</div>
+                    <div class="info-row">
+                        <span class="info-label">Em estudo:</span>
+                        <span class="info-value">5 clientes ativos</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Período:</span>
+                        <span class="info-value">03 - 08 de julho</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>🔴 Clientes em Risco</h3>
+                    <div style="font-size: 2.5em; color: #dc3545; font-weight: bold;">2</div>
+                    <div class="info-row">
+                        <span class="info-label">Urgentes:</span>
+                        <span class="info-value">Capsicum, Algarve</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Churn risk:</span>
+                        <span class="info-value">Alto</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>⚡ Oportunidades Rápidas</h3>
+                    <div style="font-size: 2.5em; color: #28a745; font-weight: bold;">8+</div>
+                    <div class="info-row">
+                        <span class="info-label">Quick wins:</span>
+                        <span class="info-value">Implementáveis</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Timeline:</span>
+                        <span class="info-value">2-4 semanas</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>📋 Problemas Recorrentes</h3>
+                    <div style="font-size: 2.5em; color: #ffc107; font-weight: bold;">4</div>
+                    <div class="info-row">
+                        <span class="info-label">Padrões:</span>
+                        <span class="info-value">Agenda, Escopo, API, PLD</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Impacto:</span>
+                        <span class="info-value">Muito Alto</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <h3>Utilização por Cliente</h3>
+                    <canvas id="utilizacaoChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Nível de Risco</h3>
+                    <canvas id="riscoChart"></canvas>
+                </div>
+            </div>
+
+            <div class="quick-wins">
+                <h3>🎯 Ações Imediatas (Próximas 2 Semanas)</h3>
+                <div class="quick-win-item">
+                    <strong>Capsicum:</strong> Limpeza de agenda + Licenças treinamento + API Neo
+                </div>
+                <div class="quick-win-item">
+                    <strong>Algarve:</strong> Revisão de módulos + Demonstração de novas features
+                </div>
+                <div class="quick-win-item">
+                    <strong>AWR:</strong> Agendar treinamento + Parametrização assistida
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: CLIENTES -->
+        <div id="clientes" class="tab-content">
+            <!-- ABAS PRINCIPAIS DENTRO DE CLIENTES -->
+            <div class="clients-main-tabs">
+                <button class="clients-main-tab-button active-main" onclick="switchMainClientTab(event, 'clientes-geral')">📊 Geral</button>
+                <button class="clients-main-tab-button" onclick="switchMainClientTab(event, 'clientes-capsicum')">🔴 Capsicum Assets</button>
+                <button class="clients-main-tab-button" onclick="switchMainClientTab(event, 'clientes-algarve')">🔴 Algarve</button>
+                <button class="clients-main-tab-button" onclick="switchMainClientTab(event, 'clientes-awr')">🟡 AWR Capital</button>
+                <button class="clients-main-tab-button" onclick="switchMainClientTab(event, 'clientes-hike')">🟡 Hike Capital</button>
+                <button class="clients-main-tab-button" onclick="switchMainClientTab(event, 'clientes-nivi')">🟡 Nivi Capital</button>
+            </div>
+
+            <!-- ABA GERAL: VISÃO CONSOLIDADA DOS CLIENTES -->
+            <div id="clientes-geral" class="clients-main-tab-content active-main">
+                <h3 style="color: #667eea; margin-bottom: 20px;">📊 Visão Geral - Todos os Clientes</h3>
+
+                <div class="table-container">
+                    <h4>Tabela Comparativa Consolidada</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Cliente</th>
+                                <th>Utilização</th>
+                                <th>Risco</th>
+                                <th>Maturidade</th>
+                                <th>Prioridade</th>
+                                <th>Problema Principal</th>
+                                <th>Timeline</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Capsicum Assets</strong></td>
+                                <td>1⭐</td>
+                                <td>🔴 Alto</td>
+                                <td>Nível 2</td>
+                                <td><span class="badge badge-priority-urgent">URGENTE</span></td>
+                                <td>Churn iminente, falta parametrização</td>
+                                <td>1-2 semanas</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Algarve Investimentos</strong></td>
+                                <td>1⭐</td>
+                                <td>🔴 Alto</td>
+                                <td>Nível 3</td>
+                                <td><span class="badge badge-priority-high">ALTA</span></td>
+                                <td>5+ anos, aderência declinante vs IA</td>
+                                <td>2-3 semanas</td>
+                            </tr>
+                            <tr>
+                                <td><strong>AWR Capital</strong></td>
+                                <td>2⭐</td>
+                                <td>🟡 Médio</td>
+                                <td>Nível 2</td>
+                                <td><span class="badge badge-priority-high">ALTA</span></td>
+                                <td>Melhor oportunidade de ativação</td>
+                                <td>2-4 semanas</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hike Capital</strong></td>
+                                <td>2⭐</td>
+                                <td>🟡 Médio</td>
+                                <td>Nível 2</td>
+                                <td><span class="badge badge-priority-high">ALTA</span></td>
+                                <td>Foco restrito, agenda confusa</td>
+                                <td>2-3 semanas</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Nivi Capital</strong></td>
+                                <td>1⭐ (Pré-Op)</td>
+                                <td>🟡 Médio</td>
+                                <td>Nível 1</td>
+                                <td><span class="badge badge-priority-low">MÉDIA</span></td>
+                                <td>Pré-operacional, sem uso ainda</td>
+                                <td>Acompanhamento</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="margin-top: 30px;">
+                    <h4>🎯 Problemas Mais Recorrentes</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 8px; margin: 5px 0; background: #fff3cd; border-left: 4px solid #ffc107;">
+                            <strong>Agenda Poluida (60%):</strong> Capsicum, AWR, Hike - necessário limpeza/arquivamento
+                        </li>
+                        <li style="padding: 8px; margin: 5px 0; background: #fff3cd; border-left: 4px solid #ffc107;">
+                            <strong>Falta de Parametrização (40%):</strong> Ninguém é avisado do escopo real no onboarding
+                        </li>
+                        <li style="padding: 8px; margin: 5px 0; background: #f8d7da; border-left: 4px solid #dc3545;">
+                            <strong>Análise de Compliance (40%):</strong> Clientes usam alternativas (Neo) que são melhores
+                        </li>
+                        <li style="padding: 8px; margin: 5px 0; background: #f8d7da; border-left: 4px solid #dc3545;">
+                            <strong>Subutilização (80%):</strong> Todos exploram <30% das features
+                        </li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 30px;">
+                    <h4>⚡ Quick Wins por Cliente (Próximas 2 Semanas)</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 8px; margin: 5px 0; background: #d4edda; border-left: 4px solid #28a745;">
+                            <strong>Capsicum:</strong> Licenças treino + Limpeza agenda + Proposta PLD
+                        </li>
+                        <li style="padding: 8px; margin: 5px 0; background: #d4edda; border-left: 4px solid #28a745;">
+                            <strong>Algarve:</strong> Demo comparativa com IA + Revisão módulo Documentos
+                        </li>
+                        <li style="padding: 8px; margin: 5px 0; background: #d4edda; border-left: 4px solid #28a745;">
+                            <strong>AWR:</strong> Agendar treinamento presencial + Parametrização
+                        </li>
+                        <li style="padding: 8px; margin: 5px 0; background: #d4edda; border-left: 4px solid #28a745;">
+                            <strong>Hike:</strong> Treino onboarding + Limpeza de agenda
+                        </li>
+                        <li style="padding: 8px; margin: 5px 0; background: #d4edda; border-left: 4px solid #28a745;">
+                            <strong>Nivi:</strong> Preparação para quando operações iniciarem
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ABA CLIENTE: CAPSICUM ASSETS -->
+            <div id="clientes-capsicum" class="clients-main-tab-content">
+                <div class="client-detail">
+                    <h3>🔴 Capsicum Assets - PRIORIDADE URGENTE</h3>
+                    
+                    <div style="margin: 15px 0;">
+                        <span class="badge badge-stars">1⭐ Utilização</span>
+                        <span class="badge badge-risk-red">🔴 Risco Alto</span>
+                        <span class="badge badge-priority-urgent">URGENTE</span>
+                    </div>
+
+                    <!-- SUB-ABAS DO CLIENTE -->
+                    <div class="client-tabs">
+                        <button class="client-tab-button active" onclick="switchClientTab(event, 'capsicum-resumo')">Resumo</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'capsicum-entendimento')">Entendimento</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'capsicum-acoes')">Ações</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'capsicum-classificacao')">Classificação</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'capsicum-transcricao')">Transcrição Completa</button>
+                    </div>
+
+                    <!-- RESUMO -->
+                    <div id="capsicum-resumo" class="client-subtab-content active">
+                        <div class="info-row">
+                            <span class="info-label">Data Reunião:</span>
+                            <span class="info-value">08 de julho de 2026 (21m 54s)</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Participantes:</span>
+                            <span class="info-value">Alice Frerichs (decisor), Ana Carolina Oliveira Reis (operacional compliance)</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Contexto:</span>
+                            <span class="info-value">Reunião crítica para entender uso real da plataforma</span>
+                        </div>
+
+                        <div class="section-title">Situação Atual</div>
+                        <ul class="item-list">
+                            <li>Usa apenas cadastro e upload de resultados (Neo)</li>
+                            <li>Agenda aberta desde dezembro de 2024, nunca foi limpa</li>
+                            <li>Está considerando descontinuar ou trocar de plataforma</li>
+                            <li>Já em contato com concorrentes</li>
+                        </ul>
+
+                        <div class="section-title">Status Churn Risk</div>
+                        <blockquote style="border-left: 4px solid #dc3545; padding-left: 15px; margin: 10px 0; color: #721c24;">
+                            ⚠️ CRÍTICO: Cliente ameaçando descontinuação, precisa de ação IMEDIATA (1-2 semanas)
+                        </blockquote>
+                    </div>
+
+                    <!-- TRANSCRIÇÃO -->
+                    <div id="capsicum-transcricao" class="client-subtab-content">
+                        <div style="margin-bottom: 20px;">
+                            <strong>Nota:</strong> Transcrição resumida dos pontos principais. Transcrição completa disponível em: <code>transcricoes/2026-07-08_capsicum_assets_transcricao.md</code>
+                        </div>
+
+                        <div class="transcript-box">
+                            <div class="speaker">Laura Silva (Compliasset):</div>
+                            <div class="speaker-content">
+                                "É justamente esse bate-papo que eu marquei com vocês. Primeiramente, muito obrigada por topar conversar com a gente. É para de início entender mesmo como e se vocês estão usando o Compliasset."
+                            </div>
+
+                            <div class="speaker">Alice Frerichs (Capsicum):</div>
+                            <div class="speaker-content">
+                                "Na verdade, a minha primeira proposta era usar o Compli como uma ferramenta para nos ajudar em toda a parte regulatória, do acompanhamento das obrigações e também nessa parte compliance. A verdade é que hoje a gente usa basicamente só a parte compliance. E a gente não usa a parte que vocês fazem a pesquisa via sistema, então a gente faz uma pesquisa manual na nossa plataforma parceira para depois inserir esses dados no sistema."
+                            </div>
+
+                            <div class="speaker">Alice Frerichs (Capsicum):</div>
+                            <div class="speaker-content">
+                                "Tem tanta informação, tanta informação, tanta informação que fica difícil de usar. Ela não é voltada às nossas necessidades. Então tem muita coisa ali que não tem nada a ver com os nossos fidics, não tem nada a ver com os nossos fundos."
+                            </div>
+
+                            <div class="speaker">Alice Frerichs (Capsicum):</div>
+                            <div class="speaker-content">
+                                "Mas tem tanta coisa para arquivar... Fica muito poluído. Para a gente começar a usar, tinha que reiniciar geral assim. Na verdade, eu estou hoje bem pensando em descontinuar o serviço ou trocar por uma plataforma que já nos atenda junto com a parte de compliance também."
+                            </div>
+
+                            <div class="speaker">Alice Frerichs (Capsicum) - FEEDBACK CRÍTICO:</div>
+                            <div class="speaker-content">
+                                "Se eu puder deixar esse feedback para vocês, acho que essa parametrização é essencial no onboarding. Se você deixa isso passar, a plataforma vira um \"monstrengo\" difícil de manejar, sabe?"
+                            </div>
+
+                            <div class="speaker">Alice Frerichs (Capsicum):</div>
+                            <div class="speaker-content">
+                                "A gente está pensando em fazer uma automatização lá com o time da Neo, a gente está discutindo fazer consultas por API e já vinha com o resultado de acordo com a nossa matriz de risco. Vocês conseguiram integrar também a plataforma de vocês com essa ponta da Neo?"
+                            </div>
+
+                            <div class="speaker">Evelyn Ferraz (Compliasset):</div>
+                            <div class="speaker-content">
+                                "A gente tem uma API, mas ela não faz esse tipo de integração. A API que a gente tem, ela é muito básica para criação de atividades, criação de eventos, cadastros. Então a gente não tem essa opção de integração."
+                            </div>
+
+                            <div class="speaker">Alice Frerichs (Capsicum):</div>
+                            <div class="speaker-content">
+                                "Hoje que a gente precisa mesmo, que está no nosso pipeline de PLD, aí não sei se já podem mandar uma proposta."
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 20px; background: #f0f0f0; padding: 15px; border-radius: 5px;">
+                            <strong>Para acessar a transcrição completa:</strong>
+                            <p>Arquivo: <code>estudo_clientes_Compli/transcricoes/2026-07-08_capsicum_assets_transcricao.md</code></p>
+                            <p style="font-size: 0.9em; margin-top: 10px;">Contém todas as falas, timestamps, análise detalhada e context de churn.</p>
+                        </div>
+                    </div>
+
+                    <!-- ENTENDIMENTO -->
+                    <div id="capsicum-entendimento" class="client-subtab-content">
+                        <div class="understanding-box">
+                            <h4>📊 O Que Capsicum Realmente Faz</h4>
+                            <div class="understanding-item"><strong>Modelo de Negócio:</strong> Gestora de ativos (fidics, fundos)</div>
+                            <div class="understanding-item"><strong>Time:</strong> Alice (decisor) + Ana (operacional compliance)</div>
+                            <div class="understanding-item"><strong>Escopo de Atuação:</strong> Só usa FIDC + gestão de recursos; não usa Fundos de Investimento (FII) do Compliasset</div>
+                        </div>
+
+                        <div class="understanding-box">
+                            <h4>🔄 O Que Capsicum REALMENTE Quer Fazer</h4>
+                            <div class="understanding-item"><strong>Job:</strong> "Fazer compliance de forma simples e rápida, tudo integrado"</div>
+                            <div class="understanding-item"><strong>Atual:</strong> Processa em 3 ferramentas: Neo (análise) → Upload manual → Compliasset (registro)</div>
+                            <div class="understanding-item"><strong>Desejo:</strong> Tudo em 1 lugar, automatizado, sem manual</div>
+                        </div>
+
+                        <div class="understanding-box">
+                            <h4>⚡ Por Que Não Usa Compliasset Hoje</h4>
+                            <div class="understanding-item"><strong>Razão 1 - Sobrecarga:</strong> Plataforma "muito completa" com muita informação irrelevante</div>
+                            <div class="understanding-item"><strong>Razão 2 - Parametrização:</strong> Ninguém disse "seu escopo é esse, vamos limpar a agenda pra você"</div>
+                            <div class="understanding-item"><strong>Razão 3 - Análise:</strong> Compliasset não oferece análise de compliance boa o suficiente (usa Neo que é melhor)</div>
+                            <div class="understanding-item"><strong>Razão 4 - Automação:</strong> Precisa de API com Neo, mas Compliasset API é muito básica</div>
+                        </div>
+
+                        <div class="understanding-box">
+                            <h4>🎯 O Que Cobraria Se Você Desenvolvesse</h4>
+                            <div class="understanding-item"><strong>1. Limpeza de Agenda:</strong> "Tem tanta coisa para arquivar que desistimos"</div>
+                            <div class="understanding-item"><strong>2. Integração Neo API:</strong> "Fazer consultas por API e já vir classificado de risco"</div>
+                            <div class="understanding-item"><strong>3. PLD:</strong> "Tá no nosso pipeline, vocês conseguem?"</div>
+                            <div class="understanding-item"><strong>4. Treinamentos:</strong> "Nem sabia que tinham isso na plataforma"</div>
+                        </div>
+
+                        <div class="understanding-box">
+                            <h4>⚠️ Sinais de Churn</h4>
+                            <div class="understanding-item">✗ "Estou bem pensando em descontinuar o serviço"</div>
+                            <div class="understanding-item">✗ "Ou trocar por uma plataforma que já nos atenda"</div>
+                            <div class="understanding-item">✗ "Já em contato com concorrentes"</div>
+                            <div class="understanding-item">✗ "Apertando a gente para melhorar"</div>
+                            <div class="understanding-item">✓ Alice oferece feedback positivo = quer que funcione</div>
+                        </div>
+
+                        <div class="understanding-box">
+                            <h4>💡 Oportunidade</h4>
+                            <p style="color: #0d6efd; font-weight: bold;">Se você agir rápido (1-2 semanas), ainda consegue salvar.</p>
+                            <div class="understanding-item">Alice está aberta: "Se você deixa isso passar, a plataforma vira \"monstrengo\"... <strong>parametrização é essencial</strong>"</div>
+                            <div class="understanding-item">Isso significa: Ela QUER que funcione, só precisa de ajuda</div>
+                        </div>
+                    </div>
+
+                    <!-- AÇÕES -->
+                    <div id="capsicum-acoes" class="client-subtab-content">
+                        <div class="section-title">Ações Acordadas na Reunião</div>
+                        <div class="quick-win-item">
+                            <strong>[URGENTE - 2-3 dias]</strong> Licenças de treinamento
+                            <p>Evelyn vai disponibilizar cortesias para testes (Cibersegurança, ASG). Objetivo: Demonstrar valor, que tem features.</p>
+                        </div>
+
+                        <div class="quick-win-item">
+                            <strong>[URGENTE - 1 semana]</strong> Puxar relatório agenda + Enviar para limpeza
+                            <p>Evelyn extrai, Capsicum indica o que arquivar, Compliasset reinicia agenda a partir de junho 2026. Objetivo: Reduzir poluição.</p>
+                        </div>
+
+                        <div class="quick-win-item">
+                            <strong>[URGENTE - 2 semanas]</strong> Revisar escopo de módulos
+                            <p>Validar se os 3 módulos (FIDC, FII, Recursos) fazem sentido. Capsicum questiona se precisa de todos.</p>
+                        </div>
+
+                        <div class="quick-win-item">
+                            <strong>[PRODUTO - 4-6 semanas]</strong> Análise viabilidade integração Neo via API
+                            <p>Guilherme vai avaliar: Consultas por API + resultado com classificação automática de risco.</p>
+                        </div>
+
+                        <div class="quick-win-item">
+                            <strong>[COMERCIAL - 2 semanas]</strong> Estruturar proposta de PLD
+                            <p>Evelyn + Guilherme. Capsicum tem no pipeline de demandas. Apresentar viabilidade e timeline.</p>
+                        </div>
+
+                        <div class="quick-win-item">
+                            <strong>[COMERCIAL - 3 dias]</strong> E-mail consolidado
+                            <p>Laura vai enviar resumo da reunião com todas as propostas, timelines e próximos passos.</p>
+                        </div>
+                    </div>
+
+                    <!-- CLASSIFICAÇÃO -->
+                    <div id="capsicum-classificacao" class="client-subtab-content">
+                        <div class="table-container">
+                            <table>
+                                <tr>
+                                    <th>Métrica</th>
+                                    <th>Valor</th>
+                                    <th>Significado</th>
+                                </tr>
+                                <tr>
+                                    <td><strong>Utilização</strong></td>
+                                    <td><span class="badge badge-stars">1⭐</span></td>
+                                    <td>Usa apenas cadastro + upload (não explora análises, automações)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Risco</strong></td>
+                                    <td><span class="badge badge-risk-red">🔴 Vermelho</span></td>
+                                    <td>Ameaça iminente de descontinuação, está avaliando concorrentes</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Maturidade</strong></td>
+                                    <td>Nível 2 - Operacional</td>
+                                    <td>Sabe o que precisa, mas não sabe como usar plataforma</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Prioridade</strong></td>
+                                    <td><span class="badge badge-priority-urgent">URGENTE</span></td>
+                                    <td>Máxima urgência - Risco de churn em 2-4 semanas</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tempo Ação</strong></td>
+                                    <td>1-2 semanas (quick wins)</td>
+                                    <td>Demonstrar valor AGORA antes de cliente migrar</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Owner Principal</strong></td>
+                                    <td>Evelyn + Guilherme</td>
+                                    <td>Evelyn: Parametrização/limpeza. Guilherme: API/Produto</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Feedback Crítico</strong></td>
+                                    <td>Alice (positivo)</td>
+                                    <td>"Parametrização essencial no onboarding" - Quer que funcione</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABA CLIENTE: ALGARVE INVESTIMENTOS -->
+            <div id="clientes-algarve" class="clients-main-tab-content">
+                <div class="client-detail">
+                    <h3>🔴 Algarve Investimentos - PRIORIDADE ALTA</h3>
+                    
+                    <div style="margin: 15px 0;">
+                        <span class="badge badge-stars">1⭐ Utilização</span>
+                        <span class="badge badge-risk-red">🔴 Risco Alto</span>
+                        <span class="badge badge-priority-high">ALTA</span>
+                    </div>
+
+                    <div class="client-tabs">
+                        <button class="client-tab-button active" onclick="switchClientTab(event, 'algarve-resumo')">Resumo</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'algarve-entendimento')">Entendimento</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'algarve-acoes')">Ações</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'algarve-classificacao')">Classificação</button>
+                        <button class="client-tab-button" onclick="alert('Sem transcrição disponível para este cliente')" disabled>📄 Transcrição (indisponível)</button>
+                    </div>
+
+                    <div id="algarve-resumo" class="client-subtab-content active">
+                        <div class="info-row">
+                            <span class="info-label">Data Reunião:</span>
+                            <span class="info-value">03 de julho de 2026</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Cliente desde:</span>
+                            <span class="info-value">+5 anos (cliente antigo)</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Situação:</span>
+                            <span class="info-value">Baixíssima utilização, comparando com IA como alternativa</span>
+                        </div>
+
+                        <div class="section-title">Problemas Identificados</div>
+                        <ul class="item-list">
+                            <li>Percepção de plataforma como "outdated" vs. IA</li>
+                            <li>Insatisfação com módulo de Documentos</li>
+                            <li>Perda progressiva de aderência ao longo dos anos</li>
+                            <li>Avalia alternativas com capacidades de IA</li>
+                        </ul>
+                    </div>
+
+                    <div id="algarve-entendimento" class="client-subtab-content">
+                        <div class="understanding-box">
+                            <h4>📊 Perfil do Cliente</h4>
+                            <div class="understanding-item">Cliente de longa data (+5 anos)</div>
+                            <div class="understanding-item">Percebe valor declinante ao longo do tempo</div>
+                            <div class="understanding-item">Está ativo mas engajamento muito baixo</div>
+                        </div>
+
+                        <div class="understanding-box">
+                            <h4>⚡ Problema Principal</h4>
+                            <div class="understanding-item">Não é que a plataforma seja ruim</div>
+                            <div class="understanding-item">É que <strong>comparativamente com IA</strong>, parece "less advanced"</div>
+                            <div class="understanding-item">Frustrações específicas com módulo Documentos</div>
+                        </div>
+
+                        <div class="understanding-box">
+                            <h4>🎯 O Que Precisa Agora</h4>
+                            <div class="understanding-item">Revisão de módulo de Documentos</div>
+                            <div class="understanding-item">Demonstração comparativa com IA (o que Compliasset consegue fazer que IA não)</div>
+                            <div class="understanding-item">Agenda simplificada para seu escopo</div>
+                        </div>
+                    </div>
+
+                    <div id="algarve-acoes" class="client-subtab-content">
+                        <div class="quick-win-item">
+                            <strong>[1-2 semanas]</strong> Preparar demo de features vs. IA
+                            <p>Mostrar: O que Compliasset consegue que IA não (compliance estruturado, histórico, auditoria)</p>
+                        </div>
+                        <div class="quick-win-item">
+                            <strong>[1 semana]</strong> Revisão do módulo Documentos
+                            <p>Entender exatamente qual é a frustração e se tem evolução recente</p>
+                        </div>
+                    </div>
+
+                    <div id="algarve-classificacao" class="client-subtab-content">
+                        <div class="table-container">
+                            <table>
+                                <tr>
+                                    <th>Métrica</th>
+                                    <th>Valor</th>
+                                </tr>
+                                <tr>
+                                    <td><strong>Utilização</strong></td>
+                                    <td>1⭐ (5+ anos, muito baixa)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Risco</strong></td>
+                                    <td>🔴 Alto - Considera alternativas</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Timeline Ação</strong></td>
+                                    <td>2-3 semanas</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABA CLIENTE: AWR CAPITAL -->
+            <div id="clientes-awr" class="clients-main-tab-content">
+                <div class="client-detail">
+                    <h3>🟡 AWR Capital - PRIORIDADE ALTA (Melhor Oportunidade)</h3>
+                    
+                    <div style="margin: 15px 0;">
+                        <span class="badge badge-stars">2⭐ Utilização</span>
+                        <span class="badge badge-risk-yellow">🟡 Risco Médio</span>
+                        <span class="badge badge-priority-high">ALTA</span>
+                    </div>
+
+                    <div class="client-tabs">
+                        <button class="client-tab-button active" onclick="switchClientTab(event, 'awr-resumo')">Resumo</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'awr-entendimento')">Entendimento</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'awr-acoes')">Ações</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'awr-classificacao')">Classificação</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'awr-transcricao')">Transcrição Completa</button>
+                    </div>
+
+                    <div id="awr-resumo" class="client-subtab-content active">
+                        <div class="info-row">
+                            <span class="info-label">Data Reunião:</span>
+                            <span class="info-value">07 de julho de 2026</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Team:</span>
+                            <span class="info-value">5 pessoas (Ralph=compliance/risk, Emerson/Victor=gestão, Daniel/Leticia=analysts)</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Operação:</span>
+                            <span class="info-value">3 business verticals: fundos líquidos, carteiras administradas, estruturados</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Transcrição:</span>
+                            <span class="info-value">Disponível em <code>transcricoes/2026-07-07_awr_capital_transcricao.md</code></span>
+                        </div>
+
+                        <div class="section-title">O Diferencial Desta</div>
+                        <ul class="item-list">
+                            <li>Está aberta a melhorar (não rejeita plataforma)</li>
+                            <li>Time pequeno mas com disposição</li>
+                            <li>Demandas claras: treinamento + limpeza</li>
+                            <li>Melhor caso de ativação rápida</li>
+                        </ul>
+                    </div>
+
+                    <div id="awr-entendimento" class="client-subtab-content">
+                        <div class="understanding-box">
+                            <h4>📊 O Que AWR Quer</h4>
+                            <div class="understanding-item">Usar plataforma de forma estruturada</div>
+                            <div class="understanding-item">Treinar time para usar corretamente</div>
+                            <div class="understanding-item">Limpar histórico de ações/agenda acumuladas</div>
+                            <div class="understanding-item">Deixar documentado retroativamente</div>
+                        </div>
+
+                        <div class="understanding-box">
+                            <h4>✅ Por Que É a Melhor Oportunidade</h4>
+                            <div class="understanding-item">Não há rejeição ao produto</div>
+                            <div class="understanding-item">Cliente quer melhorar, não sair</div>
+                            <div class="understanding-item">Demandas são implementáveis e rápidas</div>
+                            <div class="understanding-item">Resultado visível em 2-4 semanas</div>
+                        </div>
+                    </div>
+
+                    <div id="awr-acoes" class="client-subtab-content">
+                        <div class="quick-win-item">
+                            <strong>[3 dias]</strong> Agendar treinamento presencial
+                            <p>Com Evelyn + Raquel para toda a equipe AWR</p>
+                        </div>
+                        <div class="quick-win-item">
+                            <strong>[1 semana]</strong> Executar treinamento
+                            <p>Cobrir: uso básico, agenda, documentação, parametrização</p>
+                        </div>
+                        <div class="quick-win-item">
+                            <strong>[2 semanas]</strong> Parametrização + Limpeza assistida
+                            <p>Depois do treinamento, deixar ambiente limpo e organizado</p>
+                        </div>
+                    </div>
+
+                    <div id="awr-classificacao" class="client-subtab-content">
+                        <div class="table-container">
+                            <table>
+                                <tr>
+                                    <th>Métrica</th>
+                                    <th>Valor</th>
+                                </tr>
+                                <tr>
+                                    <td><strong>Utilização</strong></td>
+                                    <td>2⭐ (Team com disposição)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Risco</strong></td>
+                                    <td>🟡 Médio - Melhor oportunidade</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Timeline Ação</strong></td>
+                                    <td>2-4 semanas</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="awr-transcricao" class="client-subtab-content">
+                        <div style="margin-bottom: 20px;">
+                            <strong>Transcrição Completa:</strong> Arquivo disponível em <code>transcricoes/2026-07-07_awr_capital_transcricao.md</code>
+                        </div>
+                        <div style="background: #e7f3ff; padding: 15px; border-radius: 5px; border-left: 4px solid #0d6efd;">
+                            <p><strong>📌 Resumo dos Pontos Principais:</strong></p>
+                            <ul>
+                                <li>Time de 5 pessoas quer usar plataforma de forma estruturada</li>
+                                <li>Necessário treinamento e limpeza de agenda histórica</li>
+                                <li>Demandas são realistas e implementáveis</li>
+                                <li>Cliente está aberto e quer melhorar seu processo compliance</li>
+                            </ul>
+                        </div>
+                        <p style="margin-top: 20px; font-size: 0.9em; color: #666;">Para acessar a transcrição completa com todos os detalhes e timestamps, consulte o arquivo markdown acima.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABA CLIENTE: HIKE CAPITAL -->
+            <div id="clientes-hike" class="clients-main-tab-content">
+                <div class="client-detail">
+                    <h3>🟡 Hike Capital - FOCO ESPECÍFICO</h3>
+                    
+                    <div style="margin: 15px 0;">
+                        <span class="badge badge-stars">2⭐ Utilização</span>
+                        <span class="badge badge-risk-yellow">🟡 Risco Médio</span>
+                        <span class="badge badge-priority-high">ALTA</span>
+                    </div>
+
+                    <div class="client-tabs">
+                        <button class="client-tab-button active" onclick="switchClientTab(event, 'hike-resumo')">Resumo</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'hike-entendimento')">Entendimento</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'hike-acoes')">Ações</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'hike-classificacao')">Classificação</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'hike-transcricao')">Transcrição Completa</button>
+                    </div>
+
+                    <div id="hike-resumo" class="client-subtab-content active">
+                        <div class="info-row">
+                            <span class="info-label">Data Reunião:</span>
+                            <span class="info-value">07 de julho de 2026</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Uso Principal:</span>
+                            <span class="info-value">Background check / due diligence reputacional</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Transcrição:</span>
+                            <span class="info-value">Disponível em <code>transcricoes/2026-07-07_hike_capital_transcricao.md</code></span>
+                        </div>
+
+                        <div class="section-title">Problema Principal</div>
+                        <ul class="item-list">
+                            <li>Agenda muito complexa confunde necessidades reais</li>
+                            <li>Cliente usa apenas 1 feature (background check)</li>
+                            <li>Desconhece outras capabilities</li>
+                        </ul>
+                    </div>
+
+                    <div id="hike-entendimento" class="client-subtab-content">
+                        <div class="understanding-box">
+                            <h4>🎯 Escopo Real de Uso</h4>
+                            <div class="understanding-item">Usa APENAS: Background check / due diligence reputacional</div>
+                            <div class="understanding-item">Pouco engajado com resto da plataforma</div>
+                            <div class="understanding-item">Precisa de educação sobre capabilities</div>
+                        </div>
+                    </div>
+
+                    <div id="hike-acoes" class="client-subtab-content">
+                        <div class="quick-win-item">
+                            <strong>[2-3 dias]</strong> Treino de onboarding
+                            <p>Com Raquel para segunda-feira (próximo encontro)</p>
+                        </div>
+                        <div class="quick-win-item">
+                            <strong>[1 semana]</strong> Limpeza de agenda
+                            <p>Remover tudo que não se aplica ao seu escopo</p>
+                        </div>
+                    </div>
+
+                    <div id="hike-classificacao" class="client-subtab-content">
+                        <div class="table-container">
+                            <table>
+                                <tr>
+                                    <th>Métrica</th>
+                                    <th>Valor</th>
+                                </tr>
+                                <tr>
+                                    <td><strong>Utilização</strong></td>
+                                    <td>2⭐ (Foco restrito)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Risco</strong></td>
+                                    <td>🟡 Médio - Educação necessária</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Timeline Ação</strong></td>
+                                    <td>2-3 semanas</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="hike-transcricao" class="client-subtab-content">
+                        <div style="margin-bottom: 20px;">
+                            <strong>Transcrição Completa:</strong> Arquivo disponível em <code>transcricoes/2026-07-07_hike_capital_transcricao.md</code>
+                        </div>
+                        <div style="background: #e7f3ff; padding: 15px; border-radius: 5px; border-left: 4px solid #0d6efd;">
+                            <p><strong>📌 Resumo dos Pontos Principais:</strong></p>
+                            <ul>
+                                <li>Cliente usa APENAS background check/due diligence</li>
+                                <li>Agenda muito complexa confunde necessidades reais</li>
+                                <li>Precisa de treinamento simplificado</li>
+                                <li>Limpeza de agenda focada no escopo real</li>
+                            </ul>
+                        </div>
+                        <p style="margin-top: 20px; font-size: 0.9em; color: #666;">Para acessar a transcrição completa com todos os detalhes e timestamps, consulte o arquivo markdown acima.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABA CLIENTE: NIVI CAPITAL -->
+            <div id="clientes-nivi" class="clients-main-tab-content">
+                <div class="client-detail">
+                    <h3>🟡 Nivi Capital - PRÉ-OPERACIONAL</h3>
+                    
+                    <div style="margin: 15px 0;">
+                        <span class="badge badge-stars">1⭐ Exceção Pré-Op</span>
+                        <span class="badge badge-risk-yellow">🟡 Risco Médio</span>
+                        <span class="badge badge-priority-low">MÉDIA</span>
+                    </div>
+
+                    <div class="client-tabs">
+                        <button class="client-tab-button active" onclick="switchClientTab(event, 'nivi-resumo')">Resumo</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'nivi-entendimento')">Entendimento</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'nivi-acoes')">Ações</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'nivi-classificacao')">Classificação</button>
+                        <button class="client-tab-button" onclick="alert('Cliente pré-operacional - sem transcrição disponível')" disabled>📄 Transcrição (indisponível)</button>
+                    </div>
+
+                    <div id="nivi-resumo" class="client-subtab-content active">
+                        <div class="info-row">
+                            <span class="info-label">Data Reunião:</span>
+                            <span class="info-value">06 de julho de 2026</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Status:</span>
+                            <span class="info-value">Entrou nov 2025, nenhum fundo operando ainda</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Expectativa de Uso:</span>
+                            <span class="info-value">Quando fundo iniciar operações (2-3 meses)</span>
+                        </div>
+
+                        <div class="section-title">Contexto</div>
+                        <ul class="item-list">
+                            <li>Não é falha - é estado natural de novos clientes pré-operacionais</li>
+                            <li>Acompanhar transição quando operações iniciarem</li>
+                            <li>Preparar terreno antecipadamente</li>
+                        </ul>
+                    </div>
+
+                    <div id="nivi-entendimento" class="client-subtab-content">
+                        <div class="understanding-box">
+                            <h4>✅ Não é um Problema</h4>
+                            <div class="understanding-item">Cliente está em "standby" natural</div>
+                            <div class="understanding-item">Vai usar quando operação começar</div>
+                            <div class="understanding-item">Prioridade: Acompanhar + Preparar bem quando llegar hora</div>
+                        </div>
+                    </div>
+
+                    <div id="nivi-acoes" class="client-subtab-content">
+                        <div class="quick-win-item">
+                            <strong>[Contínuo]</strong> Preparação para quando operações iniciarem
+                            <p>Acompanhar transição natural quando fundo começar a operar (2-3 meses)</p>
+                        </div>
+                        <div class="quick-win-item">
+                            <strong>[Quando necessário]</strong> Parametrização de módulos
+                            <p>Conforme escopo de operação se defina</p>
+                        </div>
+                    </div>
+
+                    <div id="nivi-classificacao" class="client-subtab-content">
+                        <div class="table-container">
+                            <table>
+                                <tr>
+                                    <th>Métrica</th>
+                                    <th>Valor</th>
+                                </tr>
+                                <tr>
+                                    <td><strong>Utilização</strong></td>
+                                    <td>1⭐ (Exceção Pré-Op)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Risco</strong></td>
+                                    <td>🟡 Médio - Acompanhamento proativo</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Status</strong></td>
+                                    <td>Pré-operacional até +3 meses</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Timeline Ação</strong></td>
+                                    <td>Preparação contínua</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                
+                <div style="margin: 15px 0;">
+                    <span class="badge badge-stars">1⭐ Utilização</span>
+                    <span class="badge badge-risk-red">🔴 Risco Alto</span>
+                    <span class="badge badge-priority-urgent">URGENTE</span>
+                </div>
+
+                <div class="section-title">Classificação</div>
+                <div class="info-row">
+                    <span class="info-label">Utilização:</span>
+                    <span class="info-value">1 estrela (apenas cadastro + upload resultados)</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Risco:</span>
+                    <span class="info-value">🔴 Vermelho - Ameaça iminente de descontinuação</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Maturidade:</span>
+                    <span class="info-value">Nível 2 - Operacional</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Data Reunião:</span>
+                    <span class="info-value">08 de julho de 2026 (21m 54s)</span>
+                </div>
+
+                <div class="section-title">Problemas Identificados</div>
+                <ul class="item-list">
+                    <li><strong>Agenda poluida:</strong> Aberta desde dezembro de 2024, nunca foi limpa</li>
+                    <li><strong>Falta de parametrização:</strong> Onboarding inadequado deixou plataforma \"monstrengo\" difícil de manejar</li>
+                    <li><strong>Análise de compliance fora do sistema:</strong> Usa Neo para análises, Compliasset apenas para registro</li>
+                    <li><strong>Falta de integração com APIs:</strong> Processamento manual de risco (CPF/CNPJ → classificação → upload)</li>
+                    <li><strong>PLD ausente:</strong> No pipeline de necessidades mas não contemplado</li>
+                    <li><strong>Desconhecimento de features:</strong> Não sabia de treinamentos, aceites integrados, formulários</li>
+                </ul>
+
+                <div class="section-title">Dores Principais</div>
+                <ul class="item-list">
+                    <li>Plataforma "muito completa" mas não personalizada</li>
+                    <li>Muita informação irrelevante (fidics, fundos que não utilizam)</li>
+                    <li>Workflow totalmente manual (operacional, pouco analítico)</li>
+                    <li>Descasamento de escopo (módulos contratados vs. necessidades reais)</li>
+                </ul>
+
+                <div class="section-title">Oportunidades</div>
+                <ul class="item-list">
+                    <li><strong>Limpeza + Parametrização:</strong> Reiniciar agenda a partir de junho 2026</li>
+                    <li><strong>Integração Neo via API:</strong> Automatizar fluxo de classificação de risco</li>
+                    <li><strong>Treinamentos:</strong> Licenças para teste (Cibersegurança, ASG)</li>
+                    <li><strong>PLD:</strong> Estruturar proposta de módulo/capacidade</li>
+                    <li><strong>Aceites + Formulários:</strong> Migrar de manual para integrado</li>
+                </ul>
+
+                <div class="section-title">Próximos Passos (Responsáveis)</div>
+                <ul class="item-list">
+                    <li><strong>Evelyn:</strong> Puxar relatório agenda, enviar para Capsicum indicar limpeza</li>
+                    <li><strong>Evelyn:</strong> Disponibilizar licenças treinamento</li>
+                    <li><strong>Guilherme:</strong> Analisar viabilidade integração Neo via API</li>
+                    <li><strong>Evelyn + Guilherme:</strong> Estruturar proposta PLD</li>
+                    <li><strong>Laura:</strong> E-mail consolidado</li>
+                </ul>
+
+                <div class="section-title">Feedback Crítico</div>
+                <blockquote style="border-left: 4px solid #dc3545; padding-left: 15px; margin: 10px 0; color: #721c24;">
+                    "Se você deixa isso passar, a plataforma vira um \"monstrengo\" difícil de manejar. Parametrização é essencial no onboarding." - Alice Frerichs
+                </blockquote>
+            </div>
+
+        <!-- TAB: ANÁLISE COMPARATIVA -->
+        <div id="analise" class="tab-content">
+            <div class="table-container">
+                <h3>Tabela Comparativa de Clientes</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Utilização</th>
+                            <th>Risco</th>
+                            <th>Maturidade</th>
+                            <th>Prioridade</th>
+                            <th>Problema Principal</th>
+                            <th>Timeline Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Capsicum Assets</strong></td>
+                            <td>1⭐</td>
+                            <td>🔴 Vermelho</td>
+                            <td>Nível 2</td>
+                            <td>URGENTE</td>
+                            <td>Agenda + Parametrização</td>
+                            <td>1-2 semanas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Algarve Investimentos</strong></td>
+                            <td>1⭐</td>
+                            <td>🔴 Vermelho</td>
+                            <td>Nível 3</td>
+                            <td>ALTA</td>
+                            <td>Comparação com IA</td>
+                            <td>2-3 semanas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AWR Capital</strong></td>
+                            <td>2⭐</td>
+                            <td>🟡 Amarelo</td>
+                            <td>Nível 2</td>
+                            <td>ALTA</td>
+                            <td>Treinamento + Limpeza</td>
+                            <td>1-2 semanas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hike Capital</strong></td>
+                            <td>2⭐</td>
+                            <td>🟡 Amarelo</td>
+                            <td>Nível 2</td>
+                            <td>ALTA</td>
+                            <td>Treinamento zero</td>
+                            <td>2 semanas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nivi Capital</strong></td>
+                            <td>1⭐ (Pré-Op)</td>
+                            <td>🟡 Amarelo</td>
+                            <td>Nível 1</td>
+                            <td>MÉDIA</td>
+                            <td>Preparação operacional</td>
+                            <td>Contínuo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-container">
+                <h3>Problemas Recorrentes (Padrões)</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Problema</th>
+                            <th>Clientes Afetados</th>
+                            <th>Frequência</th>
+                            <th>Impacto</th>
+                            <th>Solução Viável</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Agenda poluida/complexa</strong></td>
+                            <td>Capsicum, AWR, Hike</td>
+                            <td>3/5 (60%)</td>
+                            <td>Alto</td>
+                            <td>Parametrização + Limpeza + Reinício</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Falta de parametrização onboarding</strong></td>
+                            <td>Capsicum, AWR</td>
+                            <td>2/5 (40%)</td>
+                            <td>Muito Alto</td>
+                            <td>Redesenhar onboarding (obrigatório)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Análise compliance fora do sistema</strong></td>
+                            <td>Capsicum, Hike</td>
+                            <td>2/5 (40%)</td>
+                            <td>Alto</td>
+                            <td>Melhorar ferramenta análise / Integrar APIs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Falta de integração APIs</strong></td>
+                            <td>Capsicum, Algarve</td>
+                            <td>2/5 (40%)</td>
+                            <td>Alto</td>
+                            <td>Ampliar capacidades API (Neo, outras)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Subutilização de features</strong></td>
+                            <td>Todos</td>
+                            <td>5/5 (100%)</td>
+                            <td>Médio</td>
+                            <td>Treinamento + Demonstração</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Desconhecimento de PLD</strong></td>
+                            <td>Capsicum</td>
+                            <td>1/5 (20%)</td>
+                            <td>Alto</td>
+                            <td>Desenvolver / Integrar PLD</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <h3>Distribuição de Problemas</h3>
+                    <canvas id="problemasChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Score de Satisfação Geral</h3>
+                    <canvas id="satisfacaoChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: QUICK WINS & AÇÕES -->
+        <div id="quick-wins" class="tab-content">
+            <div class="quick-wins">
+                <h3>⚡ Quick Wins - Implementação Rápida (Semana 1-2)</h3>
+
+                <div class="quick-win-item">
+                    <strong>[CAPSICUM - 3-4 dias]</strong> Licenças de treinamento
+                    <p>Disponibilizar cortesias para testes (Cibersegurança, ASG). Impacto: Demonstrar valor, reduzir percepção de falta de features.</p>
+                </div>
+
+                <div class="quick-win-item">
+                    <strong>[CAPSICUM - 1 semana]</strong> Puxar relatório agenda + enviar para limpeza
+                    <p>Evelyn extrai dados, Capsicum indica o que arquivar. Impacto: Reduzir volume poluido, demonstrar comprometimento.</p>
+                </div>
+
+                <div class="quick-win-item">
+                    <strong>[AWR - 3 dias]</strong> Agendar treinamento presencial
+                    <p>Com Evelyn + Raquel. Impacto: Ativação rápida, mostrar suporte.</p>
+                </div>
+
+                <div class="quick-win-item">
+                    <strong>[HIKE - 2-3 dias]</strong> Treinamento de onboarding
+                    <p>Com Raquel para segunda-feira. Impacto: Mostrar capacidade de customização.</p>
+                </div>
+
+                <div class="quick-win-item">
+                    <strong>[ALGARVE - 1 semana]</strong> Demo de novas features
+                    <p>Mostrar features novas vs. IA, comparação estruturada. Impacto: Reposicionar percepção de "outdated".</p>
+                </div>
+
+                <div class="quick-win-item">
+                    <strong>[TODOS - 3 dias]</strong> Criar resumo templates de uso por vertical
+                    <p>Fidics, fundos, FII, estruturados. Impacto: Reduzir confusão de escopo.</p>
+                </div>
+
+                <div class="quick-win-item">
+                    <strong>[CAPSICUM - 2 semanas]</strong> Estruturar proposta PLD
+                    <p>Evelyn + Guilherme. Impacto: Endereçar demanda urgente, evitar churn.</p>
+                </div>
+
+                <div class="quick-win-item">
+                    <strong>[PRODUTO - 2-3 semanas]</strong> Análise viabilidade integração Neo API
+                    <p>Guilherme. Impacto: Automatizar workflow Capsicum, diferenciar vs. concorrentes.</p>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <h3>Plano de Ação Detalhado por Cliente</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Ação 1 (Semana 1)</th>
+                            <th>Ação 2 (Semana 2)</th>
+                            <th>Ação 3 (Semana 3)</th>
+                            <th>Owner</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Capsicum</strong></td>
+                            <td>Licenças treino</td>
+                            <td>Limpeza agenda</td>
+                            <td>Proposta PLD</td>
+                            <td>Evelyn</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Algarve</strong></td>
+                            <td>Agendamento demo</td>
+                            <td>Demo features</td>
+                            <td>Follow-up proposta</td>
+                            <td>Laura</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AWR</strong></td>
+                            <td>Agendar treino</td>
+                            <td>Treinamento</td>
+                            <td>Parametrização</td>
+                            <td>Evelyn</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hike</strong></td>
+                            <td>Treino segunda</td>
+                            <td>Cleanup agenda</td>
+                            <td>Follow-up</td>
+                            <td>Raquel</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nivi</strong></td>
+                            <td>Preparação</td>
+                            <td>Acompanhamento</td>
+                            <td>Onboarding</td>
+                            <td>Evelyn</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TAB: MATRIZ PRIORIZAÇÃO -->
+        <div id="matriz-priorizacao" class="tab-content">
+            <div class="matrix-container">
+                <div class="matrix-title">Matriz Value vs Effort - Quick Wins</div>
+                <div class="matrix-grid">
+                    <div></div>
+                    <div class="matrix-header">LOW EFFORT</div>
+                    <div class="matrix-header">HIGH EFFORT</div>
+                    
+                    <div class="matrix-header" style="writing-mode: vertical-rl; transform: rotate(180deg);">HIGH VALUE</div>
+                    
+                    <div class="matrix-cell quick-win">
+                        <strong>QUICK WINS</strong><br>
+                        ✓ Licenças treino<br>
+                        ✓ Puxar agenda<br>
+                        ✓ Agendar treino<br>
+                        ✓ Demo features<br>
+                        ✓ Templates uso
+                    </div>
+                    
+                    <div class="matrix-cell strategic">
+                        <strong>ESTRATÉGICO</strong><br>
+                        ✓ Integração API Neo<br>
+                        ✓ PLD Módulo<br>
+                        ✓ Redesenho onboarding<br>
+                        ✓ Análise compliance
+                    </div>
+                    
+                    <div class="matrix-header" style="writing-mode: vertical-rl; transform: rotate(180deg);">LOW VALUE</div>
+                    
+                    <div class="matrix-cell fill-in">
+                        <strong>FILL-IN</strong><br>
+                        - Ajustes menores<br>
+                        - Melhorias UI<br>
+                        - Docs secundárias
+                    </div>
+                    
+                    <div class="matrix-cell avoid">
+                        <strong>AVOID</strong><br>
+                        ✗ Mudanças features obsoletas<br>
+                        ✗ Redesign gráfico<br>
+                        ✗ Suporte múltiplos idiomas
+                    </div>
+                </div>
+            </div>
+
+            <div class="matrix-container">
+                <div class="matrix-title">Matriz Urgência vs Importância (Eisenhower) - Ações de Produto</div>
+                <div class="matrix-grid">
+                    <div></div>
+                    <div class="matrix-header">NÃO-URGENTE</div>
+                    <div class="matrix-header">URGENTE</div>
+                    
+                    <div class="matrix-header" style="writing-mode: vertical-rl; transform: rotate(180deg);">IMPORTANTE</div>
+                    
+                    <div class="matrix-cell fill-in">
+                        <strong>PLANEJAMENTO</strong><br>
+                        • Roadmap 2026<br>
+                        • Arquitetura API<br>
+                        • Estratégia preços
+                    </div>
+                    
+                    <div class="matrix-cell quick-win">
+                        <strong>FAZER AGORA</strong><br>
+                        ✓ Integração Neo API<br>
+                        ✓ Redesenho onboarding<br>
+                        ✓ PLD proposta
+                    </div>
+                    
+                    <div class="matrix-header" style="writing-mode: vertical-rl; transform: rotate(180deg);">NÃO-IMPORTANTE</div>
+                    
+                    <div class="matrix-cell fill-in">
+                        <strong>DELEGAÇÃO</strong><br>
+                        • Ajustes UI<br>
+                        • Correções bugs<br>
+                        • Docs
+                    </div>
+                    
+                    <div class="matrix-cell avoid">
+                        <strong>ELIMINAR</strong><br>
+                        ✗ Features solicitadas antigos<br>
+                        ✗ Protótipos descartados
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <h3>Priorização MoSCoW - Roadmap Produto 2026 Q3</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Categoria</th>
+                            <th>Item</th>
+                            <th>Cliente</th>
+                            <th>Timeline</th>
+                            <th>Impacto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>MUST</strong></td>
+                            <td>Redesenho onboarding (parametrização obrigatória)</td>
+                            <td>Todos</td>
+                            <td>3-4 semanas</td>
+                            <td>Muito Alto</td>
+                        </tr>
+                        <tr>
+                            <td><strong>MUST</strong></td>
+                            <td>Integração Neo via API (classificação risco)</td>
+                            <td>Capsicum</td>
+                            <td>4-6 semanas</td>
+                            <td>Alto (churn risk)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SHOULD</strong></td>
+                            <td>Módulo/Capacidade PLD</td>
+                            <td>Capsicum</td>
+                            <td>6-8 semanas</td>
+                            <td>Alto</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SHOULD</strong></td>
+                            <td>Melhorar análise compliance (mais fontes)</td>
+                            <td>Capsicum, Hike</td>
+                            <td>4-6 semanas</td>
+                            <td>Médio-Alto</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SHOULD</strong></td>
+                            <td>Templates de uso por vertical (Fidic, Fundos, FII)</td>
+                            <td>Todos</td>
+                            <td>2 semanas</td>
+                            <td>Médio</td>
+                        </tr>
+                        <tr>
+                            <td><strong>COULD</strong></td>
+                            <td>Ampliação API (eventos customizados)</td>
+                            <td>Futuro</td>
+                            <td>8+ semanas</td>
+                            <td>Médio</td>
+                        </tr>
+                        <tr>
+                            <td><strong>COULD</strong></td>
+                            <td>Dashboard de riscos (visual)</td>
+                            <td>AWR, Capsicum</td>
+                            <td>6-8 semanas</td>
+                            <td>Médio</td>
+                        </tr>
+                        <tr>
+                            <td><strong>WON'T</strong></td>
+                            <td>Suporte múltiplos idiomas</td>
+                            <td>Não priorizado</td>
+                            <td>-</td>
+                            <td>Baixo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TAB: MAPA DE RISCOS -->
+        <div id="riscos" class="tab-content">
+            <div class="risk-matrix">
+                <h3 style="position: relative; z-index: 10; margin-bottom: 40px;">Mapa de Risco: Utilização vs Satisfação</h3>
+                
+                <div class="risk-matrix-x">UTILIZAÇÃO →</div>
+                <div class="risk-matrix-y">SATISFAÇÃO →</div>
+
+                <!-- Quadrantes -->
+                <div style="position: absolute; top: 80px; left: 60px; width: 42%; height: 42%; background: rgba(220, 53, 69, 0.1); border: 2px dashed #dc3545; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #721c24;">
+                    CRÍTICO
+                </div>
+                
+                <div style="position: absolute; top: 80px; right: 30px; width: 42%; height: 42%; background: rgba(40, 167, 69, 0.1); border: 2px dashed #28a745; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #155724;">
+                    IDEAL
+                </div>
+                
+                <div style="position: absolute; bottom: 30px; left: 60px; width: 42%; height: 42%; background: rgba(255, 193, 7, 0.1); border: 2px dashed #ffc107; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #856404;">
+                    MONITORAR
+                </div>
+                
+                <div style="position: absolute; bottom: 30px; right: 30px; width: 42%; height: 42%; background: rgba(13, 110, 253, 0.1); border: 2px dashed #0d6efd; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #004085;">
+                    CRESCIMENTO
+                </div>
+
+                <!-- Bolhas de clientes -->
+                <div class="risk-bubble high" style="bottom: 100px; left: 80px; width: 80px; height: 80px;" title="Capsicum: 1 estrela, Risco Alto">
+                    <div>Capsicum<br>1⭐<br>🔴 Alto</div>
+                </div>
+
+                <div class="risk-bubble high" style="top: 100px; left: 100px; width: 70px; height: 70px;" title="Algarve: 1 estrela, Risco Alto">
+                    <div>Algarve<br>1⭐<br>🔴 Alto</div>
+                </div>
+
+                <div class="risk-bubble medium" style="top: 120px; right: 120px; width: 70px; height: 70px;" title="AWR: 2 estrelas, Risco Médio">
+                    <div>AWR<br>2⭐<br>🟡 Médio</div>
+                </div>
+
+                <div class="risk-bubble medium" style="bottom: 150px; right: 100px; width: 65px; height: 65px;" title="Hike: 2 estrelas, Risco Médio">
+                    <div>Hike<br>2⭐<br>🟡 Médio</div>
+                </div>
+
+                <div class="risk-bubble medium" style="top: 250px; left: 50%; transform: translateX(-50%); width: 60px; height: 60px;" title="Nivi: Pré-operacional">
+                    <div>Nivi<br>Pré-Op<br>🟡</div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <h3>Análise de Risco Detalhada</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Posição</th>
+                            <th>Nível Risco</th>
+                            <th>Gatilhos de Churn</th>
+                            <th>Ações Mitigação</th>
+                            <th>Timeline</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Capsicum</strong></td>
+                            <td>Crítico</td>
+                            <td>MUITO ALTO</td>
+                            <td>Descontinuação ameaçada, contato com concorrentes</td>
+                            <td>Limpeza urgente + Integração API + PLD</td>
+                            <td>1-2 semanas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Algarve</strong></td>
+                            <td>Crítico</td>
+                            <td>ALTO</td>
+                            <td>Comparação com IA, insatisfação Documentos</td>
+                            <td>Demo features + Comparação IA + Módulo review</td>
+                            <td>2-3 semanas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AWR</strong></td>
+                            <td>Crescimento</td>
+                            <td>MÉDIO</td>
+                            <td>Falta de treinamento, frustração com agenda</td>
+                            <td>Treinamento presencial + Limpeza agenda</td>
+                            <td>1 semana</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hike</strong></td>
+                            <td>Monitorar</td>
+                            <td>MÉDIO</td>
+                            <td>Desconhecimento de features, escopo confuso</td>
+                            <td>Onboarding de zero + Treinamento especializado</td>
+                            <td>2 semanas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nivi</strong></td>
+                            <td>Monitorar</td>
+                            <td>MÉDIO (temporal)</td>
+                            <td>Abandono se não preparar para operação</td>
+                            <td>Preparação antecipada + Acompanhamento</td>
+                            <td>Contínuo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card" style="border-left-color: #dc3545;">
+                    <h3>🔴 Risco Crítico</h3>
+                    <p><strong>Clientes:</strong> Capsicum, Algarve</p>
+                    <p><strong>Ação:</strong> Ativação imediata de todas as propostas</p>
+                    <p><strong>Frequência Review:</strong> Diária durante implementação</p>
+                </div>
+
+                <div class="card" style="border-left-color: #ffc107;">
+                    <h3>🟡 Risco Médio</h3>
+                    <p><strong>Clientes:</strong> AWR, Hike, Nivi</p>
+                    <p><strong>Ação:</strong> Treinamento + Suporte intensivo</p>
+                    <p><strong>Frequência Review:</strong> Semanal</p>
+                </div>
+
+                <div class="card" style="border-left-color: #28a745;">
+                    <h3>🟢 Risco Baixo</h3>
+                    <p><strong>Clientes:</strong> Nenhum atualmente</p>
+                    <p><strong>Ação:</strong> Manutenção de relação</p>
+                    <p><strong>Frequência Review:</strong> Mensal</p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Dashboard Clientes Compliasset | Estudo Clientes Compli | Versão 1.0 | Criado: 08/07/2026</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Dados consolidados de 5 reuniões de discovery (03-08 jul 2026) | Próxima atualização: 15/07/2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // Tab switching (main tabs)
+        function switchTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab-button');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Main client tabs switching (Geral, Capsicum, Algarve, etc)
+        function switchMainClientTab(event, tabName) {
+            const contents = document.querySelectorAll('.clients-main-tab-content');
+            const buttons = document.querySelectorAll('.clients-main-tab-button');
+            
+            contents.forEach(content => content.classList.remove('active-main'));
+            buttons.forEach(btn => btn.classList.remove('active-main'));
+            
+            document.getElementById(tabName).classList.add('active-main');
+            event.target.classList.add('active-main');
+        }
+
+        // Client subtab switching
+        function switchClientTab(event, tabName) {
+            const tabContainers = event.target.closest('.client-detail');
+            if (!tabContainers) return;
+            
+            const subtabs = tabContainers.querySelectorAll('.client-subtab-content');
+            const buttons = tabContainers.querySelectorAll('.client-tab-button');
+            
+            subtabs.forEach(tab => tab.classList.remove('active'));
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            const targetTab = document.getElementById(tabName);
+            if (targetTab) {
+                targetTab.classList.add('active');
+                event.target.classList.add('active');
+            }
+        }
+
+        // Chart: Utilização
+        const utilizacaoCtx = document.getElementById('utilizacaoChart').getContext('2d');
+        new Chart(utilizacaoCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Capsicum', 'Algarve', 'AWR', 'Hike', 'Nivi'],
+                datasets: [{
+                    label: 'Estrelas de Utilização',
+                    data: [1, 1, 2, 2, 1],
+                    backgroundColor: [
+                        '#dc3545',
+                        '#dc3545',
+                        '#ffc107',
+                        '#ffc107',
+                        '#ffc107'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 5
+                    }
+                }
+            }
+        });
+
+        // Chart: Risco
+        const riscoCtx = document.getElementById('riscoChart').getContext('2d');
+        new Chart(riscoCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Risco Alto (🔴)', 'Risco Médio (🟡)', 'Risco Baixo (🟢)'],
+                datasets: [{
+                    data: [2, 3, 0],
+                    backgroundColor: ['#dc3545', '#ffc107', '#28a745']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Chart: Problemas
+        const problemasCtx = document.getElementById('problemasChart').getContext('2d');
+        new Chart(problemasCtx, {
+            type: 'horizontalBar',
+            type: 'bar',
+            data: {
+                labels: ['Agenda Poluida', 'Falta Parametrização', 'Análise Compliance', 'API Integration', 'Subutilização', 'PLD'],
+                datasets: [{
+                    label: 'Frequência (%)',
+                    data: [60, 40, 40, 40, 100, 20],
+                    backgroundColor: '#667eea'
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+
+        // Chart: Satisfação
+        const satisfacaoCtx = document.getElementById('satisfacaoChart').getContext('2d');
+        new Chart(satisfacaoCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Uso Plataforma', 'Suporte', 'Features', 'Preço', 'Onboarding'],
+                datasets: [
+                    {
+                        label: 'Capsicum',
+                        data: [20, 50, 30, 40, 25],
+                        borderColor: '#dc3545',
+                        backgroundColor: 'rgba(220, 53, 69, 0.2)'
+                    },
+                    {
+                        label: 'AWR',
+                        data: [50, 70, 60, 65, 40],
+                        borderColor: '#ffc107',
+                        backgroundColor: 'rgba(255, 193, 7, 0.2)'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
