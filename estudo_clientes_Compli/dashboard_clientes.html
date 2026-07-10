@@ -79,7 +79,7 @@
             cursor: pointer;
             font-weight: 700;
             font-size: 0.98em;
-            transition: all 0.3s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, border-color 0.2s ease;
             letter-spacing: 0.2px;
         }
 
@@ -95,6 +95,13 @@
             color: white;
             border-color: #3b82f6;
             box-shadow: 0 8px 24px rgba(59, 130, 246, 0.25);
+        }
+
+        button:focus-visible,
+        a:focus-visible {
+            outline: 3px solid #0ea5e9;
+            outline-offset: 2px;
+            border-radius: 8px;
         }
 
         .tab-content {
@@ -124,7 +131,7 @@
             border-radius: 10px;
             cursor: pointer;
             font-size: 0.98em;
-            transition: all 0.3s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, background-color 0.2s ease;
             font-weight: 700;
             letter-spacing: 0.2px;
         }
@@ -165,12 +172,12 @@
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             border-left: 5px solid #667eea;
-            transition: all 0.3s ease;
+            transition: box-shadow 0.2s ease;
+            cursor: default;
         }
 
         .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
         }
 
         .card h3 {
@@ -224,7 +231,7 @@
             border-radius: 10px;
             cursor: pointer;
             font-size: 0.96em;
-            transition: all 0.3s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
             font-weight: 700;
             letter-spacing: 0.2px;
         }
@@ -249,7 +256,7 @@
             background: #e2e8f0;
             color: #94a3b8;
             cursor: not-allowed;
-            opacity: 0.6;
+            opacity: 0.65;
             border-color: #cbd5e1;
         }
 
@@ -303,6 +310,10 @@
 
         tr:hover {
             background: #f1f5f9;
+        }
+
+        tbody tr {
+            cursor: default;
         }
 
         /* ===== BADGES ===== */
@@ -842,6 +853,144 @@
             overflow-x: auto;
         }
 
+        .quick-read-box {
+            background: #eef2ff;
+            border: 1px solid #c7d2fe;
+            border-left: 5px solid #4f46e5;
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 30px;
+            margin-bottom: 24px;
+        }
+
+        .quick-read-box h4 {
+            color: #312e81;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+            font-weight: 800;
+        }
+
+        .quick-read-box ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .quick-read-box li {
+            color: #1e293b;
+            margin: 7px 0;
+            line-height: 1.7;
+            font-weight: 600;
+        }
+
+        .quick-read-box li:before {
+            content: "• ";
+            color: #4f46e5;
+            font-weight: 800;
+        }
+
+        .dense-insight-section p[style*="font-size: 13px"] {
+            font-size: 0.94em !important;
+            line-height: 1.7 !important;
+        }
+
+        .dense-insight-section div[style*="background: white; padding: 12px;"] {
+            padding: 15px !important;
+        }
+
+        .dense-insight-section strong {
+            line-height: 1.45;
+        }
+
+        .interview-panel-subtitle {
+            color: #475569;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .interview-status {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 18px;
+            font-size: 0.82em;
+            font-weight: 800;
+            letter-spacing: 0.2px;
+        }
+
+        .interview-status.available {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .interview-status.unavailable {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .interview-links {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .interview-links a {
+            color: #1d4ed8;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .interview-links a:hover {
+            text-decoration: underline;
+        }
+
+        .interview-links .missing {
+            color: #64748b;
+            font-size: 0.88em;
+            font-weight: 700;
+        }
+
+        .evidence-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .evidence-chip {
+            border-radius: 10px;
+            padding: 10px 12px;
+            font-weight: 800;
+            font-size: 0.9em;
+            letter-spacing: 0.1px;
+            border: 1px solid transparent;
+        }
+
+        .evidence-chip.total {
+            background: #eff6ff;
+            border-color: #bfdbfe;
+            color: #1e3a8a;
+        }
+
+        .evidence-chip.complete {
+            background: #ecfdf5;
+            border-color: #bbf7d0;
+            color: #166534;
+        }
+
+        .evidence-chip.pending {
+            background: #fffbeb;
+            border-color: #fcd34d;
+            color: #78350f;
+        }
+
+        .sheet-caption {
+            color: #475569;
+            margin-top: 18px;
+            margin-bottom: 12px;
+            font-weight: 700;
+            font-size: 0.95em;
+        }
+
         /* ===== MATRIX ===== */
         .matrix-container {
             background: white;
@@ -934,14 +1083,13 @@
             justify-content: center;
             font-size: 0.85em;
             font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            cursor: default;
+            transition: box-shadow 0.2s ease;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .risk-bubble:hover {
-            transform: scale(1.15);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
         }
 
         .risk-bubble.low {
@@ -1254,6 +1402,41 @@
                     </ul>
                 </div>
             </div>
+
+            <div class="table-container">
+                <h3>Painel de Entrevistas Realizadas</h3>
+                <p class="interview-panel-subtitle">Visao unica para onboarding de novos colaboradores: data, contexto principal, impacto e status de evidencias.</p>
+                <div class="evidence-summary" id="evidenceSummary"></div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Cliente</th>
+                            <th>Principal Insight</th>
+                            <th>Principal Impacto</th>
+                            <th>Status da Transcrição</th>
+                            <th>Evidências</th>
+                        </tr>
+                    </thead>
+                    <tbody id="interviewTimelineBody"></tbody>
+                </table>
+
+                <p class="sheet-caption">Ficha padronizada por entrevista (campos obrigatorios)</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Cliente</th>
+                            <th>Participantes</th>
+                            <th>Risco</th>
+                            <th>Ação Acordada</th>
+                            <th>Prazo</th>
+                            <th>Owner</th>
+                        </tr>
+                    </thead>
+                    <tbody id="interviewStandardBody"></tbody>
+                </table>
+            </div>
         </div>
 
         <!-- TAB 2: CLIENTES (COM SUB-ABAS) -->
@@ -1321,8 +1504,18 @@
                     </table>
                 </div>
 
+                <div class="quick-read-box">
+                    <h4>Leitura Rápida (60 segundos)</h4>
+                    <ul>
+                        <li>Foram realizadas 5 entrevistas com perfis e estágios diferentes de maturidade.</li>
+                        <li>Padrão dominante: baixa adoção por onboarding incompleto, excesso de complexidade e uso parcial dos módulos.</li>
+                        <li>Maior risco imediato: Capsicum (churn iminente). Maior oportunidade de recuperação: AWR.</li>
+                        <li>Tema transversal: comparação com IA e necessidade de provar valor operacional de forma objetiva.</li>
+                    </ul>
+                </div>
+
                 <!-- SEÇÃO: PALAVRAS-CHAVE NEGATIVAS -->
-                <div style="margin-top: 30px; background: #fef3c7; padding: 20px; border-radius: 12px; border-left: 4px solid #f59e0b;">
+                <div class="dense-insight-section" style="margin-top: 30px; background: #fef3c7; padding: 20px; border-radius: 12px; border-left: 4px solid #f59e0b;">
                     <h3 style="color: #92400e; margin-top: 0;">⚠️ Palavras-Chave Negativas Mais Mencionadas</h3>
                     <p style="color: #b45309; margin-bottom: 15px;"><em>Padrões de insatisfação recorrentes entre clientes</em></p>
                     
@@ -1359,7 +1552,7 @@
                 </div>
 
                 <!-- SEÇÃO: IDEIAS FORA DA CAIXA -->
-                <div style="margin-top: 30px; background: #dbeafe; padding: 20px; border-radius: 12px; border-left: 4px solid #0284c7;">
+                <div class="dense-insight-section" style="margin-top: 30px; background: #dbeafe; padding: 20px; border-radius: 12px; border-left: 4px solid #0284c7;">
                     <h3 style="color: #0c2d48; margin-top: 0;">💡 Ideias Fora da Caixa (Insights Inusitados)</h3>
                     <p style="color: #1e40af; margin-bottom: 15px;"><em>Observações que quebram expectativas e abrem oportunidades</em></p>
                     
@@ -1396,7 +1589,7 @@
                 </div>
 
                 <!-- SEÇÃO: DETALHES PERCEBIDOS IMPORTANTES -->
-                <div style="margin-top: 30px; background: #f3e8ff; padding: 20px; border-radius: 12px; border-left: 4px solid #a855f7;">
+                <div class="dense-insight-section" style="margin-top: 30px; background: #f3e8ff; padding: 20px; border-radius: 12px; border-left: 4px solid #a855f7;">
                     <h3 style="color: #4c0519; margin-top: 0;">🎯 Detalhes Percebidos Que Podem Ser Importantes</h3>
                     <p style="color: #711c91; margin-bottom: 15px;"><em>Padrões, sinais de risco, oportunidades de negócio</em></p>
                     
@@ -1433,7 +1626,7 @@
                 </div>
 
                 <!-- SEÇÃO: SUGESTÕES PARA INCLUIR -->
-                <div style="margin-top: 30px; background: #dcfce7; padding: 20px; border-radius: 12px; border-left: 4px solid #22c55e;">
+                <div class="dense-insight-section" style="margin-top: 30px; background: #dcfce7; padding: 20px; border-radius: 12px; border-left: 4px solid #22c55e;">
                     <h3 style="color: #1b4332; margin-top: 0;">✅ Sugestões Adicionais Para o Dashboard</h3>
                     <p style="color: #166534; margin-bottom: 15px;"><em>Outras categorias que podem complementar a visão estratégica</em></p>
                     
@@ -1597,7 +1790,7 @@
                             <p style="font-family: monospace; color: #666; margin-top: 8px;">
                                 estudo_clientes_Compli/transcricoes/2026-07-08_capsicum_assets_transcricao.md
                             </p>
-                            <p style="font-size: 0.9em; color: #999; margin-top: 10px;">
+                            <p style="font-size: 0.9em; color: #64748b; margin-top: 10px;">
                                 21m 54s de conversa com análise detalhada e timeline de ações
                             </p>
                         </div>
@@ -1621,7 +1814,7 @@
                         <button class="client-tab-button" onclick="switchClientTab(event, 'algarve-entendimento')" aria-label="Entendimento de Algarve Investimentos">Entendimento</button>
                         <button class="client-tab-button" onclick="switchClientTab(event, 'algarve-acoes')" aria-label="Ações para Algarve Investimentos">Ações</button>
                         <button class="client-tab-button" onclick="switchClientTab(event, 'algarve-classificacao')" aria-label="Classificação de Algarve Investimentos">Classificação</button>
-                        <button class="client-tab-button is-disabled" onclick="handleDisabledClick(event)" aria-disabled="true" aria-label="Transcrição não disponível para Algarve Investimentos">📄 Transcrição (indisponível)</button>
+                        <button class="client-tab-button" disabled aria-label="Transcrição não disponível para Algarve Investimentos">📄 Transcrição (indisponível)</button>
                     </div>
                     <div id="algarve-resumo" class="client-subtab-content active">
                         <div class="section-title">Informações Básicas</div>
@@ -2101,7 +2294,7 @@
                         <button class="client-tab-button" onclick="switchClientTab(event, 'nivi-entendimento')" aria-label="Entendimento de Nivi Capital">Entendimento</button>
                         <button class="client-tab-button" onclick="switchClientTab(event, 'nivi-acoes')" aria-label="Ações para Nivi Capital">Ações</button>
                         <button class="client-tab-button" onclick="switchClientTab(event, 'nivi-classificacao')" aria-label="Classificação de Nivi Capital">Classificação</button>
-                        <button class="client-tab-button is-disabled" onclick="handleDisabledClick(event)" aria-disabled="true" aria-label="Transcrição não disponível - cliente em fase pré-operacional">📄 Transcrição (indisponível)</button>
+                        <button class="client-tab-button" disabled aria-label="Transcrição não disponível - cliente em fase pré-operacional">📄 Transcrição (indisponível)</button>
                     </div>
                     <div id="nivi-resumo" class="client-subtab-content active">
                         <div class="section-title">Informações Básicas</div>
@@ -2517,6 +2710,86 @@
 
         const LAST_CONSOLIDATION_DATE = '08 de julho de 2026';
 
+        const interviewsData = [
+            {
+                date: '08/07/2026',
+                client: 'Capsicum Assets',
+                participants: 'Alice Frerichs, Ana Carolina Oliveira Reis',
+                insight: 'Parametrização de onboarding é crítica para evitar sobrecarga e abandono de uso.',
+                impact: 'Risco crítico de churn em 2-4 semanas se não houver correção imediata.',
+                risk: 'Crítico',
+                agreedAction: 'Limpeza de agenda + parametrização assistida',
+                deadline: '1-2 semanas',
+                owner: 'Evelyn + Guilherme',
+                transcriptStatus: 'Disponível',
+                interviewFile: 'entrevistas/2026-07-08_capsicum_assets_reuniao.md',
+                transcriptFile: 'transcricoes/2026-07-08_capsicum_assets_transcricao.md'
+            },
+            {
+                date: '03/07/2026',
+                client: 'Algarve Investimentos',
+                participants: 'André, Alexandre',
+                insight: 'Percepção de defasagem frente à IA e dor operacional com documentos sem bulk move.',
+                impact: 'Risco alto de não renovação em 2027 se valor diferencial não for demonstrado.',
+                risk: 'Alto',
+                agreedAction: 'Demo comparativa + limpeza de agenda + revisão de módulos',
+                deadline: '2-4 semanas',
+                owner: 'Produto + CS + Comercial',
+                transcriptStatus: 'Indisponível',
+                interviewFile: 'entrevistas/2026-07-03_algarve_investimentos_reuniao.md',
+                transcriptFile: null
+            },
+            {
+                date: '07/07/2026',
+                client: 'AWR Capital',
+                participants: 'Ralph (Diretor de Compliance)',
+                insight: 'Queda de uso por falta de onboarding estruturado, com abertura clara para reativação.',
+                impact: 'Maior oportunidade de recuperação antes do vencimento de dezembro/2026.',
+                risk: 'Médio',
+                agreedAction: 'Treinamento + parametrização + limpeza assistida',
+                deadline: '3 semanas',
+                owner: 'Evelyn + Raquel + Ralph',
+                transcriptStatus: 'Disponível',
+                interviewFile: 'entrevistas/2026-07-07_awr_capital_reuniao.md',
+                transcriptFile: 'transcricoes/2026-07-07_awr_capital_transcricao.md'
+            },
+            {
+                date: '07/07/2026',
+                client: 'Hike Capital',
+                participants: 'Equipe Hike (compliance)',
+                insight: 'Uso restrito por desconhecimento de funcionalidades e necessidade de simplificação.',
+                impact: 'Risco médio com potencial de ganho rápido via treinamento orientado.',
+                risk: 'Médio',
+                agreedAction: 'Treinamento simplificado + revisão da agenda',
+                deadline: '2 semanas',
+                owner: 'CS + Hike',
+                transcriptStatus: 'Disponível',
+                interviewFile: 'entrevistas/2026-07-07_hike_capital_reuniao.md',
+                transcriptFile: 'transcricoes/2026-07-07_hike_capital_transcricao.md'
+            },
+            {
+                date: '06/07/2026',
+                client: 'Nivi Capital',
+                participants: 'Saulo, Gustavo',
+                insight: 'Conta pré-operacional aguardando início efetivo das operações para ampliar uso.',
+                impact: 'Baixa adoção no curto prazo, com ativação progressiva conforme evolução do cliente.',
+                risk: 'Médio',
+                agreedAction: 'Acompanhamento mensal + ativação por gatilho operacional',
+                deadline: 'Ciclo mensal',
+                owner: 'CS + Diretoria Nivi',
+                transcriptStatus: 'Indisponível',
+                interviewFile: 'entrevistas/2026-07-06_nivi_capital_reuniao.md',
+                transcriptFile: null
+            }
+        ];
+
+        function getEvidenceMetrics() {
+            const total = interviewsData.length;
+            const complete = interviewsData.filter(interview => interview.transcriptFile).length;
+            const pending = total - complete;
+            return { total, complete, pending };
+        }
+
         function getExecutiveMetrics() {
             const criticalClients = clientsData.filter(client => client.riskLevel === 'critical');
             const highPriorityClients = clientsData.filter(client => client.priority === 'ALTA');
@@ -2578,6 +2851,77 @@
             tbody.innerHTML = rows.join('');
         }
 
+        function renderInterviewsPanel() {
+            const tbody = document.getElementById('interviewTimelineBody');
+            if (!tbody) {
+                return;
+            }
+
+            const rows = interviewsData.map(interview => {
+                const statusClass = interview.transcriptStatus === 'Disponível' ? 'available' : 'unavailable';
+                const interviewLink = interview.interviewFile
+                    ? `<a href="${interview.interviewFile}">Entrevista</a>`
+                    : '<span class="missing">Entrevista indisponível</span>';
+                const transcriptLink = interview.transcriptFile
+                    ? `<a href="${interview.transcriptFile}">Transcrição</a>`
+                    : '<span class="missing">Transcrição indisponível</span>';
+                return `
+                    <tr>
+                        <td><strong>${interview.date}</strong></td>
+                        <td>${interview.client}</td>
+                        <td>${interview.insight}</td>
+                        <td>${interview.impact}</td>
+                        <td><span class="interview-status ${statusClass}">${interview.transcriptStatus}</span></td>
+                        <td>
+                            <div class="interview-links">
+                                ${interviewLink}
+                                ${transcriptLink}
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = rows.join('');
+        }
+
+        function renderEvidenceSummary() {
+            const summaryContainer = document.getElementById('evidenceSummary');
+            if (!summaryContainer) {
+                return;
+            }
+
+            const metrics = getEvidenceMetrics();
+            summaryContainer.innerHTML = `
+                <div class="evidence-chip total">Entrevistas: ${metrics.total}</div>
+                <div class="evidence-chip complete">Transcrições completas: ${metrics.complete}</div>
+                <div class="evidence-chip pending">Transcrições pendentes: ${metrics.pending}</div>
+            `;
+        }
+
+        function renderInterviewStandardSheet() {
+            const tbody = document.getElementById('interviewStandardBody');
+            if (!tbody) {
+                return;
+            }
+
+            const rows = interviewsData.map(interview => {
+                return `
+                    <tr>
+                        <td><strong>${interview.date}</strong></td>
+                        <td>${interview.client}</td>
+                        <td>${interview.participants}</td>
+                        <td>${interview.risk}</td>
+                        <td>${interview.agreedAction}</td>
+                        <td>${interview.deadline}</td>
+                        <td>${interview.owner}</td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = rows.join('');
+        }
+
         function updateHeaderInfo() {
             const dateInfo = document.getElementById('dateInfo');
             if (!dateInfo) {
@@ -2591,6 +2935,155 @@
             updateHeaderInfo();
             renderExecutiveCards();
             renderSummaryTable();
+            renderEvidenceSummary();
+            renderInterviewsPanel();
+            renderInterviewStandardSheet();
+        }
+
+        function extractTargetIdFromOnclick(button) {
+            const onclick = button.getAttribute('onclick') || '';
+            const match = onclick.match(/'([^']+)'/);
+            return match ? match[1] : null;
+        }
+
+        function updateTabA11yState(buttons, panels, activeButton, activePanel) {
+            buttons.forEach(button => {
+                const isActive = button === activeButton;
+                button.setAttribute('aria-selected', String(isActive));
+                button.setAttribute('tabindex', isActive ? '0' : '-1');
+            });
+
+            panels.forEach(panel => {
+                panel.hidden = panel !== activePanel;
+            });
+        }
+
+        function bindTabKeyboardNavigation(tablistElement, buttonSelector) {
+            if (!tablistElement || tablistElement.dataset.keyboardBound === 'true') {
+                return;
+            }
+
+            tablistElement.addEventListener('keydown', event => {
+                const buttons = Array.from(tablistElement.querySelectorAll(buttonSelector))
+                    .filter(button => button.getAttribute('aria-disabled') !== 'true' && !button.disabled);
+
+                if (!buttons.length) {
+                    return;
+                }
+
+                const currentIndex = buttons.indexOf(document.activeElement);
+                if (currentIndex === -1) {
+                    return;
+                }
+
+                let nextIndex = -1;
+                if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+                    nextIndex = (currentIndex + 1) % buttons.length;
+                } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+                    nextIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+                } else if (event.key === 'Home') {
+                    nextIndex = 0;
+                } else if (event.key === 'End') {
+                    nextIndex = buttons.length - 1;
+                }
+
+                if (nextIndex !== -1) {
+                    event.preventDefault();
+                    buttons[nextIndex].focus();
+                    buttons[nextIndex].click();
+                }
+            });
+
+            tablistElement.dataset.keyboardBound = 'true';
+        }
+
+        function initializeTabsA11y() {
+            document.querySelectorAll('.tabs').forEach(tablist => {
+                tablist.setAttribute('role', 'tablist');
+                const buttons = Array.from(tablist.querySelectorAll('.tab-button'));
+                const panels = Array.from(document.querySelectorAll('.tab-content'));
+
+                buttons.forEach((button, index) => {
+                    button.setAttribute('role', 'tab');
+                    if (!button.id) {
+                        button.id = `main-tab-${index + 1}`;
+                    }
+
+                    const targetId = extractTargetIdFromOnclick(button);
+                    const panel = targetId ? document.getElementById(targetId) : null;
+                    if (panel) {
+                        panel.setAttribute('role', 'tabpanel');
+                        panel.setAttribute('aria-labelledby', button.id);
+                        button.setAttribute('aria-controls', panel.id);
+                    }
+                });
+
+                const activeButton = tablist.querySelector('.tab-button.active') || buttons[0];
+                const activePanelId = extractTargetIdFromOnclick(activeButton);
+                const activePanel = activePanelId ? document.getElementById(activePanelId) : panels[0];
+                updateTabA11yState(buttons, panels, activeButton, activePanel);
+                bindTabKeyboardNavigation(tablist, '.tab-button');
+            });
+
+            const clientsMainTablist = document.querySelector('.clients-main-tabs');
+            if (clientsMainTablist) {
+                clientsMainTablist.setAttribute('role', 'tablist');
+                const buttons = Array.from(clientsMainTablist.querySelectorAll('.clients-main-tab-button'));
+                const panels = Array.from(document.querySelectorAll('.clients-main-tab-content'));
+
+                buttons.forEach((button, index) => {
+                    button.setAttribute('role', 'tab');
+                    if (!button.id) {
+                        button.id = `clients-main-tab-${index + 1}`;
+                    }
+
+                    const targetId = extractTargetIdFromOnclick(button);
+                    const panel = targetId ? document.getElementById(targetId) : null;
+                    if (panel) {
+                        panel.setAttribute('role', 'tabpanel');
+                        panel.setAttribute('aria-labelledby', button.id);
+                        button.setAttribute('aria-controls', panel.id);
+                    }
+                });
+
+                const activeButton = clientsMainTablist.querySelector('.clients-main-tab-button.active-main') || buttons[0];
+                const activePanelId = extractTargetIdFromOnclick(activeButton);
+                const activePanel = activePanelId ? document.getElementById(activePanelId) : panels[0];
+                updateTabA11yState(buttons, panels, activeButton, activePanel);
+                bindTabKeyboardNavigation(clientsMainTablist, '.clients-main-tab-button');
+            }
+
+            document.querySelectorAll('.client-detail').forEach((detail, detailIndex) => {
+                const tablist = detail.querySelector('.client-tabs');
+                if (!tablist) {
+                    return;
+                }
+
+                tablist.setAttribute('role', 'tablist');
+                const buttons = Array.from(tablist.querySelectorAll('.client-tab-button'));
+                const panels = Array.from(detail.querySelectorAll('.client-subtab-content'));
+
+                buttons.forEach((button, index) => {
+                    button.setAttribute('role', 'tab');
+                    if (!button.id) {
+                        button.id = `client-${detailIndex + 1}-tab-${index + 1}`;
+                    }
+
+                    const targetId = extractTargetIdFromOnclick(button);
+                    const panel = targetId ? detail.querySelector(`#${targetId}`) : null;
+                    if (panel) {
+                        panel.setAttribute('role', 'tabpanel');
+                        panel.setAttribute('aria-labelledby', button.id);
+                        button.setAttribute('aria-controls', panel.id);
+                    }
+                });
+
+                const activeButton = tablist.querySelector('.client-tab-button.active') || buttons[0];
+                const activePanelId = extractTargetIdFromOnclick(activeButton);
+                const activePanel = activePanelId ? detail.querySelector(`#${activePanelId}`) : panels[0];
+                updateTabA11yState(buttons, panels, activeButton, activePanel);
+                bindTabKeyboardNavigation(tablist, '.client-tab-button');
+            });
         }
 
         function switchTab(event, tabName) {
@@ -2605,8 +3098,17 @@
             });
 
             // Ativa tab e botão
-            document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
+            const nextPanel = document.getElementById(tabName);
+            const nextButton = event.currentTarget;
+            nextPanel.classList.add('active');
+            nextButton.classList.add('active');
+
+            updateTabA11yState(
+                Array.from(document.querySelectorAll('.tab-button')),
+                Array.from(document.querySelectorAll('.tab-content')),
+                nextButton,
+                nextPanel
+            );
 
             // Se for a aba de Análise, inicializa gráficos
             if (tabName === 'visao-geral') {
@@ -2624,14 +3126,23 @@
                 el.classList.remove('active-main');
             });
 
-            document.getElementById(tabName).classList.add('active-main');
-            event.target.classList.add('active-main');
+            const nextPanel = document.getElementById(tabName);
+            const nextButton = event.currentTarget;
+            nextPanel.classList.add('active-main');
+            nextButton.classList.add('active-main');
+
+            updateTabA11yState(
+                Array.from(document.querySelectorAll('.clients-main-tab-button')),
+                Array.from(document.querySelectorAll('.clients-main-tab-content')),
+                nextButton,
+                nextPanel
+            );
         }
 
         function switchClientTab(event, tabName) {
             event.preventDefault();
             
-            const container = event.target.closest('.client-detail');
+            const container = event.currentTarget.closest('.client-detail');
             container.querySelectorAll('.client-subtab-content').forEach(el => {
                 el.classList.remove('active');
             });
@@ -2639,8 +3150,17 @@
                 el.classList.remove('active');
             });
 
-            container.querySelector('#' + tabName).classList.add('active');
-            event.target.classList.add('active');
+            const nextPanel = container.querySelector('#' + tabName);
+            const nextButton = event.currentTarget;
+            nextPanel.classList.add('active');
+            nextButton.classList.add('active');
+
+            updateTabA11yState(
+                Array.from(container.querySelectorAll('.client-tab-button')),
+                Array.from(container.querySelectorAll('.client-subtab-content')),
+                nextButton,
+                nextPanel
+            );
         }
 
         // Armazena instâncias dos gráficos globalmente
@@ -2727,17 +3247,10 @@
         // Inicializa gráficos ao carregar
         window.addEventListener('load', () => {
             renderExecutiveSummary();
+            initializeTabsA11y();
             setTimeout(initCharts, 500);
         });
 
-        /**
-         * Trata cliques em botões desabilitados com mensagem amigável
-         */
-        function handleDisabledClick(event) {
-            event.preventDefault();
-            const ariaLabel = event.target.getAttribute('aria-label') || 'Esta funcionalidade não está disponível';
-            alert(ariaLabel);
-        }
     </script>
 </body>
 </html>
