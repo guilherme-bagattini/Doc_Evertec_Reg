@@ -10,15 +10,15 @@
             --bg: #060D1A;
             --bg2: #0D1B2E;
             --bg3: #112240;
-            --border: rgba(0, 155, 135, 0.15);
+            --border: rgba(0, 212, 189, 0.15);
             --card: rgba(255, 255, 255, 0.04);
-            --glow: 0 0 40px rgba(0, 155, 135, 0.15);
-            --gold: #C67A1B;
-            --green: #00A878;
+            --glow: 0 0 40px rgba(0, 212, 189, 0.15);
+            --gold: #F5A623;
+            --green: #06D6A0;
             --purple: #7C3AED;
-            --red: #E53563;
+            --red: #FF4D6D;
             --slate: #64748B;
-            --teal: #009B87;
+            --teal: #00D4BD;
             --teal2: #00A896;
             --teal3: #007B6C;
             --text: #E8F0FE;
@@ -50,7 +50,7 @@
         .navbar {
             background: linear-gradient(135deg, rgba(13, 27, 46, 0.95) 0%, rgba(6, 13, 26, 0.95) 100%);
             backdrop-filter: blur(10px);
-            border-bottom: 2px solid rgba(0, 155, 135, 0.2);
+            border-bottom: 2px solid rgba(0, 212, 189, 0.2);
             padding: 16px 40px;
             position: sticky;
             top: 0;
@@ -125,13 +125,13 @@
 
         .navbar-menu-link:hover {
             color: var(--teal);
-            background: rgba(0, 155, 135, 0.1);
+            background: rgba(0, 212, 189, 0.1);
             transform: translateY(-2px);
         }
 
         .navbar-menu-link.active {
             color: var(--teal);
-            background: rgba(0, 155, 135, 0.15);
+            background: rgba(0, 212, 189, 0.15);
             border-bottom: 2px solid var(--teal);
         }
 
@@ -186,7 +186,7 @@
         .clients-main-tab-button,
         .client-tab-button {
             border: 2px solid var(--border);
-            background: rgba(0, 155, 135, 0.05);
+            background: rgba(0, 212, 189, 0.05);
             color: var(--text2);
             border-radius: 10px;
             cursor: pointer;
@@ -214,26 +214,26 @@
             transform: translateY(-2px);
             border-color: var(--teal);
             color: var(--teal);
-            background: rgba(0, 155, 135, 0.1);
-            box-shadow: 0 6px 20px rgba(0, 155, 135, 0.15);
+            background: rgba(0, 212, 189, 0.1);
+            box-shadow: 0 6px 20px rgba(0, 212, 189, 0.15);
         }
 
         .tab-button:hover {
-            box-shadow: 0 8px 24px rgba(0, 155, 135, 0.15);
+            box-shadow: 0 8px 24px rgba(0, 212, 189, 0.15);
             transform: translateY(-3px);
         }
 
         .tab-button.active,
         .clients-main-tab-button.active-main,
         .client-tab-button.active {
-            background: rgba(0, 155, 135, 0.2);
+            background: rgba(0, 212, 189, 0.2);
             color: var(--teal);
             border-color: var(--teal);
-            box-shadow: 0 6px 20px rgba(0, 155, 135, 0.2);
+            box-shadow: 0 6px 20px rgba(0, 212, 189, 0.2);
         }
 
         .tab-button.active {
-            box-shadow: 0 8px 24px rgba(0, 155, 135, 0.25);
+            box-shadow: 0 8px 24px rgba(0, 212, 189, 0.25);
         }
 
         .client-tab-button:disabled,
@@ -249,9 +249,8 @@
         button:focus-visible,
         a:focus-visible {
             outline: 3px solid var(--teal);
-            outline-offset: 3px;
-            border-radius: 4px;
-            box-shadow: 0 0 0 3px rgba(0, 155, 135, 0.25);
+            outline-offset: 2px;
+            border-radius: 8px;
         }
 
         /* ===== TAB CONTENT VISIBILITY ===== */
@@ -315,7 +314,7 @@
         }
 
         .card:hover {
-            background: rgba(0, 155, 135, 0.05);
+            background: rgba(0, 212, 189, 0.05);
             box-shadow: var(--glow);
         }
 
@@ -368,7 +367,7 @@
         }
 
         th {
-            background: rgba(0, 155, 135, 0.1);
+            background: rgba(0, 212, 189, 0.1);
             color: var(--text);
             padding: 18px 16px;
             text-align: left;
@@ -386,7 +385,7 @@
         }
 
         tr:hover {
-            background: rgba(0, 155, 135, 0.05);
+            background: rgba(0, 212, 189, 0.05);
         }
 
         tbody tr {
@@ -406,32 +405,32 @@
 
         .badge-stars,
         .badge-risk-green {
-            background: rgba(0, 168, 120, 0.15);
+            background: rgba(6, 214, 160, 0.15);
             color: var(--green);
         }
 
         .badge-risk-yellow,
         .badge-priority-medium {
-            background: rgba(198, 122, 27, 0.12);
-            color: #C67A1B;
+            background: rgba(245, 166, 35, 0.15);
+            color: #F5A623;
         }
 
         .badge-risk-red,
         .badge-priority-high {
-            background: rgba(229, 53, 99, 0.12);
-            color: #E53563;
+            background: rgba(255, 77, 109, 0.15);
+            color: #FF4D6D;
         }
 
         .badge-priority-low {
-            background: rgba(0, 155, 135, 0.15);
+            background: rgba(0, 212, 189, 0.15);
             color: var(--teal);
         }
 
         .badge-priority-urgent {
-            background: #E53563;
+            background: #FF4D6D;
             color: var(--text);
             animation: pulse 2s infinite;
-            box-shadow: 0 0 12px rgba(229, 53, 99, 0.4);
+            box-shadow: 0 0 12px rgba(255, 77, 109, 0.4);
         }
 
         @keyframes pulse {
@@ -511,7 +510,7 @@
         /* ===== SPECIAL BOXES ===== */
 
         .quick-wins {
-            background: rgba(0, 168, 120, 0.08);
+            background: rgba(6, 214, 160, 0.08);
             padding: 28px;
             border-radius: 12px;
             border-left: 5px solid var(--green);
@@ -534,122 +533,17 @@
             border-left: 4px solid #06D6A0;
             border-radius: 10px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-            display: flex;
-            flex-wrap: wrap;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .quick-win-item .action-checkbox {
-            flex-shrink: 0;
-            margin-top: 4px;
-            order: -1;
         }
 
         .quick-win-item strong {
-            flex: 0 0 100%;
-            order: 0;
             color: #065f46;
             font-weight: 800;
         }
 
         .quick-win-item p {
-            flex: 0 0 100%;
-            order: 1;
-            margin-left: 32px;
             color: var(--text2);
-            margin-top: 0;
+            margin-top: 8px;
             font-weight: 600;
-        }
-
-        /* ===== TIMELINE & STATUS COLORS ===== */
-        .quick-win-item.urgent {
-            border-left-color: #E53563;
-            background: rgba(229, 53, 99, 0.06);
-        }
-
-        .quick-win-item.urgent strong {
-            color: #E53563;
-        }
-
-        .quick-win-item.soon {
-            border-left-color: #C67A1B;
-            background: rgba(198, 122, 27, 0.06);
-        }
-
-        .quick-win-item.soon strong {
-            color: #C67A1B;
-        }
-
-        /* Status pills for timeline */
-        .timeline-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8em;
-            font-weight: 800;
-            margin-right: 8px;
-            letter-spacing: 0.3px;
-        }
-
-        .timeline-urgent {
-            background: rgba(229, 53, 99, 0.15);
-            color: #E53563;
-            animation: pulse 2s infinite;
-        }
-
-        .timeline-soon {
-            background: rgba(198, 122, 27, 0.15);
-            color: #C67A1B;
-        }
-
-        .timeline-later {
-            background: rgba(0, 168, 120, 0.15);
-            color: #00A878;
-        }
-
-        /* ===== ACTION CHECKBOXES ===== */
-        .action-checkbox {
-            appearance: none;
-            -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--border);
-            border-radius: 4px;
-            cursor: pointer;
-            margin-right: 12px;
-            vertical-align: middle;
-            background: white;
-            transition: all 0.2s ease;
-        }
-
-        .action-checkbox:hover {
-            border-color: var(--teal);
-            box-shadow: 0 0 8px rgba(0, 155, 135, 0.2);
-        }
-
-        .action-checkbox:checked {
-            background: var(--teal);
-            border-color: var(--teal);
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='white' d='M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 60%;
-        }
-
-        .action-checkbox:focus-visible {
-            outline: 2px solid var(--teal);
-            outline-offset: 2px;
-        }
-
-        .quick-win-item.completed {
-            opacity: 0.75;
-        }
-
-        .quick-win-item.completed strong,
-        .quick-win-item.completed p {
-            text-decoration: line-through;
-            color: var(--text2);
         }
 
         .transcript-box {
@@ -688,17 +582,17 @@
 
         /* ===== CONSOLIDATED INLINE STYLE REPLACEMENTS ===== */
         .insight-chip-warning {
-            background: rgba(198, 122, 27, 0.08);
+            background: rgba(245, 166, 35, 0.08);
             padding: 12px;
             border-radius: 8px;
-            border-left: 3px solid #C67A1B;
+            border-left: 3px solid #F5A623;
         }
 
         .insight-chip-info {
-            background: rgba(0, 155, 135, 0.08);
+            background: rgba(0, 212, 189, 0.08);
             padding: 12px;
             border-radius: 8px;
-            border-left: 3px solid #009B87;
+            border-left: 3px solid #00D4BD;
         }
 
         .insight-chip-purple {
@@ -709,17 +603,17 @@
         }
 
         .insight-chip-red {
-            background: rgba(229, 53, 99, 0.08);
+            background: rgba(255, 77, 109, 0.08);
             padding: 12px;
             border-radius: 8px;
-            border-left: 3px solid #E53563;
+            border-left: 3px solid #FF4D6D;
         }
 
         .insight-chip-green {
-            background: rgba(0, 168, 120, 0.08);
+            background: rgba(6, 214, 160, 0.08);
             padding: 12px;
             border-radius: 8px;
-            border-left: 3px solid #00A878;
+            border-left: 3px solid #06D6A0;
         }
 
         .insight-chip-base {
@@ -773,15 +667,15 @@
         }
 
         .opportunity-card.critical {
-            background: rgba(229, 53, 99, 0.08);
-            border-left-color: #E53563;
-            border-color: rgba(229, 53, 99, 0.2);
+            background: rgba(255, 77, 109, 0.08);
+            border-left-color: #FF4D6D;
+            border-color: rgba(255, 77, 109, 0.2);
         }
 
         .opportunity-card.growth {
-            background: rgba(198, 122, 27, 0.08);
+            background: rgba(245, 166, 35, 0.08);
             border-left-color: var(--gold);
-            border-color: rgba(198, 122, 27, 0.2);
+            border-color: rgba(245, 166, 35, 0.2);
         }
 
         .opportunity-title {
@@ -790,7 +684,7 @@
         }
 
         .opportunity-title.critical {
-            color: #E53563;
+            color: #FF4D6D;
         }
 
         .opportunity-title.growth {
@@ -804,7 +698,7 @@
         }
 
         .opportunity-item {
-            background: rgba(0, 155, 135, 0.05);
+            background: rgba(0, 212, 189, 0.05);
             padding: 12px 14px;
             border-radius: 8px;
             border-left: 3px solid var(--teal);
@@ -903,9 +797,9 @@
         }
 
         .framework-pill {
-            background: rgba(0, 155, 135, 0.1);
+            background: rgba(0, 212, 189, 0.1);
             color: var(--teal);
-            border: 1px solid rgba(0, 155, 135, 0.3);
+            border: 1px solid rgba(0, 212, 189, 0.3);
             padding: 8px 14px;
             border-radius: 20px;
             font-size: 0.9em;
@@ -921,7 +815,7 @@
         }
 
         .director-item {
-            background: rgba(0, 155, 135, 0.05);
+            background: rgba(0, 212, 189, 0.05);
             border-left: 4px solid var(--teal);
             border-radius: 10px;
             padding: 16px;
@@ -942,8 +836,8 @@
         }
 
         .director-roadmap {
-            background: rgba(0, 155, 135, 0.08);
-            border: 1px solid rgba(0, 155, 135, 0.2);
+            background: rgba(0, 212, 189, 0.08);
+            border: 1px solid rgba(0, 212, 189, 0.2);
             border-radius: 10px;
             padding: 16px;
         }
@@ -999,9 +893,9 @@
         }
 
         .retention-alert {
-            background: rgba(198, 122, 27, 0.1);
-            border: 1px solid #C67A1B;
-            color: #C67A1B;
+            background: rgba(245, 166, 35, 0.1);
+            border: 1px solid #F5A623;
+            color: #F5A623;
             border-radius: 10px;
             padding: 12px 14px;
             margin-bottom: 20px;
@@ -1037,20 +931,20 @@
         }
 
         .status-chip.green {
-            background: rgba(0, 168, 120, 0.1);
-            border-color: rgba(0, 168, 120, 0.3);
+            background: rgba(6, 214, 160, 0.1);
+            border-color: rgba(6, 214, 160, 0.3);
             color: var(--green);
         }
 
         .status-chip.yellow {
-            background: rgba(198, 122, 27, 0.1);
-            border-color: rgba(198, 122, 27, 0.3);
-            color: #C67A1B;
+            background: rgba(245, 166, 35, 0.1);
+            border-color: rgba(245, 166, 35, 0.3);
+            color: #F5A623;
         }
 
         .status-chip.blue {
-            background: rgba(0, 155, 135, 0.1);
-            border-color: rgba(0, 155, 135, 0.3);
+            background: rgba(0, 212, 189, 0.1);
+            border-color: rgba(0, 212, 189, 0.3);
             color: var(--teal);
         }
 
@@ -1068,7 +962,7 @@
         }
 
         .retention-item {
-            background: rgba(0, 168, 120, 0.05);
+            background: rgba(6, 214, 160, 0.05);
             border-left: 4px solid var(--green);
             border-radius: 10px;
             padding: 16px;
@@ -1089,8 +983,8 @@
         }
 
         .retention-list-box {
-            background: rgba(0, 168, 120, 0.08);
-            border: 1px solid rgba(0, 168, 120, 0.2);
+            background: rgba(6, 214, 160, 0.08);
+            border: 1px solid rgba(6, 214, 160, 0.2);
             border-radius: 10px;
             padding: 16px;
             margin-bottom: 16px;
@@ -1121,8 +1015,8 @@
         }
 
         .retention-formula {
-            background: rgba(0, 155, 135, 0.08);
-            border: 1px solid rgba(0, 155, 135, 0.2);
+            background: rgba(0, 212, 189, 0.08);
+            border: 1px solid rgba(0, 212, 189, 0.2);
             border-radius: 10px;
             padding: 14px;
             color: var(--teal);
@@ -1132,8 +1026,8 @@
         }
 
         .quick-read-box {
-            background: rgba(0, 155, 135, 0.08);
-            border: 1px solid rgba(0, 155, 135, 0.2);
+            background: rgba(0, 212, 189, 0.08);
+            border: 1px solid rgba(0, 212, 189, 0.2);
             border-left: 5px solid var(--teal);
             border-radius: 12px;
             padding: 18px;
@@ -1244,21 +1138,21 @@
         }
 
         .evidence-chip.total {
-            background: rgba(0, 155, 135, 0.1);
-            border-color: rgba(0, 155, 135, 0.3);
+            background: rgba(0, 212, 189, 0.1);
+            border-color: rgba(0, 212, 189, 0.3);
             color: var(--teal);
         }
 
         .evidence-chip.complete {
-            background: rgba(0, 168, 120, 0.1);
-            border-color: rgba(0, 168, 120, 0.3);
+            background: rgba(6, 214, 160, 0.1);
+            border-color: rgba(6, 214, 160, 0.3);
             color: var(--green);
         }
 
         .evidence-chip.pending {
-            background: rgba(198, 122, 27, 0.1);
-            border-color: rgba(198, 122, 27, 0.3);
-            color: #C67A1B;
+            background: rgba(245, 166, 35, 0.1);
+            border-color: rgba(245, 166, 35, 0.3);
+            color: #F5A623;
         }
 
         .evidence-chip.positive {
@@ -1327,27 +1221,27 @@
         }
 
         .matrix-cell.quick-win {
-            background: rgba(0, 168, 120, 0.1);
-            border-color: rgba(0, 168, 120, 0.3);
+            background: rgba(6, 214, 160, 0.1);
+            border-color: rgba(6, 214, 160, 0.3);
             color: var(--green);
         }
 
         .matrix-cell.strategic {
-            background: rgba(0, 155, 135, 0.1);
-            border-color: rgba(0, 155, 135, 0.3);
+            background: rgba(0, 212, 189, 0.1);
+            border-color: rgba(0, 212, 189, 0.3);
             color: var(--teal);
         }
 
         .matrix-cell.fill-in {
-            background: rgba(198, 122, 27, 0.1);
-            border-color: rgba(198, 122, 27, 0.3);
-            color: #C67A1B;
+            background: rgba(245, 166, 35, 0.1);
+            border-color: rgba(245, 166, 35, 0.3);
+            color: #F5A623;
         }
 
         .matrix-cell.avoid {
-            background: rgba(229, 53, 99, 0.1);
-            border-color: rgba(229, 53, 99, 0.3);
-            color: #E53563;
+            background: rgba(255, 77, 109, 0.1);
+            border-color: rgba(255, 77, 109, 0.3);
+            color: #FF4D6D;
         }
 
         /* ===== RISK MATRIX ===== */
@@ -1382,21 +1276,21 @@
         }
 
         .risk-bubble.low {
-            background: linear-gradient(135deg, rgba(0, 168, 120, 0.2) 0%, rgba(0, 168, 120, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(6, 214, 160, 0.2) 0%, rgba(6, 214, 160, 0.1) 100%);
             border: 3px solid var(--green);
             color: var(--green);
         }
 
         .risk-bubble.medium {
-            background: linear-gradient(135deg, rgba(198, 122, 27, 0.2) 0%, rgba(198, 122, 27, 0.1) 100%);
-            border: 3px solid #C67A1B;
-            color: #C67A1B;
+            background: linear-gradient(135deg, rgba(245, 166, 35, 0.2) 0%, rgba(245, 166, 35, 0.1) 100%);
+            border: 3px solid #F5A623;
+            color: #F5A623;
         }
 
         .risk-bubble.high {
-            background: linear-gradient(135deg, rgba(229, 53, 99, 0.2) 0%, rgba(229, 53, 99, 0.1) 100%);
-            border: 3px solid #E53563;
-            color: #E53563;
+            background: linear-gradient(135deg, rgba(255, 77, 109, 0.2) 0%, rgba(255, 77, 109, 0.1) 100%);
+            border: 3px solid #FF4D6D;
+            color: #FF4D6D;
         }
 
         /* ===== REUSABLE INSIGHT BOXES ===== */
@@ -1404,23 +1298,23 @@
             padding: 15px;
             border-radius: 8px;
             border-left: 3px solid;
-            background-color: rgba(0, 155, 135, 0.08);
-            border-color: #009B87;
+            background-color: rgba(0, 212, 189, 0.08);
+            border-color: #00D4BD;
             color: var(--text2);
             font-weight: 600;
         }
 
         .insight-box-success {
-            background: rgba(0, 168, 120, 0.08);
-            border-left: 4px solid #00A878;
+            background: rgba(6, 214, 160, 0.08);
+            border-left: 4px solid #06D6A0;
         }
 
         .insight-box-success strong {
-            color: #00A878;
+            color: #06D6A0;
         }
 
         .understanding-box {
-            background: rgba(0, 155, 135, 0.06);
+            background: rgba(0, 212, 189, 0.06);
             padding: 20px;
             border-radius: 10px;
             border-left: 4px solid var(--teal);
@@ -1435,7 +1329,7 @@
         }
 
         .understanding-item {
-            background: rgba(0, 155, 135, 0.03);
+            background: rgba(0, 212, 189, 0.03);
             padding: 10px 12px;
             border-radius: 6px;
             color: var(--text2);
@@ -1482,61 +1376,6 @@
             to {
                 opacity: 1;
             }
-        }
-
-        /* ===== COLLAPSIBLE PANELS ===== */
-        .collapsible-toggle {
-            width: 100%;
-            background: none;
-            border: none;
-            color: inherit;
-            font-family: inherit;
-            text-align: left;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0;
-            font-size: 1.35em;
-            font-weight: 800;
-            letter-spacing: -0.2px;
-        }
-
-        .collapsible-toggle .collapse-icon {
-            font-size: 0.7em;
-            color: var(--teal);
-            transition: transform 0.3s ease;
-            flex-shrink: 0;
-            margin-left: 12px;
-        }
-
-        .collapsible-toggle[aria-expanded="true"] .collapse-icon {
-            transform: rotate(180deg);
-        }
-
-        .collapsible-body {
-            overflow: hidden;
-            max-height: 0;
-            transition: max-height 0.4s ease, opacity 0.3s ease;
-            opacity: 0;
-        }
-
-        .collapsible-body.open {
-            max-height: 9999px;
-            opacity: 1;
-        }
-
-        .collapsible-hint {
-            font-size: 0.78em;
-            font-weight: 600;
-            color: var(--teal);
-            opacity: 0.8;
-            margin-top: 6px;
-            letter-spacing: 0.1px;
-        }
-
-        .collapsible-toggle[aria-expanded="true"] .collapsible-hint {
-            display: none;
         }
 
         /* ===== PRINT ===== */
@@ -1677,9 +1516,9 @@
         <!-- TAB 1: VISÃO GERAL -->
         <div id="visao-geral" class="tab-content active">
             <header>
-                <h1>Dashboard sobre Entrevistas dos Clientes</h1>
-                <p class="subtitle">Compliasset · Base para priorizar retenção e renovação — entrevistas em andamento</p>
-                <p class="date-info" id="dateInfo">Atualizado: 10 de julho de 2026 | 6 entrevistas realizadas (base total em mapeamento) | Análise Comparativa</p>
+                <h1>Dashboard de Estudo de Clientes</h1>
+                <p class="subtitle">Compliasset - Consolidação de Entrevistas e Análises</p>
+                <p class="date-info" id="dateInfo">Atualizado: 10 de julho de 2026 | 6 clientes | Análise Comparativa</p>
             </header>
 
             <div class="cards-grid" id="executiveCards"></div>
@@ -1713,12 +1552,7 @@
             </div>
 
             <div class="director-panel">
-                <button type="button" class="collapsible-toggle" id="toggle-director" aria-expanded="false" aria-controls="body-director" aria-label="Expandir seção: Direcionamento do Projeto para Diretoria" onclick="toggleCollapsible(this)">
-                    <span>Direcionamento do Projeto para Diretoria</span>
-                    <span class="collapse-icon">▼</span>
-                </button>
-                <div class="collapsible-hint">Clique para expandir — metodologia e roadmap de trabalho</div>
-                <div class="collapsible-body" id="body-director" role="region" aria-labelledby="toggle-director" aria-live="polite">
+                <h3>Direcionamento do Projeto para Diretoria</h3>
                 <p class="intro">
                     Nesta fase, o foco é ampliar a visão estratégica com diferentes frameworks de produto para comparar leituras do mesmo contexto.
                     Ainda não estamos fechando conclusões definitivas; estamos estruturando método, consistência de coleta e qualidade de decisão.
@@ -1765,16 +1599,10 @@
                         <li>Etapa 5: Roadmap com ondas de entrega, owners, riscos e acompanhamento executivo.</li>
                     </ul>
                 </div>
-                </div><!-- /collapsible-body director -->
             </div>
 
             <div class="retention-panel">
-                <button type="button" class="collapsible-toggle" id="toggle-retention" aria-expanded="false" aria-controls="body-retention" aria-label="Expandir seção: Plano de Reativação e Renovação de Clientes" onclick="toggleCollapsible(this)">
-                    <span>Plano de Reativação e Renovação de Clientes</span>
-                    <span class="collapse-icon">▼</span>
-                </button>
-                <div class="collapsible-hint">Clique para expandir — KPIs, health score e rituais de acompanhamento</div>
-                <div class="collapsible-body" id="body-retention" role="region" aria-labelledby="toggle-retention" aria-live="polite">
+                <h3>Plano de Reativação e Renovação de Clientes</h3>
                 <p class="intro">
                     Objetivo executivo: converter feedback de clientes em aumento de uso, redução de risco de churn e maior previsibilidade de renovação.
                 </p>
@@ -1848,7 +1676,6 @@
                         <li>Mensal: evolução de risco, renovação e decisões executivas</li>
                     </ul>
                 </div>
-                </div><!-- /collapsible-body retention -->
             </div>
 
             <div class="table-container">
@@ -1892,7 +1719,7 @@
             <div class="clients-main-tabs">
                 <button class="clients-main-tab-button active-main" onclick="switchMainClientTab(event, 'clientes-geral')" aria-label="Quadro geral comparativo de todos os clientes">📋 Geral</button>
                 <button class="clients-main-tab-button" onclick="switchMainClientTab(event, 'clientes-capsicum')" aria-label="Perfil detalhado de Capsicum Assets - URGENTE">🔴 Capsicum</button>
-                <button class="clients-main-tab-button" onclick="switchMainClientTab(event, 'clientes-algarve')" aria-label="Perfil detalhado de Algarve Investimentos - risco alto">🟠 Algarve</button>
+                <button class="clients-main-tab-button" onclick="switchMainClientTab(event, 'clientes-algarve')" aria-label="Perfil detalhado de Algarve Investimentos - ALTA prioridade">🔴 Algarve</button>
                 <button class="clients-main-tab-button" onclick="switchMainClientTab(event, 'clientes-awr')" aria-label="Perfil detalhado de AWR Capital - Melhor oportunidade">🟡 AWR</button>
                 <button class="clients-main-tab-button" onclick="switchMainClientTab(event, 'clientes-hike')" aria-label="Perfil detalhado de Hike Capital - Foco específico">🟡 Hike</button>
                 <button class="clients-main-tab-button" onclick="switchMainClientTab(event, 'clientes-nivi')" aria-label="Perfil detalhado de Nivi Capital - Pré-operacional">🟡 Nivi</button>
@@ -1926,7 +1753,7 @@
                                 <td>5+ anos</td>
                                 <td>Comparação com IA</td>
                                 <td>Subutilização</td>
-                                <td>� ALTA</td>
+                                <td>🔴 ALTA</td>
                             </tr>
                             <tr>
                                 <td><strong>AWR Capital</strong></td>
@@ -2237,24 +2064,20 @@
                     <div id="capsicum-acoes" class="client-subtab-content">
                         <div class="quick-wins">
                             <h3>Ações Acordadas</h3>
-                            <div class="quick-win-item urgent">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-urgent">URGENTE</span> Licenças treinamento — 2-3 dias</strong>
+                            <div class="quick-win-item">
+                                <strong>[URGENTE - 2-3 dias]</strong> Licenças treinamento
                                 <p>Evelyn: Disponibilizar cortesias (Cibersegurança, ASG)</p>
                             </div>
-                            <div class="quick-win-item urgent">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-urgent">URGENTE</span> Puxar agenda + enviar limpeza — 1 semana</strong>
+                            <div class="quick-win-item">
+                                <strong>[URGENTE - 1 semana]</strong> Puxar agenda + enviar limpeza
                                 <p>Evelyn extrai; Capsicum indica o que arquivar</p>
                             </div>
-                            <div class="quick-win-item soon">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-soon">1-2 SEM</span> Integração Neo via API — 4-6 semanas</strong>
+                            <div class="quick-win-item">
+                                <strong>[PRODUTO - 4-6 semanas]</strong> Integração Neo via API
                                 <p>Guilherme: Análise de viabilidade</p>
                             </div>
-                            <div class="quick-win-item soon">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-soon">1-2 SEM</span> Proposta PLD — 2 semanas</strong>
+                            <div class="quick-win-item">
+                                <strong>[COMERCIAL - 2 semanas]</strong> Proposta PLD
                                 <p>Evelyn + Guilherme: estruturar e apresentar</p>
                             </div>
                         </div>
@@ -2326,7 +2149,7 @@
                         <button class="client-tab-button" onclick="switchClientTab(event, 'algarve-entendimento')" aria-label="Entendimento de Algarve Investimentos">Entendimento</button>
                         <button class="client-tab-button" onclick="switchClientTab(event, 'algarve-acoes')" aria-label="Ações para Algarve Investimentos">Ações</button>
                         <button class="client-tab-button" onclick="switchClientTab(event, 'algarve-classificacao')" aria-label="Classificação de Algarve Investimentos">Classificação</button>
-                        <button class="client-tab-button" onclick="switchClientTab(event, 'algarve-transcricao')" aria-label="Explicação: Por que não há transcrição disponível para Algarve">📄 Transcrição (não realizada)</button>
+                        <button class="client-tab-button" disabled aria-label="Transcrição não disponível para Algarve Investimentos">📄 Transcrição (indisponível)</button>
                     </div>
                     <div id="algarve-resumo" class="client-subtab-content active">
                         <div class="section-title">Informações Básicas</div>
@@ -2430,33 +2253,28 @@
                         <div class="quick-wins">
                             <h3>Ações Estratégicas</h3>
                             
-                            <div class="quick-win-item soon">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-soon">1-2 SEM</span> Preparar demonstração customizada — 1-2 semanas</strong>
-                                <p>Mostrar diferencial do Compliasset em velocidade, integração e conformidade estruturada vs. soluções generalizadas de IA</p>
+                            <div class="quick-win-item">
+                                <strong>[1-2 semanas]</strong> Preparar demonstração customizada de funcionalidades vs IA
+                                <p>Foco: Mostrar diferencial do Compliasset em velocidade, integração e conformidade estruturada vs. soluções generalizadas de IA</p>
                             </div>
 
-                            <div class="quick-win-item urgent">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-urgent">IMEDIATO</span> Enviar proposta de "limpeza" de Agenda</strong>
+                            <div class="quick-win-item">
+                                <strong>[Imediato]</strong> Enviar proposta de "limpeza" de Agenda
                                 <p>Já foi oferecido - acompanhar resposta e executar o "enxugamento" do menu do ambiente</p>
                             </div>
 
                             <div class="quick-win-item">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-later">2+ SEM</span> Análise de Bulk Move para Documentos — 3-4 semanas</strong>
+                                <strong>[3-4 semanas]</strong> Análise de necessidade de Bulk Move para Documentos
                                 <p>Avaliação técnica: Implementar ou oferecer workaround para mover documentos em lote</p>
                             </div>
 
-                            <div class="quick-win-item soon">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-soon">1-2 SEM</span> Sessão de Revisão de Módulos — 2 semanas</strong>
+                            <div class="quick-win-item">
+                                <strong>[2 semanas]</strong> Sessão de Revisão de Módulos
                                 <p>Validar se os 5 módulos contratados fazem sentido para a operação atual (Anticorrupção, FIDC, Recursos, Proteção de Dados, FIF)</p>
                             </div>
 
-                            <div class="quick-win-item soon">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-soon">1-2 SEM</span> Demonstração de valor — antes de fevereiro 2027</strong>
+                            <div class="quick-win-item">
+                                <strong>[1 semana antes de vencer]</strong> Demonstração de valor antes de fevereiro 2027
                                 <p>Risco de não renovação se não demonstrar valor diferenciado até então</p>
                             </div>
                         </div>
@@ -2507,21 +2325,6 @@
                             Próximo vencimento: <strong>Fevereiro 2027</strong><br>
                             Tempo para demonstrar valor: <strong>~6 meses</strong><br>
                             Recomendação: Iniciar ações de engajamento AGORA antes de dezembro 2026
-                        </div>
-                    </div>
-
-                    <div id="algarve-transcricao" class="client-subtab-content">
-                        <div style="background: rgba(229, 53, 99, 0.1); padding: 24px; border-radius: 10px; border-left: 5px solid #E53563; text-align: center;">
-                            <h3 style="color: #E53563; margin-top: 0;">📋 Transcrição Não Realizada</h3>
-                            <p style="color: var(--text2); font-size: 0.95em; line-height: 1.8;">
-                                Não foi realizada uma transcrição formal da reunião com <strong>Algarve Investimentos</strong>.
-                            </p>
-                            <p style="color: var(--text2); font-size: 0.95em; margin: 20px 0; padding: 12px; background: rgba(229, 53, 99, 0.05); border-radius: 6px;">
-                                <strong>Por quê?</strong> A reunião foi realizada de forma mais consultiva/consultoria, focando em entendimento de contexto e dores do cliente, sem ser gravada para posterior transcrição.
-                            </p>
-                            <p style="color: var(--text2); font-size: 0.9em;">
-                                ✅ Os insights coletados foram consolidados e estão refletidos nas abas de <strong>Entendimento, Ações e Classificação</strong> deste cliente.
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -2627,27 +2430,23 @@
                         <div class="quick-wins">
                             <h3>Ações Acordadas na Reunião</h3>
                             
-                            <div class="quick-win-item urgent">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-urgent">3 DIAS</span> Agendar treinamento presencial</strong>
+                            <div class="quick-win-item">
+                                <strong>[3 dias]</strong> Agendar treinamento presencial
                                 <p>Próximo passo: Ralph vai agendar treinamentos com Evelyn e Raquel</p>
                             </div>
 
-                            <div class="quick-win-item soon">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-soon">1-2 SEM</span> Executar treinamento com Evelyn + Raquel</strong>
+                            <div class="quick-win-item">
+                                <strong>[1 semana após agendamento]</strong> Executar treinamento com Evelyn + Raquel
                                 <p>Cobertura: uso básico, agenda, documentação, parametrização</p>
                             </div>
 
-                            <div class="quick-win-item soon">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-soon">1-2 SEM</span> Parametrização + Limpeza assistida</strong>
+                            <div class="quick-win-item">
+                                <strong>[2 semanas após treinamento]</strong> Parametrização + Limpeza assistida
                                 <p>Organizar agenda desde contratação, registrar evidências retroativas</p>
                             </div>
 
                             <div class="quick-win-item">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-later">CONTÍNUO</span> Acompanhamento pré-renovação</strong>
+                                <strong>[Contínuo]</strong> Acompanhamento pré-renovação
                                 <p>Vencimento: dezembro de 2026 - demonstrar valor antes da renovação</p>
                             </div>
                         </div>
@@ -2789,21 +2588,18 @@
                         <div class="quick-wins">
                             <h3>Ações Estratégicas</h3>
                             
-                            <div class="quick-win-item soon">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-soon">1-2 SEM</span> Limpeza de Agenda</strong>
+                            <div class="quick-win-item">
+                                <strong>[1 semana]</strong> Limpeza de Agenda
                                 <p>Remover/arquivar demandas não aplicáveis ao escopo de background check e DD</p>
                             </div>
 
-                            <div class="quick-win-item urgent">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-urgent">3 DIAS</span> Treinamento de Onboarding Simplificado</strong>
+                            <div class="quick-win-item">
+                                <strong>[2-3 dias após limpeza]</strong> Treinamento de Onboarding Simplificado
                                 <p>Foco: background check, due diligence e otimizações de fluxo. Evitar sobrecarga de funcionalidades.</p>
                             </div>
 
                             <div class="quick-win-item">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-later">CONTÍNUO</span> Acompanhamento pós-treinamento</strong>
+                                <strong>[Contínuo]</strong> Acompanhamento pós-treinamento
                                 <p>Validar se o time está utilizando melhor, coletar feedback de usabilidade</p>
                             </div>
                         </div>
@@ -2857,7 +2653,7 @@
                         <button class="client-tab-button" onclick="switchClientTab(event, 'nivi-entendimento')" aria-label="Entendimento de Nivi Capital">Entendimento</button>
                         <button class="client-tab-button" onclick="switchClientTab(event, 'nivi-acoes')" aria-label="Ações para Nivi Capital">Ações</button>
                         <button class="client-tab-button" onclick="switchClientTab(event, 'nivi-classificacao')" aria-label="Classificação de Nivi Capital">Classificação</button>
-                        <button class="client-tab-button" onclick="switchClientTab(event, 'nivi-transcricao')" aria-label="Explicação: Por que não há transcrição disponível para Nivi">📄 Transcrição (não realizada)</button>
+                        <button class="client-tab-button" disabled aria-label="Transcrição não disponível - cliente em fase pré-operacional">📄 Transcrição (indisponível)</button>
                     </div>
                     <div id="nivi-resumo" class="client-subtab-content active">
                         <div class="section-title">Informações Básicas</div>
@@ -2948,33 +2744,28 @@
                         <div class="quick-wins">
                             <h3>Ações Estratégicas</h3>
                             
-                            <div class="quick-win-item urgent">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-urgent">IMEDIATO</span> Receber e analisar organograma</strong>
+                            <div class="quick-win-item">
+                                <strong>[Imediato]</strong> Receber e analisar organograma
                                 <p>Entender estrutura da empresa, atualizar sistema com dados corretos</p>
                             </div>
 
-                            <div class="quick-win-item soon">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-soon">1-2 SEM</span> Entender estrutura de áreas</strong>
+                            <div class="quick-win-item">
+                                <strong>[Curto prazo]</strong> Entender estrutura de áreas
                                 <p>Identificar quais áreas serão estruturadas primeiro e alinhar com o Compliasset</p>
                             </div>
 
                             <div class="quick-win-item">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-later">CONTÍNUO</span> Acompanhar início das operações</strong>
+                                <strong>[Contínuo]</strong> Acompanhar início das operações
                                 <p>Monitorar quando fundos começarem a operar (~2-3 meses)</p>
                             </div>
 
                             <div class="quick-win-item">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-later">QUANDO INICIAR</span> Onboarding estruturado</strong>
+                                <strong>[Quando operações iniciarem]</strong> Onboarding estruturado
                                 <p>Além do Gustavo: treinamento completo para toda a equipe</p>
                             </div>
 
                             <div class="quick-win-item">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-later">VALIDAÇÃO</span> Confirmar necessidade de módulo FIDC</strong>
+                                <strong>[Validação]</strong> Confirmar necessidade de módulo FIDC
                                 <p>Se atuam como gestores de FIDC, podem precisar contratar esse módulo</p>
                             </div>
                         </div>
@@ -3023,21 +2814,6 @@
                                     <td>Cliente em preparação natural, sem problemas</td>
                                 </tr>
                             </table>
-                        </div>
-                    </div>
-
-                    <div id="nivi-transcricao" class="client-subtab-content">
-                        <div style="background: rgba(198, 122, 27, 0.1); padding: 24px; border-radius: 10px; border-left: 5px solid #C67A1B; text-align: center;">
-                            <h3 style="color: #C67A1B; margin-top: 0;">📋 Transcrição Não Realizada</h3>
-                            <p style="color: var(--text2); font-size: 0.95em; line-height: 1.8;">
-                                Não foi realizada uma transcrição formal da reunião com <strong>Nivi Capital</strong>.
-                            </p>
-                            <p style="color: var(--text2); font-size: 0.95em; margin: 20px 0; padding: 12px; background: rgba(198, 122, 27, 0.05); border-radius: 6px;">
-                                <strong>Por quê?</strong> Cliente está em fase pré-operacional (fundos ainda não iniciaram operações). A reunião foi exploratória, focando em entender estrutura futura e necessidades quando as operações iniciarem. Não foi gravada para transcrição.
-                            </p>
-                            <p style="color: var(--text2); font-size: 0.9em;">
-                                ✅ Os insights coletados foram consolidados e estão refletidos nas abas de <strong>Entendimento, Ações e Classificação</strong> deste cliente.
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -3144,39 +2920,33 @@
                         <div class="quick-wins">
                             <h3>Ações Estratégicas (Ordenadas por Impacto)</h3>
                             
-                            <div class="quick-win-item urgent">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-urgent">3 DIAS</span> Enviar contrato atualizado por e-mail</strong>
+                            <div class="quick-win-item">
+                                <strong>[IMEDIATO - 3 dias]</strong> Enviar contrato atualizado por e-mail
                                 <p>Mariel fará pré-leitura antes da próxima reunião para melhor direcionamento</p>
                             </div>
 
-                            <div class="quick-win-item soon">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-soon">1-2 SEM</span> Agendar reunião de visão geral completa da ferramenta</strong>
+                            <div class="quick-win-item">
+                                <strong>[Semana 1]</strong> Agendar reunião de visão geral completa da ferramenta
                                 <p>Apresentar todos os módulos disponíveis e identificar quais fazem sentido para programa atual. Convidar Evelyn (Suporte) + Raquel (Conteúdo).</p>
                             </div>
 
-                            <div class="quick-win-item soon">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-soon">1-2 SEM</span> Apresentação de Agenda Regulatória e Integrações</strong>
+                            <div class="quick-win-item">
+                                <strong>[Semana 2-3]</strong> Apresentação de Agenda Regulatória e Integrações
                                 <p>Raquel explica como agenda regulatória é mantida atualizada. Apresentar parceria com Lote 45 (enquadramentos). Mostrar que Compliasset não é estático.</p>
                             </div>
 
-                            <div class="quick-win-item soon">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-soon">1-2 SEM</span> Mapeamento de Gaps e Oportunidades</strong>
+                            <div class="quick-win-item">
+                                <strong>[Semana 3-4]</strong> Mapeamento de Gaps e Oportunidades
                                 <p>Mapear processos atuais (fora da plataforma) vs. capacidades disponíveis. Priorizar centralizações rápidas (ex: desenquadramentos de transações).</p>
                             </div>
 
-                            <div class="quick-win-item soon">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-soon">1-2 SEM</span> Onboarding Estruturado (se aprovado)</strong>
+                            <div class="quick-win-item">
+                                <strong>[Semana 4]</strong> Onboarding Estruturado (se aprovado)
                                 <p>Treinamento completo da equipe Daemon focado em casos de uso reais, não na plataforma como um todo.</p>
                             </div>
 
                             <div class="quick-win-item">
-                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
-                                <strong><span class="timeline-badge timeline-later">FOLLOW-UP</span> Revisão de Módulos Contratados</strong>
+                                <strong>[Follow-up]</strong> Revisão de Módulos Contratados
                                 <p>Confirmar se módulos atuais ainda fazem sentido. Identificar necessidade de expansão ou redução.</p>
                             </div>
                         </div>
@@ -4022,7 +3792,7 @@
                 return;
             }
 
-            dateInfo.textContent = `Atualizado: ${LAST_CONSOLIDATION_DATE} | ${clientsData.length} entrevistas realizadas (base total em mapeamento) | Análise Comparativa`;
+            dateInfo.textContent = `Atualizado: ${LAST_CONSOLIDATION_DATE} | ${clientsData.length} clientes | Análise Comparativa`;
         }
 
         function renderExecutiveSummary() {
@@ -4391,40 +4161,10 @@
             }
         }
 
-        function toggleCollapsible(button) {
-            const isExpanded = button.getAttribute('aria-expanded') === 'true';
-            const body = button.nextElementSibling.classList.contains('collapsible-hint')
-                ? button.nextElementSibling.nextElementSibling
-                : button.nextElementSibling;
-
-            button.setAttribute('aria-expanded', String(!isExpanded));
-
-            if (!isExpanded) {
-                body.classList.add('open');
-            } else {
-                body.classList.remove('open');
-            }
-        }
-
-        function initializeActionCheckboxes() {
-            document.querySelectorAll('.action-checkbox').forEach(checkbox => {
-                const quickWinItem = checkbox.closest('.quick-win-item');
-                
-                checkbox.addEventListener('change', function() {
-                    if (this.checked) {
-                        quickWinItem.classList.add('completed');
-                    } else {
-                        quickWinItem.classList.remove('completed');
-                    }
-                });
-            });
-        }
-
         // Inicializa gráficos ao carregar
         window.addEventListener('load', () => {
             renderExecutiveSummary();
             initializeTabsA11y();
-            initializeActionCheckboxes();
             setTimeout(initCharts, 500);
             syncNavbarWithActiveTabs();
         });
