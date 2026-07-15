@@ -520,7 +520,8 @@
         }
 
         .quick-wins h3 {
-            color: var(--green);
+            color: var(--text);
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
             margin-bottom: 20px;
             font-size: 1.25em;
             font-weight: 800;
@@ -1679,7 +1680,7 @@
             <header>
                 <h1>Dashboard sobre Entrevistas dos Clientes</h1>
                 <p class="subtitle">Compliasset · Base para priorizar retenção e renovação — entrevistas em andamento</p>
-                <p class="date-info" id="dateInfo">Atualizado: 10 de julho de 2026 | 6 entrevistas realizadas (base total em mapeamento) | Análise Comparativa</p>
+                <p class="date-info" id="dateInfo">Atualizado: 15 de julho de 2026 | 8 entrevistas realizadas (base total em mapeamento) | Análise Comparativa</p>
             </header>
 
             <div class="cards-grid" id="executiveCards"></div>
@@ -1897,6 +1898,8 @@
                 <button class="clients-main-tab-button" onclick="switchMainClientTab(event, 'clientes-hike')" aria-label="Perfil detalhado de Hike Capital - Foco específico">🟡 Hike</button>
                 <button class="clients-main-tab-button" onclick="switchMainClientTab(event, 'clientes-nivi')" aria-label="Perfil detalhado de Nivi Capital - Pré-operacional">🟡 Nivi</button>
                 <button class="clients-main-tab-button" onclick="switchMainClientTab(event, 'clientes-daemon')" aria-label="Perfil detalhado de Daemon - Foco em Ativação">🟡 Daemon</button>
+                <button class="clients-main-tab-button" onclick="switchMainClientTab(event, 'clientes-agua')" aria-label="Perfil detalhado de Agro Eldorado - Onboarding tardio">🟡 Agro Eldorado</button>
+                <button class="clients-main-tab-button" onclick="switchMainClientTab(event, 'clientes-casaforte')" aria-label="Perfil detalhado de Casaforte Investimentos - Reativação de Agenda">🟡 Casaforte</button>
             </div>
 
             <!-- SUB-ABA: GERAL -->
@@ -1926,7 +1929,7 @@
                                 <td>5+ anos</td>
                                 <td>Comparação com IA</td>
                                 <td>Subutilização</td>
-                                <td>� ALTA</td>
+                                <td>🟠 ALTA</td>
                             </tr>
                             <tr>
                                 <td><strong>AWR Capital</strong></td>
@@ -1956,6 +1959,20 @@
                                 <td>Sem suporte ativo</td>
                                 <td>🟡 ALTA</td>
                             </tr>
+                            <tr>
+                                <td><strong>Agro Eldorado</strong></td>
+                                <td>Ativo</td>
+                                <td>Uso restrito ao dossiê</td>
+                                <td>Sem onboarding para novo responsável</td>
+                                <td>🟡 ALTA</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Casaforte Investimentos</strong></td>
+                                <td>Jul/2023</td>
+                                <td>Desconforto com volume da Agenda</td>
+                                <td>Baixa capacidade operacional</td>
+                                <td>🟡 ALTA</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -1963,10 +1980,10 @@
                 <div class="quick-read-box">
                     <h4>Leitura Rápida (60 segundos)</h4>
                     <ul>
-                        <li>Foram realizadas 6 entrevistas com perfis e estágios diferentes de maturidade.</li>
+                        <li>Foram realizadas 8 entrevistas com perfis e estágios diferentes de maturidade.</li>
                         <li>Sinal positivo recorrente: clientes seguem engajando nas conversas e aceitam planos de ação quando há direcionamento claro.</li>
                         <li>Padrão dominante: baixa adoção por onboarding incompleto, excesso de complexidade e uso parcial dos módulos.</li>
-                        <li>Maior risco imediato: Capsicum (churn iminente). Maiores oportunidades de recuperação: AWR e Daemon (cliente antigo em reformulação).</li>
+                        <li>Maior risco imediato: Capsicum (churn iminente). Maiores oportunidades de recuperação: AWR, Daemon, Agro Eldorado e Casaforte.</li>
                         <li>Tema transversal: comparação com IA e necessidade de provar valor operacional de forma objetiva.</li>
                     </ul>
                 </div>
@@ -3267,6 +3284,438 @@
                     </div>
                 </div>
             </div>
+
+            <!-- CLIENTE: AGRO ELDORADO -->
+            <div id="clientes-agua" class="clients-main-tab-content">
+                <div class="client-detail">
+                    <h3>🟡 Agro Eldorado - ONBOARDING TARDIO</h3>
+                    <div style="margin: 15px 0;">
+                        <span class="badge badge-stars">1⭐</span>
+                        <span class="badge badge-risk-yellow">🟡 Médio</span>
+                        <span class="badge badge-priority-high">ALTA</span>
+                    </div>
+                    <div class="client-tabs">
+                        <button class="client-tab-button active" onclick="switchClientTab(event, 'agua-resumo')" aria-label="Resumo de Agro Eldorado">Resumo</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'agua-entendimento')" aria-label="Entendimento de Agro Eldorado">Entendimento</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'agua-acoes')" aria-label="Ações para Agro Eldorado">Ações</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'agua-classificacao')" aria-label="Classificação de Agro Eldorado">Classificação</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'agua-transcricao')" aria-label="Transcrição de Agro Eldorado">📄 Transcrição</button>
+                    </div>
+                    <div id="agua-resumo" class="client-subtab-content active">
+                        <div class="section-title">Informações Básicas</div>
+                        <div class="info-row">
+                            <span class="info-label">Data de entrada:</span>
+                            <span class="info-value">Junho de 2024</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Próximo vencimento:</span>
+                            <span class="info-value">Junho de 2028</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Data da reunião:</span>
+                            <span class="info-value">14 de julho de 2026</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Principal contato/super admin:</span>
+                            <span class="info-value">Helen</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Participantes identificados:</span>
+                            <span class="info-value">Helen Chiquetano, Laura Silva, Evelyn Ferraz</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Módulos contratados:</span>
+                            <span class="info-value">Proteção de Dados (LGPD)</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Engajamento no sistema:</span>
+                            <span class="info-value">Baixo</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Falou com o suporte em 2026:</span>
+                            <span class="info-value">Não</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Registro Jira:</span>
+                            <span class="info-value">Não encontrado</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Comprou treinamentos em 2026:</span>
+                            <span class="info-value">Nunca comprou</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Abertura de e-mails:</span>
+                            <span class="info-value">Às vezes</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Conhecimento do sistema:</span>
+                            <span class="info-value">Baixo - usa somente dossiê e desconhece recursos adicionais</span>
+                        </div>
+
+                        <div class="section-title">Contexto do Cliente</div>
+                        <p style="background: rgba(0, 212, 189, 0.08); padding: 12px; border-left: 4px solid #00D4BD; border-radius: 5px; line-height: 1.7;">
+                            <strong>Situação Atual:</strong> Uso restrito da plataforma ao dossiê, sem conteúdo além de LGPD e com controles feitos fora do sistema.<br>
+                            <strong>Causa Principal:</strong> Responsável atual entrou após contratação e não participou do onboarding inicial (onboarding anterior foi com Victoria em 2023).<br>
+                            <strong>Oportunidade:</strong> Entender dificuldades para importar controles e oferecer parametrização assistida para elevar adoção.
+                        </p>
+
+                        <div class="section-title">Uso Atual da Plataforma</div>
+                        <ul class="item-list">
+                            <li><strong>Dossiê:</strong> único uso efetivo no dia a dia</li>
+                            <li><strong>Conteúdo:</strong> uso sem conteúdo amplo, focado em LGPD</li>
+                            <li><strong>Aceites e treinamentos:</strong> não utilizados no sistema</li>
+                            <li><strong>Controles operacionais:</strong> mantidos em ferramenta externa</li>
+                            <li><strong>Nível de adoção:</strong> baixo, com alta oportunidade de ativação</li>
+                        </ul>
+
+                        <div class="section-title">Dores Identificadas</div>
+                        <ul class="item-list">
+                            <li>Desconhecimento sobre funcionalidades que já estão inclusas no contrato</li>
+                            <li>Ausência de onboarding para a nova responsável de compliance</li>
+                            <li>Dificuldade potencial na importação de controles para dentro do sistema</li>
+                            <li>Dependência de processos fora da plataforma (perda de centralização)</li>
+                            <li>Baixa percepção de valor por uso muito restrito da ferramenta</li>
+                        </ul>
+
+                        <div class="section-title">Pontos Positivos do Cliente</div>
+                        <ul class="item-list">
+                            <li>Contato principal foi receptivo e aceitou realizar overview ainda na mesma semana.</li>
+                            <li>Cliente reconhece valor potencial ao saber que recursos extras já estão no pacote.</li>
+                            <li>Abertura para envolver outra pessoa da equipe (Giulia) no processo de adoção.</li>
+                            <li>Janela clara para recuperação de uso com ações simples e de curto prazo.</li>
+                        </ul>
+                    </div>
+                    <div id="agua-entendimento" class="client-subtab-content">
+                        <div class="understanding-box">
+                            <h4>✅ Situação Positiva</h4>
+                            <div class="understanding-item">Cliente disposto a conhecer funcionalidades adicionais imediatamente</div>
+                            <div class="understanding-item">Sem resistência ao produto; problema principal é falta de capacitação</div>
+                            <div class="understanding-item">Adoção pode crescer com baixa fricção após overview</div>
+                            <div class="understanding-item">Inclusão de nova participante amplia chance de continuidade</div>
+                        </div>
+
+                        <div class="understanding-box">
+                            <h4>🎯 Momento Crítico</h4>
+                            <div class="understanding-item">Resultado da reunião: 14/07/2026 com overview alinhado para sequência</div>
+                            <div class="understanding-item">Momento ideal para migrar processos externos para o Compliasset</div>
+                            <div class="understanding-item">Onboarding tardio deve focar em casos reais do cliente, não em tour genérico</div>
+                        </div>
+
+                        <div class="understanding-box">
+                            <h4>⚠️ Risco Real</h4>
+                            <div class="understanding-item">Sem execução rápida, cliente pode manter uso mínimo e não capturar valor do contrato</div>
+                            <div class="understanding-item">Persistência de controles fora da plataforma reduz dependência do produto</div>
+                            <div class="understanding-item">Falta de rotina dentro do sistema dificulta expansão de módulos futuros</div>
+                        </div>
+                    </div>
+                    <div id="agua-acoes" class="client-subtab-content">
+                        <div class="quick-wins">
+                            <h3>Ações Estratégicas (Ordenadas por Impacto)</h3>
+
+                            <div class="quick-win-item urgent">
+                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
+                                <strong><span class="timeline-badge timeline-urgent">IMEDIATO</span> Confirmar agenda de overview com Helen e Giulia</strong>
+                                <p>Garantir presença das duas para acelerar adoção e reduzir dependência individual.</p>
+                            </div>
+
+                            <div class="quick-win-item soon">
+                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
+                                <strong><span class="timeline-badge timeline-soon">1 SEM</span> Executar overview com foco em aceites, treinamentos e rotinas</strong>
+                                <p>Mostrar fluxos completos e ligar cada funcionalidade a processos atuais feitos fora.</p>
+                            </div>
+
+                            <div class="quick-win-item soon">
+                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
+                                <strong><span class="timeline-badge timeline-soon">1-2 SEM</span> Definir plano de parametrização para importação de controles</strong>
+                                <p>Mapear gargalos de importação e priorizar fluxos LGPD para captura de valor rápido.</p>
+                            </div>
+
+                            <div class="quick-win-item">
+                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
+                                <strong><span class="timeline-badge timeline-later">FOLLOW-UP</span> Medir adoção pós-overview e ajustar trilha</strong>
+                                <p>Acompanhar evolução em 30 dias para validar ganho real e próximos passos.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="agua-classificacao" class="client-subtab-content">
+                        <div class="table-container">
+                            <table>
+                                <tr>
+                                    <th>Métrica</th>
+                                    <th>Valor</th>
+                                    <th>Observação</th>
+                                </tr>
+                                <tr>
+                                    <td><strong>Utilização</strong></td>
+                                    <td>1⭐</td>
+                                    <td>Uso concentrado apenas no dossiê</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Risco Churn</strong></td>
+                                    <td>🟡 Médio</td>
+                                    <td>Sem sinal crítico, mas com risco de estagnação de uso</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Prioridade</strong></td>
+                                    <td>ALTA (Ativação)</td>
+                                    <td>Ação rápida aumenta chance de captura de valor do contrato</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Potencial de Ativação</strong></td>
+                                    <td>Alto</td>
+                                    <td>Cliente receptivo e com agenda já definida</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Prazo Crítico</strong></td>
+                                    <td>1-2 semanas</td>
+                                    <td>Janela ideal para consolidar nova rotina de uso</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Status Geral</strong></td>
+                                    <td>⚠️ Precisa Ação</td>
+                                    <td>Conta saudável, porém subutilizada por falta de onboarding</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Quick Wins</strong></td>
+                                    <td>2 identificados</td>
+                                    <td>Overview focado + migração de processos externos para a plataforma</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="agua-transcricao" class="client-subtab-content">
+                        <div class="section-title">Insights da Transcrição</div>
+                        <div class="transcript-box">
+                            <div class="speaker">Helen Chiquetano (8:48)</div>
+                            <div class="speaker-content">
+                                "Olha, o que a gente utiliza só é o dossiê. É a única ferramenta que a gente utiliza."
+                            </div>
+
+                            <div class="speaker">Helen Chiquetano (9:32)</div>
+                            <div class="speaker-content">
+                                "Olha, eu vou ser muito sincera, eu nem sabia que existia."
+                            </div>
+
+                            <div class="speaker">Helen Chiquetano (11:09)</div>
+                            <div class="speaker-content">
+                                "Quando eu entrei, não fui eu que fiz a contratação do sistema... me foi passado que seria utilizado só isso."
+                            </div>
+
+                            <div class="speaker">Helen Chiquetano (11:09)</div>
+                            <div class="speaker-content">
+                                "Já que está incluso no valor que a gente paga... acho muito interessante conhecer."
+                            </div>
+                        </div>
+
+                        <div class="section-title">Referências de Arquivo</div>
+                        <ul class="item-list">
+                            <li><strong>Entrevista:</strong> estudo_clientes_Compli/entrevistas/2026-07-14_agro_eldorado_reuniao.md</li>
+                            <li><strong>Transcrição:</strong> estudo_clientes_Compli/transcricoes/2026-07-14_agro_eldorado_transcricao.md</li>
+                            <li><strong>Resultado da reunião:</strong> 14/07/2026</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CLIENTE: CASAFORTE INVESTIMENTOS -->
+            <div id="clientes-casaforte" class="clients-main-tab-content">
+                <div class="client-detail">
+                    <h3>🟡 Casaforte Investimentos - REATIVAÇÃO DE AGENDA</h3>
+                    <div style="margin: 15px 0;">
+                        <span class="badge badge-stars">1⭐</span>
+                        <span class="badge badge-risk-yellow">🟡 Médio</span>
+                        <span class="badge badge-priority-high">ALTA</span>
+                    </div>
+                    <div class="client-tabs">
+                        <button class="client-tab-button active" onclick="switchClientTab(event, 'casaforte-resumo')" aria-label="Resumo de Casaforte Investimentos">Resumo</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'casaforte-entendimento')" aria-label="Entendimento de Casaforte Investimentos">Entendimento</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'casaforte-acoes')" aria-label="Ações para Casaforte Investimentos">Ações</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'casaforte-classificacao')" aria-label="Classificação de Casaforte Investimentos">Classificação</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'casaforte-transcricao')" aria-label="Transcrição de Casaforte Investimentos">📄 Transcrição</button>
+                    </div>
+                    <div id="casaforte-resumo" class="client-subtab-content active">
+                        <div class="section-title">Informações Básicas</div>
+                        <div class="info-row">
+                            <span class="info-label">Data de entrada:</span>
+                            <span class="info-value">Julho de 2023</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Próximo vencimento:</span>
+                            <span class="info-value">Julho de 2027</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Data da reunião:</span>
+                            <span class="info-value">13 de julho de 2026</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Principal contato/super admin:</span>
+                            <span class="info-value">Rafael</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Módulos contratados:</span>
+                            <span class="info-value">Gestor de FIP, Gestor de Recursos</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Tamanho da empresa:</span>
+                            <span class="info-value">+20 pessoas</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Engajamento no sistema:</span>
+                            <span class="info-value">Baixo</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Falou com o suporte em 2026:</span>
+                            <span class="info-value">Não</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Registro Jira:</span>
+                            <span class="info-value">Não</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Comprou treinamentos em 2026:</span>
+                            <span class="info-value">Nunca comprou</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Abertura de e-mails:</span>
+                            <span class="info-value">Sim</span>
+                        </div>
+
+                        <div class="section-title">Contexto do Cliente</div>
+                        <p style="background: rgba(0, 212, 189, 0.08); padding: 12px; border-left: 4px solid #00D4BD; border-radius: 5px; line-height: 1.7;">
+                            <strong>Situação Atual:</strong> Cliente entra mensalmente apenas para consultar a Agenda, sem manutenção operacional contínua no ambiente.<br>
+                            <strong>Histórico relevante:</strong> Primeiro onboarding com Victoria em abril de 2024, meses após adesão; houve demora no processo de contratação (HubSpot).<br>
+                            <strong>Percepção-chave:</strong> Rafael relata desconforto com a quantidade de atividades exibidas na Agenda.
+                        </p>
+
+                        <div class="section-title">Uso e Histórico</div>
+                        <ul class="item-list">
+                            <li><strong>2024:</strong> uso pontual da Agenda</li>
+                            <li><strong>2025:</strong> apenas uma atividade alterada</li>
+                            <li><strong>2026:</strong> sem alterações; Rafael entrou e último login foi em maio</li>
+                            <li><strong>Capacidade operacional:</strong> empresa relata não ter braço para atualizar o sistema</li>
+                        </ul>
+                    </div>
+                    <div id="casaforte-entendimento" class="client-subtab-content">
+                        <div class="understanding-box">
+                            <h4>✅ Situação Positiva</h4>
+                            <div class="understanding-item">Cliente mantém acesso recorrente mensal à Agenda</div>
+                            <div class="understanding-item">Abre comunicações por e-mail, facilitando plano de reativação</div>
+                            <div class="understanding-item">Sem sinais de ruptura comercial imediata</div>
+                        </div>
+
+                        <div class="understanding-box">
+                            <h4>🎯 Problema Principal</h4>
+                            <div class="understanding-item">Excesso de atividades gera desconforto e baixa execução</div>
+                            <div class="understanding-item">Baixa capacidade operacional para manter rotina no sistema</div>
+                            <div class="understanding-item">Onboarding ocorreu tardiamente em relação à adesão</div>
+                        </div>
+
+                        <div class="understanding-box">
+                            <h4>⚠️ Risco Real</h4>
+                            <div class="understanding-item">Manutenção de uso passivo (consulta) sem avanço para execução</div>
+                            <div class="understanding-item">Adoção pode continuar estagnada até renovação de 2027</div>
+                            <div class="understanding-item">Sem parametrização, percepção de sobrecarga tende a aumentar</div>
+                        </div>
+                    </div>
+                    <div id="casaforte-acoes" class="client-subtab-content">
+                        <div class="quick-wins">
+                            <h3>Ações Estratégicas (Ordenadas por Impacto)</h3>
+
+                            <div class="quick-win-item urgent">
+                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
+                                <strong><span class="timeline-badge timeline-urgent">IMEDIATO</span> Propor parametrização assistida da Agenda</strong>
+                                <p>Reduzir a visualização para obrigações essenciais e diminuir sensação de sobrecarga.</p>
+                            </div>
+
+                            <div class="quick-win-item soon">
+                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
+                                <strong><span class="timeline-badge timeline-soon">1 SEM</span> Definir rotina mensal simplificada com Rafael</strong>
+                                <p>Checklist curto de manutenção para viabilizar execução com equipe enxuta.</p>
+                            </div>
+
+                            <div class="quick-win-item soon">
+                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
+                                <strong><span class="timeline-badge timeline-soon">1-2 SEM</span> Revisar aderência dos módulos ao uso real</strong>
+                                <p>Confirmar aderência de Gestor de FIP e Gestor de Recursos ao contexto atual.</p>
+                            </div>
+
+                            <div class="quick-win-item">
+                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
+                                <strong><span class="timeline-badge timeline-later">FOLLOW-UP</span> Medir reativação em 30 dias</strong>
+                                <p>Acompanhar evolução de login, uso de agenda e atividades concluídas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="casaforte-classificacao" class="client-subtab-content">
+                        <div class="table-container">
+                            <table>
+                                <tr>
+                                    <th>Métrica</th>
+                                    <th>Valor</th>
+                                    <th>Observação</th>
+                                </tr>
+                                <tr>
+                                    <td><strong>Utilização</strong></td>
+                                    <td>1⭐</td>
+                                    <td>Uso pontual e majoritariamente passivo da Agenda</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Risco Churn</strong></td>
+                                    <td>🟡 Médio</td>
+                                    <td>Sem crise ativa, mas com estagnação de adoção</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Prioridade</strong></td>
+                                    <td>ALTA (Reativação)</td>
+                                    <td>Necessário agir para evitar manutenção do uso mínimo</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Prazo Crítico</strong></td>
+                                    <td>4-6 semanas</td>
+                                    <td>Janela ideal para recuperar tração de uso no curto prazo</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Status Geral</strong></td>
+                                    <td>⚠️ Precisa Ação</td>
+                                    <td>Conta ativa, porém com baixo engajamento funcional</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="casaforte-transcricao" class="client-subtab-content">
+                        <div class="section-title">Insights da Transcrição</div>
+                        <div class="transcript-box">
+                            <div class="speaker">Rafael Moura - Casaforte (5:00)</div>
+                            <div class="speaker-content">
+                                "A gente usa mais a parte da agenda... só não tem tido o hábito de fazer a utilização global da ferramenta."
+                            </div>
+
+                            <div class="speaker">Rafael Moura - Casaforte (6:52)</div>
+                            <div class="speaker-content">
+                                "É mais o braço mesmo... a plataforma em si não vejo muita dificuldade de fazer a utilização dela."
+                            </div>
+
+                            <div class="speaker">Rafael Moura - Casaforte (9:34)</div>
+                            <div class="speaker-content">
+                                "Quando eu vejo 80 atividades, 30 ou 40 não são exigíveis para a gente."
+                            </div>
+
+                            <div class="speaker">Evelyn Ferraz (10:28)</div>
+                            <div class="speaker-content">
+                                "A gente manda um relatório com tudo da agenda e, com sua autorização, arquiva o que não faz sentido para deixar organizado."
+                            </div>
+                        </div>
+
+                        <div class="section-title">Referências de Arquivo</div>
+                        <ul class="item-list">
+                            <li><strong>Entrevista:</strong> estudo_clientes_Compli/entrevistas/2026-07-13_casaforte_investimentos_reuniao.md</li>
+                            <li><strong>Transcrição:</strong> estudo_clientes_Compli/transcricoes/2026-07-13_casaforte_investimentos_transcricao.md</li>
+                            <li><strong>Resultado da reunião:</strong> 13/07/2026</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- TAB 3: ANÁLISE COMPARATIVA -->
@@ -3318,6 +3767,16 @@
                     <!-- Daemon: 1⭐ (Baixa Utilização=esquerda) + 🟡 Médio (Satisfeito=topo) = TOP-LEFT (ADORMECIDO com oportunidade) -->
                     <div style="position: absolute; top: 90px; left: 23%; width: 70px; height: 70px; background: linear-gradient(135deg, rgba(100, 116, 139, 0.2) 0%, rgba(100, 116, 139, 0.1) 100%); border: 3px solid var(--slate); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 0.75em; font-weight: 800; color: var(--slate);" title="Daemon - Oportunidade de ativação">
                         <div><strong>Daemon</strong><br>1⭐<br>🟡→💡</div>
+                    </div>
+
+                    <!-- Agro Eldorado: 1⭐ (Baixa Utilização=esquerda) + 🟡 Médio (Satisfeito=topo) = TOP-LEFT (ATIVAÇÃO RÁPIDA) -->
+                    <div style="position: absolute; top: 165px; left: 18%; width: 70px; height: 70px; background: linear-gradient(135deg, rgba(100, 116, 139, 0.2) 0%, rgba(100, 116, 139, 0.1) 100%); border: 3px solid var(--slate); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 0.72em; font-weight: 800; color: var(--slate);" title="Agro Eldorado - Onboarding tardio com alta chance de ativação">
+                        <div><strong>Agro</strong><br>1⭐<br>🟡</div>
+                    </div>
+
+                    <!-- Casaforte: 1⭐ (Baixa Utilização=esquerda) + 🟡 Médio (Satisfeito=topo) = TOP-LEFT (REATIVAÇÃO) -->
+                    <div style="position: absolute; top: 250px; left: 26%; width: 70px; height: 70px; background: linear-gradient(135deg, rgba(100, 116, 139, 0.2) 0%, rgba(100, 116, 139, 0.1) 100%); border: 3px solid var(--slate); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 0.7em; font-weight: 800; color: var(--slate);" title="Casaforte - Baixa adoção com uso passivo da agenda">
+                        <div><strong>Casa</strong><br>1⭐<br>🟡</div>
                     </div>
 
                     <!-- AWR: 2⭐ (Média-Alta Utilização=centro-direita) + 🟡 Médio (Satisfeito=topo) = TOP-CENTER (ADORMECIDO) -->
@@ -3418,6 +3877,20 @@
                             <td>🟡 Médio</td>
                             <td>ALTA</td>
                             <td>3-4 semanas</td>
+                        </tr>
+                        <tr>
+                            <td>Agro Eldorado</td>
+                            <td>1⭐</td>
+                            <td>🟡 Médio</td>
+                            <td>ALTA</td>
+                            <td>1-2 semanas</td>
+                        </tr>
+                        <tr>
+                            <td>Casaforte</td>
+                            <td>1⭐</td>
+                            <td>🟡 Médio</td>
+                            <td>ALTA</td>
+                            <td>4-6 semanas</td>
                         </tr>
                     </tbody>
                 </table>
@@ -3547,6 +4020,44 @@
                         </div>
                     </div>
 
+                    <!-- AGRO ELDORADO -->
+                    <div class="opportunity-card growth">
+                        <h4 class="opportunity-title growth">🟡 Agro Eldorado</h4>
+                        <div class="opportunity-list">
+                            <div class="opportunity-item">
+                                <strong>1. Overview Prático de Funcionalidades Contratadas</strong>
+                                <p>Contato atual não participou do onboarding. Demonstrar uso de aceites, treinamentos e rotinas.</p>
+                            </div>
+                            <div class="opportunity-item">
+                                <strong>2. Parametrização para Importação de Controles</strong>
+                                <p>Mapear controles feitos fora e apoiar importação/estruturação dos fluxos no Compliasset.</p>
+                            </div>
+                            <div class="opportunity-item">
+                                <strong>3. Trilha de Adoção com Helen + Giulia</strong>
+                                <p>Garantir continuidade após a reunião inicial com acompanhamento de 30 dias.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CASAFORTE -->
+                    <div class="opportunity-card growth">
+                        <h4 class="opportunity-title growth">🟡 Casaforte Investimentos</h4>
+                        <div class="opportunity-list">
+                            <div class="opportunity-item">
+                                <strong>1. Parametrização assistida da Agenda</strong>
+                                <p>Reduzir volume de atividades para um escopo enxuto e executável pelo time.</p>
+                            </div>
+                            <div class="opportunity-item">
+                                <strong>2. Rotina mensal simplificada para o Rafael</strong>
+                                <p>Definir checklist curto para sair do uso passivo e evoluir para execução mínima contínua.</p>
+                            </div>
+                            <div class="opportunity-item">
+                                <strong>3. Recuperação de adoção em 30 dias</strong>
+                                <p>Follow-up orientado por indicadores de login, agenda e conclusão de atividades.</p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -3573,6 +4084,18 @@
                 </div>
                 <div class="quick-win-item">
                     <strong>[Daemon - 1 sem]</strong> Agendar visão geral completa
+                </div>
+                <div class="quick-win-item">
+                    <strong>[Agro Eldorado - imediato]</strong> Confirmar reunião de overview com Helen + Giulia
+                </div>
+                <div class="quick-win-item">
+                    <strong>[Agro Eldorado - 1 sem]</strong> Executar overview e definir parametrização de controles
+                </div>
+                <div class="quick-win-item">
+                    <strong>[Casaforte - imediato]</strong> Iniciar parametrização da Agenda com escopo essencial
+                </div>
+                <div class="quick-win-item">
+                    <strong>[Casaforte - 1 sem]</strong> Definir rotina mensal simplificada com Rafael
                 </div>
                 <div class="quick-win-item">
                     <strong>[Nivi - Contínuo]</strong> Check-in mensal pré-op
@@ -3659,6 +4182,24 @@
                 <div class="risk-bubble medium" style="bottom: 140px; right: 200px; width: 78px; height: 78px;" title="Daemon - Ativação">
                     <div style="text-align: center; line-height: 1.2;">
                         <strong>Daemon</strong><br>
+                        <span style="font-size: 1em;">1⭐</span><br>
+                        <span style="font-size: 1.1em;">🟡</span>
+                    </div>
+                </div>
+
+                <!-- Agro Eldorado: Onboarding tardio (1⭐, 🟡 Médio) -->
+                <div class="risk-bubble medium" style="bottom: 120px; left: 320px; width: 76px; height: 76px;" title="Agro Eldorado - Ativação por onboarding tardio">
+                    <div style="text-align: center; line-height: 1.1;">
+                        <strong>Agro</strong><br>
+                        <span style="font-size: 1em;">1⭐</span><br>
+                        <span style="font-size: 1.1em;">🟡</span>
+                    </div>
+                </div>
+
+                <!-- Casaforte: Baixa adoção por sobrecarga de agenda (1⭐, 🟡 Médio) -->
+                <div class="risk-bubble medium" style="bottom: 220px; left: 350px; width: 76px; height: 76px;" title="Casaforte - Uso passivo da agenda e reativação necessária">
+                    <div style="text-align: center; line-height: 1.1;">
+                        <strong>Casa</strong><br>
                         <span style="font-size: 1em;">1⭐</span><br>
                         <span style="font-size: 1.1em;">🟡</span>
                     </div>
@@ -3765,6 +4306,28 @@
                 priorityClass: 'badge-priority-high',
                 immediateAction: 'Visão geral da plataforma + mapeamento de gaps',
                 quickWins: 2
+            },
+            {
+                name: 'Agro Eldorado',
+                shortName: 'Agro Eldorado',
+                stars: 1,
+                riskLevel: 'medium',
+                riskLabel: '🟡 Médio',
+                priority: 'ALTA',
+                priorityClass: 'badge-priority-high',
+                immediateAction: 'Overview prático + parametrização para importação de controles',
+                quickWins: 2
+            },
+            {
+                name: 'Casaforte Investimentos',
+                shortName: 'Casaforte',
+                stars: 1,
+                riskLevel: 'medium',
+                riskLabel: '🟡 Médio',
+                priority: 'ALTA',
+                priorityClass: 'badge-priority-high',
+                immediateAction: 'Parametrização de agenda + rotina mensal simplificada',
+                quickWins: 2
             }
         ];
 
@@ -3778,7 +4341,7 @@
             return 'badge-risk-green';
         }
 
-        const LAST_CONSOLIDATION_DATE = '10 de julho de 2026';
+        const LAST_CONSOLIDATION_DATE = '15 de julho de 2026';
 
         const interviewsData = [
             {
@@ -3870,6 +4433,36 @@
                 transcriptStatus: 'Disponível',
                 interviewFile: 'entrevistas/2026-07-10_daemon_reuniao.md',
                 transcriptFile: 'transcricoes/2026-07-10_daemon_transcricao.md'
+            },
+            {
+                date: '14/07/2026',
+                client: 'Agro Eldorado',
+                participants: 'Helen Chiquetano, Laura Silva, Evelyn Ferraz',
+                insight: 'Uso atual restrito ao dossiê/LGPD por falta de onboarding da nova responsável.',
+                impact: 'Oportunidade de ativação rápida com parametrização para importação de controles em 1-2 semanas.',
+                risk: 'Médio',
+                agreedAction: 'Overview focado + plano de parametrização de controles com Helen e Giulia',
+                deadline: '1-2 semanas',
+                owner: 'Evelyn + Laura + Helen',
+                positiveSignals: 4,
+                transcriptStatus: 'Disponível',
+                interviewFile: 'entrevistas/2026-07-14_agro_eldorado_reuniao.md',
+                transcriptFile: 'transcricoes/2026-07-14_agro_eldorado_transcricao.md'
+            },
+            {
+                date: '13/07/2026',
+                client: 'Casaforte Investimentos',
+                participants: 'Rafael Moura, Laura Silva, Evelyn Ferraz, Guilherme Bagattini',
+                insight: 'Uso passivo da agenda e desconforto com volume de atividades para time com baixa capacidade operacional.',
+                impact: 'Risco de estagnação de adoção até renovação de 2027 sem parametrização assistida.',
+                risk: 'Médio',
+                agreedAction: 'Parametrização da agenda + rotina mensal simplificada + follow-up em 30 dias',
+                deadline: '4-6 semanas',
+                owner: 'CS + Rafael',
+                positiveSignals: 3,
+                transcriptStatus: 'Disponível',
+                interviewFile: 'entrevistas/2026-07-13_casaforte_investimentos_reuniao.md',
+                transcriptFile: 'transcricoes/2026-07-13_casaforte_investimentos_transcricao.md'
             }
         ];
 
@@ -4034,10 +4627,43 @@
             renderInterviewStandardSheet();
         }
 
+        // ===== DOM/STATE HELPERS =====
+
         function extractTargetIdFromOnclick(button) {
             const onclick = button.getAttribute('onclick') || '';
             const match = onclick.match(/'([^']+)'/);
             return match ? match[1] : null;
+        }
+
+        function getButtonTargetId(button) {
+            return button?.dataset?.target || extractTargetIdFromOnclick(button);
+        }
+
+        const SELECTORS = {
+            navLinks: '.navbar-menu-link',
+            navLinksWithTab: '.navbar-menu-link[data-tab]',
+            navbarLogo: '.navbar-logo',
+            tabsRoot: '.tabs',
+            tabPanels: '.tab-content',
+            tabButtons: '.tab-button',
+            tabButtonsWithTarget: '.tab-button[data-target]',
+            clientsMainTabs: '.clients-main-tabs',
+            clientsMainTabPanels: '.clients-main-tab-content',
+            clientsMainTabButtons: '.clients-main-tab-button',
+            clientsMainTabButtonsWithTarget: '.clients-main-tab-button[data-target]',
+            clientDetails: '.client-detail',
+            clientSubtabPanels: '.client-subtab-content',
+            clientSubtabButtons: '.client-tab-button',
+            clientSubtabButtonsWithTarget: '.client-tab-button[data-target]',
+            actionCheckboxes: '.action-checkbox'
+        };
+
+        function queryOne(selector, root = document) {
+            return root.querySelector(selector);
+        }
+
+        function queryAllArray(selector, root = document) {
+            return Array.from(root.querySelectorAll(selector));
         }
 
         function updateTabA11yState(buttons, panels, activeButton, activePanel) {
@@ -4091,144 +4717,137 @@
             tablistElement.dataset.keyboardBound = 'true';
         }
 
-        function initializeTabsA11y() {
-            document.querySelectorAll('.tabs').forEach(tablist => {
-                tablist.setAttribute('role', 'tablist');
-                const buttons = Array.from(tablist.querySelectorAll('.tab-button'));
-                const panels = Array.from(document.querySelectorAll('.tab-content'));
-
-                buttons.forEach((button, index) => {
-                    button.setAttribute('role', 'tab');
-                    if (!button.id) {
-                        button.id = `main-tab-${index + 1}`;
-                    }
-
-                    const targetId = extractTargetIdFromOnclick(button);
-                    const panel = targetId ? document.getElementById(targetId) : null;
-                    if (panel) {
-                        panel.setAttribute('role', 'tabpanel');
-                        panel.setAttribute('aria-labelledby', button.id);
-                        button.setAttribute('aria-controls', panel.id);
-                    }
-                });
-
-                const activeButton = tablist.querySelector('.tab-button.active') || buttons[0];
-                const activePanelId = extractTargetIdFromOnclick(activeButton);
-                const activePanel = activePanelId ? document.getElementById(activePanelId) : panels[0];
-                updateTabA11yState(buttons, panels, activeButton, activePanel);
-                bindTabKeyboardNavigation(tablist, '.tab-button');
-            });
-
-            const clientsMainTablist = document.querySelector('.clients-main-tabs');
-            if (clientsMainTablist) {
-                clientsMainTablist.setAttribute('role', 'tablist');
-                const buttons = Array.from(clientsMainTablist.querySelectorAll('.clients-main-tab-button'));
-                const panels = Array.from(document.querySelectorAll('.clients-main-tab-content'));
-
-                buttons.forEach((button, index) => {
-                    button.setAttribute('role', 'tab');
-                    if (!button.id) {
-                        button.id = `clients-main-tab-${index + 1}`;
-                    }
-
-                    const targetId = extractTargetIdFromOnclick(button);
-                    const panel = targetId ? document.getElementById(targetId) : null;
-                    if (panel) {
-                        panel.setAttribute('role', 'tabpanel');
-                        panel.setAttribute('aria-labelledby', button.id);
-                        button.setAttribute('aria-controls', panel.id);
-                    }
-                });
-
-                const activeButton = clientsMainTablist.querySelector('.clients-main-tab-button.active-main') || buttons[0];
-                const activePanelId = extractTargetIdFromOnclick(activeButton);
-                const activePanel = activePanelId ? document.getElementById(activePanelId) : panels[0];
-                updateTabA11yState(buttons, panels, activeButton, activePanel);
-                bindTabKeyboardNavigation(clientsMainTablist, '.clients-main-tab-button');
+        function configureTablistA11y({ tablist, buttons, panels, buttonSelector, defaultButtonSelector, panelResolver, idPrefix }) {
+            if (!tablist || !buttons.length) {
+                return;
             }
 
-            document.querySelectorAll('.client-detail').forEach((detail, detailIndex) => {
-                const tablist = detail.querySelector('.client-tabs');
-                if (!tablist) {
-                    return;
+            tablist.setAttribute('role', 'tablist');
+
+            buttons.forEach((button, index) => {
+                button.setAttribute('role', 'tab');
+                if (!button.id) {
+                    button.id = `${idPrefix}-${index + 1}`;
                 }
 
-                tablist.setAttribute('role', 'tablist');
-                const buttons = Array.from(tablist.querySelectorAll('.client-tab-button'));
-                const panels = Array.from(detail.querySelectorAll('.client-subtab-content'));
+                const targetId = extractTargetIdFromOnclick(button);
+                if (targetId) {
+                    button.dataset.target = targetId;
+                }
 
-                buttons.forEach((button, index) => {
-                    button.setAttribute('role', 'tab');
-                    if (!button.id) {
-                        button.id = `client-${detailIndex + 1}-tab-${index + 1}`;
-                    }
+                const panel = targetId ? panelResolver(targetId) : null;
+                if (panel) {
+                    panel.setAttribute('role', 'tabpanel');
+                    panel.setAttribute('aria-labelledby', button.id);
+                    button.setAttribute('aria-controls', panel.id);
+                }
+            });
 
-                    const targetId = extractTargetIdFromOnclick(button);
-                    const panel = targetId ? detail.querySelector(`#${targetId}`) : null;
-                    if (panel) {
-                        panel.setAttribute('role', 'tabpanel');
-                        panel.setAttribute('aria-labelledby', button.id);
-                        button.setAttribute('aria-controls', panel.id);
-                    }
+            const activeButton = tablist.querySelector(defaultButtonSelector) || buttons[0];
+            const activePanelId = getButtonTargetId(activeButton);
+            const activePanel = activePanelId ? panelResolver(activePanelId) : panels[0];
+            updateTabA11yState(buttons, panels, activeButton, activePanel);
+            bindTabKeyboardNavigation(tablist, buttonSelector);
+        }
+
+        // ===== TABS A11Y =====
+
+        function initializeTabsA11y() {
+            queryAllArray(SELECTORS.tabsRoot).forEach(tablist => {
+                configureTablistA11y({
+                    tablist,
+                    buttons: queryAllArray(SELECTORS.tabButtons, tablist),
+                    panels: queryAllArray(SELECTORS.tabPanels),
+                    buttonSelector: SELECTORS.tabButtons,
+                    defaultButtonSelector: `${SELECTORS.tabButtons}.active`,
+                    panelResolver: targetId => document.getElementById(targetId),
+                    idPrefix: 'main-tab'
                 });
+            });
 
-                const activeButton = tablist.querySelector('.client-tab-button.active') || buttons[0];
-                const activePanelId = extractTargetIdFromOnclick(activeButton);
-                const activePanel = activePanelId ? detail.querySelector(`#${activePanelId}`) : panels[0];
-                updateTabA11yState(buttons, panels, activeButton, activePanel);
-                bindTabKeyboardNavigation(tablist, '.client-tab-button');
+            const clientsMainTablist = queryOne(SELECTORS.clientsMainTabs);
+            configureTablistA11y({
+                tablist: clientsMainTablist,
+                buttons: queryAllArray(SELECTORS.clientsMainTabButtons, clientsMainTablist || document),
+                panels: queryAllArray(SELECTORS.clientsMainTabPanels),
+                buttonSelector: SELECTORS.clientsMainTabButtons,
+                defaultButtonSelector: `${SELECTORS.clientsMainTabButtons}.active-main`,
+                panelResolver: targetId => document.getElementById(targetId),
+                idPrefix: 'clients-main-tab'
+            });
+
+            queryAllArray(SELECTORS.clientDetails).forEach((detail, detailIndex) => {
+                const tablist = queryOne('.client-tabs', detail);
+                configureTablistA11y({
+                    tablist,
+                    buttons: queryAllArray(SELECTORS.clientSubtabButtons, detail),
+                    panels: queryAllArray(SELECTORS.clientSubtabPanels, detail),
+                    buttonSelector: SELECTORS.clientSubtabButtons,
+                    defaultButtonSelector: `${SELECTORS.clientSubtabButtons}.active`,
+                    panelResolver: targetId => queryOne(`#${targetId}`, detail),
+                    idPrefix: `client-${detailIndex + 1}-tab`
+                });
             });
         }
 
-        function switchTab(event, tabName) {
-            event.preventDefault();
-            
-            // Remove active de todos os tabs
-            document.querySelectorAll('.tab-content').forEach(el => {
-                el.classList.remove('active');
-            });
-            document.querySelectorAll('.tab-button').forEach(el => {
-                el.classList.remove('active');
-            });
+        function setActiveState(elements, className, activeElement) {
+            elements.forEach(el => el.classList.remove(className));
+            if (activeElement) {
+                activeElement.classList.add(className);
+            }
+        }
 
-            // Ativa tab e botão
+        function resolveTriggerButton(eventOrElement) {
+            if (eventOrElement?.currentTarget) {
+                return eventOrElement.currentTarget;
+            }
+
+            if (eventOrElement instanceof Element) {
+                return eventOrElement;
+            }
+
+            return null;
+        }
+
+        function switchTab(event, tabName) {
+            if (typeof event?.preventDefault === 'function') {
+                event.preventDefault();
+            }
+
+            const panels = queryAllArray(SELECTORS.tabPanels);
+            const buttons = queryAllArray(SELECTORS.tabButtons);
+
             const nextPanel = document.getElementById(tabName);
-            const nextButton = event.currentTarget;
-            nextPanel.classList.add('active');
-            nextButton.classList.add('active');
+            const nextButton = resolveTriggerButton(event);
+            if (!nextPanel || !nextButton) {
+                return;
+            }
+
+            setActiveState(panels, 'active', nextPanel);
+            setActiveState(buttons, 'active', nextButton);
 
             updateTabA11yState(
-                Array.from(document.querySelectorAll('.tab-button')),
-                Array.from(document.querySelectorAll('.tab-content')),
+                buttons,
+                panels,
                 nextButton,
                 nextPanel
             );
 
-            // Se for a aba de Análise, inicializa gráficos
+            // Gráficos são exibidos na aba de visão geral.
             if (tabName === 'visao-geral') {
                 setTimeout(initCharts, 100);
             }
+
+            syncNavbarWithActiveTabs();
         }
 
         function switchNavTab(event, tabName) {
-            event.preventDefault();
-            
-            // Remove active de todos os navbar menu links
-            document.querySelectorAll('.navbar-menu-link').forEach(el => {
-                el.classList.remove('active');
-                el.setAttribute('aria-selected', 'false');
-            });
-            
-            // Ativa o link do navbar
-            if (event.currentTarget) {
-                event.currentTarget.classList.add('active');
-                event.currentTarget.setAttribute('aria-selected', 'true');
+            if (typeof event?.preventDefault === 'function') {
+                event.preventDefault();
             }
-            
-            // Remove active de todos os tabs
-            document.querySelectorAll('.tab-content').forEach(el => {
-                el.classList.remove('active');
-            });
+
+            const panels = queryAllArray(SELECTORS.tabPanels);
+            setActiveState(panels, 'active', null);
 
             // Ativa somente o painel alvo da navbar
             const nextPanel = document.getElementById(tabName);
@@ -4237,24 +4856,24 @@
             }
 
             nextPanel.classList.add('active');
+            setNavbarActiveTab(tabName);
 
-            const tabButtons = Array.from(document.querySelectorAll('.tab-button'));
+            const tabButtons = queryAllArray(SELECTORS.tabButtons);
             if (tabButtons.length) {
-                const nextButton = tabButtons.find(button => (button.getAttribute('onclick') || '').includes(tabName));
+                const nextButton = tabButtons.find(button => getButtonTargetId(button) === tabName);
                 if (nextButton) {
-                    tabButtons.forEach(button => button.classList.remove('active'));
-                    nextButton.classList.add('active');
+                    setActiveState(tabButtons, 'active', nextButton);
 
                     updateTabA11yState(
                         tabButtons,
-                        Array.from(document.querySelectorAll('.tab-content')),
+                        panels,
                         nextButton,
                         nextPanel
                     );
                 }
             }
 
-            // Se for a aba de Análise, inicializa gráficos
+            // Gráficos são exibidos na aba de visão geral.
             if (tabName === 'visao-geral') {
                 setTimeout(initCharts, 100);
             }
@@ -4264,47 +4883,59 @@
         }
 
         function switchMainClientTab(event, tabName) {
-            event.preventDefault();
-            
-            document.querySelectorAll('.clients-main-tab-content').forEach(el => {
-                el.classList.remove('active-main');
-            });
-            document.querySelectorAll('.clients-main-tab-button').forEach(el => {
-                el.classList.remove('active-main');
-            });
+            if (typeof event?.preventDefault === 'function') {
+                event.preventDefault();
+            }
+
+            const panels = queryAllArray(SELECTORS.clientsMainTabPanels);
+            const buttons = queryAllArray(SELECTORS.clientsMainTabButtons);
 
             const nextPanel = document.getElementById(tabName);
-            const nextButton = event.currentTarget;
-            nextPanel.classList.add('active-main');
-            nextButton.classList.add('active-main');
+            const nextButton = resolveTriggerButton(event);
+            if (!nextPanel || !nextButton) {
+                return;
+            }
+
+            setActiveState(panels, 'active-main', nextPanel);
+            setActiveState(buttons, 'active-main', nextButton);
 
             updateTabA11yState(
-                Array.from(document.querySelectorAll('.clients-main-tab-button')),
-                Array.from(document.querySelectorAll('.clients-main-tab-content')),
+                buttons,
+                panels,
                 nextButton,
                 nextPanel
             );
         }
 
         function switchClientTab(event, tabName) {
-            event.preventDefault();
-            
-            const container = event.currentTarget.closest('.client-detail');
-            container.querySelectorAll('.client-subtab-content').forEach(el => {
-                el.classList.remove('active');
-            });
-            container.querySelectorAll('.client-tab-button').forEach(el => {
-                el.classList.remove('active');
-            });
+            if (typeof event?.preventDefault === 'function') {
+                event.preventDefault();
+            }
+
+            const nextButton = resolveTriggerButton(event);
+            if (!nextButton) {
+                return;
+            }
+
+            const container = nextButton.closest('.client-detail');
+            if (!container) {
+                return;
+            }
+
+            const panels = queryAllArray(SELECTORS.clientSubtabPanels, container);
+            const buttons = queryAllArray(SELECTORS.clientSubtabButtons, container);
 
             const nextPanel = container.querySelector('#' + tabName);
-            const nextButton = event.currentTarget;
-            nextPanel.classList.add('active');
-            nextButton.classList.add('active');
+            if (!nextPanel || !nextButton) {
+                return;
+            }
+
+            setActiveState(panels, 'active', nextPanel);
+            setActiveState(buttons, 'active', nextButton);
 
             updateTabA11yState(
-                Array.from(container.querySelectorAll('.client-tab-button')),
-                Array.from(container.querySelectorAll('.client-subtab-content')),
+                buttons,
+                panels,
                 nextButton,
                 nextPanel
             );
@@ -4393,9 +5024,14 @@
 
         function toggleCollapsible(button) {
             const isExpanded = button.getAttribute('aria-expanded') === 'true';
-            const body = button.nextElementSibling.classList.contains('collapsible-hint')
-                ? button.nextElementSibling.nextElementSibling
-                : button.nextElementSibling;
+            const nextSibling = button.nextElementSibling;
+            const body = nextSibling && nextSibling.classList.contains('collapsible-hint')
+                ? nextSibling.nextElementSibling
+                : nextSibling;
+
+            if (!body) {
+                return;
+            }
 
             button.setAttribute('aria-expanded', String(!isExpanded));
 
@@ -4407,8 +5043,11 @@
         }
 
         function initializeActionCheckboxes() {
-            document.querySelectorAll('.action-checkbox').forEach(checkbox => {
+            queryAllArray(SELECTORS.actionCheckboxes).forEach(checkbox => {
                 const quickWinItem = checkbox.closest('.quick-win-item');
+                if (!quickWinItem) {
+                    return;
+                }
                 
                 checkbox.addEventListener('change', function() {
                     if (this.checked) {
@@ -4420,40 +5059,79 @@
             });
         }
 
-        // Inicializa gráficos ao carregar
-        window.addEventListener('load', () => {
+        function bindClickOnce(buttons, handler) {
+            buttons.forEach(button => {
+                if (button.dataset.bound === 'true') {
+                    return;
+                }
+
+                button.removeAttribute('onclick');
+                button.addEventListener('click', event => handler(event, button));
+                button.dataset.bound = 'true';
+            });
+        }
+
+        function bindDeclarativeTabs() {
+            const navbarLogo = queryOne(SELECTORS.navbarLogo);
+            if (navbarLogo && navbarLogo.dataset.bound !== 'true') {
+                navbarLogo.removeAttribute('onclick');
+                navbarLogo.addEventListener('click', () => {
+                    const defaultNavButton = queryOne(`${SELECTORS.navLinks}[data-tab="visao-geral"]`);
+                    if (!defaultNavButton) {
+                        return;
+                    }
+
+                    switchNavTab({
+                        preventDefault: () => {},
+                        currentTarget: defaultNavButton
+                    }, 'visao-geral');
+                });
+                navbarLogo.dataset.bound = 'true';
+            }
+
+            bindClickOnce(queryAllArray(SELECTORS.navLinksWithTab), (event, button) => {
+                switchNavTab(event, button.dataset.tab);
+            });
+
+            bindClickOnce(queryAllArray(SELECTORS.tabButtonsWithTarget), (event, button) => {
+                switchTab(event, button.dataset.target);
+            });
+
+            bindClickOnce(queryAllArray(SELECTORS.clientsMainTabButtonsWithTarget), (event, button) => {
+                switchMainClientTab(event, button.dataset.target);
+            });
+
+            bindClickOnce(queryAllArray(SELECTORS.clientSubtabButtonsWithTarget), (event, button) => {
+                switchClientTab(event, button.dataset.target);
+            });
+        }
+
+        function setNavbarActiveTab(tabId) {
+            queryAllArray(SELECTORS.navLinks).forEach(link => {
+                const isActive = link.dataset.tab === tabId;
+                link.classList.toggle('active', isActive);
+                link.setAttribute('aria-selected', String(isActive));
+            });
+        }
+
+        function initializeDashboard() {
             renderExecutiveSummary();
             initializeTabsA11y();
+            bindDeclarativeTabs();
             initializeActionCheckboxes();
             setTimeout(initCharts, 500);
             syncNavbarWithActiveTabs();
-        });
-
-        function syncNavbarWithActiveTabs() {
-            // Encontra a aba ativa
-            const activeTab = document.querySelector('.tab-content.active');
-            if (activeTab) {
-                const activeTabId = activeTab.id;
-                // Atualiza o navbar para marcar como ativo
-                document.querySelectorAll('.navbar-menu-link').forEach(link => {
-                    link.classList.remove('active');
-                    link.setAttribute('aria-selected', 'false');
-                    if (link.dataset.tab === activeTabId) {
-                        link.classList.add('active');
-                        link.setAttribute('aria-selected', 'true');
-                    }
-                });
-            }
         }
 
-        // Também sincroniza quando tabs são clicadas
-        document.querySelectorAll('.tab-button').forEach(button => {
-            const originalOnClick = button.onclick;
-            button.onclick = function(event) {
-                originalOnClick.call(this, event);
-                syncNavbarWithActiveTabs();
-            };
-        });
+        // Inicializa gráficos ao carregar
+        window.addEventListener('load', initializeDashboard);
+
+        function syncNavbarWithActiveTabs() {
+            const activeTab = queryOne(`${SELECTORS.tabPanels}.active`);
+            if (activeTab) {
+                setNavbarActiveTab(activeTab.id);
+            }
+        }
 
     </script>
 </body>
