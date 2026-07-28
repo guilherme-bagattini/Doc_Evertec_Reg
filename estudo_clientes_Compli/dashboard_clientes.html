@@ -1900,6 +1900,7 @@
                 <button class="clients-main-tab-button" onclick="switchMainClientTab(event, 'clientes-daemon')" aria-label="Perfil detalhado de Daemon - Foco em Ativação">🟡 Daemon</button>
                 <button class="clients-main-tab-button" onclick="switchMainClientTab(event, 'clientes-agua')" aria-label="Perfil detalhado de Agro Eldorado - Onboarding tardio">🟡 Agro Eldorado</button>
                 <button class="clients-main-tab-button" onclick="switchMainClientTab(event, 'clientes-casaforte')" aria-label="Perfil detalhado de Casaforte Investimentos - Reativação de Agenda">🟡 Casaforte</button>
+                <button class="clients-main-tab-button" onclick="switchMainClientTab(event, 'clientes-alaska')" aria-label="Perfil detalhado de Alaska Asset - Costcutting Estratégico">🟡 Alaska</button>
             </div>
 
             <!-- SUB-ABA: GERAL -->
@@ -1973,6 +1974,13 @@
                                 <td>Baixa capacidade operacional</td>
                                 <td>🟡 ALTA</td>
                             </tr>
+                            <tr>
+                                <td><strong>Alaska Asset</strong></td>
+                                <td>Antigo</td>
+                                <td>Costcutting estratégico - churn parcial</td>
+                                <td>Proposta comercial reduzida (background check + treinamentos)</td>
+                                <td>🟡 ALTA</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -1980,10 +1988,10 @@
                 <div class="quick-read-box">
                     <h4>Leitura Rápida (60 segundos)</h4>
                     <ul>
-                        <li>Foram realizadas 8 entrevistas com perfis e estágios diferentes de maturidade.</li>
+                        <li>Foram realizadas 9 entrevistas com perfis e estágios diferentes de maturidade.</li>
                         <li>Sinal positivo recorrente: clientes seguem engajando nas conversas e aceitam planos de ação quando há direcionamento claro.</li>
                         <li>Padrão dominante: baixa adoção por onboarding incompleto, excesso de complexidade e uso parcial dos módulos.</li>
-                        <li>Maior risco imediato: Capsicum (churn iminente). Maiores oportunidades de recuperação: AWR, Daemon, Agro Eldorado e Casaforte.</li>
+                        <li>Maior risco imediato: Capsicum (churn iminente). Maiores oportunidades de recuperação: AWR, Daemon, Agro Eldorado, Casaforte e Alaska (costcutting).</li>
                         <li>Tema transversal: comparação com IA e necessidade de provar valor operacional de forma objetiva.</li>
                     </ul>
                 </div>
@@ -3716,6 +3724,223 @@
                     </div>
                 </div>
             </div>
+
+            <!-- CLIENTE: ALASKA ASSET -->
+            <div id="clientes-alaska" class="clients-main-tab-content">
+                <div class="client-detail">
+                    <h3>🟡 Alaska Asset - COSTCUTTING ESTRATÉGICO</h3>
+                    <div style="margin: 15px 0;">
+                        <span class="badge badge-stars">1⭐</span>
+                        <span class="badge badge-risk-yellow">🟡 Médio</span>
+                        <span class="badge badge-priority-high">ALTA</span>
+                    </div>
+                    <div class="client-tabs">
+                        <button class="client-tab-button active" onclick="switchClientTab(event, 'alaska-resumo')" aria-label="Resumo de Alaska Asset">Resumo</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'alaska-entendimento')" aria-label="Entendimento de Alaska Asset">Entendimento</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'alaska-acoes')" aria-label="Ações para Alaska Asset">Ações</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'alaska-classificacao')" aria-label="Classificação de Alaska Asset">Classificação</button>
+                        <button class="client-tab-button" onclick="switchClientTab(event, 'alaska-transcricao')" aria-label="Transcrição de Alaska Asset">📄 Transcrição</button>
+                    </div>
+                    <div id="alaska-resumo" class="client-subtab-content active">
+                        <div class="section-title">Informações Básicas</div>
+                        <div class="info-row">
+                            <span class="info-label">Data de entrada:</span>
+                            <span class="info-value">Junho de 2021</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Próximo vencimento:</span>
+                            <span class="info-value">Junho de 2027</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Data da reunião:</span>
+                            <span class="info-value">15 de julho de 2026</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Principal contato/super admin:</span>
+                            <span class="info-value">Acácio Roboredo</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Módulos contratados:</span>
+                            <span class="info-value">Anticorrupção, Gestor de Recursos, Gestor Distribuidor, Gestor de FIP</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Módulos em uso real (histórico):</span>
+                            <span class="info-value">Agenda (prazos regulatórios), Treinamentos, Dossiês (esporadicamente)</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Solicitação pós-reunião:</span>
+                            <span class="info-value">Redução para Treinamentos + Dossiês Reputacionais</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Tamanho da empresa:</span>
+                            <span class="info-value">20 pessoas</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Engajamento no sistema:</span>
+                            <span class="info-value">Não acessava desde 2025; Acácio fez login em 26/jun/2026</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Falou com o Suporte em 2026:</span>
+                            <span class="info-value">Não</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Registro Jira:</span>
+                            <span class="info-value">Somente inclusão de licenças de Treinamentos</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Comprou Treinamentos em 2026:</span>
+                            <span class="info-value">Ainda não, mas comprou de 2022-2025. Aguarda promoção.</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Abre nossas comunicações por e-mail:</span>
+                            <span class="info-value">Às vezes (respostas a comunicados específicos)</span>
+                        </div>
+
+                        <div class="section-title">Histórico de Uso</div>
+                        <ul class="item-list">
+                            <li><strong>2021-2024:</strong> Cliente usava normalmente a Agenda e demais recursos do sistema</li>
+                            <li><strong>2025 em diante:</strong> Cliente não acessava o sistema (exceto Acácio em 26/jun/2026)</li>
+                            <li><strong>Compras recorrentes:</strong> Adquiriu Treinamentos todos os anos de 2022 a 2025</li>
+                        </ul>
+
+                        <div class="section-title">Feedback do Cliente (Inicial)</div>
+                        <p style="background: rgba(6, 214, 160, 0.08); padding: 12px; border-left: 4px solid #06D6A0; border-radius: 5px; line-height: 1.7; font-style: italic;">
+                            "Por aqui está tudo certo. Uso como calendário para prazos regulatórios e os treinamentos. Esporadicamente uso os dossiês. Considere que estamos satisfeitos."
+                        </p>
+
+                        <div class="section-title">Situação Atual (Costcutting Estratégico)</div>
+                        <p style="background: rgba(0, 212, 189, 0.08); padding: 12px; border-left: 4px solid #00D4BD; border-radius: 5px; line-height: 1.7;">
+                            Cliente em processo de redução de custos operacionais: parou atividade de distribuição de cotas e está priorizando renda fixa sobre ações. Como resultado, solicitou redução do plano para apenas <strong>Treinamentos e Dossiês Reputacionais</strong>.
+                        </p>
+                    </div>
+                    <div id="alaska-entendimento" class="client-subtab-content">
+                        <div class="understanding-box">
+                            <h4>✅ Situação Positiva</h4>
+                            <div class="understanding-item">Cliente muito satisfeito com Compliasset ("estamos satisfeitos") - feedback espontâneo e positivo</div>
+                            <div class="understanding-item">Cliente antigo (desde 2021) com histórico sólido de uso e compras regulares de treinamentos</div>
+                            <div class="understanding-item">Responsável Acácio conhece bem a plataforma e engaja (responde comunicados, aberto a conversas)</div>
+                            <div class="understanding-item">Uso bem definido: calendário para prazos regulatórios + treinamentos + dossiês (modelo funcional claro)</div>
+                        </div>
+
+                        <div class="understanding-box">
+                            <h4>🎯 Problema Principal</h4>
+                            <div class="understanding-item">Costcutting estratégico: redução de módulos já DECIDIDA e solicitada formalmente</div>
+                            <div class="understanding-item">Parou distribuição de cotas (reduziu significativamente atividades regulatórias internas)</div>
+                            <div class="understanding-item">Cliente não está buscando expansão - busca manutenção apenas do essencial</div>
+                        </div>
+
+                        <div class="understanding-box">
+                            <h4>⚠️ Risco Real</h4>
+                            <div class="understanding-item">Churn parcial CONFIRMADO: redução de 4 módulos para 2 (Treinamentos + Dossiês Reputacionais)</div>
+                            <div class="understanding-item">Redução significativa de receita recorrente via essa renegociação</div>
+                            <div class="understanding-item">Risco futuro: possível churn total se cenário econômico não melhorar ou se encontrarem alternativa interna</div>
+                        </div>
+                    </div>
+                    <div id="alaska-acoes" class="client-subtab-content">
+                        <div class="quick-wins">
+                            <h3>Ações Estratégicas (Ordenadas por Impacto)</h3>
+
+                            <div class="quick-win-item urgent">
+                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
+                                <strong><span class="timeline-badge timeline-urgent">IMEDIATO</span> Formalizar proposta comercial reduzida</strong>
+                                <p>Preparar e enviar contrato/proposta reduzida (Treinamentos + Dossiês Reputacionais) via Laura + Mayara (Comercial) para Acácio assinar.</p>
+                            </div>
+
+                            <div class="quick-win-item soon">
+                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
+                                <strong><span class="timeline-badge timeline-soon">1-2 SEM</span> Revisar e propor promoção de Treinamentos 2026</strong>
+                                <p>Cliente espera promoção para compra em 2026. Explorar oferta especial que justifique investimento mesmo em cenário de redução.</p>
+                            </div>
+
+                            <div class="quick-win-item">
+                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
+                                <strong><span class="timeline-badge timeline-later">2-4 SEM</span> Explorar futuras oportunidades de valor (IA para treinamentos)</strong>
+                                <p>Cliente aberto a novos formatos. Investigar soluções inovadoras (ex: geração automática de políticas, treinamentos personalizados).</p>
+                            </div>
+
+                            <div class="quick-win-item">
+                                <input type="checkbox" class="action-checkbox" aria-label="Marcar como completo">
+                                <strong><span class="timeline-badge timeline-later">FOLLOW-UP</span> Manter contato periódico e monitorar cenário econômico</strong>
+                                <p>Relacionamento excelente. Retomar proativamente quando segmento de ações melhorar ou para explorar novos valores.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="alaska-classificacao" class="client-subtab-content">
+                        <div class="section-title">Matriz de Risco e Oportunidade</div>
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr style="background: rgba(0, 155, 135, 0.1);">
+                                <td style="padding: 10px; border: 1px solid rgba(0, 155, 135, 0.3);"><strong>Dimensão</strong></td>
+                                <td style="padding: 10px; border: 1px solid rgba(0, 155, 135, 0.3);"><strong>Avaliação</strong></td>
+                                <td style="padding: 10px; border: 1px solid rgba(0, 155, 135, 0.3);"><strong>Contexto</strong></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid rgba(0, 155, 135, 0.3);"><strong>Satisfação com Compliasset</strong></td>
+                                <td style="padding: 10px; border: 1px solid rgba(0, 155, 135, 0.3);">✅ Muito Alta</td>
+                                <td style="padding: 10px; border: 1px solid rgba(0, 155, 135, 0.3);">Feedback espontâneo positivo; cliente comprou treinamentos regularmente 2022-2025</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid rgba(0, 155, 135, 0.3);"><strong>Conhecimento da Plataforma</strong></td>
+                                <td style="padding: 10px; border: 1px solid rgba(0, 155, 135, 0.3);">✅ Alto</td>
+                                <td style="padding: 10px; border: 1px solid rgba(0, 155, 135, 0.3);">Cliente desde junho/2021 com 5+ anos de uso contínuo até 2024</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid rgba(0, 155, 135, 0.3);"><strong>Risco de Churn (Parcial)</strong></td>
+                                <td style="padding: 10px; border: 1px solid rgba(0, 155, 135, 0.3);">🔴 Alto/Confirmado</td>
+                                <td style="padding: 10px; border: 1px solid rgba(0, 155, 135, 0.3);">Redução de 4 para 2 módulos já solicitada formalmente pós-reunião</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid rgba(0, 155, 135, 0.3);"><strong>Engajamento Atual</strong></td>
+                                <td style="padding: 10px; border: 1px solid rgba(0, 155, 135, 0.3);">🟡 Baixo</td>
+                                <td style="padding: 10px; border: 1px solid rgba(0, 155, 135, 0.3);">Não acessava desde 2025 (Acácio login em 26/jun/2026 após contato)</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid rgba(0, 155, 135, 0.3);"><strong>Oportunidade de Retenção</strong></td>
+                                <td style="padding: 10px; border: 1px solid rgba(0, 155, 135, 0.3);">🟡 Média (futuro)</td>
+                                <td style="padding: 10px; border: 1px solid rgba(0, 155, 135, 0.3);">Promoção de treinamentos, IA para compliance, melhoria do cenário econômico</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid rgba(0, 155, 135, 0.3);"><strong>Relacionamento</strong></td>
+                                <td style="padding: 10px; border: 1px solid rgba(0, 155, 135, 0.3);">✅ Excelente</td>
+                                <td style="padding: 10px; border: 1px solid rgba(0, 155, 135, 0.3);">Comunicação aberta, Acácio responde quando é comunicado específico, confiança mútua</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="alaska-transcricao" class="client-subtab-content">
+                        <div class="section-title">Feedback e Insights da Reunião (15/07/2026)</div>
+                        <div class="transcript-box">
+                            <div class="speaker">Acácio Roboredo - Alaska (E-mail Inicial)</div>
+                            <div class="speaker-content">
+                                "Por aqui está tudo certo. Uso como calendário para prazos regulatórios e os treinamentos. Esporadicamente uso os dossiês. Considere que estamos satisfeitos."
+                            </div>
+
+                            <div class="speaker">Acácio Roboredo - Alaska (Reunião 15/07)</div>
+                            <div class="speaker-content">
+                                Solicitou redução formal do plano para apenas <strong>Treinamentos e Dossiês Reputacionais</strong>, devido ao costcutting estratégico (parou distribuição de cotas, priorizando renda fixa).
+                            </div>
+
+                            <div class="speaker">Contexto Operacional</div>
+                            <div class="speaker-content">
+                                Cliente antigo (desde jun/2021) muito satisfeito com Compliasset, mas em transição estratégica. Parou de usar Agenda regulatória e demais módulos desde 2025. Conhece bem a plataforma (comprou treinamentos todos os anos 2022-2025). Preferiu deixar feedback por e-mail e depois agendou reunião para formalizar a redução.
+                            </div>
+
+                            <div class="speaker">Próximos Passos Confirmados</div>
+                            <div class="speaker-content">
+                                1. Formalizar proposta comercial reduzida (Treinamentos + Dossiês Reputacionais)<br>
+                                2. Aguarda promoção para compra de Treinamentos em 2026<br>
+                                3. Explorar futuros formatos de valor (IA para treinamentos de compliance)
+                            </div>
+                        </div>
+
+                        <div class="section-title">Referências de Arquivo</div>
+                        <ul class="item-list">
+                            <li><strong>Entrevista:</strong> estudo_clientes_Compli/entrevistas/2026-07-15_alaska_reuniao.md</li>
+                            <li><strong>Transcrição:</strong> estudo_clientes_Compli/transcricoes/2026-07-15_alaska_transcricao.md</li>
+                            <li><strong>Data da reunião:</strong> 15/07/2026</li>
+                            <li><strong>Responsável (Comercial):</strong> Laura Silva + Mayara</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- TAB 3: ANÁLISE COMPARATIVA -->
@@ -4058,6 +4283,25 @@
                         </div>
                     </div>
 
+                    <!-- ALASKA -->
+                    <div class="opportunity-card growth">
+                        <h4 class="opportunity-title growth">🟡 Alaska Asset</h4>
+                        <div class="opportunity-list">
+                            <div class="opportunity-item">
+                                <strong>1. Formalizar proposta comercial reduzida (Treinamentos + Dossiês Reputacionais)</strong>
+                                <p>Preparar e enviar contrato via Laura + Mayara (Comercial) com valores ajustados à redução solicitada.</p>
+                            </div>
+                            <div class="opportunity-item">
+                                <strong>2. Propor promoção de Treinamentos 2026</strong>
+                                <p>Cliente aguarda promoção para compra em 2026. Revisar e oferecer desconto/condição especial para manter investimento em treinamentos.</p>
+                            </div>
+                            <div class="opportunity-item">
+                                <strong>3. Explorar IA para treinamentos de compliance</strong>
+                                <p>Apresentar novo formato de valor agregado (ex: geração automática de políticas, treinamentos personalizados).</p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -4328,6 +4572,17 @@
                 priorityClass: 'badge-priority-high',
                 immediateAction: 'Parametrização de agenda + rotina mensal simplificada',
                 quickWins: 2
+            },
+            {
+                name: 'Alaska Asset',
+                shortName: 'Alaska',
+                stars: 1,
+                riskLevel: 'medium',
+                riskLabel: '🟡 Médio',
+                priority: 'ALTA',
+                priorityClass: 'badge-priority-high',
+                immediateAction: 'Formalizar redução: Treinamentos + Dossiês Reputacionais',
+                quickWins: 1
             }
         ];
 
@@ -4463,6 +4718,21 @@
                 transcriptStatus: 'Disponível',
                 interviewFile: 'entrevistas/2026-07-13_casaforte_investimentos_reuniao.md',
                 transcriptFile: 'transcricoes/2026-07-13_casaforte_investimentos_transcricao.md'
+            },
+            {
+                date: '15/07/2026',
+                client: 'Alaska Asset',
+                participants: 'Acácio Roboredo (Gestor), Laura Silva, Raquel Moreira, Evelyn Ferraz, Guilherme Bagattini',
+                insight: 'Cliente antigo (jun/2021) muito satisfeito, mas em costcutting estratégico. Não acessava sistema desde 2025. Solicitou redução formal para Treinamentos + Dossiês Reputacionais.',
+                impact: 'Churn parcial CONFIRMADO: redução de 4 módulos (Anticorrupção, Gestor Recursos, Gestor Distribuidor, Gestor FIP) para 2 (Treinamentos + Dossiês Reputacionais). Feedback inicial: "estamos satisfeitos". Aguarda promoção para compra de treinamentos.',
+                risk: 'Médio',
+                agreedAction: 'Formalizar proposta comercial reduzida + revisar promoção treinamentos 2026 + explorar IA para compliance',
+                deadline: 'Proposta formalização: até agosto/2026',
+                owner: 'Laura + Mayara (Comercial) + CS',
+                positiveSignals: 4,
+                transcriptStatus: 'Disponível',
+                interviewFile: 'entrevistas/2026-07-15_alaska_reuniao.md',
+                transcriptFile: 'transcricoes/2026-07-15_alaska_transcricao.md'
             }
         ];
 
