@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resumo Executivo — Pesquisa de IA Compliasset</title>
+  <style>
+    :root {
+      --brand:       #1a3a5c;
+      --brand-light: #2563a8;
+      --accent:      #e67e22;
+      --bg:          #f4f6f9;
+      --card:        #ffffff;
+      --text:        #2c3e50;
+      --muted:       #6b7280;
+      --border:      #e2e8f0;
+      --green:       #16a34a;
+      --red:         #dc2626;
+      --yellow:      #d97706;
+      --tag-bg:      #dbeafe;
+      --tag-color:   #1e40af;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    /* ── HEADER ── */
+    .page-header {
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-light) 100%);
+      color: #fff;
+      padding: 48px 64px 40px;
+    }
+    .page-header .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      opacity: .75;
+      margin-bottom: 10px;
+    }
+    .page-header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .page-header .subtitle {
+      font-size: 15px;
+      opacity: .8;
+    }
+    .meta-row {
+      display: flex;
+      gap: 24px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+    .meta-chip {
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 64px 80px;
+    }
+
+    section { margin-bottom: 48px; }
+
+    h2.section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--brand);
+      border-bottom: 3px solid var(--brand-light);
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2.section-title .icon { font-size: 20px; }
+
+    /* ── STAT CARDS ── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    .stat-card .value {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--brand-light);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-card .label {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    /* ── CLIENT TABLE ── */
+    .client-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    .client-table thead tr {
+      background: var(--brand);
+      color: #fff;
+    }
+    .client-table th {
+      padding: 12px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      text-align: left;
+    }
+    .client-table tbody tr:nth-child(even) { background: #f8fafc; }
+    .client-table tbody tr:hover { background: #eff6ff; }
+    .client-table td {
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      vertical-align: top;
+    }
+    .client-table tbody tr:last-child td { border-bottom: none; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .badge-ok  { background: #dcfce7; color: var(--green); }
+    .badge-pend { background: #fef9c3; color: var(--yellow); }
+    .badge-wait { background: #fee2e2; color: var(--red); }
+
+    /* ── OBJECTIVE ── */
+    .objective-box {
+      background: var(--card);
+      border-left: 5px solid var(--brand-light);
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    .objective-box p { color: var(--text); }
+
+    /* ── CONCLUSIONS ── */
+    .conclusion-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .conclusion-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+      display: flex;
+      gap: 14px;
+    }
+    .conclusion-card .c-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 2px;
+    }
+    .conclusion-card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--brand);
+      margin-bottom: 6px;
+    }
+    .conclusion-card p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ── HYPOTHESIS ── */
+    .hyp-list { list-style: none; }
+    .hyp-list li {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    }
+    .hyp-num {
+      background: var(--brand-light);
+      color: #fff;
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .hyp-list li span { font-size: 14px; }
+
+    /* ── FEEDBACK DIMENSIONS ── */
+    .feedback-tabs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .feedback-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    .feedback-card .fc-header {
+      padding: 12px 18px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .fc-ease    .fc-header { background: #2563a8; }
+    .fc-value   .fc-header { background: #16a34a; }
+    .fc-nav     .fc-header { background: #7c3aed; }
+    .fc-under   .fc-header { background: #ea580c; }
+    .fc-other   .fc-header { background: #0891b2; }
+
+    .feedback-card ul {
+      list-style: none;
+      padding: 14px 18px;
+    }
+    .feedback-card ul li {
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .feedback-card ul li:last-child { border-bottom: none; }
+    .feedback-card ul li::before {
+      content: "•";
+      color: var(--brand-light);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── CLIENT DETAIL BLOCKS ── */
+    .client-detail {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    .cd-header {
+      background: linear-gradient(90deg, var(--brand) 0%, var(--brand-light) 100%);
+      color: #fff;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .cd-header h3 { font-size: 16px; font-weight: 700; }
+    .cd-header .cd-date { font-size: 12px; opacity: .8; }
+
+    .cd-body { padding: 16px 20px; }
+
+    .cd-topics { list-style: none; }
+    .cd-topics > li {
+      margin-bottom: 12px;
+    }
+    .cd-topics .topic-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--brand);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cd-topics .topic-title::before {
+      content: "▸";
+      color: var(--accent);
+    }
+    .cd-topics .topic-desc {
+      font-size: 13px;
+      color: var(--muted);
+      padding-left: 14px;
+    }
+
+    .tag {
+      display: inline-flex;
+      background: var(--tag-bg);
+      color: var(--tag-color);
+      border-radius: 6px;
+      padding: 2px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      margin: 2px 2px 2px 0;
+    }
+
+    /* ── QUOTE ── */
+    blockquote {
+      background: #f0f9ff;
+      border-left: 4px solid var(--brand-light);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      margin: 10px 0;
+      font-size: 13px;
+      font-style: italic;
+      color: #374151;
+    }
+
+    /* ── PAIN MATRIX ── */
+    .pain-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+      font-size: 13px;
+    }
+    .pain-table thead tr { background: var(--brand); color: #fff; }
+    .pain-table th { padding: 10px 14px; text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: .07em; }
+    .pain-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .pain-table tbody tr:nth-child(even) { background: #f8fafc; }
+
+    .dot-row { display: flex; gap: 6px; }
+    .dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      display: inline-block;
+    }
+    .dot-fill  { background: var(--brand-light); }
+    .dot-empty { background: var(--border); }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: var(--muted);
+      font-size: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 680px) {
+      .page-header { padding: 32px 24px 28px; }
+      .container { padding: 28px 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════ HEADER ═══════════════════════ -->
+<div class="page-header">
+  <div class="eyebrow">Compliasset · Pesquisa de Produto</div>
+  <h1>Resumo Executivo — Descoberta de IA</h1>
+  <div class="subtitle">Entrevistas com clientes sobre adoção de Inteligência Artificial na plataforma</div>
+  <div class="meta-row">
+    <div class="meta-chip">📅 Julho–Agosto 2026</div>
+    <div class="meta-chip">🏢 4 clientes entrevistados</div>
+    <div class="meta-chip">🎯 Fase: Descoberta</div>
+    <div class="meta-chip">📋 Gerado em 04/08/2026</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ BODY ═══════════════════════ -->
+<div class="container">
+
+  <!-- ── OBJETIVO ── -->
+  <section>
+    <h2 class="section-title"><span class="icon">🎯</span> Objetivo da Pesquisa</h2>
+    <div class="objective-box">
+      <p>
+        Compreender como recursos de Inteligência Artificial podem ser incorporados ao Compliasset para reduzir o esforço operacional das equipes de compliance, aumentar a eficiência na gestão regulatória e identificar as oportunidades de maior impacto percebido pelos clientes — antes de qualquer decisão de roadmap.
+      </p>
+      <p style="margin-top:10px;">
+        As conversas foram conduzidas em formato de entrevista aberta pela equipe de relacionamento e produto, utilizando um roteiro estruturado que partiu da rotina atual dos times até a visão de uso ideal de IA dentro da plataforma.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── VISÃO GERAL ── -->
+  <section>
+    <h2 class="section-title"><span class="icon">📊</span> Visão Geral</h2>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="value">5</div>
+        <div class="label">Clientes contatados</div>
+      </div>
+      <div class="stat-card">
+        <div class="value">4</div>
+        <div class="label">Entrevistas realizadas</div>
+      </div>
+      <div class="stat-card">
+        <div class="value">1</div>
+        <div class="label">Aguardando reagendamento</div>
+      </div>
+      <div class="stat-card">
+        <div class="value">7</div>
+        <div class="label">Temas de IA identificados</div>
+      </div>
+      <div class="stat-card">
+        <div class="value">100%</div>
+        <div class="label">Veem valor em IA</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PERFIL DOS CLIENTES ── -->
+  <section>
+    <h2 class="section-title"><span class="icon">🏢</span> Clientes Entrevistados</h2>
+    <table class="client-table">
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Data</th>
+          <th>Perfil / Segmento</th>
+          <th>Uso atual do Compliasset</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>WHG</strong></td>
+          <td>28/07/2026</td>
+          <td>Gestora de recursos / Wealth management</td>
+          <td>Agenda regulatória, treinamentos, políticas, due diligence de terceiros</td>
+          <td><span class="badge badge-ok">Realizada</span></td>
+        </tr>
+        <tr>
+          <td><strong>CM Capital</strong></td>
+          <td>28/07/2026</td>
+          <td>Gestora de ativos</td>
+          <td>Monitoramento de normativos, due diligence, políticas internas</td>
+          <td><span class="badge badge-ok">Realizada</span></td>
+        </tr>
+        <tr>
+          <td><strong>WeBull Brasil</strong></td>
+          <td>28/07/2026</td>
+          <td>Corretora / Fintech</td>
+          <td>Agenda regulatória, due diligence de parceiros e colaboradores; operação solo pelo compliance</td>
+          <td><span class="badge badge-ok">Realizada</span></td>
+        </tr>
+        <tr>
+          <td><strong>AZ Quest</strong></td>
+          <td>03/08/2026</td>
+          <td>Gestora de recursos</td>
+          <td>Agenda regulatória, evidências, treinamentos, solicitação de investimento pessoal, Boletim Diário</td>
+          <td><span class="badge badge-ok">Realizada</span></td>
+        </tr>
+        <tr>
+          <td><strong>Prada</strong></td>
+          <td>03/08/2026</td>
+          <td>—</td>
+          <td>—</td>
+          <td><span class="badge badge-wait">Adiada</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── PRINCIPAIS CONCLUSÕES ── -->
+  <section>
+    <h2 class="section-title"><span class="icon">💡</span> Principais Conclusões</h2>
+    <div class="conclusion-grid">
+      <div class="conclusion-card">
+        <div class="c-icon">🔁</div>
+        <div>
+          <h3>Sobrecarga operacional generalizada</h3>
+          <p>100% dos entrevistados relatam excesso de tarefas manuais e repetitivas — envio de treinamentos, distribuição de políticas, análise de normativos — que poderiam ser automatizadas.</p>
+        </div>
+      </div>
+      <div class="conclusion-card">
+        <div class="c-icon">📋</div>
+        <div>
+          <h3>Dificuldade de priorização</h3>
+          <p>Clientes têm dificuldade em separar obrigações críticas de recomendações dentro da agenda. A falta de uma visão priorizada por risco/prazo aumenta o risco de falhas humanas.</p>
+        </div>
+      </div>
+      <div class="conclusion-card">
+        <div class="c-icon">📡</div>
+        <div>
+          <h3>Análise manual de normativos é gargalo</h3>
+          <p>Todos os clientes precisam verificar manualmente a aplicabilidade de cada normativo ao seu escopo de atuação. Volume alto e equipes pequenas aumentam o risco de algo passar despercebido (citado pela CM Capital e WHG).</p>
+        </div>
+      </div>
+      <div class="conclusion-card">
+        <div class="c-icon">🤖</div>
+        <div>
+          <h3>Alta abertura ao uso de IA</h3>
+          <p>Todos os clientes demonstraram interesse em IA. AZ Quest já usa ChatGPT e Claude com "skills" alimentadas por políticas internas; WeBull e WHG veem IA como aliada para reduzir trabalho repetitivo.</p>
+        </div>
+      </div>
+      <div class="conclusion-card">
+        <div class="c-icon">🔍</div>
+        <div>
+          <h3>Busca semântica como necessidade imediata</h3>
+          <p>AZ Quest relatou a busca por atividades relacionadas a temas (ex.: PLD) como caso de uso concreto e de alta frequência — um dos mais mencionados de forma espontânea.</p>
+        </div>
+      </div>
+      <div class="conclusion-card">
+        <div class="c-icon">🏗️</div>
+        <div>
+          <h3>UX percebida como complexa</h3>
+          <p>CM Capital e WeBull apontaram a plataforma como confusa em algumas áreas, especialmente due diligence. IA pode não só automatizar, mas guiar o usuário dentro de fluxos complexos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HIPÓTESES ── -->
+  <section>
+    <h2 class="section-title"><span class="icon">🧪</span> Hipóteses a Validar</h2>
+    <ul class="hyp-list">
+      <li>
+        <div class="hyp-num">H1</div>
+        <span>Uma IA capaz de <strong>filtrar normativos por aplicabilidade</strong> ao perfil do cliente reduz significativamente o tempo de análise da equipe de compliance e o risco de não-conformidade por itens não identificados.</span>
+      </li>
+      <li>
+        <div class="hyp-num">H2</div>
+        <span>Um <strong>assistente de busca semântica sobre atividades</strong> (ex.: "mostre tudo de PLD") aumenta a produtividade dos analistas e reduz dependência de exportações e planilhas paralelas.</span>
+      </li>
+      <li>
+        <div class="hyp-num">H3</div>
+        <span>Um <strong>daily briefing automatizado</strong> com priorização por prazo e criticidade reduz o risco de perda de atividades críticas em equipes com poucos colaboradores.</span>
+      </li>
+      <li>
+        <div class="hyp-num">H4</div>
+        <span>A <strong>conversão automática de normativos em atividades</strong> (desmembramento de exigências) eliminaria um dos processos mais manuais do compliance, especialmente para clientes com operação solo.</span>
+      </li>
+      <li>
+        <div class="hyp-num">H5</div>
+        <span>Um mecanismo de <strong>validação de políticas internas contra normativos</strong> (gap analysis via IA) teria alta adoção, especialmente em clientes que já utilizam IA para esse fim de forma externa (AZ Quest, WHG).</span>
+      </li>
+      <li>
+        <div class="hyp-num">H6</div>
+        <span>A <strong>automação do processo de due diligence</strong> — preenchimento preliminar via envio de documentos e pré-análise de requisitos — reduz tempo de execução e melhora a percepção de facilidade de uso da plataforma.</span>
+      </li>
+      <li>
+        <div class="hyp-num">H7</div>
+        <span>Clientes com <strong>quadro físico de lembretes ou planilhas paralelas</strong> (AZ Quest, WeBull) adotariam um assistente de IA dentro do Compliasset se ele reproduzisse essa visibilidade de forma centralizada.</span>
+      </li>
+      <li>
+        <div class="hyp-num">H8</div>
+        <span>A possibilidade de <strong>integração com ferramentas de IA externas</strong> (ChatGPT, Claude) seria um diferencial percebido por usuários mais avançados tecnologicamente, aumentando a retenção e a satisfação.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ── FEEDBACKS POR DIMENSÃO ── -->
+  <section>
+    <h2 class="section-title"><span class="icon">📝</span> Feedbacks Coletados por Dimensão</h2>
+    <div class="feedback-tabs">
+
+      <div class="feedback-card fc-ease">
+        <div class="fc-header">🖱️ Facilidade de Uso</div>
+        <ul>
+          <li>Excesso de cliques para envio/acompanhamento de treinamentos e políticas (WHG)</li>
+          <li>Plataforma percebida como confusa nas due diligences (CM Capital)</li>
+          <li>Processo de subir normativos manualmente, atividade por atividade, é exaustivo (WeBull)</li>
+          <li>Periodicidades de atividades precisam de ajuste constante e manual (AZ Quest)</li>
+          <li>Expectativa de IA como guia passo a passo dentro de fluxos complexos (CM Capital)</li>
+        </ul>
+      </div>
+
+      <div class="feedback-card fc-value">
+        <div class="fc-header">💼 Valor de Negócio</div>
+        <ul>
+          <li>Redução de risco regulatório por não identificar normativos aplicáveis (CM Capital, WHG)</li>
+          <li>IA que desmembra normativos em atividades eliminaria um processo totalmente manual (WHG, WeBull)</li>
+          <li>Filtro automático de comunicados do BCB com alta relação custo-benefício (WHG)</li>
+          <li>Score automatizado de terceiros: custo por consulta é impeditivo hoje (~R$25); alternativas de big data existem (WHG)</li>
+          <li>IA para validar aderência de políticas internas a normas reduz retrabalho em auditorias (CM Capital, AZ Quest)</li>
+        </ul>
+      </div>
+
+      <div class="feedback-card fc-nav">
+        <div class="fc-header">🗺️ Navegação Intuitiva</div>
+        <ul>
+          <li>Dificuldade em visualizar e priorizar obrigações dentro da agenda (WHG)</li>
+          <li>Mistura de obrigações regulatórias com boas práticas sem distinção clara (WHG)</li>
+          <li>Uso de quadro físico como complemento à navegação do sistema (AZ Quest)</li>
+          <li>Expectativa de "daily briefing" para substituir navegação manual diária (WeBull)</li>
+          <li>Orientação contextual (chatbot dentro de cada módulo) reduziria fricção (CM Capital)</li>
+        </ul>
+      </div>
+
+      <div class="feedback-card fc-under">
+        <div class="fc-header">🧠 O que o Cliente Entendeu</div>
+        <ul>
+          <li>IA como <em>assistente do analista</em>, não como substituto — foco em reduzir trabalho repetitivo (CM Capital)</li>
+          <li>Compreendeu o assistente como um "agente de Agile" para organizar demandas regulatórias (WeBull)</li>
+          <li>Entendeu que a IA precisaria ser alimentada com contexto da empresa para ser útil — e viu isso como positivo, não como barreira (AZ Quest)</li>
+          <li>Percebeu que IA dentro do Compliasset seria complementar às ferramentas externas que já usa (AZ Quest)</li>
+          <li>Alguns usos (ex.: background check) dependem de integração com fontes externas; cliente entendeu o trade-off de custo (WHG)</li>
+        </ul>
+      </div>
+
+      <div class="feedback-card fc-other">
+        <div class="fc-header">📌 Outros Pontos Relevantes</div>
+        <ul>
+          <li>Boletim Diário é uma das fontes mais usadas; clientes produzem clipping regulatório a partir dele (AZ Quest)</li>
+          <li>WeBull opera compliance solo — qualquer automação tem impacto desproporcional de produtividade</li>
+          <li>AZ Quest já usa Claude com "skill" própria alimentada por políticas internas, chamada de "Oráculo"</li>
+          <li>Prada não pôde participar na data agendada — entrevista pendente de reagendamento</li>
+          <li>Expansão regulatória (câmbio, ativos virtuais) abre possibilidade de novos módulos com suporte de IA (WeBull)</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── DORES POR CLIENTE (MATRIZ) ── -->
+  <section>
+    <h2 class="section-title"><span class="icon">🔥</span> Matriz de Dores × Clientes</h2>
+    <table class="pain-table">
+      <thead>
+        <tr>
+          <th>Dor / Oportunidade</th>
+          <th>WHG</th>
+          <th>CM Capital</th>
+          <th>WeBull</th>
+          <th>AZ Quest</th>
+          <th>Menções</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Análise manual de aplicabilidade de normativos</td>
+          <td>✅</td><td>✅</td><td>✅</td><td>⬜</td>
+          <td><strong>3/4</strong></td>
+        </tr>
+        <tr>
+          <td>Processo de due diligence complexo ou manual</td>
+          <td>✅</td><td>✅</td><td>✅</td><td>⬜</td>
+          <td><strong>3/4</strong></td>
+        </tr>
+        <tr>
+          <td>Priorização e visualização de obrigações</td>
+          <td>✅</td><td>⬜</td><td>✅</td><td>✅</td>
+          <td><strong>3/4</strong></td>
+        </tr>
+        <tr>
+          <td>Validação de políticas internas contra normas</td>
+          <td>✅</td><td>✅</td><td>⬜</td><td>✅</td>
+          <td><strong>3/4</strong></td>
+        </tr>
+        <tr>
+          <td>Excesso de atividades manuais e repetitivas</td>
+          <td>✅</td><td>✅</td><td>✅</td><td>✅</td>
+          <td><strong>4/4</strong></td>
+        </tr>
+        <tr>
+          <td>Busca semântica sobre atividades/temas</td>
+          <td>⬜</td><td>⬜</td><td>⬜</td><td>✅</td>
+          <td><strong>1/4</strong></td>
+        </tr>
+        <tr>
+          <td>Gestão e envio de treinamentos</td>
+          <td>✅</td><td>⬜</td><td>⬜</td><td>⬜</td>
+          <td><strong>1/4</strong></td>
+        </tr>
+        <tr>
+          <td>Integração com IAs externas (ChatGPT/Claude)</td>
+          <td>⬜</td><td>⬜</td><td>⬜</td><td>✅</td>
+          <td><strong>1/4</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── DETALHES POR CLIENTE ── -->
+  <section>
+    <h2 class="section-title"><span class="icon">🗂️</span> Detalhamento por Cliente</h2>
+
+    <!-- WHG -->
+    <div class="client-detail">
+      <div class="cd-header">
+        <h3>WHG</h3>
+        <span class="cd-date">28/07/2026</span>
+      </div>
+      <div class="cd-body">
+        <ul class="cd-topics">
+          <li>
+            <div class="topic-title">Gestão de treinamentos <span class="tag">Automação</span></div>
+            <div class="topic-desc">Envio automático para novos colaboradores e acompanhamento de pendências, hoje feito de forma totalmente manual.</div>
+          </li>
+          <li>
+            <div class="topic-title">Priorização de obrigações regulatórias <span class="tag">UX</span> <span class="tag">Agenda</span></div>
+            <div class="topic-desc">Agenda mistura obrigatório e boas práticas sem distinção. Cliente quer diferenciação clara entre Obrigatório × Recomendado.</div>
+          </li>
+          <li>
+            <div class="topic-title">Publicação e distribuição de políticas <span class="tag">Automação</span></div>
+            <div class="topic-desc">Processo exige muitos cliques. Necessidade de automatizar distribuição, comunicação e controle de leitura por grupos de usuários.</div>
+          </li>
+          <li>
+            <div class="topic-title">Conversão automática de normativos em atividades <span class="tag">IA Core</span></div>
+            <div class="topic-desc">Receber normativo → interpretar → desmembrar em atividades com responsáveis e prazos automaticamente.</div>
+          </li>
+          <li>
+            <div class="topic-title">Análise de aplicabilidade regulatória <span class="tag">IA Core</span></div>
+            <div class="topic-desc">Filtro automático de comunicados do BCB (alto volume, baixa aplicabilidade). IA que identifica o que é relevante e gera ação.</div>
+          </li>
+          <li>
+            <div class="topic-title">Revisão de políticas e conformidade <span class="tag">Gap Analysis</span></div>
+            <div class="topic-desc">Comparar normativos com políticas internas, identificar lacunas e sugerir adequações. Cliente já usa IA externamente para isso.</div>
+          </li>
+          <li>
+            <div class="topic-title">Cadastro e avaliação de terceiros <span class="tag">Due Diligence</span></div>
+            <div class="topic-desc">Background check automatizado. Custo atual (~R$25/consulta) é impeditivo; integração com big data de baixo custo já é feita por eles como alternativa.</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CM Capital -->
+    <div class="client-detail">
+      <div class="cd-header">
+        <h3>CM Capital</h3>
+        <span class="cd-date">28/07/2026</span>
+      </div>
+      <div class="cd-body">
+        <blockquote>"A IA deve ser uma ferramenta para ajudar o analista de compliance — que é muito atarefado — a aumentar a eficiência e reduzir o risco de falhas humanas."</blockquote>
+        <ul class="cd-topics" style="margin-top:12px;">
+          <li>
+            <div class="topic-title">Monitoramento inteligente de normativos <span class="tag">IA Core</span></div>
+            <div class="topic-desc">Hoje exige análise manual de cada publicação. Caso relatado: Resolução CVM 245 passou despercebida, cliente foi notificado pela Ancord depois. IA deve notificar proativamente com avaliação de impacto.</div>
+          </li>
+          <li>
+            <div class="topic-title">Apoio em due diligence <span class="tag">UX</span> <span class="tag">Automação</span></div>
+            <div class="topic-desc">Plataforma percebida como confusa no módulo de due diligence. IA poderia orientar o usuário passo a passo, esclarecer requisitos e reduzir esforço operacional.</div>
+          </li>
+          <li>
+            <div class="topic-title">Validação de políticas <span class="tag">Gap Analysis</span></div>
+            <div class="topic-desc">Uso de IA como "double check" das políticas internas, identificando inconsistências e lacunas antes de submissões e auditorias.</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- WeBull -->
+    <div class="client-detail">
+      <div class="cd-header">
+        <h3>WeBull Brasil</h3>
+        <span class="cd-date">28/07/2026</span>
+      </div>
+      <div class="cd-body">
+        <blockquote>"A cliente faz tudo sozinha: baixa a norma, analisa, separa em atividades no Excel, sobe uma a uma no sistema, define responsáveis..." — operação solo de compliance.</blockquote>
+        <ul class="cd-topics" style="margin-top:12px;">
+          <li>
+            <div class="topic-title">Assistente de planejamento — daily briefing <span class="tag">Priorização</span></div>
+            <div class="topic-desc">Visão consolidada: o que fazer hoje, pendências do mês, marcos do semestre. Plataforma como "agente de Agile" do compliance.</div>
+          </li>
+          <li>
+            <div class="topic-title">Cobertura regulatória expandida <span class="tag">Roadmap</span></div>
+            <div class="topic-desc">Interesse em suporte a temas não cobertos: câmbio, ativos virtuais/criptoativos.</div>
+          </li>
+          <li>
+            <div class="topic-title">Automação de due diligence <span class="tag">Automação</span></div>
+            <div class="topic-desc">Envio de documentos para preenchimento preliminar pela IA, estruturação de análise inicial e sugestão de complementações.</div>
+          </li>
+          <li>
+            <div class="topic-title">Primeira camada de quality check <span class="tag">IA Core</span></div>
+            <div class="topic-desc">Pré-análise de requisitos regulatórios; se já aderente, conclui atividade automaticamente. Reduz análise inicial manual.</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- AZ Quest -->
+    <div class="client-detail">
+      <div class="cd-header">
+        <h3>AZ Quest</h3>
+        <span class="cd-date">03/08/2026</span>
+      </div>
+      <div class="cd-body">
+        <blockquote>"Tenho uma skill no Claude que apelidei de 'Oráculo', alimentada com todas as nossas políticas e manuais internos. Se fosse possível conectar esse conhecimento ao assistente de vocês, ele poderia atuar como uma ponte."</blockquote>
+        <ul class="cd-topics" style="margin-top:12px;">
+          <li>
+            <div class="topic-title">Busca semântica sobre atividades <span class="tag">IA Core</span></div>
+            <div class="topic-desc">Caso concreto: buscar tudo relacionado a PLD para compor o Relatório de Controles Internos (entregue todo ano até abril). IA deve retornar atividades por tema de forma estruturada.</div>
+          </li>
+          <li>
+            <div class="topic-title">Integração com IAs externas <span class="tag">Integrações</span></div>
+            <div class="topic-desc">Interesse em conectar o assistente do Compliasset ao ChatGPT ou Claude — especialmente para confrontar documentos com políticas internas em tempo real.</div>
+          </li>
+          <li>
+            <div class="topic-title">Uso intenso do Boletim Diário <span class="tag">Conteúdo</span></div>
+            <div class="topic-desc">Principal fonte para clipping regulatório quinzenal enviado a toda a empresa. IA que filtrasse e estruturasse esse conteúdo teria alto valor.</div>
+          </li>
+          <li>
+            <div class="topic-title">Ajuste dinâmico de periodicidades <span class="tag">Agenda</span></div>
+            <div class="topic-desc">Revisão contínua de frequências baseada em nível de risco. IA poderia sugerir ajustes automaticamente conforme histórico de execução e risco associado.</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── PRÓXIMOS PASSOS ── -->
+  <section>
+    <h2 class="section-title"><span class="icon">🚀</span> Próximos Passos Sugeridos</h2>
+    <ul class="hyp-list">
+      <li>
+        <div class="hyp-num">1</div>
+        <span>Realizar entrevista com <strong>Prada</strong> (reagendamento pendente) para completar o ciclo de descoberta.</span>
+      </li>
+      <li>
+        <div class="hyp-num">2</div>
+        <span>Priorizar protótipo de <strong>busca semântica e filtro de normativos por aplicabilidade</strong> — maior número de menções espontâneas e alto impacto percebido.</span>
+      </li>
+      <li>
+        <div class="hyp-num">3</div>
+        <span>Conduzir teste de conceito do <strong>daily briefing / assistente de priorização</strong> com WeBull (operação solo, impacto imediato).</span>
+      </li>
+      <li>
+        <div class="hyp-num">4</div>
+        <span>Avaliar viabilidade técnica da <strong>conversão automática de normativos em atividades</strong> — mencionado por 2 clientes como o uso de IA de maior impacto operacional.</span>
+      </li>
+      <li>
+        <div class="hyp-num">5</div>
+        <span>Mapear investimento necessário para <strong>revisão de UX do módulo de due diligence</strong>, identificado como confuso por 2 clientes — oportunidade de combinar melhoria de navegação com guia por IA.</span>
+      </li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>
+  Compliasset · Pesquisa de Descoberta de IA · Documento interno · Agosto 2026
+</footer>
+
+</body>
+</html>
