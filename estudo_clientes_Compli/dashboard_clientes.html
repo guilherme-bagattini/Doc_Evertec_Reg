@@ -1680,7 +1680,7 @@
             <header>
                 <h1>Dashboard sobre Entrevistas dos Clientes</h1>
                 <p class="subtitle">Compliasset · Base para priorizar retenção e renovação — entrevistas em andamento</p>
-                <p class="date-info" id="dateInfo">Atualizado: 15 de julho de 2026 | 8 entrevistas realizadas (base total em mapeamento) | Análise Comparativa</p>
+                <p class="date-info" id="dateInfo">Atualizado: 13 de agosto de 2026 | 11 entrevistas realizadas (base total em mapeamento) | Análise Comparativa</p>
             </header>
 
             <div class="cards-grid" id="executiveCards"></div>
@@ -1988,7 +1988,7 @@
                 <div class="quick-read-box">
                     <h4>Leitura Rápida (60 segundos)</h4>
                     <ul>
-                        <li>Foram realizadas 9 entrevistas com perfis e estágios diferentes de maturidade.</li>
+                        <li>Foram realizadas 11 entrevistas com perfis e estágios diferentes de maturidade.</li>
                         <li>Sinal positivo recorrente: clientes seguem engajando nas conversas e aceitam planos de ação quando há direcionamento claro.</li>
                         <li>Padrão dominante: baixa adoção por onboarding incompleto, excesso de complexidade e uso parcial dos módulos.</li>
                         <li>Maior risco imediato: Capsicum (churn iminente). Maiores oportunidades de recuperação: AWR, Daemon, Agro Eldorado, Casaforte e Alaska (costcutting).</li>
@@ -4481,7 +4481,23 @@
 
     <script>
         /**
-         * DASHBOARD FUNCTIONS - Refatorado e Organizado
+         * ========================================
+         * DASHBOARD - CLIENT ANALYSIS SYSTEM
+         * ========================================
+         * 
+         * CLEAN CODE IMPROVEMENTS:
+         * ✓ Constants centralizadas em CONFIG object
+         * ✓ Seletores CSS centralizados em SELECTORS
+         * ✓ Funções com JSDoc completo
+         * ✓ Tratamento de erros com console.warn/error
+         * ✓ Validação de parâmetros de entrada
+         * ✓ Nomes descritivos (markElementAsActive vs setActiveState)
+         * ✓ Arrow functions e .toggle() para simplificar lógica
+         * ✓ queryOne/queryAllArray com tratamento de exception
+         * ✓ Switch statement vs if/else aninhado (keyboard navigation)
+         * 
+         * @author Dashboard Development Team
+         * @version 2.1 (Clean Code Refactoring)
          */
 
         const clientsData = [
@@ -4586,17 +4602,28 @@
             }
         ];
 
-        function getRiskBadgeClass(riskLevel) {
-            if (riskLevel === 'critical' || riskLevel === 'high') {
-                return 'badge-risk-red';
-            }
-            if (riskLevel === 'medium') {
-                return 'badge-risk-yellow';
-            }
-            return 'badge-risk-green';
-        }
+        // ===== CONSTANTS & CONFIG =====
+        const CONFIG = {
+            consolidationDate: '13 de agosto de 2026',
+            riskBadgeMap: {
+                critical: 'badge-risk-red',
+                high: 'badge-risk-red',
+                medium: 'badge-risk-yellow',
+                low: 'badge-risk-green'
+            },
+            chartTimeoutMs: 500
+        };
 
-        const LAST_CONSOLIDATION_DATE = '15 de julho de 2026';
+        const LAST_CONSOLIDATION_DATE = CONFIG.consolidationDate;
+
+        /**
+         * Obtém classe de badge de risco baseada no nível
+         * @param {string} riskLevel - Nível de risco (critical, high, medium, low)
+         * @returns {string} Classe CSS correspondente
+         */
+        function getRiskBadgeClass(riskLevel) {
+            return CONFIG.riskBadgeMap[riskLevel] || 'badge-risk-green';
+        }
 
         const interviewsData = [
             {
@@ -4733,6 +4760,36 @@
                 transcriptStatus: 'Disponível',
                 interviewFile: 'entrevistas/2026-07-15_alaska_reuniao.md',
                 transcriptFile: 'transcricoes/2026-07-15_alaska_transcricao.md'
+            },
+            {
+                date: '10/08/2026',
+                client: 'Gera',
+                participants: 'Patrícia Tepedino (Diretora de Compliance)',
+                insight: 'Cliente adormecido há 1,5 anos por dificuldades de usabilidade. Estava cogitando cancelar. Gestora pequena com apenas 1 pessoa no compliance (Patrícia) e falta de onboarding estruturado.',
+                impact: 'Risco crítico de churn em curto prazo. Oportunidade de ativação com treinamento estruturado e suporte direto focado em pequenas gestoras.',
+                risk: 'Alto',
+                agreedAction: 'Treinamento com Suporte + Jurídico focado em: onde arquivar, criar dossiês, usar agenda regulatória, mapeamento de controles/riscos CVM',
+                deadline: 'Quinta-feira à tarde (próxima)',
+                owner: 'Suporte + Jurídico + Laura',
+                positiveSignals: 2,
+                transcriptStatus: 'Disponível',
+                interviewFile: 'entrevistas/2026-08-10_gera_reuniao.md',
+                transcriptFile: 'transcricoes/2026-08-10_gera_transcricao.md'
+            },
+            {
+                date: '07/08/2026',
+                client: 'SVN',
+                participants: 'Rafael Assad (Diretor de Compliance)',
+                insight: 'Gestora bem estruturada em expansão (FIF/Firfs/FIDC). Equipe crescendo. Heavy user de screening de contrapartes e data engine. Suporte jurídico é diferencial-chave (não tem advogado interno).',
+                impact: 'Cliente satisfeito com uso recorrente. Oportunidade de deepening com novos módulos + beta testing de ferramenta de análise de terceiros em desenvolvimento.',
+                risk: 'Baixo',
+                agreedAction: 'Mapeamento de módulos com Raquel + Convite para testar ferramenta de background check com análise inteligente em desenvolvimento',
+                deadline: 'Próximas 2-3 semanas (mapeamento)',
+                owner: 'Raquel + Produto + Laura',
+                positiveSignals: 5,
+                transcriptStatus: 'Disponível',
+                interviewFile: 'entrevistas/2026-08-07_svn_reuniao.md',
+                transcriptFile: 'transcricoes/2026-08-07_svn_transcricao.md'
             }
         ];
 
@@ -4928,15 +4985,57 @@
             actionCheckboxes: '.action-checkbox'
         };
 
+        /**
+         * Seleciona um único elemento usando CSS selector
+         * @param {string} selector - Seletor CSS
+         * @param {Document|Element} root - Raiz da busca (default: document)
+         * @returns {Element|null} Elemento encontrado ou null
+         */
         function queryOne(selector, root = document) {
-            return root.querySelector(selector);
+            if (!selector) {
+                console.warn('Selector vazio fornecido a queryOne');
+                return null;
+            }
+            try {
+                return root.querySelector(selector);
+            } catch (error) {
+                console.error(`Erro ao buscar selector: ${selector}`, error);
+                return null;
+            }
         }
 
+        /**
+         * Seleciona múltiplos elementos e retorna como array
+         * @param {string} selector - Seletor CSS
+         * @param {Document|Element} root - Raiz da busca (default: document)
+         * @returns {Element[]} Array de elementos encontrados
+         */
         function queryAllArray(selector, root = document) {
-            return Array.from(root.querySelectorAll(selector));
+            if (!selector) {
+                console.warn('Selector vazio fornecido a queryAllArray');
+                return [];
+            }
+            try {
+                return Array.from(root.querySelectorAll(selector));
+            } catch (error) {
+                console.error(`Erro ao buscar selectorAll: ${selector}`, error);
+                return [];
+            }
         }
 
+        /**
+         * Atualiza estado de acessibilidade (ARIA) e visibilidade dos tabs
+         * @param {Element[]} buttons - Botões de tab
+         * @param {Element[]} panels - Painéis de conteúdo
+         * @param {Element} activeButton - Botão ativo
+         * @param {Element} activePanel - Painel ativo
+         */
         function updateTabA11yState(buttons, panels, activeButton, activePanel) {
+            if (!buttons.length || !panels.length) {
+                console.warn('Botões ou painéis vazios para atualizar ARIA state');
+                return;
+            }
+
             buttons.forEach(button => {
                 const isActive = button === activeButton;
                 button.setAttribute('aria-selected', String(isActive));
@@ -4948,13 +5047,23 @@
             });
         }
 
+        /**
+         * Liga navegação por teclado nos tabs (Arrow Keys, Home, End)
+         * @param {Element} tablistElement - Container dos tabs
+         * @param {string} buttonSelector - Seletor dos botões de tab
+         */
         function bindTabKeyboardNavigation(tablistElement, buttonSelector) {
-            if (!tablistElement || tablistElement.dataset.keyboardBound === 'true') {
+            if (!tablistElement || !buttonSelector) {
+                console.warn('tablistElement ou buttonSelector inválido');
+                return;
+            }
+
+            if (tablistElement.dataset.keyboardBound === 'true') {
                 return;
             }
 
             tablistElement.addEventListener('keydown', event => {
-                const buttons = Array.from(tablistElement.querySelectorAll(buttonSelector))
+                const buttons = queryAllArray(buttonSelector, tablistElement)
                     .filter(button => button.getAttribute('aria-disabled') !== 'true' && !button.disabled);
 
                 if (!buttons.length) {
@@ -4967,14 +5076,21 @@
                 }
 
                 let nextIndex = -1;
-                if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
-                    nextIndex = (currentIndex + 1) % buttons.length;
-                } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
-                    nextIndex = (currentIndex - 1 + buttons.length) % buttons.length;
-                } else if (event.key === 'Home') {
-                    nextIndex = 0;
-                } else if (event.key === 'End') {
-                    nextIndex = buttons.length - 1;
+                switch (event.key) {
+                    case 'ArrowRight':
+                    case 'ArrowDown':
+                        nextIndex = (currentIndex + 1) % buttons.length;
+                        break;
+                    case 'ArrowLeft':
+                    case 'ArrowUp':
+                        nextIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+                        break;
+                    case 'Home':
+                        nextIndex = 0;
+                        break;
+                    case 'End':
+                        nextIndex = buttons.length - 1;
+                        break;
                 }
 
                 if (nextIndex !== -1) {
@@ -4987,8 +5103,20 @@
             tablistElement.dataset.keyboardBound = 'true';
         }
 
+        /**
+         * Configura acessibilidade ARIA e navegação por teclado para um tablist
+         * @param {Object} config - Configuração
+         * @param {Element} config.tablist - Container dos tabs (role=tablist)
+         * @param {Element[]} config.buttons - Botões de aba
+         * @param {Element[]} config.panels - Painéis de conteúdo
+         * @param {string} config.buttonSelector - Seletor dos botões
+         * @param {string} config.defaultButtonSelector - Seletor do botão padrão ativo
+         * @param {Function} config.panelResolver - Função que encontra painel pelo ID
+         * @param {string} config.idPrefix - Prefixo para IDs gerados
+         */
         function configureTablistA11y({ tablist, buttons, panels, buttonSelector, defaultButtonSelector, panelResolver, idPrefix }) {
-            if (!tablist || !buttons.length) {
+            if (!tablist || !buttons || !buttons.length) {
+                console.warn('Configuração inválida de tablist A11y');
                 return;
             }
 
@@ -5060,13 +5188,27 @@
             });
         }
 
-        function setActiveState(elements, className, activeElement) {
+        /**
+         * Define o estado ativo/inativo de um conjunto de elementos
+         * @param {Element[]} elements - Elementos a serem modificados
+         * @param {string} className - Classe CSS a adicionar/remover
+         * @param {Element|null} activeElement - Elemento que receberá a classe ativa
+         */
+        function markElementAsActive(elements, className, activeElement) {
             elements.forEach(el => el.classList.remove(className));
             if (activeElement) {
                 activeElement.classList.add(className);
             }
         }
 
+        // Manter compatibilidade com código existente
+        const setActiveState = markElementAsActive;
+
+        /**
+         * Resolve elemento trigger de um evento ou elemento
+         * @param {Event|Element} eventOrElement - Evento ou elemento
+         * @returns {Element|null} Elemento trigger ou null
+         */
         function resolveTriggerButton(eventOrElement) {
             if (eventOrElement?.currentTarget) {
                 return eventOrElement.currentTarget;
@@ -5079,6 +5221,11 @@
             return null;
         }
 
+        /**
+         * Ativa uma aba e atualiza estado visual e acessibilidade
+         * @param {Event} event - Evento disparado
+         * @param {string} tabName - ID da aba a ativar
+         */
         function switchTab(event, tabName) {
             if (typeof event?.preventDefault === 'function') {
                 event.preventDefault();
@@ -5090,11 +5237,12 @@
             const nextPanel = document.getElementById(tabName);
             const nextButton = resolveTriggerButton(event);
             if (!nextPanel || !nextButton) {
+                console.warn(`Tab não encontrada: ${tabName}`);
                 return;
             }
 
-            setActiveState(panels, 'active', nextPanel);
-            setActiveState(buttons, 'active', nextButton);
+            markElementAsActive(panels, 'active', nextPanel);
+            markElementAsActive(buttons, 'active', nextButton);
 
             updateTabA11yState(
                 buttons,
@@ -5214,28 +5362,40 @@
         // Armazena instâncias dos gráficos globalmente
         let chartsInstances = { risco: null, utilizacao: null };
 
+        /**
+         * Inicializa gráficos Chart.js
+         * @throws {Error} Se Chart.js não estiver disponível
+         * @returns {void}
+         */
         function initCharts() {
-            const chartLoadWarning = document.getElementById('chartLoadWarning');
+            try {
+                const chartLoadWarning = document.getElementById('chartLoadWarning');
 
-            if (typeof window.Chart === 'undefined') {
-                if (chartLoadWarning) {
-                    chartLoadWarning.style.display = 'block';
+                if (typeof window.Chart === 'undefined') {
+                    if (chartLoadWarning) {
+                        chartLoadWarning.style.display = 'block';
+                    }
+                    console.warn('Chart.js não carregado. Verifique a CDN.');
+                    return;
                 }
-                return;
-            }
 
-            if (chartLoadWarning) {
-                chartLoadWarning.style.display = 'none';
-            }
+                if (chartLoadWarning) {
+                    chartLoadWarning.style.display = 'none';
+                }
 
-            const riscoCtx = document.getElementById('riscoChart')?.getContext('2d');
-            const utilizacaoCtx = document.getElementById('utilizacaoChart')?.getContext('2d');
+                const riscoCtx = document.getElementById('riscoChart')?.getContext('2d');
+                const utilizacaoCtx = document.getElementById('utilizacaoChart')?.getContext('2d');
 
-            const riscoLabels = ['🔴 Crítico', '🔴 Alto', '🟡 Médio'];
-            const riscoOrder = ['critical', 'high', 'medium'];
-            const riscoData = riscoOrder.map(riskLevel => {
-                return clientsData.filter(client => client.riskLevel === riskLevel).length;
-            });
+                if (!riscoCtx || !utilizacaoCtx) {
+                    console.error('Elementos de gráfico não encontrados no DOM');
+                    return;
+                }
+
+                const riscoLabels = ['🔴 Crítico', '🔴 Alto', '🟡 Médio'];
+                const riscoOrder = ['critical', 'high', 'medium'];
+                const riscoData = riscoOrder.map(riskLevel => {
+                    return clientsData.filter(client => client.riskLevel === riskLevel).length;
+                });
 
             // Destroi gráficos anteriores se existirem
             if (chartsInstances.risco) {
@@ -5290,9 +5450,26 @@
                     }
                 });
             }
+        } catch (error) {
+            console.error('Erro ao inicializar gráficos:', error);
+            const chartLoadWarning = document.getElementById('chartLoadWarning');
+            if (chartLoadWarning) {
+                chartLoadWarning.style.display = 'block';
+            }
+        }
         }
 
+        /**
+         * Alterna visibilidade de seção colapsável
+         * @param {Element} button - Botão que dispara o collapse
+         * @returns {void}
+         */
         function toggleCollapsible(button) {
+            if (!button) {
+                console.warn('Botão não fornecido ao toggleCollapsible');
+                return;
+            }
+
             const isExpanded = button.getAttribute('aria-expanded') === 'true';
             const nextSibling = button.nextElementSibling;
             const body = nextSibling && nextSibling.classList.contains('collapsible-hint')
@@ -5300,36 +5477,43 @@
                 : nextSibling;
 
             if (!body) {
+                console.warn('Corpo do collapse não encontrado');
                 return;
             }
 
             button.setAttribute('aria-expanded', String(!isExpanded));
-
-            if (!isExpanded) {
-                body.classList.add('open');
-            } else {
-                body.classList.remove('open');
-            }
+            body.classList.toggle('open', !isExpanded);
         }
 
+        /**
+         * Inicializa listeners para checkboxes de ações/quick wins
+         * Marca item como 'completed' quando checkbox é selecionado
+         */
         function initializeActionCheckboxes() {
             queryAllArray(SELECTORS.actionCheckboxes).forEach(checkbox => {
                 const quickWinItem = checkbox.closest('.quick-win-item');
                 if (!quickWinItem) {
+                    console.warn('Elemento .quick-win-item não encontrado para checkbox', checkbox);
                     return;
                 }
                 
-                checkbox.addEventListener('change', function() {
-                    if (this.checked) {
-                        quickWinItem.classList.add('completed');
-                    } else {
-                        quickWinItem.classList.remove('completed');
-                    }
+                checkbox.addEventListener('change', (event) => {
+                    quickWinItem.classList.toggle('completed', event.target.checked);
                 });
             });
         }
 
+        /**
+         * Liga handlers a botões usando addEventListener (remove onclick inline)
+         * @param {Element[]} buttons - Botões para ligar
+         * @param {Function} handler - Handler chamado no click (event, button)
+         */
         function bindClickOnce(buttons, handler) {
+            if (!Array.isArray(buttons) || !handler || typeof handler !== 'function') {
+                console.warn('Parâmetros inválidos fornecidos a bindClickOnce');
+                return;
+            }
+
             buttons.forEach(button => {
                 if (button.dataset.bound === 'true') {
                     return;
