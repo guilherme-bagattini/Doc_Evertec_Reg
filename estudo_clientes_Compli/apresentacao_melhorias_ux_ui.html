@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mapeamento de Melhorias de UX e UI — Compliasset</title>
+<style>
+  :root {
+    --brand:       #1a3a5c;
+    --brand-light: #2563a8;
+    --accent:      #e67e22;
+    --bg:          #f4f6f9;
+    --card:        #ffffff;
+    --text:        #2c3e50;
+    --muted:       #6b7280;
+    --border:      #e2e8f0;
+    --green:       #16a34a;
+    --green-bg:    #ecfdf5;
+    --red:         #dc2626;
+    --red-bg:      #fef2f2;
+    --yellow:      #d97706;
+    --yellow-bg:   #fffbeb;
+    --blue-bg:     #eff6ff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  a { color: var(--brand-light); }
+
+  /* ── HEADER ── */
+  .page-header {
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-light) 60%, #17416b 100%);
+    color: #fff;
+    padding: 56px 64px 44px;
+  }
+  .page-header .eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    opacity: .8;
+    margin-bottom: 12px;
+  }
+  .page-header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 12px;
+    max-width: 900px;
+  }
+  .page-header .subtitle {
+    font-size: 16px;
+    opacity: .85;
+    max-width: 780px;
+  }
+  .meta-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 26px;
+    flex-wrap: wrap;
+  }
+  .meta-chip {
+    background: rgba(255,255,255,.14);
+    border: 1px solid rgba(255,255,255,.28);
+    border-radius: 20px;
+    padding: 6px 15px;
+    font-size: 13px;
+  }
+  .detail-link {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 9px 15px;
+    border: 1px solid rgba(255,255,255,.35);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .detail-link:hover { background: rgba(255,255,255,.12); }
+
+  /* ── STICKY TOC ── */
+  .toc-bar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(255,255,255,.96);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(6px);
+    padding: 10px 64px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    overflow-x: auto;
+  }
+  .toc-bar a {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--brand);
+    text-decoration: none;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 6px 13px;
+    white-space: nowrap;
+    transition: background .15s;
+  }
+  .toc-bar a:hover { background: var(--blue-bg); }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 48px 64px 100px;
+  }
+
+  section.block { margin-bottom: 64px; scroll-margin-top: 60px; }
+
+  .section-kicker {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--brand-light);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--brand);
+    margin-bottom: 10px;
+  }
+  .section-lead {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 900px;
+    margin-bottom: 26px;
+  }
+
+  /* ── GRID / CARDS ── */
+  .grid { display: grid; gap: 18px; }
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 22px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.04);
+  }
+  .card h3 { font-size: 15px; color: var(--brand); margin-bottom: 8px; }
+  .card p { font-size: 13.5px; color: var(--muted); }
+
+  /* ── MATRIX ── */
+  .matrix {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .quad {
+    border-radius: 14px;
+    padding: 22px 24px;
+    border: 1px solid var(--border);
+  }
+  .quad .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .quad h3 { font-size: 16px; margin-bottom: 10px; color: var(--brand); }
+  .quad ul { font-size: 13px; padding-left: 18px; line-height: 1.75; }
+  .quad.q-green  { background: var(--green-bg); }
+  .quad.q-blue   { background: var(--blue-bg); }
+  .quad.q-yellow { background: var(--yellow-bg); }
+  .quad.q-red    { background: var(--red-bg); }
+  .tag.tag-green  { background: #d1fae5; color: #065f46; }
+  .tag.tag-blue   { background: #dbeafe; color: #1e40af; }
+  .tag.tag-yellow { background: #fef3c7; color: #92400e; }
+  .tag.tag-red    { background: #fee2e2; color: #991b1b; }
+
+  /* ── DETAILED ITEM CARDS ── */
+  .item-list { display: flex; flex-direction: column; gap: 14px; }
+  .item {
+    display: flex;
+    gap: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--brand-light);
+    border-radius: 10px;
+    padding: 18px 22px;
+  }
+  .item.avoid { border-left-color: var(--red); }
+  .item .num {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--brand-light);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .item.avoid .num { background: var(--red); }
+  .item .content h3 { font-size: 15.5px; color: var(--brand); margin-bottom: 6px; }
+  .item .content p { font-size: 13.5px; color: var(--text); margin-bottom: 8px; }
+  .item .content .why {
+    font-size: 12.5px;
+    color: var(--muted);
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 8px 12px;
+    display: inline-block;
+  }
+  .item .content .why strong { color: var(--brand); }
+
+  /* ── WAVES ── */
+  .waves { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .wave {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+  }
+  .wave .wave-num {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--brand-light);
+    padding: 5px 12px;
+    border-radius: 20px;
+    width: fit-content;
+    margin-bottom: 14px;
+  }
+  .wave:nth-child(2) .wave-num { background: var(--accent); }
+  .wave:nth-child(3) .wave-num { background: var(--muted); }
+  .wave h3 { font-size: 16px; color: var(--brand); margin-bottom: 12px; }
+  .wave ul { font-size: 13.5px; padding-left: 18px; line-height: 1.8; }
+
+  /* ── THEME CHIPS ── */
+  .theme-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .theme-chip {
+    background: var(--blue-bg);
+    color: var(--brand);
+    border: 1px solid #bfdbfe;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* ── RETENTION BETS ── */
+  .retention-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .retention-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: 16px 20px;
+  }
+  .retention-card h3 { font-size: 15px; color: var(--brand); margin-bottom: 5px; }
+  .retention-card p { font-size: 13px; color: var(--muted); }
+  .retention-card .refs { margin-top: 8px; font-size: 12px; font-weight: 700; color: var(--brand-light); }
+  .demand-ref {
+    position: relative;
+    display: inline-block;
+    margin-right: 4px;
+    border-bottom: 1px dotted currentColor;
+    cursor: help;
+    outline: none;
+  }
+  .description-tooltip {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 10px);
+    z-index: 30;
+    width: 260px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: var(--brand);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.45;
+    text-align: left;
+    box-shadow: 0 6px 18px rgba(15,28,43,.22);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 5px);
+    transition: opacity .16s ease, transform .16s ease;
+  }
+  .description-tooltip::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    border: 6px solid transparent;
+    border-top-color: var(--brand);
+    transform: translateX(-50%);
+  }
+  .demand-ref:hover .description-tooltip,
+  .demand-ref:focus .description-tooltip {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+  }
+
+  /* ── CLOSING ── */
+  .closing-box {
+    background: linear-gradient(135deg, #17416b 0%, var(--brand) 100%);
+    color: #fff;
+    border-radius: 16px;
+    padding: 40px 48px;
+    text-align: center;
+  }
+  .closing-box h2 { font-size: 24px; margin-bottom: 12px; }
+  .closing-box p { font-size: 15px; opacity: .88; max-width: 760px; margin: 0 auto; }
+
+  @media (max-width: 900px) {
+    .grid-2, .grid-4, .matrix, .waves, .retention-grid { grid-template-columns: 1fr; }
+    .page-header, .container, .toc-bar { padding-left: 24px; padding-right: 24px; }
+  }
+
+  @media print {
+    .toc-bar { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="eyebrow">Compliasset · Apresentação Executiva</div>
+  <h1>Mapeamento de Melhorias de UX e UI para Compliasset</h1>
+  <p class="subtitle">Leitura consolidada de entrevistas com clientes, dossiês de retenção, solicitações registradas, dashboard de clientes e da pesquisa sobre Inteligência Artificial, organizada em uma matriz de Valor versus Esforço para orientar a priorização do produto.</p>
+  <div class="meta-row">
+    <div class="meta-chip">📋 Fontes: entrevistas, dossiês, solicitações, dashboard, pesquisa de IA</div>
+    <div class="meta-chip">🎯 Foco: retenção, adoção e redução de churn</div>
+    <div class="meta-chip">📅 Agosto de 2026</div>
+  </div>
+  <a class="detail-link" href="demandas_clientes_entrevistas.html">Abrir demandas detalhadas (DEM-001 a DEM-021) →</a>
+</header>
+
+<nav class="toc-bar">
+  <a href="#diagnostico">Diagnóstico</a>
+  <a href="#matriz">Matriz Valor x Esforço</a>
+  <a href="#q1">Alto Valor + Baixo Esforço</a>
+  <a href="#q2">Alto Valor + Alto Esforço</a>
+  <a href="#q3">Baixo Valor + Baixo Esforço</a>
+  <a href="#q4">Baixo Valor + Alto Esforço</a>
+  <a href="#temas">Temas Recorrentes</a>
+  <a href="#retencao">10 Ideias de Retenção</a>
+  <a href="demandas_clientes_entrevistas.html">Demandas detalhadas</a>
+  <a href="#roadmap">Roadmap por Ondas</a>
+  <a href="#conclusao">Conclusão</a>
+</nav>
+
+<div class="container">
+
+  <!-- DIAGNÓSTICO -->
+  <section class="block" id="diagnostico">
+    <div class="section-kicker">Diagnóstico</div>
+    <h2 class="section-title">O problema não é falta de funcionalidade</h2>
+    <p class="section-lead">A análise cruzada de entrevistas, dossiês, solicitações registradas, dashboard de clientes e pesquisa de IA revela um padrão consistente: as dificuldades dos usuários estão ligadas à experiência de uso, ao excesso de complexidade operacional, à dificuldade de priorização e à baixa percepção de valor do que já existe na plataforma — não à ausência de recursos.</p>
+    <div class="grid grid-4">
+      <div class="card">
+        <h3>Excesso de complexidade operacional</h3>
+        <p>Usuários enfrentam telas e fluxos que exigem esforço manual repetitivo para tarefas do dia a dia.</p>
+      </div>
+      <div class="card">
+        <h3>Dificuldade de priorização</h3>
+        <p>Falta clareza sobre o que é urgente, crítico ou apenas recomendável — especialmente na Agenda.</p>
+      </div>
+      <div class="card">
+        <h3>Baixa percepção de valor</h3>
+        <p>Muitos clientes, sobretudo equipes pequenas, utilizam apenas parte da plataforma e não enxergam todo o potencial.</p>
+      </div>
+      <div class="card">
+        <h3>Onboarding insuficiente</h3>
+        <p>Trocas de responsáveis ao longo do contrato deixam lacunas de conhecimento não supridas pelo produto.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MATRIZ -->
+  <section class="block" id="matriz">
+    <div class="section-kicker">Framework de priorização</div>
+    <h2 class="section-title">Matriz de Valor versus Esforço</h2>
+    <p class="section-lead">Todas as oportunidades identificadas foram classificadas em quatro quadrantes para orientar a sequência de execução.</p>
+    <div class="matrix">
+      <div class="quad q-green">
+        <span class="tag tag-green">Fazer agora</span>
+        <h3>Alto Valor + Baixo Esforço</h3>
+        <ul>
+          <li>Persistência de filtros e contexto de navegação</li>
+          <li>Priorização visual por criticidade</li>
+          <li>Painel de atenção diária</li>
+          <li>Personalização da página inicial</li>
+          <li>Onboarding contextual dentro das telas</li>
+          <li>Sistema de notificações push</li>
+          <li>Estados vazios mais educativos</li>
+        </ul>
+      </div>
+      <div class="quad q-blue">
+        <span class="tag tag-blue">Planejar</span>
+        <h3>Alto Valor + Alto Esforço</h3>
+        <ul>
+          <li>Agenda Inteligente</li>
+          <li>Assistente de IA integrado</li>
+          <li>Busca semântica</li>
+          <li>Geração automática de atividades a partir de normativos</li>
+          <li>Background Check Inteligente</li>
+          <li>Health Score de clientes e usuários</li>
+        </ul>
+      </div>
+      <div class="quad q-yellow">
+        <span class="tag tag-yellow">Oportunista</span>
+        <h3>Baixo Valor + Baixo Esforço</h3>
+        <ul>
+          <li>Edição em lote</li>
+          <li>Melhoria das exportações</li>
+          <li>Histórico de alterações mais detalhado</li>
+          <li>Configuração por dias úteis</li>
+          <li>Ajustes de ordenação de listas</li>
+        </ul>
+      </div>
+      <div class="quad q-red">
+        <span class="tag tag-red">Evitar / Postergar</span>
+        <h3>Baixo Valor + Alto Esforço</h3>
+        <ul>
+          <li>Customizações excessivas por cliente</li>
+          <li>Expansão de funcionalidades antes de resolver adoção</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Q1 -->
+  <section class="block" id="q1">
+    <div class="section-kicker">Quadrante 1 · Execução imediata</div>
+    <h2 class="section-title">Alto Valor + Baixo Esforço</h2>
+    <p class="section-lead">Os melhores candidatos para execução imediata: potencial significativo de impacto na retenção e adoção dos clientes, sem exigir grandes investimentos de desenvolvimento.</p>
+    <div class="item-list">
+      <div class="item">
+        <div class="num">1</div>
+        <div class="content">
+          <h3>Persistência de filtros e contexto de navegação</h3>
+          <p>Diversos clientes utilizam a plataforma para atividades operacionais recorrentes. A necessidade de reconfigurar filtros sempre que a tela é atualizada aumenta a sensação de trabalho repetitivo e reduz a produtividade. A manutenção automática dos filtros selecionados entre acessos e atualizações eliminaria uma fricção frequente do dia a dia.</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="num">2</div>
+        <div class="content">
+          <h3>Priorização visual por criticidade</h3>
+          <p>Grande parte dos clientes demonstra dificuldade para identificar rapidamente o que realmente exige atenção. A implementação de mecanismos de ordenação por risco, prazo ou urgência tornaria a navegação mais simples e reduziria a sobrecarga cognitiva.</p>
+          <span class="why"><strong>Evidência:</strong> identificado em entrevistas e também formalizado como solicitação de clientes.</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="num">3</div>
+        <div class="content">
+          <h3>Painel de atenção diária</h3>
+          <p>A plataforma deveria apresentar, logo na entrada do usuário, um resumo contendo atividades críticas, tarefas próximas do vencimento e itens atrasados. Hoje o usuário precisa navegar por diversas áreas para obter essa visão. Uma centralização dessas informações aumentaria significativamente a percepção de valor da ferramenta.</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="num">4</div>
+        <div class="content">
+          <h3>Personalização da página inicial</h3>
+          <p>Permitir que cada cliente escolha quais módulos deseja visualizar com prioridade pode reduzir consideravelmente a sensação de excesso de funcionalidades. Muitos clientes utilizam apenas parte da plataforma e acabam enxergando conteúdos irrelevantes para sua operação.</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="num">5</div>
+        <div class="content">
+          <h3>Onboarding contextual dentro das telas</h3>
+          <p>Grande parte dos problemas de adoção está associada à falta de onboarding ou à troca de responsáveis ao longo do contrato. A inclusão de orientações contextuais, tutoriais rápidos e dicas dentro das funcionalidades ajudaria novos usuários a entenderem melhor o sistema sem depender exclusivamente do suporte.</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="num">6</div>
+        <div class="content">
+          <h3>Sistema de notificações push</h3>
+          <p>Alguns clientes demonstraram interesse em receber alertas além dos canais atuais de e-mail. A implementação de notificações internas e push poderia aumentar engajamento e reduzir o número de atividades esquecidas ou atrasadas.</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="num">7</div>
+        <div class="content">
+          <h3>Estados vazios mais educativos</h3>
+          <p>Telas sem informação frequentemente geram dúvidas sobre o que fazer em seguida. A substituição de mensagens genéricas por orientações claras aumentaria a autonomia dos usuários e facilitaria a descoberta de funcionalidades.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Q2 -->
+  <section class="block" id="q2">
+    <div class="section-kicker">Quadrante 2 · Investimento estratégico</div>
+    <h2 class="section-title">Alto Valor + Alto Esforço</h2>
+    <p class="section-lead">Iniciativas com potencial transformador para o produto, capazes de impactar diretamente retenção, expansão de receita e competitividade.</p>
+    <div class="item-list">
+      <div class="item">
+        <div class="num">1</div>
+        <div class="content">
+          <h3>Agenda Inteligente</h3>
+          <p>A Agenda aparece repetidamente como o principal ponto de atrito da plataforma. Clientes relatam excesso de atividades, falta de clareza sobre prioridades e dificuldade de navegação. Uma Agenda Inteligente deveria classificar tarefas por risco, relevância e impacto, separando claramente o que é obrigatório do que é apenas recomendável.</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="num">2</div>
+        <div class="content">
+          <h3>Assistente de IA integrado</h3>
+          <p>A pesquisa de IA mostrou forte interesse dos clientes por assistentes que ajudem a encontrar informações, interpretar normas e navegar pelo sistema. Um copiloto integrado permitiria reduzir o esforço para executar tarefas e consumir conteúdo regulatório.</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="num">3</div>
+        <div class="content">
+          <h3>Busca semântica</h3>
+          <p>Múltiplos entrevistados demonstraram interesse em localizar rapidamente informações associadas a temas específicos, sem depender de estruturas rígidas de navegação. A busca baseada em linguagem natural permitiria encontrar atividades, documentos, treinamentos e evidências a partir de conceitos e palavras-chave.</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="num">4</div>
+        <div class="content">
+          <h3>Geração automática de atividades a partir de normativos</h3>
+          <p>Uma das dores mais recorrentes está na interpretação manual de regulamentações e sua transformação em atividades internas. O uso de IA para automatizar esse processo reduziria significativamente o trabalho operacional dos clientes.</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="num">5</div>
+        <div class="content">
+          <h3>Background Check Inteligente</h3>
+          <p>Clientes relatam que o processo atual exige múltiplas etapas manuais de análise. A evolução para um modelo mais analítico, com classificação automática de risco, consolidação de informações e recomendações inteligentes, responderia diretamente às demandas identificadas nas entrevistas.</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="num">6</div>
+        <div class="content">
+          <h3>Health Score de clientes e usuários</h3>
+          <p>A criação de indicadores de saúde, uso e engajamento permitiria que clientes e equipes internas identificassem rapidamente situações de risco ou oportunidades de evolução no uso da plataforma.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Q3 -->
+  <section class="block" id="q3">
+    <div class="section-kicker">Quadrante 3 · Ganhos incrementais</div>
+    <h2 class="section-title">Baixo Valor + Baixo Esforço</h2>
+    <p class="section-lead">Embora importantes, essas melhorias possuem impacto mais localizado e incremental.</p>
+    <div class="item-list">
+      <div class="item">
+        <div class="num">1</div>
+        <div class="content"><h3>Edição em lote</h3><p>Permitir alterações simultâneas em múltiplas atividades reduziria esforço operacional para usuários que trabalham com grandes volumes de informações.</p></div>
+      </div>
+      <div class="item">
+        <div class="num">2</div>
+        <div class="content"><h3>Melhoria das exportações</h3><p>Diversos clientes solicitaram campos adicionais em relatórios e planilhas exportadas. Apesar de gerar ganhos de produtividade, trata-se de uma melhoria mais específica.</p></div>
+      </div>
+      <div class="item">
+        <div class="num">3</div>
+        <div class="content"><h3>Histórico de alterações mais detalhado</h3><p>Ampliar a visibilidade sobre quem criou, alterou ou executou determinada ação aumenta transparência e rastreabilidade dentro da plataforma.</p></div>
+      </div>
+      <div class="item">
+        <div class="num">4</div>
+        <div class="content"><h3>Configuração por dias úteis</h3><p>A possibilidade de trabalhar com cálculos de prazos considerando dias úteis atende uma necessidade operacional específica, especialmente em áreas regulatórias.</p></div>
+      </div>
+      <div class="item">
+        <div class="num">5</div>
+        <div class="content"><h3>Ajustes de ordenação de listas</h3><p>Permitir que listas sejam exibidas por critérios personalizados melhora a usabilidade, mas gera impacto limitado em comparação com temas estruturais como Agenda ou IA.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Q4 -->
+  <section class="block" id="q4">
+    <div class="section-kicker">Quadrante 4 · Evitar ou postergar</div>
+    <h2 class="section-title">Baixo Valor + Alto Esforço</h2>
+    <p class="section-lead">Estas iniciativas devem ser evitadas ou postergadas enquanto existirem problemas mais relevantes de adoção e retenção.</p>
+    <div class="item-list">
+      <div class="item avoid">
+        <div class="num">✕</div>
+        <div class="content"><h3>Customizações excessivas por cliente</h3><p>Permitir que cada cliente tenha uma experiência completamente diferente aumenta custos de manutenção, dificulta suporte e reduz escalabilidade da plataforma.</p></div>
+      </div>
+      <div class="item avoid">
+        <div class="num">✕</div>
+        <div class="content"><h3>Expansão de funcionalidades antes de resolver adoção</h3><p>Os materiais analisados mostram que muitos clientes ainda não utilizam adequadamente os recursos já disponíveis. Adicionar novos módulos sem resolver os atuais problemas de experiência tende a aumentar complexidade sem necessariamente gerar valor percebido.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEMAS -->
+  <section class="block" id="temas">
+    <div class="section-kicker">Síntese</div>
+    <h2 class="section-title">Temas recorrentes em praticamente todos os materiais</h2>
+    <p class="section-lead">A principal conclusão da análise é que a maior oportunidade de produto para a Compliasset não está na criação imediata de novas funcionalidades, mas sim na simplificação da experiência existente. Esses temas apareceram de forma consistente em entrevistas, dossiês, solicitações, dashboard e pesquisa de IA.</p>
+    <div class="theme-chips">
+      <div class="theme-chip">Excesso de informações na Agenda</div>
+      <div class="theme-chip">Dificuldade de priorização</div>
+      <div class="theme-chip">Onboarding insuficiente</div>
+      <div class="theme-chip">Ausência de automações</div>
+      <div class="theme-chip">Trabalho manual excessivo</div>
+      <div class="theme-chip">Expectativa crescente por recursos de IA</div>
+      <div class="theme-chip">Baixa percepção de valor em equipes pequenas</div>
+    </div>
+  </section>
+
+  <!-- 10 IDEIAS DE RETENÇÃO -->
+  <section class="block" id="retencao">
+    <div class="section-kicker">Foco principal · Retenção de clientes</div>
+    <h2 class="section-title">10 ideias para transformar feedback em retenção</h2>
+    <p class="section-lead">Estas ideias consolidam as demandas detalhadas em iniciativas compreensíveis para decisão de produto. Os IDs indicam quais cards do documento de demandas dão origem a cada ideia.</p>
+    <div class="retention-grid">
+      <div class="retention-card"><h3>1. Agenda Limpa em 30 dias</h3><p>Revisar a agenda de cada cliente, ocultar o que não se aplica e separar histórico de rotina futura.</p><div class="refs"><span class="demand-ref" tabindex="0">DEM-003<span class="description-tooltip" role="tooltip">Escolher a partir de qual data a agenda deve começar a cobrar as obrigações futuras.</span></span><span class="demand-ref" tabindex="0">DEM-016<span class="description-tooltip" role="tooltip">Tornar a Agenda mais fácil de entender, com menos complexidade e caminhos mais claros.</span></span><span class="demand-ref" tabindex="0">DEM-017<span class="description-tooltip" role="tooltip">Revisar a lista de atividades, mantendo apenas o que se aplica ao cliente.</span></span><span class="demand-ref" tabindex="0">DEM-018<span class="description-tooltip" role="tooltip">Esconder atividades desnecessárias sem apagar seus registros ou histórico.</span></span></div></div>
+      <div class="retention-card"><h3>2. Visão “Minha Atenção”</h3><p>Exibir atrasadas, críticas, vencendo em breve e recomendações em uma entrada operacional única.</p><div class="refs"><span class="demand-ref" tabindex="0">DEM-013<span class="description-tooltip" role="tooltip">Definir com quantos dias de antecedência cada tipo de obrigação deve gerar um alerta.</span></span><span class="demand-ref" tabindex="0">DEM-015<span class="description-tooltip" role="tooltip">Reorganizar o e-mail para mostrar primeiro o que é crítico e depois o que pode esperar.</span></span><span class="demand-ref" tabindex="0">DEM-016<span class="description-tooltip" role="tooltip">Tornar a Agenda mais fácil de entender, com menos complexidade e caminhos mais claros.</span></span></div></div>
+      <div class="retention-card"><h3>3. Alertas configuráveis por criticidade</h3><p>Permitir que cada tipo de obrigação gere alertas com antecedência adequada ao seu risco.</p><div class="refs"><span class="demand-ref" tabindex="0">DEM-013<span class="description-tooltip" role="tooltip">Definir com quantos dias de antecedência cada tipo de obrigação deve gerar um alerta.</span></span><span class="demand-ref" tabindex="0">DEM-015<span class="description-tooltip" role="tooltip">Reorganizar o e-mail para mostrar primeiro o que é crítico e depois o que pode esperar.</span></span></div></div>
+      <div class="retention-card"><h3>4. Plano de ativação por cliente</h3><p>Escolher um processo real por conta em risco e provar valor com meta, treinamento e evidência em 30 dias.</p><div class="refs">Base: plano de reativação e renovação</div></div>
+      <div class="retention-card"><h3>5. Um processo crítico dentro da plataforma</h3><p>Migrar um processo hoje feito por e-mail, planilha ou documento externo para um fluxo rastreável.</p><div class="refs"><span class="demand-ref" tabindex="0">DEM-007<span class="description-tooltip" role="tooltip">Enviar uma política e saber quem leu e aceitou, sem controlar isso por e-mail ou planilha.</span></span><span class="demand-ref" tabindex="0">DEM-008<span class="description-tooltip" role="tooltip">Enviar, responder e acompanhar declarações obrigatórias dos colaboradores.</span></span><span class="demand-ref" tabindex="0">DEM-009<span class="description-tooltip" role="tooltip">Transformar um desenquadramento em um caso rastreável, com responsável, evidências e conclusão.</span></span><span class="demand-ref" tabindex="0">DEM-010<span class="description-tooltip" role="tooltip">Registrar uma denúncia com acesso controlado e acompanhar seu tratamento até o encerramento.</span></span></div></div>
+      <div class="retention-card"><h3>6. Onboarding contextual da Agenda</h3><p>Orientar o usuário na própria tela sobre o significado da atividade e o próximo passo.</p><div class="refs"><span class="demand-ref" tabindex="0">DEM-016<span class="description-tooltip" role="tooltip">Tornar a Agenda mais fácil de entender, com menos complexidade e caminhos mais claros.</span></span> · Diagnóstico de adoção</div></div>
+      <div class="retention-card"><h3>7. Health Score operacional</h3><p>Monitorar adoção, valor percebido, maturidade e risco para agir antes da não renovação.</p><div class="refs">Health Score · plano de retenção</div></div>
+      <div class="retention-card"><h3>8. Background Check analítico</h3><p>Transformar o resultado bruto em risco classificado, justificativa e recomendação para o analista.</p><div class="refs"><span class="demand-ref" tabindex="0">DEM-014<span class="description-tooltip" role="tooltip">Entregar uma análise interpretada do background check, em vez de apenas um PDF manual.</span></span><span class="demand-ref" tabindex="0">DEM-019<span class="description-tooltip" role="tooltip">Indicar o nível de risco e sugerir qual diligência deve ser feita em seguida.</span></span></div></div>
+      <div class="retention-card"><h3>9. Piloto de integração Neo</h3><p>Automatizar com a Capsicum a consulta e o recebimento da classificação de risco em um primeiro fluxo controlado.</p><div class="refs"><span class="demand-ref" tabindex="0">DEM-004<span class="description-tooltip" role="tooltip">Consultar a Neo automaticamente, sem trocar de sistema e importar arquivos.</span></span><span class="demand-ref" tabindex="0">DEM-005<span class="description-tooltip" role="tooltip">Receber o resultado da Neo e mostrar o nível de risco calculado pela matriz do cliente.</span></span><span class="demand-ref" tabindex="0">DEM-006<span class="description-tooltip" role="tooltip">Criar na plataforma um fluxo completo para executar e acompanhar as rotinas de PLD.</span></span></div></div>
+      <div class="retention-card"><h3>10. Relatório executivo de valor</h3><p>Mostrar ao sponsor o uso, as obrigações tratadas e os ganhos operacionais gerados pela plataforma.</p><div class="refs">Base: baixa percepção de valor e plano de renovação</div></div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section class="block" id="roadmap">
+    <div class="section-kicker">Recomendação Estratégica</div>
+    <h2 class="section-title">Sequência recomendada em três ondas</h2>
+    <p class="section-lead">Essa abordagem tende a gerar o maior impacto possível na retenção da base atual, redução de churn e aumento de adoção do produto.</p>
+    <div class="waves">
+      <div class="wave">
+        <div class="wave-num">Primeira onda</div>
+        <h3>Simplificar e engajar</h3>
+        <ul>
+          <li>Agenda (priorização visual)</li>
+          <li>Onboarding contextual</li>
+          <li>Notificações</li>
+          <li>Personalização da página inicial</li>
+          <li>Priorização visual por criticidade</li>
+        </ul>
+      </div>
+      <div class="wave">
+        <div class="wave-num">Segunda onda</div>
+        <h3>Inteligência e automação</h3>
+        <ul>
+          <li>IA (assistente integrado)</li>
+          <li>Busca semântica</li>
+          <li>Automação regulatória</li>
+        </ul>
+      </div>
+      <div class="wave">
+        <div class="wave-num">Terceira onda</div>
+        <h3>Expansão</h3>
+        <ul>
+          <li>Novos produtos</li>
+          <li>Expansão de mercado</li>
+          <li>Funcionalidades avançadas</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONCLUSÃO -->
+  <section class="block" id="conclusao" style="margin-bottom: 0;">
+    <div class="closing-box">
+      <h2>Simplificar antes de expandir</h2>
+      <p>A principal conclusão da análise é que a maior oportunidade de produto para a Compliasset não está na criação imediata de novas funcionalidades, mas sim na simplificação da experiência existente. Priorizar a primeira onda — Agenda, onboarding, notificações, personalização e priorização visual — é o caminho de maior impacto para reduzir churn e aumentar adoção antes de investir em IA e novos produtos.</p>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>

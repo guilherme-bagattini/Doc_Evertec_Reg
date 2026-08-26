@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Proposta de Fluxos — Bugs, Melhorias e Parametrizações</title>
+<style>
+  :root { --brand:#1a3a5c; --brand-light:#2563a8; --accent:#e67e22; --bg:#f4f6f9; --card:#fff; --text:#2c3e50; --muted:#6b7280; --border:#e2e8f0; --green:#16a34a; --green-bg:#ecfdf5; --blue-bg:#eff6ff; --yellow:#d97706; --yellow-bg:#fffbeb; --red:#dc2626; --red-bg:#fef2f2; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Segoe UI',system-ui,sans-serif; background:var(--bg); color:var(--text); font-size:15px; line-height:1.6; }
+  .hero { background:linear-gradient(135deg,var(--brand),var(--brand-light)); color:#fff; padding:54px 64px 44px; }
+  .eyebrow,.kicker { font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+  .eyebrow { opacity:.82; margin-bottom:11px; }
+  .hero h1 { font-size:34px; line-height:1.25; margin-bottom:11px; max-width:820px; }
+  .hero p { max-width:790px; opacity:.88; font-size:16px; }
+  .nav { position:sticky; top:0; z-index:5; background:rgba(255,255,255,.96); backdrop-filter:blur(6px); border-bottom:1px solid var(--border); padding:10px 64px; display:flex; gap:7px; flex-wrap:wrap; }
+  .nav a { color:var(--brand); text-decoration:none; font-size:12px; font-weight:700; border:1px solid var(--border); background:var(--bg); border-radius:16px; padding:5px 11px; }
+  .nav a:hover { background:var(--blue-bg); }
+  .container { max-width:1200px; margin:0 auto; padding:48px 64px 90px; }
+  section { margin-bottom:60px; scroll-margin-top:60px; }
+  .kicker { color:var(--brand-light); margin-bottom:7px; }
+  h2 { font-size:25px; color:var(--brand); line-height:1.3; margin-bottom:9px; }
+  .lead { color:var(--muted); max-width:900px; margin-bottom:25px; }
+  .grid { display:grid; gap:18px; }
+  .grid-2 { grid-template-columns:1fr 1fr; }
+  .grid-3 { grid-template-columns:repeat(3,1fr); }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:21px; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+  .card h3 { color:var(--brand); font-size:16px; margin-bottom:7px; }
+  .card p,.card li { color:var(--muted); font-size:13.5px; }
+  .comparison .card { border-top:4px solid var(--brand-light); }
+  .comparison .card.bug { border-top-color:var(--red); }
+  .triage-card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:20px; }
+  .triage-card .question { color:var(--brand); font-size:15px; font-weight:800; margin-bottom:10px; }
+  .triage-card .answer { display:inline-block; border-radius:14px; padding:4px 9px; font-size:11px; font-weight:800; }
+  .answer.bug { background:var(--red-bg); color:#991b1b; } .answer.param { background:var(--green-bg); color:#065f46; } .answer.improvement { background:var(--blue-bg); color:#1e40af; }
+  .purpose { color:var(--brand); font-weight:700; font-size:14px; margin-bottom:13px; }
+  .step-list { display:flex; flex-direction:column; gap:10px; }
+  .step { display:flex; gap:11px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:9px; padding:13px 15px; }
+  .step-number { flex:0 0 26px; height:26px; border-radius:50%; background:var(--brand-light); color:#fff; display:grid; place-items:center; font-size:12px; font-weight:800; }
+  .bug-flow .step-number { background:var(--red); }
+  .param-flow .step-number { background:var(--green); }
+  .step h3 { color:var(--brand); font-size:14px; margin-bottom:2px; }
+  .step p { color:var(--muted); font-size:12.5px; }
+  .role { display:inline-block; font-size:10px; font-weight:800; border-radius:12px; padding:3px 8px; margin-top:5px; background:var(--blue-bg); color:#1e40af; }
+  .role.eng { background:var(--red-bg); color:#991b1b; }
+  .role.product { background:var(--green-bg); color:#065f46; }
+  .table-wrap { overflow-x:auto; background:var(--card); border:1px solid var(--border); border-radius:10px; }
+  table { width:100%; border-collapse:collapse; min-width:720px; }
+  th { background:#f8fafc; color:var(--brand); text-align:left; font-size:12px; letter-spacing:.04em; text-transform:uppercase; }
+  th,td { padding:14px 16px; border-bottom:1px solid var(--border); vertical-align:top; }
+  td { color:var(--muted); font-size:13px; }
+  tr:last-child td { border-bottom:0; }
+  .severity { border-radius:7px; padding:16px; }
+  .severity h3 { font-size:15px; margin-bottom:6px; }
+  .severity p { font-size:13px; }
+  .critical { background:var(--red-bg); border:1px solid #fecaca; } .critical h3 { color:#991b1b; }
+  .high { background:var(--yellow-bg); border:1px solid #fde68a; } .high h3 { color:#92400e; }
+  .medium { background:var(--blue-bg); border:1px solid #bfdbfe; } .medium h3 { color:#1e40af; }
+  .low { background:var(--green-bg); border:1px solid #bbf7d0; } .low h3 { color:#065f46; }
+  .callout { border-left:4px solid var(--accent); background:#fff8f0; border-radius:8px; padding:17px 19px; color:var(--text); }
+  .callout strong { color:var(--brand); }
+  .template { background:#f8fafc; border:1px solid var(--border); border-radius:9px; padding:16px 18px; font-size:13px; color:var(--text); white-space:pre-line; }
+  .rule-list { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+  .rule { background:var(--card); border:1px solid var(--border); border-radius:9px; padding:15px; font-size:13px; }
+  .rule strong { display:block; color:var(--brand); margin-bottom:4px; }
+  .closing { background:linear-gradient(135deg,var(--brand),#17416b); border-radius:13px; color:#fff; padding:38px 44px; text-align:center; }
+  .closing h2 { color:#fff; margin-bottom:10px; } .closing p { opacity:.88; max-width:760px; margin:auto; }
+  @media (max-width:850px) { .hero,.nav,.container { padding-left:23px; padding-right:23px; } .grid-2,.grid-3,.rule-list { grid-template-columns:1fr; } }
+  @media print { .nav { display:none; } .hero,.closing { -webkit-print-color-adjust:exact; print-color-adjust:exact; } .card,.step,.severity { break-inside:avoid; } }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="eyebrow">Compliasset · Proposta operacional</div>
+  <h1>Fluxos para tratar Bugs, Melhorias e Parametrizações</h1>
+  <p>Uma proposta única para transformar o feedback do cliente em ações rastreáveis, com responsáveis claros, prioridade adequada e comunicação consistente até o encerramento.</p>
+</header>
+<nav class="nav">
+  <a href="#principio">Princípio</a><a href="#triagem">Triagem</a><a href="#diferencas">Diferenças</a><a href="#melhoria">Fluxo de melhoria</a><a href="#parametrizacao">Fluxo de parametrização</a><a href="#bug">Fluxo de bug</a><a href="#urgencias">Urgências</a><a href="#cliente">Resposta ao cliente</a><a href="#prazos">Prazos de resposta</a><a href="#governanca">Governança</a>
+</nav>
+<main class="container">
+  <section id="principio">
+    <div class="kicker">Princípio de operação</div>
+    <h2>Um ponto de entrada, três fluxos de decisão</h2>
+    <p class="lead">Operações recebe, registra e mantém o cliente informado. Melhorias seguem para o <strong>Board de Demandas e Melhorias</strong>. Bugs e parametrizações seguem para o <strong>Kanbug: Bugs e Tarefas</strong>. A natureza do relato define quem decide, como prioriza e qual resultado é esperado.</p>
+    <div class="grid grid-3">
+      <div class="card"><h3>Operações</h3><p>Qualifica a solicitação, registra evidências, garante um dono e responde ao cliente nos prazos combinados.</p></div>
+      <div class="card"><h3>Produto</h3><p>Avalia melhorias pelo valor, recorrência, alinhamento estratégico e esforço necessário. Não transforma sugestão em promessa.</p></div>
+      <div class="card"><h3>Engenharia / QA</h3><p>Confirma bugs, classifica severidade, define contorno ou correção e apoia parametrizações que exigem intervenção técnica. QA é responsável pela qualidade e pelos testes.</p></div>
+    </div>
+  </section>
+
+  <section id="triagem">
+    <div class="kicker">Antes de abrir um cartão</div>
+    <h2>Três perguntas para escolher o fluxo certo</h2>
+    <p class="lead">Use esta triagem em toda solicitação recebida. Ela reduz encaminhamentos indevidos e acelera a primeira resposta ao cliente.</p>
+    <div class="grid grid-3">
+      <div class="triage-card"><div class="question">1. O comportamento está diferente do esperado?</div><span class="answer bug">Sim → Bug</span></div>
+      <div class="triage-card"><div class="question">2. O cliente quer usar ou ajustar uma função que já existe?</div><span class="answer param">Sim → Parametrização</span></div>
+      <div class="triage-card"><div class="question">3. O pedido exige criar ou evoluir uma capacidade?</div><span class="answer improvement">Sim → Melhoria</span></div>
+    </div>
+  </section>
+
+  <section id="diferencas">
+    <div class="kicker">Decisão inicial</div>
+    <h2>O que diferencia melhoria, parametrização e bug?</h2>
+    <div class="grid grid-3 comparison">
+      <div class="card"><h3>Melhoria</h3><div class="purpose">Precisa de decisão de Produto.</div><p>É uma solicitação de nova capacidade, automação, ajuste de usabilidade ou expansão de um fluxo. A decisão é de investimento de produto.</p></div>
+      <div class="card"><h3>Parametrização</h3><div class="purpose">Pode ser resolvida agora, se houver acesso e procedimento.</div><p>É uma tarefa operacional solicitada pelo cliente, como alterar cadastro, habilitar módulo, incluir licenças ou ajustar a Agenda. Não exige decisão de roadmap.</p></div>
+      <div class="card bug"><h3>Bug</h3><div class="purpose">Precisa de triagem técnica e severidade.</div><p>É uma falha, indisponibilidade, dado incorreto ou bloqueio de fluxo. A decisão começa pela severidade e pelo impacto operacional.</p></div>
+    </div>
+    <div class="table-wrap" style="margin-top:18px;">
+      <table><thead><tr><th>Aspecto</th><th>Melhoria</th><th>Parametrização</th><th>Bug</th></tr></thead><tbody>
+        <tr><td><strong>Decisor</strong></td><td>Produto, com apoio de Engenharia</td><td>Operações; Engenharia apenas quando necessário</td><td>Engenharia / QA; Produto participa se houver impacto relevante</td></tr>
+        <tr><td><strong>Critério principal</strong></td><td>Valor, recorrência, retenção, esforço e estratégia</td><td>Permissão, procedimento existente, impacto e necessidade de intervenção técnica</td><td>Severidade, clientes afetados, risco regulatório e existência de contorno</td></tr>
+        <tr><td><strong>Resultado</strong></td><td>Discovery, planejamento, não priorização ou solução por configuração</td><td>Tarefa concluída por Operações ou encaminhada para Engenharia</td><td>Correção, contorno, não reprodução ou esclarecimento de uso</td></tr>
+        <tr><td><strong>Promessa ao cliente</strong></td><td>Prazo de retorno sobre a decisão, não necessariamente prazo de entrega</td><td>Prazo de execução ou de atualização sobre o encaminhamento</td><td>Prazo de atualização e, quando confirmado, previsão de correção ou contorno</td></tr>
+      </tbody></table>
+    </div>
+  </section>
+
+  <section id="melhoria">
+    <div class="kicker">Fluxo 1</div><h2>Tratamento de melhoria</h2>
+    <p class="lead">O objetivo é garantir que toda sugestão seja considerada com contexto suficiente, sem comprometer a previsibilidade do roadmap nem deixar o cliente sem retorno.</p>
+    <div class="step-list">
+      <div class="step"><div class="step-number">1</div><div><h3>Entender o pedido</h3><p>Operações registra cliente, problema, impacto, evidência e resultado esperado.</p><span class="role">Operações</span></div></div>
+      <div class="step"><div class="step-number">2</div><div><h3>Registrar para análise</h3><p>Criar o cartão no <strong>Board de Demandas e Melhorias</strong>, com link da origem e hipótese de valor ou retenção.</p><span class="role">Operações</span></div></div>
+      <div class="step"><div class="step-number">3</div><div><h3>Analisar valor e viabilidade</h3><p>Produto avalia recorrência, impacto em clientes, alinhamento, dependências e esforço inicial.</p><span class="role product">Produto</span></div></div>
+      <div class="step"><div class="step-number">4</div><div><h3>Definir o próximo passo</h3><p>Definir: pedir mais contexto, iniciar discovery (entendimento e validação da solução), planejar, não priorizar agora ou identificar configuração/treinamento como solução.</p><span class="role product">Produto</span></div></div>
+      <div class="step"><div class="step-number">5</div><div><h3>Responder ao cliente</h3><p>Operações comunica a decisão, o motivo e a próxima atualização, sem prometer entrega não planejada.</p><span class="role">Operações</span></div></div>
+      <div class="step"><div class="step-number">6</div><div><h3>Confirmar a entrega</h3><p>Se priorizada, a melhoria segue discovery, desenvolvimento, validação, produção e comunicação de disponibilidade.</p><span class="role product">Produto + Engenharia</span></div></div>
+    </div>
+  </section>
+
+  <section id="parametrizacao">
+    <div class="kicker">Fluxo 2</div><h2>Tratamento de parametrização</h2>
+    <p class="lead">Parametrização é um pedido para configurar, habilitar, desabilitar ou ajustar algo que o produto já oferece. O cartão entra no <strong>Kanbug: Bugs e Tarefas</strong> como tarefa, mas não recebe severidade de bug nem passa por decisão de roadmap.</p>
+    <div class="callout" style="margin-bottom:18px;"><strong>Exemplos:</strong> alterar e-mail ou nome de colaborador, adicionar licenças de treinamento, zerar a Agenda, habilitar ou desabilitar módulos e demais ajustes operacionais já suportados pela plataforma.</div>
+    <div class="step-list param-flow">
+      <div class="step"><div class="step-number">1</div><div><h3>Confirmar o ajuste</h3><p>Operações confirma o que deve ser alterado, o cliente afetado, a autorização necessária e o resultado esperado.</p><span class="role">Operações</span></div></div>
+      <div class="step"><div class="step-number">2</div><div><h3>Registrar a tarefa</h3><p>Criar o cartão no <strong>Kanbug: Bugs e Tarefas</strong> com o tipo <strong>Parametrização</strong>. Incluir dados necessários, evidências e prazo de retorno ao cliente.</p><span class="role">Operações</span></div></div>
+      <div class="step"><div class="step-number">3</div><div><h3>Definir o responsável</h3><p>Se houver procedimento e permissão, Operações executa. Se exigir acesso técnico, banco de dados, código, automação ou não houver procedimento, encaminha para Engenharia.</p><span class="role">Operações</span></div></div>
+      <div class="step"><div class="step-number">4</div><div><h3>Executar e validar</h3><p>Realizar o ajuste, conferir o resultado no ambiente correto e registrar no cartão o que foi feito.</p><span class="role">Operações ou Engenharia</span></div></div>
+      <div class="step"><div class="step-number">5</div><div><h3>Confirmar a conclusão</h3><p>Comunicar o ajuste concluído, orientar o cliente se houver impacto no uso e registrar a confirmação no cartão.</p><span class="role">Operações</span></div></div>
+    </div>
+  </section>
+
+  <section id="bug">
+    <div class="kicker">Fluxo 3</div><h2>Tratamento de bug</h2>
+    <p class="lead">O objetivo é reduzir o tempo até a confirmação, o contorno ou a correção, tratando urgência de maneira objetiva e mantendo o cliente atualizado.</p>
+    <div class="step-list bug-flow">
+      <div class="step"><div class="step-number">1</div><div><h3>Registrar o ocorrido</h3><p>Operações coleta ambiente, módulo, usuário, passo a passo, resultado esperado, resultado atual, print ou vídeo.</p><span class="role">Operações</span></div></div>
+      <div class="step"><div class="step-number">2</div><div><h3>Registrar o bug</h3><p>Operações cria o cartão no <strong>Kanbug: Bugs e Tarefas</strong> com o tipo <strong>Bug</strong>, preservando a rastreabilidade e o vínculo com o cliente.</p><span class="role">Operações</span></div></div>
+      <div class="step"><div class="step-number">3</div><div><h3>Triar e reproduzir</h3><p>Engenharia ou QA confirma o comportamento, identifica a causa provável e procura um contorno seguro.</p><span class="role eng">Engenharia / QA</span></div></div>
+      <div class="step"><div class="step-number">4</div><div><h3>Classificar severidade</h3><p>Definir prioridade a partir do impacto, quantidade de clientes afetados, risco regulatório e existência de alternativa.</p><span class="role eng">Engenharia / QA</span></div></div>
+      <div class="step"><div class="step-number">5</div><div><h3>Corrigir e validar</h3><p>Corrigir, homologar o cenário reportado e validar que a correção não criou regressões no fluxo.</p><span class="role eng">Engenharia / QA</span></div></div>
+      <div class="step"><div class="step-number">6</div><div><h3>Confirmar a correção</h3><p>Operações confirma o resultado, orienta o cliente sobre eventuais ações e registra o encerramento.</p><span class="role">Operações</span></div></div>
+    </div>
+  </section>
+
+  <section id="urgencias">
+    <div class="kicker">Cuidados com urgência</div><h2>Nem todo bug é urgente, mas todo bug precisa de resposta</h2>
+    <p class="lead">Urgência deve ser definida pelo impacto real, não pelo volume da solicitação. A classificação evita que falhas críticas disputem atenção com problemas pontuais.</p>
+    <div class="grid grid-4">
+      <div class="severity critical"><h3>Crítica</h3><p>Indisponibilidade, perda de dados, segurança ou risco regulatório. Acionamento imediato, comunicação frequente e acompanhamento até estabilização.</p></div>
+      <div class="severity high"><h3>Alta</h3><p>Fluxo crítico bloqueado, sem contorno seguro. Prioridade de correção e retorno rápido sobre o plano.</p></div>
+      <div class="severity medium"><h3>Média</h3><p>Fluxo prejudicado, mas com contorno viável. Planejar correção e informar alternativa temporária.</p></div>
+      <div class="severity low"><h3>Baixa</h3><p>Incômodo visual ou comportamento pontual sem impacto operacional. Registrar e tratar no ciclo adequado.</p></div>
+    </div>
+    <div class="callout" style="margin-top:18px;"><strong>Regra de segurança:</strong> em incidente crítico, priorize estabilizar o cliente e preservar dados. A análise detalhada de causa pode ocorrer após o serviço estar seguro.</div>
+  </section>
+
+  <section id="cliente">
+    <div class="kicker">Experiência do cliente</div><h2>A resposta ao cliente é parte da entrega</h2>
+    <p class="lead">O cliente não precisa receber uma promessa irreal; precisa saber que foi ouvido, o que está acontecendo, quem acompanha e quando receberá uma nova atualização.</p>
+    <div class="grid grid-2">
+      <div class="card"><h3>Resposta inicial para melhoria</h3><div class="template">“Registramos sua sugestão e ela seguirá para análise do time de Produto. Retornaremos até [data] com a decisão e os próximos passos. A análise definirá se a solicitação seguirá para planejamento, entendimento da solução ou outra alternativa disponível.”</div></div>
+      <div class="card"><h3>Resposta inicial para parametrização</h3><div class="template">“Registramos sua solicitação de ajuste e ela será tratada como parametrização. Vamos retornar até [data/hora] com a confirmação da execução ou com o encaminhamento necessário para o time técnico.”</div></div>
+      <div class="card"><h3>Resposta inicial para bug</h3><div class="template">“Registramos o comportamento reportado e iniciamos a triagem. Nossa próxima atualização será até [data/hora]. Caso identifiquemos um contorno antes da correção, enviaremos as instruções imediatamente.”</div></div>
+      <div class="card"><h3>Quando uma melhoria não for priorizada</h3><div class="template">“Avaliamos a sugestão e, neste momento, ela não seguirá para desenvolvimento. A decisão considera [motivo objetivo]. O registro permanece no backlog e poderá ser reavaliado se surgirem novas evidências ou recorrência.”</div></div>
+      <div class="card"><h3>Quando o bug for resolvido</h3><div class="template">“A correção foi publicada em [data]. Validamos o cenário informado e o comportamento esperado foi restabelecido. Pedimos que confirme o uso no seu ambiente; permaneceremos acompanhando até a confirmação.”</div></div>
+    </div>
+  </section>
+
+  <section id="prazos">
+    <div class="kicker">Acordo de comunicação</div><h2>Prazo de resposta é uma parte visível do serviço</h2>
+    <p class="lead">Os prazos abaixo são uma proposta inicial. O time deve validá-los conforme capacidade, horário de atendimento e contratos vigentes.</p>
+    <div class="table-wrap"><table><thead><tr><th>Tipo de solicitação</th><th>Primeira resposta</th><th>Próxima atualização</th></tr></thead><tbody>
+      <tr><td><strong>Bug crítico</strong></td><td>Até 1 hora</td><td>Em intervalos definidos até a estabilização</td></tr>
+      <tr><td><strong>Bug alto</strong></td><td>No mesmo dia útil</td><td>Conforme plano de correção ou contorno</td></tr>
+      <tr><td><strong>Bug médio ou baixo</strong></td><td>Até o próximo dia útil</td><td>Quando houver priorização, contorno ou correção</td></tr>
+      <tr><td><strong>Parametrização</strong></td><td>No mesmo dia útil</td><td>Com confirmação da execução ou encaminhamento técnico</td></tr>
+      <tr><td><strong>Melhoria</strong></td><td>Até o próximo dia útil</td><td>Decisão ou atualização de análise em até 10 dias úteis</td></tr>
+    </tbody></table></div>
+  </section>
+
+  <section id="governanca">
+    <div class="kicker">Governança mínima</div><h2>Regras para manter o fluxo confiável</h2>
+    <div class="rule-list">
+      <div class="rule"><strong>1. Um dono e uma data</strong>Todo cartão precisa de responsável, próxima ação e data de atualização ao cliente.</div>
+      <div class="rule"><strong>2. Não misturar tipos</strong>Melhoria não deve virar bug para acelerar prioridade; parametrização é uma tarefa, não um defeito; bug confirmado não deve ser postergado como melhoria.</div>
+      <div class="rule"><strong>3. Evidência antes de decisão</strong>Problema, impacto e evidências devem acompanhar o cartão, evitando interpretação baseada somente em relato informal.</div>
+      <div class="rule"><strong>4. Revisão recorrente</strong>Revisar bugs e parametrizações semanalmente; revisar melhorias em cadência quinzenal entre Operações, Produto e Engenharia.</div>
+      <div class="rule"><strong>5. Comunicação registrada</strong>Registrar cada retorno dado ao cliente no cartão, incluindo prazo da próxima atualização.</div>
+      <div class="rule"><strong>6. Encerrar com confirmação</strong>O fluxo termina somente quando a correção, o ajuste ou a decisão foi comunicada e registrada para o cliente.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="closing"><h2>Velocidade com previsibilidade</h2><p>O fluxo protege o cliente nas urgências e protege o produto contra promessas sem validação. Próximo passo: validar responsáveis, prazos de resposta e campos obrigatórios dos cartões antes de colocar o processo em operação.</p></div>
+  </section>
+</main>
+</body>
+</html>
