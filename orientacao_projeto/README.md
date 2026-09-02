@@ -12,6 +12,7 @@ Facilitar o entendimento do projeto para alinhamentos de produto, operacao e tec
 2. Para reunioes, use [Guia de reuniao para PO](guia_reuniao_po_evertecreg.md).
 3. Para decisoes da etapa atual, veja [Decisões fechadas para o MVP](decisoes_mvp_evertecreg.md).
 4. Para pendencias, acompanhe [Dúvidas e decisões em aberto](duvidas_em_aberto_evertecreg.md).
+5. Para abrir cards e demandas, use [Guia para abrir cards e demandas do CompliAsset](guia_abertura_cards_compliasset.md).
 
 ## Estrutura principal
 
@@ -20,6 +21,7 @@ Facilitar o entendimento do projeto para alinhamentos de produto, operacao e tec
 - [mapa_mestre_evertecreg.md](mapa_mestre_evertecreg.md): consolidado completo
 - [decisoes_mvp_evertecreg.md](decisoes_mvp_evertecreg.md): escopo fechado do MVP
 - [duvidas_em_aberto_evertecreg.md](duvidas_em_aberto_evertecreg.md): pontos a validar
+- [guia_abertura_cards_compliasset.md](guia_abertura_cards_compliasset.md): contexto e template para cards e demandas
 - [perguntas_respostas_etapa_evertecreg.md](perguntas_respostas_etapa_evertecreg.md): alinhamentos da etapa
 
 ## Referencias base
