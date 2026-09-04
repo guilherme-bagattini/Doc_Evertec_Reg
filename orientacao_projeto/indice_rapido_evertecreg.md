@@ -31,7 +31,8 @@ Permitir que voce encontre rapidamente:
 - [Mapa mestre do projeto](mapa_mestre_evertecreg.md)
 - [Guia de reuniao para PO](guia_reuniao_po_evertecreg.md)
 - [Analise de melhorias do documento de desenvolvimento](analise_melhorias_desenvolvimento_evertecreg.md)
-- [Guia para abrir cards e demandas do CompliAsset](guia_abertura_cards_compliasset.md)
+- [Base de conhecimento do CompliAsset](base_conhecimento_compliasset.md)
+- [Guia de definicao e abertura de cards: PM e PO](guia_abertura_cards_pm_po.md)
 
 ## Onde consultar a parte técnica
 

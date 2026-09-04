@@ -1,8 +1,8 @@
-# Guia para abrir cards e demandas do CompliAsset
+# Base de conhecimento do CompliAsset para orientacao de demandas
 
 ## Finalidade
 
-Este documento deve ser consultado sempre que uma nova demanda, melhoria, bug, duvida funcional ou necessidade de investigacao for transformada em card.
+Este documento deve ser consultado como base de contexto funcional e de fontes sempre que uma nova demanda, melhoria, bug, duvida funcional ou necessidade de investigacao for transformada em card. Para o processo de trabalho de PM e PO, consulte o [Guia de definicao e abertura de cards: PM e PO](guia_abertura_cards_pm_po.md).
 
 O objetivo e garantir que a demanda:
 
@@ -22,6 +22,19 @@ Antes de abrir um card:
 4. Copie para o card as regras aplicaveis, os criterios de aceite e as duvidas que dependem de validacao.
 
 Este arquivo orienta a escrita e a analise da demanda. Ele nao substitui a validacao da versao atual do sistema, nem transforma automaticamente um artigo em requisito de implementacao.
+
+## Relacao com o guia de PM e PO
+
+Esta base e a fonte de contexto funcional, regras documentadas, artigos, referencias e pontos de validacao do CompliAsset. O [Guia de definicao e abertura de cards: PM e PO](guia_abertura_cards_pm_po.md) e a fonte do processo para transformar esse contexto em Product Brief, Planning, investigacao e cards executaveis.
+
+Use os documentos nesta ordem quando uma nova demanda surgir:
+
+1. No [guia de PM e PO](guia_abertura_cards_pm_po.md), capture a demanda e defina se ela precisa de Product Brief, discovery ou implementacao.
+2. Nesta base, consulte o modulo, fluxo e artigos relacionados e registre as fontes e regras aplicaveis.
+3. Volte ao [guia de PM e PO](guia_abertura_cards_pm_po.md) para organizar a matriz CSD, priorizar, escrever o card e definir a validacao.
+4. No card, vincule esta base, as fontes consultadas e as decisoes ou duvidas que ainda dependem de confirmacao.
+
+Quando houver conflito, a base preserva a fonte e o estado de confirmacao; ela nao autoriza implementar uma regra automaticamente. A decisao de produto deve ser registrada no card ou no documento de decisoes correspondente.
 
 ## Contexto permanente do produto
 
@@ -1507,4 +1520,4 @@ Use os status desta forma:
 | ART-063 | [Recusa de Aceite de Documentos](https://intercom.help/compliasset/pt-BR/articles/9822903-recusa-de-aceite-de-documentos) | Recusa, justificativa e tratamento de Aceites | Vigente a confirmar | 2026-09-03 | Publicado em 09/09/2024; confirmar semantica da recusa, lembretes e permissoes |
 | ART-064 | [Remover Colaborador de Aceite de Documento](https://intercom.help/compliasset/pt-BR/articles/11602780-remover-colaborador-de-aceite-de-documento) | Remocao individual de participantes de Aceites | Vigente a confirmar | 2026-09-03 | Publicado em 20/06/2025; confirmar permissoes, efeitos em acesso, lembretes e historico |
 
-Atualize este guia quando uma regra permanente de abertura de cards mudar. Registre regras especificas de produto nos documentos do respectivo modulo e mantenha neste arquivo apenas o contexto necessario para orientar novas demandas.
+Atualize esta base quando uma regra documentada, fonte ou contexto permanente mudar. Registre regras especificas de produto nos documentos do respectivo modulo e mantenha neste arquivo apenas o contexto necessario para orientar novas demandas. Mantenha o processo de trabalho de PM e PO no [guia operacional de abertura de cards](guia_abertura_cards_pm_po.md).
