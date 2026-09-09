@@ -4,7 +4,7 @@ Este guia foi feito para apoiar participacao em reunioes do EvertecReg sem depen
 
 ## 1) O que o EvertecReg faz
 
-O EvertecReg e a frente de inteligencia regulatoria da suite Compliasset. Ele transforma mudancas regulatórias em acao operacional.
+O EvertecReg e a frente de inteligencia regulatoria da suite CompliAsset. Ele transforma mudancas regulatórias em acao operacional.
 
 Fluxo simplificado:
 

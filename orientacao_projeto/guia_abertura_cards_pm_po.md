@@ -4,9 +4,83 @@
 
 Este guia define como transformar uma necessidade em um card claro, priorizavel e executavel, e como dividir as responsabilidades entre Product Manager (PM), Product Owner (PO), desenvolvimento, design e validacao.
 
-Use este documento para conduzir o trabalho de abertura e refinamento. Use a [Base de conhecimento do CompliAsset](base_conhecimento_compliasset.md) para consultar contexto funcional, regras documentadas, fontes e o template detalhado de card.
+Use este documento para conduzir o trabalho de abertura e refinamento. Use a [Base de conhecimento do CompliAsset](base_conhecimento_compliasset.md) para consultar contexto funcional, regras documentadas e fontes. O modelo operacional de card deste guia deve ser usado para registrar a demanda.
 
 As responsabilidades abaixo sao uma referencia de trabalho. A decisao final deve respeitar a estrutura, os papeis e os acordos vigentes do time.
+
+## Resumo para o dia a dia
+
+Use este guia como uma sequencia de perguntas praticas:
+
+1. **Qual problema estamos tentando resolver?** Descreva o usuario afetado, o contexto e o impacto antes de falar da solucao.
+2. **O que sabemos e como sabemos?** Separe fatos confirmados, hipoteses e duvidas. Vincule a fonte ou evidencia.
+3. **Qual e o proximo passo correto?** Decida entre investigar, decidir, corrigir, melhorar ou implementar.
+4. **Como saberemos que funcionou?** Defina resultado esperado, criterios de aceite e evidencia de validacao.
+5. **Quem precisa participar?** Envolva PM, PO, desenvolvimento, design, validacao e areas afetadas na medida do risco.
+
+### Regras de bolso
+
+- Nao transforme pedido em requisito sem entender o problema, o impacto e o usuario afetado.
+- Nao transforme consenso informal em regra de negocio; registre a fonte, a decisao e a data.
+- Se a incerteza puder mudar o escopo, a prioridade ou o criterio de aceite, investigue antes de implementar.
+- Um card deve ter um resultado principal, um responsavel claro e uma forma objetiva de validacao.
+- Toda demanda deve declarar se pertence ao MVP, a um incremento posterior ou se ainda esta pendente de validacao de escopo.
+- Prioridade nao e ordem de chegada: considere valor, risco, urgencia, custo de atraso, dependencia, esforco e confianca.
+- O PM protege direcao, contexto e resultado; o PO protege clareza, ordem do backlog e prontidao para execucao.
+- Desenvolvimento participa da descoberta e estima o trabalho; nao deve receber uma solucao tecnica fechada sem discutir alternativas.
+- Toda mudanca relevante de escopo deve deixar registro no card ou em uma decisao vinculada.
+- Nao encerre um card apenas porque foi desenvolvido: confirme comportamento, cenarios de erro, permissoes e evidencia.
+- Quando houver conflito entre documento, sistema e relato, trate como investigacao pendente ate a fonte correta ser confirmada.
+
+### Rotina minima recomendada
+
+- **Antes do refinamento:** revisar contexto, problema, escopo, riscos, dependencias e perguntas abertas.
+- **Durante o refinamento:** alinhar comportamento, excecoes, impacto tecnico, criterios de aceite e estrategia de validacao.
+- **Durante a execucao:** registrar bloqueios, decisoes e mudancas; evitar que informacoes importantes fiquem apenas em reunioes.
+- **Antes de concluir:** validar o resultado no fluxo real ou em ambiente apropriado e anexar evidencia.
+- **Depois da entrega:** observar o resultado esperado, registrar aprendizados e atualizar a base quando uma regra tiver sido confirmada.
+
+### Estados e passagem de responsabilidade
+
+Use os estados abaixo como referencia. Os nomes podem variar conforme a ferramenta, mas o criterio de passagem deve permanecer explicito:
+
+| Estado | Pergunta de controle | Saida esperada |
+|---|---|---|
+| Entrada | A demanda tem origem, contexto e responsavel? | Classificacao inicial ou pedido de complementacao |
+| Discovery ou investigacao | A principal incerteza esta identificada? | Evidencia, decisao ou recomendacao |
+| Pronto para desenvolvimento | O time consegue iniciar sem depender de conhecimento oral? | Card refinado, priorizado e com criterios de aceite |
+| Em desenvolvimento | O escopo e as decisoes continuam visiveis? | Entrega candidata a validacao |
+| Em validacao | O comportamento foi conferido nos cenarios relevantes? | Aceite, rejeicao fundamentada ou retorno para ajuste |
+| Encerrado | O resultado e as pendencias foram registrados? | Evidencia final e documentacao atualizada quando necessario |
+
+Nao avance um card apenas para limpar uma fila. Se o criterio de saida nao foi atendido, registre o bloqueio, a proxima acao e o responsavel.
+
+### Prioridade, urgencia e severidade
+
+Esses conceitos nao sao sinonimos:
+
+- **Prioridade:** ordem de trabalho considerando valor, risco, estrategia e custo de atraso.
+- **Urgencia:** quanto tempo existe antes que o impacto aumente ou uma janela seja perdida.
+- **Severidade:** tamanho do dano ou alcance do problema, especialmente em bugs.
+
+Um bug pode ser severo, mas ter uma alternativa temporaria e prioridade menor que uma obrigacao com prazo. Da mesma forma, uma demanda urgente pode precisar primeiro de investigacao para evitar uma correcao errada. Registre a justificativa, a data da avaliacao e quem participou da decisao.
+
+### Registro minimo de decisao
+
+Sempre que uma decisao alterar escopo, prioridade, regra ou criterio de aceite, registre:
+
+```markdown
+## Decisao - [data]
+- Decisao:
+- Motivo:
+- Evidencias consideradas:
+- Alternativas descartadas:
+- Impacto no escopo ou prioridade:
+- Responsavel pela decisao:
+- Proxima revisao, se aplicavel:
+```
+
+Uma conversa pode iniciar a decisao, mas o card ou documento vinculado deve ser a fonte consultavel depois.
 
 ## Como este guia se relaciona com a base
 
@@ -26,6 +100,28 @@ Os dois documentos cumprem funcoes diferentes e complementares:
 4. Vincule no card as fontes da base e registre como pendente tudo que ainda nao foi confirmado.
 
 A base fornece evidencia e contexto; este guia fornece o metodo de trabalho. Nenhum dos dois substitui a validacao da versao atual do sistema ou uma decisao formal de produto.
+
+## Escopo do MVP e autoridade de decisao
+
+Antes de priorizar ou abrir um card de implementacao, classifique a demanda em uma destas situacoes:
+
+| Classificacao | Significado | Tratamento |
+|---|---|---|
+| MVP | Esta prevista nas decisoes fechadas para a primeira etapa | Confirmar aderencia ao fluxo e aos limites definidos em [Decisoes fechadas para o MVP](decisoes_mvp_evertecreg.md) |
+| Incremento posterior | Foi explicitamente deixada para uma evolucao futura | Registrar como pos-MVP e nao tratar como compromisso da etapa atual |
+| Pendente de validacao | Ha conflito ou falta de evidencia sobre escopo, regra ou capacidade | Abrir investigacao ou decisao antes de prometer implementacao |
+
+As decisoes do MVP sao a referencia para o escopo atual. Quando um card envolver dashboard, alertas, versionamento, permissoes complexas, aprendizagem adaptativa ou outra capacidade listada como posterior, o card deve indicar essa classificacao antes de ser priorizado.
+
+### Autoridade pratica
+
+- **PM:** recomenda ou decide prioridade e enquadramento estrategico, conforme os acordos do time, e confirma se a demanda cabe no objetivo do produto.
+- **PO:** organiza o backlog, detalha o comportamento e confirma a prontidao do card; nao encerra sozinho uma regra ainda pendente nem altera o escopo do MVP sem registro.
+- **Desenvolvimento e design:** avaliam viabilidade, alternativas, riscos e impacto da solucao; nao devem ser tratados apenas como executores de uma solucao presumida.
+- **Stakeholders e areas especialistas:** fornecem contexto, evidencias e restricoes; pedido ou aprovacao de stakeholder nao substitui decisao registrada de produto.
+- **Decisao de escopo, regra ou aceite relevante:** deve ter responsavel nomeado no card ou em documento de decisao vinculado.
+
+Quando o projeto nao tiver definido formalmente quem exerce uma dessas autoridades, registre a lacuna em [Duvidas e decisoes em aberto](duvidas_em_aberto_evertecreg.md) antes de usar a regra como definitiva.
 
 ## Principios
 
@@ -78,6 +174,7 @@ O Brief deve registrar respostas conhecidas e marcar como pendentes as que ainda
 
 ## Produto e escopo inicial
 - Produto, modulo ou fluxo impactado:
+- Etapa: MVP | Incremento posterior | Pendente de validacao
 - O que parece estar incluido:
 - O que esta explicitamente fora do escopo:
 
@@ -85,6 +182,11 @@ O Brief deve registrar respostas conhecidas e marcar como pendentes as que ainda
 - Resultado esperado:
 - Indicadores ou metas:
 - Sinais qualitativos:
+
+## Eixos do negocio
+- Interpretacao regulatoria necessaria:
+- Acao operacional esperada:
+- Evidencia ou auditoria necessaria:
 
 ## Restricoes e referencias
 - Limitacoes de negocio, design, tecnologia ou regulacao:
@@ -253,6 +355,216 @@ A prioridade deve ter uma justificativa registrada, e nao depender apenas da ord
 
 Uma demanda de alto impacto, mas baixa confianca sobre o problema, pode precisar de discovery antes de receber prioridade de implementacao. Registre a decisao, quem participou e quais fatores pesaram.
 
+## Frameworks e tecnicas para PM, PO e UX
+
+Frameworks ajudam a estruturar conversas e tornar decisoes comparaveis. Eles nao substituem evidencia, criterio de negocio ou julgamento do time. Use o framework adequado para a pergunta que precisa ser respondida e registre as premissas usadas.
+
+### Como escolher rapidamente
+
+| Pergunta do dia a dia | Framework ou tecnica inicial |
+|---|---|
+| O que deve ser feito primeiro? | RICE, ICE, WSJF ou Matriz Valor x Esforco |
+| O que e essencial para uma entrega? | MoSCoW |
+| Qual problema ou necessidade devemos investigar? | Entrevista, JTBD, 5 Porques ou Opportunity Solution Tree |
+| Como gerar alternativas sem julgar cedo demais? | Brainstorming ou Crazy 8s |
+| Como entender o fluxo atual do usuario? | Jornada do Usuario ou Service Blueprint |
+| Como organizar uma experiencia ou escopo? | User Story Mapping |
+| Como transformar uma necessidade em comportamento verificavel? | User Story, Gherkin ou criterios de aceite |
+| Como avaliar se uma ideia atende diferentes perfis? | Kano |
+| Como medir se a experiencia melhorou? | HEART, funil, metricas de produto ou resultado definido no Brief |
+
+### Regras para usar frameworks
+
+- Comece pela pergunta e pelo objetivo; nao escolha um framework apenas porque ele e conhecido.
+- Use dados observados e deixe explicitas as estimativas ou opinioes.
+- Nao compare pontuacoes feitas com escalas, horizontes ou premissas diferentes sem revisar a base.
+- Framework de priorizacao ordena opcoes; nao transforma automaticamente a primeira colocada em compromisso de entrega.
+- Quando a confianca for baixa, priorize aprender antes de construir.
+- Registre data, participantes, dados utilizados, premissas e resultado no card ou documento de decisao.
+- Reavalie a decisao quando surgirem novas evidencias, mudarem os objetivos ou aumentarem os riscos.
+
+### Priorizacao
+
+#### RICE
+
+Indicado para comparar oportunidades ou itens de backlog quando houver estimativas razoaveis de alcance e impacto.
+
+**Formula:** `RICE = Reach x Impact x Confidence / Effort`
+
+- **Reach:** quantas pessoas, clientes ou casos serao afetados no periodo definido.
+- **Impact:** quanto o item contribui para o resultado; use uma escala definida pelo time.
+- **Confidence:** confianca nas estimativas de alcance e impacto, expressa como percentual.
+- **Effort:** esforco estimado pelo time, incluindo produto, design, desenvolvimento e validacao quando aplicavel.
+
+**Como usar:** defina o periodo e as escalas, estime cada fator, registre as fontes e ordene os itens pela pontuacao. Use a pontuacao como apoio a decisao, revisando manualmente riscos regulatorios, dependencias e obrigacoes que a formula nao representa bem.
+
+#### ICE
+
+Indicado para uma comparacao mais rapida, especialmente em discovery, experimentos ou quando o alcance ainda e incerto.
+
+**Formula:** `ICE = Impact x Confidence x Ease`
+
+- **Impact:** potencial de gerar resultado.
+- **Confidence:** confianca na avaliacao.
+- **Ease:** facilidade relativa de executar ou testar.
+
+**Como usar:** use a mesma escala para todos os itens, descreva o que cada nota significa e prefira testar rapidamente ideias de alta oportunidade e baixo custo. Evite falsa precisao: notas muito detalhadas nao significam estimativas mais confiaveis.
+
+#### MoSCoW
+
+Indicado para definir escopo de uma entrega, release ou MVP junto com stakeholders e time.
+
+- **Must have:** sem isso, o objetivo ou a obrigacao nao pode ser atendido.
+- **Should have:** importante, mas existe uma alternativa ou pode ser entregue depois sem inviabilizar o objetivo.
+- **Could have:** desejavel, com impacto menor.
+- **Won't have now:** explicitamente fora desta entrega ou ciclo.
+
+**Como usar:** comece pelo objetivo da entrega, classifique cada item e valide se o conjunto de `Must have` cabe na capacidade e atende ao resultado. O `Won't have now` deve ser registrado para evitar que itens excluidos retornem como expectativa informal.
+
+#### WSJF
+
+Indicado para ordenar trabalho quando o custo do atraso e a dimensao dos itens precisam ser comparados, especialmente em portflios ou fluxos com muitas dependencias.
+
+**Formula:** `WSJF = Cost of Delay / Job Size`
+
+O custo do atraso pode considerar valor para o usuario ou negocio, criticidade temporal e reducao de risco ou oportunidade. O tamanho do trabalho deve ser estimado de forma relativa pelo time.
+
+**Como usar:** defina a escala, avalie os fatores em conjunto e documente por que um item tem maior custo de atraso. Nao use WSJF para esconder uma obrigacao legal, incidente critico ou dependencia que exige tratamento direto.
+
+#### Matriz Valor x Esforco
+
+Indicado para uma conversa visual e rapida quando nao ha dados suficientes para uma formula.
+
+1. Liste as oportunidades ou itens.
+2. Estime valor e esforco em uma escala simples, como baixo, medio e alto.
+3. Posicione os itens na matriz.
+4. Investigue os itens de alto valor e baixo esforco, sem ignorar riscos e dependencias.
+
+Use a matriz como triagem inicial. Registre os motivos quando uma opcao fora do quadrante de ganhos rapidos for escolhida.
+
+#### Kano
+
+Indicado para entender como diferentes tipos de funcionalidade influenciam a satisfacao:
+
+- **Basicos:** esperados; sua ausencia gera insatisfacao.
+- **Desempenho:** quanto melhor atendidos, maior tende a ser a satisfacao.
+- **Encantadores:** nao esperados, mas podem gerar grande satisfacao quando presentes.
+
+**Como usar:** combine entrevistas ou pesquisas com observacao de comportamento. Nao trate um item como encantador apenas porque parece inovador; valide se existe valor para o usuario e se a capacidade basica do produto esta atendida.
+
+### Discovery e definicao do problema
+
+#### Entrevista com usuario
+
+Indicado para compreender contexto, comportamento, dificuldades e resultados desejados.
+
+**Como usar:** defina o que precisa aprender, selecione perfis relevantes, faca perguntas sobre experiencias reais e registre evidencias separadas de interpretacoes. Evite perguntar apenas se a pessoa gostaria de uma solucao especifica.
+
+**Saida esperada:** necessidades, comportamentos, citacoes relevantes, padroes, contradicoes e perguntas para investigar.
+
+#### 5 Porques
+
+Indicado para aprofundar uma falha ou sintoma e buscar causas possiveis.
+
+**Como usar:** descreva o fato observado, pergunte por que ele ocorreu e repita ate chegar a uma causa que possa ser investigada. Valide cada resposta com dados; nao trate a quinta resposta como causa verdadeira por regra.
+
+#### JTBD (Jobs to Be Done)
+
+Indicado para descrever o progresso que o usuario tenta realizar em determinado contexto.
+
+Modelo: `Quando [situacao], quero [motivacao], para [resultado esperado].`
+
+Use o JTBD para evitar que o time descreva apenas uma tela ou funcionalidade. Complemente com contexto, frequencia, alternativas atuais e barreiras.
+
+#### Opportunity Solution Tree
+
+Indicado para conectar um resultado desejado a oportunidades identificadas e alternativas de solucao.
+
+Estruture como: **resultado** -> **oportunidades ou necessidades** -> **solucoes** -> **experimentos ou testes**.
+
+**Como usar:** comece por um resultado mensuravel, agrupe evidencias em oportunidades, gere mais de uma solucao e escolha experimentos que reduzam as maiores incertezas. Evite preencher a arvore com funcionalidades antes de entender as oportunidades.
+
+### Ideacao e UX
+
+#### Brainstorming
+
+Indicado para gerar alternativas quando o problema esta suficientemente compreendido.
+
+**Como usar:** apresente o problema e as restricoes, gere ideias individualmente antes da discussao, adie julgamentos, combine ideias e finalize com criterios claros de selecao. Separe a fase de gerar da fase de avaliar.
+
+#### Crazy 8s
+
+Indicado para explorar rapidamente varias alternativas de fluxo ou interface.
+
+**Como usar:** dobre uma folha em oito partes, defina um tempo curto e produza oito variacoes da mesma solucao ou fluxo. Depois, agrupe padroes e selecione ideias para prototipo. O objetivo e variedade, nao acabamento visual.
+
+#### Jornada do Usuario
+
+Indicado para visualizar etapas, objetivos, dores, pontos de contato e oportunidades ao longo de uma experiencia.
+
+Registre: persona ou perfil, etapas, objetivo em cada etapa, comportamento, emocao ou dificuldade, canais, evidencias e oportunidades.
+
+Use a jornada para encontrar pontos de atrito e dependencias entre areas. Nao a trate como verdade geral se foi construida com uma amostra limitada.
+
+#### Service Blueprint
+
+Indicado para servicos que dependem de pessoas, sistemas e operacoes alem da interface.
+
+Mapeie acoes do usuario, pontos de contato, interacoes visiveis, bastidores, sistemas de suporte e evidencias geradas. E especialmente util para notificacoes, integracoes, analise, aprovacao, auditoria e atendimento.
+
+#### User Story Mapping
+
+Indicado para organizar a experiencia de ponta a ponta e definir cortes de entrega.
+
+**Como usar:** coloque as atividades principais na ordem da jornada, decomponha tarefas e historias abaixo delas, depois marque uma primeira versao de entrega que permita aprender ou gerar valor. Nao use o mapa apenas como uma lista de funcionalidades.
+
+### Especificacao e validacao
+
+#### User Story e criterios de aceite
+
+Use a User Story para expressar usuario, necessidade e beneficio:
+
+`Como [perfil], quero [necessidade], para [beneficio].`
+
+Complemente com regras e cenarios. Para comportamentos condicionais, use Gherkin:
+
+```gherkin
+Cenario: [resultado esperado]
+	Dado que [contexto]
+	Quando [acao]
+	Entao [resultado observavel]
+```
+
+Inclua cenarios de sucesso, erro, vazio, permissao, duplicidade, atraso, cancelamento e integracao quando forem aplicaveis.
+
+#### Prototipo e teste de usabilidade
+
+Indicado para validar entendimento, fluxo e linguagem antes de construir.
+
+**Como usar:** defina a hipotese, crie o menor prototipo capaz de responder a pergunta, escolha participantes representativos, observe tarefas reais e registre erros de compreensao. Nao use elogios gerais como evidencia de usabilidade.
+
+#### HEART e metricas de experiencia
+
+Indicado para acompanhar qualidade da experiencia apos uma mudanca. HEART organiza metricas em **Happiness**, **Engagement**, **Adoption**, **Retention** e **Task Success**.
+
+**Como usar:** escolha somente dimensoes relacionadas ao objetivo, defina o sinal desejado, a metrica e a fonte de dados. Combine percepcao do usuario com comportamento observado e resultado de negocio; nao use uma metrica isolada como prova de sucesso.
+
+### Modelo de registro do framework
+
+Use este bloco no Planning, card ou documento de decisao:
+
+```markdown
+## Framework utilizado
+- Pergunta que precisava ser respondida:
+- Framework ou tecnica:
+- Data e participantes:
+- Dados e fontes utilizados:
+- Premissas e limitacoes:
+- Resultado ou recomendacao:
+- Decisao tomada:
+- Quando revisar:
+```
+
 ## Fluxo recomendado
 
 1. **Capturar:** registrar a demanda bruta, origem, data, solicitante e evidencias.
@@ -308,6 +620,7 @@ Antes de encerrar, confirme que:
 
 ### Falha na distribuicao para Jira ou Teams
 
+- **Escopo:** usar este exemplo somente se a integracao estiver confirmada para a etapa atual; caso contrario, classificar como incremento posterior ou investigacao.
 - **Problema:** uma informacao aprovada nao chega ao canal esperado ou chega sem dados necessarios.
 - **Evidencias:** identificador da execucao, ambiente, horario, status exibido, log correlato e destino esperado. Nao incluir credenciais ou dados sensiveis.
 - **Criterios de aceite:** confirmar sucesso, falha, retentativa, mensagem para o usuario, detalhe no log e preservacao da trilha de auditoria.
@@ -316,7 +629,7 @@ Antes de encerrar, confirme que:
 
 - **Problema:** o usuario ve uma falha sem conseguir entender o proximo passo.
 - **Discovery:** separar o que precisa ser compreendido pelo usuario do diagnostico que deve permanecer nos logs.
-- **Resultado:** mensagem acionavel na interface, identificador para suporte e log detalhado para diagnostico, sem expor informacao sensivel.
+- **Resultado:** mensagem generica que orienta o proximo passo, identificador para suporte e log detalhado para diagnostico, sem expor causa tecnica ou informacao sensivel na interface.
 
 Os exemplos sao ilustrativos. As regras vigentes devem ser confirmadas nas decisoes do MVP, na base de conhecimento e com as areas responsaveis.
 
@@ -326,6 +639,12 @@ Os exemplos sao ilustrativos. As regras vigentes devem ser confirmadas nas decis
 # [TIPO] Titulo orientado ao resultado
 
 ## Contexto e origem
+- Status:
+- Etapa: MVP | Incremento posterior | Pendente de validacao
+- Status da informacao: Confirmada | Hipotese | Pendente de validacao
+- Responsavel:
+- Prioridade e justificativa:
+- Severidade, quando for bug:
 - Solicitante:
 - Cliente, area ou usuario afetado:
 - Modulo ou fluxo:
@@ -335,8 +654,19 @@ Os exemplos sao ilustrativos. As regras vigentes devem ser confirmadas nas decis
 ## Problema ou oportunidade
 Descreva o que acontece, quem e afetado e qual e o impacto.
 
+## Comportamento atual
+- Dado de entrada:
+- Passos para reproduzir ou executar:
+- Comportamento observado:
+- Comportamento esperado:
+
 ## Resultado esperado
 Descreva o comportamento ou resultado que deve ser possivel observar.
+
+## Eixos do negocio
+- Interpretacao regulatoria necessaria:
+- Acao operacional esperada:
+- Evidencia ou auditoria necessaria:
 
 ## Escopo
 ### Inclui
@@ -352,6 +682,7 @@ Descreva o comportamento ou resultado que deve ser possivel observar.
 - Cenarios de erro, vazio ou excecao:
 - Dados, historico e auditoria:
 - Integracoes, notificacoes e prazos:
+- Seguranca e privacidade:
 
 ## Criterios de aceite
 - [ ] 
@@ -405,3 +736,20 @@ Descreva o comportamento ou resultado que deve ser possivel observar.
 Consulte a base antes de escrever uma regra de produto. Registre no card o artigo, documento, entrevista, log, ambiente ou validacao que sustenta a informacao. Quando houver contradicao ou informacao desatualizada, crie ou vincule uma investigacao e mantenha a regra como pendente de confirmacao.
 
 A [base de conhecimento](base_conhecimento_compliasset.md) concentra contexto do CompliAsset e materiais de referencia. Este guia concentra o processo de trabalho de PM e PO. Regras especificas de um modulo devem permanecer documentadas no material do proprio modulo ou na fonte oficial correspondente; o card deve vincular as duas coisas quando a demanda depender de uma regra do produto.
+
+## Referencias externas recomendadas
+
+Use estas fontes para aprofundar praticas de produto. Elas complementam este guia e nao substituem as decisoes, regras e fontes oficiais do EvertecReg.
+
+| Fonte | Foco | Como usar |
+|---|---|---|
+| [Scrum Guide 2020](https://scrumguides.org/scrum-guide.html) | Fundamentos de Scrum, Product Owner, Product Backlog, Sprint Goal e Definition of Done | Consultar quando houver duvida sobre responsabilidades e eventos do Scrum |
+| [Scrum.org: Product Owner](https://www.scrum.org/resources/product-owners) | Valor do produto, visao, backlog e trabalho com stakeholders | Apoiar o desenvolvimento da pratica de PO |
+| [Atlassian: Product Management](https://www.atlassian.com/agile/product-management) | Discovery, estrategia, roadmap, priorizacao, metricas e colaboracao | Usar como referencia ampla para PM e times ageis |
+| [Product Talk](https://www.producttalk.org/) | Continuous Discovery, entrevistas, teste de hipoteses e Opportunity Solution Tree | Apoiar investigacoes e validacoes antes da implementacao |
+| [SVPG: Product Management - Start Here](https://www.svpg.com/product-management-start-here/) | Papel do PM, discovery e times orientados a resultados | Aprofundar estrategia e modelo de trabalho de produto |
+| [Mind the Product](https://www.mindtheproduct.com/) | Artigos, podcasts, eventos e experiencias de profissionais de produto | Buscar casos, praticas e perspectivas diferentes |
+| [ProductPlan Learning Center](https://www.productplan.com/learn/) | Entrevistas, priorizacao, roadmap, metricas e gestao de stakeholders | Consultar guias praticos e templates |
+| [PM3](https://pm3.com.br/blog/) | Conteudo em portugues sobre PM, PO, discovery, analytics, growth e lideranca | Usar para referencias e exemplos no contexto brasileiro |
+
+Ao consultar uma referencia externa, registre no card ou no documento de decisao apenas o aprendizado aplicavel ao contexto do produto. Framework, template ou pratica nao deve ser adotado automaticamente: avalie se resolve uma necessidade real do time e se e compativel com os acordos vigentes.

@@ -4,7 +4,7 @@ Este arquivo consolida a leitura principal do projeto e funciona como ponto de p
 
 ## Resumo executivo
 
-O EvertecReg e a frente de inteligencia regulatoria da suite Compliasset. Ele foi criado para automatizar a captura, triagem, analise e distribuicao de informacoes regulatorias com impacto sobre o negocio e sobre os produtos da Evertec.
+O EvertecReg e a frente de inteligencia regulatoria da suite CompliAsset. Ele foi criado para automatizar a captura, triagem, analise e distribuicao de informacoes regulatorias com impacto sobre o negocio e sobre os produtos da Evertec.
 
 O foco nao e apenas consultar normas, mas executar, controlar, registrar e rastrear a resposta operacional ao contexto regulatorio.
 
@@ -19,7 +19,7 @@ O foco nao e apenas consultar normas, mas executar, controlar, registrar e rastr
 
 ## Posicao dentro da suite
 
-O Compliasset e a plataforma maior de GRC da Evertec. Dentro dela, o EvertecReg se posiciona como uma camada de inteligencia regulatoria e automacao de analise de impacto.
+O CompliAsset e a plataforma maior de GRC da Evertec. Dentro dela, o EvertecReg se posiciona como uma camada de inteligencia regulatoria e automacao de analise de impacto.
 
 Isso significa que o produto conversa com:
 

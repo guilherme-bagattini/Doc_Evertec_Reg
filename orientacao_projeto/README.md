@@ -1,6 +1,6 @@
 # Orientacao do projeto
 
-Pasta de orientacao para consulta rapida do EvertecReg, com contexto de negocio, resumo tecnico, decisoes de MVP e pendencias.
+Pasta de orientacao para consulta rapida do EvertecReg, com contexto de negocio, resumos operacional e arquitetural, decisoes de MVP e pendencias.
 
 ## Objetivo
 
@@ -18,6 +18,7 @@ Facilitar o entendimento do projeto para alinhamentos de produto, operacao e tec
 
 - [indice_rapido_evertecreg.md](indice_rapido_evertecreg.md): navegacao principal
 - [resumo_operacional_evertecreg.md](resumo_operacional_evertecreg.md): leitura curta de produto
+- [resumo_arquitetura_evertecreg.md](resumo_arquitetura_evertecreg.md): visao arquitetural e tecnica
 - [mapa_mestre_evertecreg.md](mapa_mestre_evertecreg.md): consolidado completo
 - [decisoes_mvp_evertecreg.md](decisoes_mvp_evertecreg.md): escopo fechado do MVP
 - [duvidas_em_aberto_evertecreg.md](duvidas_em_aberto_evertecreg.md): pontos a validar

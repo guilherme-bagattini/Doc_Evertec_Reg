@@ -4,7 +4,7 @@ Os trechos adicionais reforcam que o EvertecReg deve ser lido como uma plataform
 
 ## Mensagem principal do produto
 
-- O Compliasset nao funciona como repositorio passivo de normas.
+- O CompliAsset nao funciona como repositorio passivo de normas.
 - O foco e executar, controlar e rastrear obrigações regulatórias com apoio de analise juridica e governanca operacional.
 - O time interpreta os normativos e entrega tarefas ja simplificadas para o mercado de capitais, conforme as regras do segmento.
 - A plataforma apoia registro de evidencias, delegacao de tarefas, treinamentos e aceites.

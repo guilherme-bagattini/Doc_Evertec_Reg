@@ -1,6 +1,6 @@
-# Contexto do Compliasset
+# Contexto do CompliAsset
 
-O Compliasset e a plataforma mais ampla de GRC da Evertec. O EvertecReg entra como uma das frentes de inteligencia regulatoria e automacao de analise de impacto dentro desse ecossistema.
+O CompliAsset e a plataforma mais ampla de GRC da Evertec. O EvertecReg entra como uma das frentes de inteligencia regulatoria e automacao de analise de impacto dentro desse ecossistema.
 
 ## O que o Compliasset e
 
