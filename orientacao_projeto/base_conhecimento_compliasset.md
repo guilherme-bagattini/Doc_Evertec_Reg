@@ -116,6 +116,273 @@ As regras especificas de destinatarios, versoes, prazos, status e permissoes de 
 - Para Campanhas, registrar publico, modulo, acao esperada, relatorios, cobrancas e impacto de inclusoes posteriores, aplicando as regras particulares de Aceites, Treinamentos e Formularios.
 - Confirmar com produto a definicao atual de prazo e recorrencia, transicoes e permissao de status dos dossies, tipos de Relacionado elegiveis como Envolvidos, comportamento de inclusoes apos o inicio de cada Campanha e os limites entre Campanha e Checklist.
 
+### Atribuicoes do perfil Colaborador
+
+Com base no artigo [Atribuicoes do Perfil Colaborador](https://intercom.help/compliasset/pt-BR/articles/7183438-atribuicoes-do-perfil-colaborador), publicado em 20 de maio de 2026:
+
+- o perfil Colaborador atua na colaboracao e no cumprimento de obrigacoes e atividades relacionadas ao time de Compliance;
+- o `Painel de Controle` e a area inicial da visao de Colaborador e centraliza documentos pendentes de aceite, treinamentos, formularios, tarefas atribuidas, atividades em aberto e registros a reportar ao time de Compliance;
+- cada cartao do Painel pode abrir uma visao ampliada por `Ver Todos` ou pelo menu lateral; o primeiro cartao exibe o responsavel pelo Canal de Compliance indicado pelos administradores;
+- em `Aceites de Documentos`, os itens sao organizados nas abas `Pendente(s)`, `Aceito(s)`, `Recusado(s)` e `Todos`; depois da assinatura, o status passa automaticamente de `Em Aberto` para `Concluido`;
+- `Reportes de Compliance` sao Eventos que podem ser criados pelo Colaborador ou disponibilizados por Membros para colaboracao; o artigo informa que podem ser iniciados pelos atalhos do Painel ou pela secao de Reportes;
+- os Reportes formam dossies que podem ser acompanhados, comentados e usados como repositorio de evidencias;
+- em `Tarefas`, o Colaborador consulta checklists atribuidas, abre o painel lateral com prazo, descricao e discussao e conclui a tarefa por `Concluir tarefa`;
+- em `Treinamentos`, o Colaborador consulta itens pendentes e concluidos e pode baixar o certificado por `Baixar Certificado`; o certificado pode levar alguns minutos para ser processado e fica disponivel nas visoes de Colaborador e Membro;
+- na `Agenda Regulatoria`, o Colaborador consulta as atividades sob sua responsabilidade, acompanha prazos, adiciona evidencias e utiliza `Discussao` para mencionar o time de Compliance;
+- na `Biblioteca de Documentos`, consulta documentos compartilhados por Membros, como politicas, manuais e procedimentos internos;
+- em `Formularios`, o Colaborador preenche solicitacoes pendentes ou formularios disponiveis para resposta a qualquer momento, mas nao cria novos formularios;
+- para formularios preenchidos, o artigo descreve as acoes `Visualizar`, `Imprimir` e `Baixar Respostas`, com respostas em PDF, alem do acesso ao dossie e a discussao do time de Compliance;
+- a `Central de Ajuda` e acessivel pelo ultimo icone do menu do Colaborador e oferece orientacoes para uso autonomo do sistema.
+
+#### Como essa regra deve orientar um card
+
+- Registrar perfil, visao utilizada, ambiente, cartao ou secao, dossie relacionado, acao executada, status, prazo, evidencia e resultado esperado.
+- Validar o isolamento da visao de Colaborador: o perfil deve acessar somente demandas, documentos, treinamentos, formularios, tarefas e atividades efetivamente concedidos.
+- Para o Painel, conferir os cartoes, o responsavel exibido pelo Canal de Compliance, a correspondencia com os dossies de origem, `Ver Todos` e a navegacao pelo menu lateral, sem ampliar permissoes.
+- Para Aceites, testar abas, transicao de status, abertura do documento, aceite, recusa, justificativa e preservacao do historico conforme as regras especificas do modulo.
+- Para Reportes e Tarefas, validar criacao ou recebimento do Evento, discussao, evidencias, atribuicao, prazo, conclusao e acesso ao dossie, sem confundir Evento, checklist e plano de acao.
+- Para Treinamentos, testar progresso, conclusao, processamento assincrono e disponibilidade do certificado nas visoes de Colaborador e Membro.
+- Para Agenda e Biblioteca, validar que o Colaborador pode adicionar evidencias e consultar somente documentos compartilhados, respeitando permissoes, visibilidade, versoes e retencao.
+- Para Formularios, bloquear a criacao pelo Colaborador, preservar respostas enviadas, validar `Visualizar`, `Imprimir`, `Baixar Respostas` e o acesso a discussao, sem permitir edicao retroativa sem regra formal.
+- Confirmar com produto a lista vigente de cartoes e secoes, a diferenca entre Reportes, Eventos, Tarefas e Planos de Acao, o alcance de `Ver Todos`, as permissoes de comentario e evidencia, a disponibilidade de formularios isolados e a auditoria das acoes do Colaborador.
+
+### Alteracao de Colaborador para Membro
+
+Com base no artigo [Alteracao de Colaborador para Membro](https://intercom.help/compliasset/pt-BR/articles/7153535-alteracao-de-colaborador-para-membro), publicado em 24 de outubro de 2024:
+
+- o sistema possui quatro perfis de acesso: Super Administrador, Membro-Administrador, Membro-Usuario e Colaborador;
+- o perfil Colaborador e destinado a pessoas que nao integram o time de Compliance e utiliza a `Visao do Colaborador`, com acesso limitado a treinamentos, aceites de documentos, formularios e demandas atribuidas;
+- quando o Colaborador precisa assumir responsabilidades adicionais, como gerenciar uma secao do sistema, ele pode ser promovido para um perfil de Membro;
+- a promocao ocorre em `Configuracoes` > `Membros`, pela acao `+`, com preenchimento das informacoes solicitadas e selecao das areas de acesso;
+- as areas podem ser escolhidas conforme a funcao, incluindo exemplos como `Agenda`, `Eventos`, `Investidores` e `Terceiros`, sem necessidade de liberar todas as funcionalidades;
+- para um Colaborador que auxilia uma funcao especifica, o artigo recomenda o perfil `Membro-Usuario`, com acesso limitado as ferramentas necessarias;
+- somente Membros com permissoes de Administrador podem criar e ajustar perfis de Membros-Usuarios;
+- quando um novo Colaborador ingressa no time de Compliance, o administrador deve cadastra-lo primeiro como `Novo Colaborador` e depois criar e configurar seu perfil de Membro.
+
+#### Como essa regra deve orientar um card
+
+- Tratar a promocao como mudanca de identidade de acesso e registrar Colaborador de origem, perfil novo, areas liberadas, responsavel, motivo, ambiente e resultado efetivo.
+- Validar a pre-condicao de cadastro como Colaborador antes da criacao do Membro e testar as transicoes entre Colaborador, Membro-Usuario e Membro-Administrador conforme a permissao vigente.
+- Aplicar menor privilegio: liberar somente as secoes necessarias para a funcao e verificar que a visibilidade de uma secao nao concede acoes além da matriz de permissoes aplicavel.
+- Restringir criacao e ajuste de Membros-Usuarios a Membros-Administradores, incluindo tentativas por menu, URL direta, API e sessao ativa.
+- Testar acesso efetivo antes e depois da promocao, incluindo revogacao ou reducao de secoes, sessoes ativas, notificacoes, responsabilidades, auditoria e preservacao do historico do Colaborador.
+- Diferenciar promocao para Membro de simples atribuicao de uma demanda na Visao do Colaborador; a mudanca de perfil nao deve ser usada para contornar regras de atribuicao ou ampliar acesso sem justificativa.
+- Confirmar com produto e seguranca a lista de areas configuraveis, a diferenca entre Membro-Usuario e Membro-Administrador, os efeitos em sessoes e tarefas existentes, a protecao do Super Administrador e a retencao do historico de acesso.
+
+### Compartilhamento de Fundos, Investidores e Terceiros com Colaboradores
+
+Com base no artigo [Compartilhar Fundos, Investidores e Terceiros com Colaboradores](https://intercom.help/compliasset/pt-BR/articles/5596387-compartilhar-fundos-investidores-e-terceiros-com-colaboradores), publicado em 20 de setembro de 2024:
+
+- a funcionalidade permite envolver um Colaborador em um perfil especifico de Fundo, Investidor ou Terceiro sem transforma-lo em Membro do sistema;
+- o compartilhamento e iniciado no perfil do Relacionado, na area `Discussao` > `Permissao de Acessos` > `Convidar Colaborador`;
+- o convite pode enviar ou nao uma notificacao por e-mail ao Colaborador;
+- quando a notificacao for enviada, o usuario define o assunto e a mensagem do e-mail;
+- a permissao pode ficar ativa por 30, 180 ou 365 dias, ou por tempo indeterminado;
+- a confirmacao ocorre pela acao `Convidar Colaborador`;
+- depois do compartilhamento, o perfil aparece na secao correspondente da `Visao do Colaborador`, como `Fundos`, `Investidores` ou `Terceiros`;
+- dentro do perfil compartilhado, o Colaborador pode enviar comentarios e anexar arquivos, mas nao pode editar ou excluir as demais informacoes do cadastro.
+
+#### Como essa regra deve orientar um card
+
+- Registrar Relacionado de origem, tipo de cadastro, Colaborador convidado, usuario que concedeu o acesso, data, prazo, notificacao, assunto e resultado, minimizando dados pessoais nas evidencias.
+- Validar o caminho `Discussao` > `Permissao de Acessos` > `Convidar Colaborador`, a selecao do prazo e a confirmacao do convite.
+- Testar os prazos de 30, 180 e 365 dias e a opcao indeterminada, incluindo expiracao, revogacao, renovacao e comportamento apos o prazo.
+- Testar notificacao habilitada e desabilitada, conferindo assunto, mensagem, destinatario e ausencia de envio quando a opcao estiver desmarcada.
+- Validar que o perfil aparece somente para o Colaborador autorizado, na secao correta, e que o acesso nao concede visibilidade a outros Relacionados ou areas do sistema.
+- Garantir que o Colaborador pode comentar e anexar arquivos, mas nao editar, excluir ou alterar os dados cadastrais do Fundo, Investidor ou Terceiro.
+- Diferenciar compartilhamento de perfil especifico de promocao para Membro e de atribuicao de uma demanda; nenhum desses fluxos deve conceder acesso amplo por inferencia.
+- Confirmar com produto e seguranca quem pode convidar, revogar ou renovar a permissao, os efeitos em sessoes ativas, notificacoes, anexos, auditoria, retencao e isolamento entre empresas e ambientes.
+
+### Categorizar Colaboradores em Funcoes
+
+Com base no artigo [Categorizar Colaboradores em Funcoes](https://intercom.help/compliasset/pt-BR/articles/4636444-categorizar-colaboradores-em-funcoes), publicado em 23 de maio de 2025:
+
+- `Funcoes` classificam e agrupam perfis de Colaboradores conforme suas atribuicoes e vinculos com a empresa;
+- exemplos de categorias incluem socios, terceirizados, funcionarios, profissionais part-time, profissionais full-time e consultores externos;
+- o acesso ocorre em `Configuracoes` > `Funcoes`;
+- a acao `+` cria uma nova funcao;
+- depois de criada, a funcao permite usar `Adicionar colaborador` para associar Colaboradores e consultar todos os vinculados;
+- uma funcao existente pode ter o titulo editado ou ser excluida;
+- durante a criacao ou edicao do perfil de um Colaborador, a secao `Funcao(oes)` permite criar novas funcoes e vincular as funcoes disponiveis;
+- a associacao feita no perfil e salva pela acao `Confirmar`.
+
+#### Como essa regra deve orientar um card
+
+- Registrar funcao, Colaborador, acao de criacao, edicao, exclusao ou associacao, usuario executor, empresa ou ambiente e resultado da operacao.
+- Validar o caminho `Configuracoes` > `Funcoes`, a criacao por `+`, a inclusao por `Adicionar colaborador`, a consulta de vinculados, a edicao do titulo e a exclusao da funcao.
+- Testar a criacao e vinculacao de funcoes tanto na tela de Funcoes quanto no perfil de um Colaborador, confirmando a persistencia por `Confirmar`.
+- Diferenciar Funcao de Grupo e Departamento: Funcao categoriza Colaboradores, Grupo apoia selecoes e associacoes em outros fluxos e Departamento funciona como atributo e filtro cadastral.
+- Validar associacoes multiplas quando permitidas, remocao de uma funcao do perfil, duplicidade, consistencia da listagem e efeitos sobre filtros e campanhas que utilizem a classificacao.
+- Nao presumir que excluir uma funcao remove ou altera Colaboradores vinculados; confirmar o comportamento, o historico, a auditoria e o tratamento de funcoes usadas em filtros ou registros existentes.
+- Confirmar com produto as permissoes para criar, editar, associar e excluir funcoes, as regras de nomes e duplicidade, o limite de associacoes, a visibilidade por perfil e o impacto em Eventos, campanhas, filtros e relatorios.
+
+### Mandatos de Colaboradores
+
+Com base no artigo [Mandatos de Colaboradores](https://intercom.help/compliasset/pt-BR/articles/9516488-mandatos-de-colaboradores), publicado em 22 de agosto de 2024:
+
+- Mandato registra a autorizacao formal de um Colaborador para tomar decisoes ou realizar transacoes financeiras em nome da empresa, com poderes e limites de atuacao;
+- o Colaborador precisa estar cadastrado antes que um Mandato seja adicionado;
+- o acesso ocorre em `Colaboradores` > `Todos os Colaboradores`, abrindo o perfil pelo nome;
+- no perfil, a area `Mandatos` fica proxima de `Resumo Profissional`;
+- `Adicionar` permite cadastrar `Posicao`, `Descricao`, `Data de inicio` e `Data de termino`, quando houver;
+- depois da inclusao, as acoes `Editar` e `Excluir` ficam disponiveis junto ao registro;
+- inclusoes, edicoes e exclusoes de Mandatos ficam registradas em `Historico`, dentro de `Discussao` no perfil do Colaborador.
+
+#### Como essa regra deve orientar um card
+
+- Registrar Colaborador, Mandato, posicao, descricao, datas, usuario executor, acao realizada, resultado e evento correspondente no Historico.
+- Validar a pre-condicao de cadastro do Colaborador e o caminho `Mandatos` > `Adicionar`, incluindo data de termino ausente ou preenchida.
+- Testar edicao e exclusao do Mandato, preservando o cadastro do Colaborador e registrando cada alteracao no Historico da Discussao.
+- Tratar poderes, limites, inicio e termino como dados sensiveis de governanca e autoridade; aplicar permissao, auditoria, retencao e minimizacao nas evidencias.
+- Confirmar com produto e seguranca os perfis autorizados, campos obrigatorios, formato e validacao de datas, possibilidade de multiplos Mandatos, sobreposicao de vigencias, impacto em tarefas ou Eventos e comportamento apos a exclusao.
+
+### Certificacoes de Colaboradores
+
+Com base no artigo [Certificacoes de Colaboradores](https://intercom.help/compliasset/pt-BR/articles/9761125-certificacoes-de-colaboradores), publicado em 16 de junho de 2026:
+
+- certificacoes registram conhecimentos e habilidades profissionais relevantes para a atuacao no mercado financeiro e para a conformidade regulatoria;
+- o Colaborador precisa estar cadastrado antes que uma certificacao seja adicionada;
+- o acesso ocorre em `Colaboradores` > `Todos os Colaboradores`, abrindo o perfil pelo nome;
+- no perfil, a area `Certificacoes` fica no inicio da tela, ao lado de `Mandatos`;
+- `Adicionar` permite cadastrar `Nome`, `Data de inicio`, `Data de vencimento/validade`, `Numero de registro` e um arquivo ou certificado opcional;
+- a certificacao pode ser editada ou excluida, e o anexo pode ser baixado;
+- `Adicionar periodo` permite registrar `Data de inicio PEC`, `Data final`, a pontuacao numerica a ser realizada no periodo e `Observacoes` opcionais;
+- em `Acoes`, e possivel editar ou remover um periodo, incluir nova pontuacao ou excluir pontuacao cadastrada;
+- inclusoes e exclusoes de certificacoes ficam registradas em `Historico`, dentro de `Discussao` no perfil do Colaborador;
+- notificacoes de vencimento sao enviadas por e-mail aos usuarios configurados como `Assinantes` no perfil e ao proprio Colaborador, com alertas 90, 60 e 30 dias antes do vencimento.
+
+#### Como essa regra deve orientar um card
+
+- Registrar Colaborador, certificacao, nome, datas, numero de registro, anexo, periodo PEC, pontuacao, observacoes, assinantes, usuario executor, acao, notificacao e resultado.
+- Validar a pre-condicao de cadastro do Colaborador e o caminho `Certificacoes` > `Adicionar`, incluindo anexo opcional e data de vencimento/validade.
+- Testar inclusao, edicao, exclusao e download do anexo sem confundir a exclusao da certificacao com a exclusao de um periodo ou pontuacao.
+- Validar `Adicionar periodo`, `Acoes`, datas da PEC, pontuacao numerica, observacoes opcionais e a possibilidade de multiplos periodos ou pontuacoes conforme a regra vigente.
+- Conferir que alteracoes e exclusoes relevantes ficam no `Historico` da `Discussao`, preservando o registro original e a trilha de auditoria.
+- Testar alertas por e-mail em 90, 60 e 30 dias, destinatarios `Assinantes` e Colaborador, duplicidade, vencimento sem renovacao e comportamento quando a data e alterada ou a certificacao e excluida.
+- Tratar certificacao, numero de registro, anexo e pontuacao como dados de qualificacao profissional; aplicar permissoes, retencao, minimizacao e controles de acesso nas evidencias.
+- Confirmar com produto, seguranca e Compliance os perfis autorizados, campos obrigatorios, formatos e limites de anexo, unidade e regra da pontuacao, sobreposicao de periodos, calculo de vencimento, calendario dos alertas, auditoria e tratamento de certificacoes expiradas.
+
+### Investimentos Pessoais de Colaboradores
+
+Com base no artigo [Investimentos Pessoais de Colaboradores](https://intercom.help/compliasset/pt-BR/articles/4951125-investimentos-pessoais-de-colaboradores), publicado em 24 de outubro de 2024:
+
+- os destinatarios das solicitacoes de investimentos pessoais sao definidos em `Configuracoes` > `Canal de Compliance`, no campo `Destinatario(s)`;
+- os destinatarios selecionados recebem notificacao por e-mail sempre que uma solicitacao e realizada;
+- a publicacao dos destinatarios ocorre pela acao `Definir e Publicar`;
+- o e-mail de notificacao permite abrir o pedido por `Ver Evento`;
+- reportes criados pelo Canal de Compliance geram novos Eventos, diferenciados pela natureza utilizada;
+- os pedidos sao localizados em `Todos os Eventos` usando o filtro de natureza `Investimentos Pessoais de Colaboradores`;
+- no dossie, o pedido inicia com status `Pendente de aprovacao`;
+- depois da analise do time de Compliance, o status pode ser alterado para `Deferido` ou `Indeferido`;
+- durante a analise, e possivel definir responsavel, alterar o risco e inserir comentarios no dossie;
+- depois da alteracao do pedido, o status geral do Evento passa para `Concluido` e o Colaborador recebe a resposta por e-mail.
+
+#### Como essa regra deve orientar um card
+
+- Registrar canal, empresa ou ambiente, destinatarios anteriores e novos, publicacao, colaborador solicitante, Evento, natureza, status, responsavel, risco, comentarios, decisao e notificacoes.
+- Validar a configuracao em `Configuracoes` > `Canal de Compliance`, a selecao de um ou mais destinatarios e o efeito somente apos `Definir e Publicar`.
+- Testar notificacao por e-mail, `Ver Evento`, localizacao em `Todos os Eventos` e filtro pela natureza correta, sem expor pedidos de outros ambientes ou colaboradores.
+- Validar o ciclo pendente de aprovacao, `Deferido`, `Indeferido` e `Concluido`, preservando o historico da decisao e a correspondencia entre o Evento e a resposta enviada.
+- Testar definicao de responsavel, alteracao de risco e comentarios sem permitir que uma acao substitua ou apague o pedido original do Colaborador.
+- Confirmar com produto, seguranca e privacidade os perfis autorizados, destinatarios, conteudo e prazo das notificacoes, permissao de acesso ao dossie, auditoria, retencao e tratamento de dados pessoais e informacoes potencialmente sensiveis do investimento.
+
+### Editar Atalhos na Visao de Colaborador
+
+Com base no artigo [Editar 'Atalhos' na Visao de Colaborador](https://intercom.help/compliasset/pt-BR/articles/4561615-editar-atalhos-na-visao-de-colaborador), publicado em 5 de dezembro de 2024:
+
+- a configuracao ocorre em `Configuracoes` > `Natureza de Eventos`;
+- essa secao fica disponivel somente para usuarios com acesso de Membro-Administrador;
+- a listagem de naturezas possui a coluna `Novos Eventos`, que define as naturezas disponiveis para Membros, usuarios e administradores, ao criar novos Eventos;
+- a coluna `Canal de Compliance` define as naturezas disponiveis na `Visao do Colaborador`, para criacao de Reportes de Compliance;
+- uma natureza nao pode ser disponibilizada apenas em `Canal de Compliance`; primeiro deve estar habilitada em `Novos Eventos`;
+- a persistencia das selecoes ocorre pela acao `Confirmar`;
+- depois da habilitacao, a natureza aparece em `Atalhos` no `Painel de Controle` da Visao do Colaborador;
+- ao selecionar `Criar`, o Colaborador descreve o reporte e gera um novo Evento para tratamento pelo time de Compliance.
+
+#### Como essa regra deve orientar um card
+
+- Registrar natureza, ambiente, Membro-Administrador executor, estado anterior e novo nas colunas `Novos Eventos` e `Canal de Compliance`, data de confirmacao e resultado na Visao do Colaborador.
+- Validar o bloqueio de `Configuracoes` > `Natureza de Eventos` para perfis sem acesso de Membro-Administrador, inclusive por URL direta, API e sessao ativa.
+- Testar habilitacao em `Novos Eventos`, habilitacao conjunta no `Canal de Compliance`, desabilitacao e tentativa de habilitar somente a segunda coluna.
+- Conferir que apenas `Confirmar` persiste a selecao e que as naturezas habilitadas aparecem em `Atalhos` sem disponibilizar outras naturezas ou secoes do sistema.
+- Validar a criacao do Reporte por `Atalhos` > `Criar`, a natureza do Evento gerado, o dossie de destino, os destinatarios e a aplicacao das permissoes do Colaborador.
+- Confirmar com produto a lista editavel de naturezas, a semantica das duas colunas, o comportamento ao desabilitar uma natureza ja usada, a auditoria, as notificacoes, os efeitos em Eventos existentes e as permissoes de criar e tratar os reportes.
+
+### Desativar Acesso de Colaborador
+
+Com base no artigo [Desativar Acesso de Colaborador](https://intercom.help/compliasset/pt-BR/articles/4582671-desativar-acesso-de-colaborador), publicado em 22 de novembro de 2024:
+
+- o desligamento e iniciado em `Colaboradores` > `Todos os Colaboradores`, na listagem `Time Atual`, pela acao `Editar` do Colaborador;
+- a desativacao ocorre ao preencher `Data de Demissao` e selecionar `Confirmar`;
+- depois da confirmacao, o Colaborador sai de `Time Atual` e passa para `Ex-Colaboradores`, perdendo o acesso ao sistema;
+- comentarios, arquivos e historico de atividades permanecem salvos apos a desativacao;
+- a secao `Futuro Responsavel` permite selecionar outro Colaborador para assumir responsabilidades do desligado;
+- o novo responsavel assume tarefas relacionadas a Atividades, Obrigacoes e Eventos do Colaborador desligado;
+- a transferencia se aplica somente a itens com status `Em Aberto`;
+- para uma Data de Demissao futura, a transferencia ocorre automaticamente ao final do dia do desligamento;
+- para desligamentos com data retroativa ou no mesmo dia, a transferencia ocorre imediatamente;
+- a selecao do Futuro Responsavel tambem deve ser salva pela acao `Confirmar`;
+- a desativacao de acesso e diferente da exclusao do perfil, que segue um fluxo separado.
+
+#### Como essa regra deve orientar um card
+
+- Registrar Colaborador desligado, Data de Demissao, Membro executor, Futuro Responsavel, data e hora da confirmacao, estado das listagens e resultado da transferencia.
+- Validar bloqueio de acesso, sessao ativa, notificacoes, downloads, integracoes e acesso a dossies apos a passagem para `Ex-Colaboradores`, preservando comentarios, arquivos, responsabilidades e historico.
+- Testar datas futuras, retroativas e do mesmo dia, conferindo o momento efetivo da transferencia e o tratamento de fuso horario ou fim do dia.
+- Validar que somente Atividades, Obrigacoes e Eventos `Em Aberto` sao transferidos e que itens concluidos, encerrados ou em outros status preservam o responsavel e o historico original.
+- Testar o fluxo sem Futuro Responsavel, com substituto selecionado, com responsabilidades conflitantes e com mais de um tipo de dossie, sem apagar a atribuicao anterior.
+- Diferenciar desativacao, transferencia de responsabilidades, retorno de acesso e exclusao de Colaborador; nao usar a exclusao para simular desligamento.
+- Confirmar com produto e seguranca os perfis autorizados, o momento de bloqueio, o comportamento de sessoes existentes, regras de recontratacao, notificacoes, auditoria, retencao e tratamento de tarefas sem substituto.
+
+### Retornar Acesso de Ex-Colaborador
+
+Com base no artigo [Retornar Acesso de Ex-Colaborador](https://intercom.help/compliasset/pt-BR/articles/8733090-retornar-acesso-de-ex-colaborador), publicado em 19 de agosto de 2024:
+
+- Ex-Colaboradores ficam listados em `Colaboradores` > `Todos os Colaboradores` > `Ex-Colaboradores` quando o acesso foi desativado por Data de Demissao;
+- Colaboradores excluidos do sistema nao aparecem em `Ex-Colaboradores`, pois o cadastro foi removido;
+- para reativar pelo perfil, o usuario seleciona `Editar`, apaga o valor de `Data de Demissao`, clica fora do campo para deixa-lo vazio e seleciona `Confirmar`;
+- depois da confirmacao, o perfil retorna para `Time Atual` e o acesso e restabelecido com o mesmo login;
+- quando varios Colaboradores precisam ser reativados, a acao pode ser feita por atualizacao em massa usando a mesma planilha de importacao de Colaboradores;
+- na planilha, deve-se remover a Data de Demissao dos Colaboradores selecionados e importar o arquivo atualizado conforme as regras do upload;
+- na atualizacao por planilha, o e-mail deve ser o mesmo do cadastro existente para que a reativacao seja concluida;
+- se o modelo original nao estiver disponivel, deve ser baixado novamente e preenchido com os dados existentes no cadastro, mantendo a Data de Demissao em branco.
+
+#### Como essa regra deve orientar um card
+
+- Diferenciar retorno de acesso por remocao da Data de Demissao, reativacao em massa por planilha e recriacao de cadastro excluido; nao tratar esses fluxos como equivalentes.
+- Validar listagem `Ex-Colaboradores`, busca, `Editar`, limpeza do campo, clique fora do campo, `Confirmar`, retorno para `Time Atual` e login preservado.
+- Testar que cadastros excluidos nao podem ser reativados por essa listagem e exigem fluxo separado, preservando a distincao entre desativacao e exclusao.
+- Para upload em massa, validar modelo, identificacao pelo mesmo e-mail, Data de Demissao vazia, pre-validacao, resultado por linha, limites, erros e processamento parcial ou rollback.
+- Conferir a restauracao de acesso, sessoes, notificacoes, responsabilidades, dossies, integracoes e historico, sem apagar a evidencia do desligamento anterior.
+- Confirmar com produto e seguranca quem pode reativar, o momento efetivo do desbloqueio, regras de recontratacao, expiracao de credenciais, auditoria e tratamento de e-mail divergente ou cadastro excluido.
+
+### Funcionalidades coringas na secao de Relacionados
+
+Com base no artigo [7 Funcionalidades Coringas na Secao de Relacionados](https://intercom.help/compliasset/pt-BR/articles/15350862-7-funcionalidades-coringas-na-secao-de-relacionados), publicado em 3 de junho de 2026:
+
+- a secao de Relacionados contempla `Colaboradores`, `Fundos`, `Investidores` e `Terceiros` e oferece atalhos para operacoes de compliance dentro dos perfis;
+- no perfil de cada Colaborador, o botao `Reenviar` dispara um e-mail de boas-vindas com senha temporaria para tratar perda, expiracao ou ausencia da credencial inicial;
+- nos perfis de Fundos, Investidores e Terceiros, o campo `Permissao de Acesso` permite vincular um Colaborador ao cadastro especifico, concedendo visibilidade por periodo definido ou por prazo indeterminado;
+- no perfil de Colaboradores, `Mandatos` registra cargo, poderes de atuacao e periodo de vigencia;
+- no perfil de Colaboradores, `Certificacoes` registra credenciais profissionais, datas, numero de registro, anexo e periodos de pontuacao `PEC` vinculados a cada certificacao;
+- o campo `Dossie Reputacional`, integrado ao Data Engine, pode ser acessado em dossies de Atividades da Agenda, Obrigacoes Estruturais, Eventos e perfis de Colaboradores, Fundos, Investidores e Terceiros;
+- o atalho `Criar Evento`, disponivel nos perfis de Relacionados, inicia um Evento com o perfil de origem preenchido automaticamente como Envolvido;
+- o campo `Superior Imediato` do Colaborador registra a hierarquia e, quando o acesso do Colaborador e desativado, o superior cadastrado assume automaticamente as demandas que estavam sob sua responsabilidade;
+- o perfil de Terceiro apresenta o painel de `Due Diligence`, no qual se configura o questionario, prazo de resposta e lembretes automaticos; o Terceiro recebe um e-mail com link para preenchimento e a documentacao retornada fica disponivel para avaliacao;
+- depois da contratacao do Terceiro, a situacao pode ser alterada para `Contratado` e uma periodicidade de revisao pode ser definida para automatizar novos ciclos de DDQ.
+
+#### Como essa regra deve orientar um card
+
+- Classificar o cadastro de origem como Colaborador, Fundo, Investidor ou Terceiro e registrar o atalho, o usuario executor, a empresa ou ambiente e o resultado da operacao.
+- Para `Permissao de Acesso`, validar que o Colaborador visualiza somente o cadastro especifico autorizado, respeitando periodo, prazo indeterminado, revogacao e permissoes do seu perfil; nao confundir essa vinculacao com acesso amplo a uma secao.
+- Para `Reenviar`, preservar a obrigatoriedade de troca da senha temporaria e nao registrar credenciais, links ou tokens nas evidencias.
+- Para Mandatos e Certificacoes, validar vigencia, datas, numero de registro, anexos, pontuacao `PEC`, historico e efeitos de expiracao ou alteracao, sem tratar esses campos como equivalentes a permissao de acesso.
+- Para o Dossie Reputacional, validar origem, destinatario, custo quando aplicavel, resultado, acesso ao arquivo e protecao de dados pessoais, sem presumir que a disponibilidade do campo autoriza qualquer perfil a consultar o dossie.
+- Para `Criar Evento`, validar que o Relacionado correto e associado automaticamente como Envolvido e que a criacao preserva as permissoes, historico e demais dados do perfil de origem.
+- Para `Superior Imediato`, testar desativacao de Colaborador com e sem superior cadastrado, transferencia de demandas, conflitos de responsabilidade, notificacoes, historico e reversao, sem apagar a atribuicao original.
+- Para Due Diligence de Terceiros, validar questionario, prazo, lembretes, envio do link, recebimento de documentos, avaliacao, mudanca para `Contratado`, periodicidade e novos ciclos de DDQ.
+- Confirmar com produto e seguranca quem pode executar cada atalho, o alcance da visibilidade concedida, o momento da transferencia de demandas, o tratamento de sessoes e notificacoes, a retencao de documentos e dossies reputacionais e as regras de auditoria.
+
 ### Guia de primeiros passos
 
 Com base no artigo [Guia de Primeiros Passos](https://intercom.help/compliasset/pt-BR/articles/8727731-guia-de-primeiros-passos), publicado em 21 de dezembro de 2023, o roteiro abaixo e uma recomendacao de onboarding, e nao uma sequencia obrigatoria de uso do sistema:
@@ -665,6 +932,86 @@ Com base no artigo [FAQ - Cadastros de Colaboradores](https://intercom.help/comp
 - Ao alterar o cadastro, considerar e-mail de boas-vindas, senha temporaria, bloqueio inicial, data de desligamento e eventos automaticos desencadeados.
 - Tratar cadastro manual, importacao e API como fluxos distintos, com permissoes, validacoes, limites, erros parciais e auditoria proprios.
 - Confirmar com produto e tecnologia os campos aceitos pela planilha e API, a regra de atualizacao por e-mail, os eventos automaticos criados e o tratamento de registros desativados ou excluidos.
+
+### Upload de novos colaboradores
+
+Com base no artigo [Upload de Novos Colaboradores](https://intercom.help/compliasset/pt-BR/articles/5520614-upload-de-novos-colaboradores), publicado em 26 de abril de 2024:
+
+- o cadastro de Colaboradores pode ser manual ou feito em lote por planilha, e o mesmo fluxo tambem permite atualizar informacoes de colaboradores existentes;
+- para importar ou atualizar, o usuario acessa `Colaboradores` > `Todos os Colaboradores` > `+` > `Importar`;
+- a tela de importacao disponibiliza o arquivo modelo, que deve ser baixado e seguido na ordem e estrutura indicadas;
+- a primeira linha do modelo deve ser mantida e os dados devem ser preenchidos a partir da segunda linha, com os campos separados por virgulas;
+- depois de preencher o arquivo, o usuario seleciona a planilha e clica em `Importar`; antes da confirmacao, o sistema exibe os dados que serao refletidos no cadastro;
+- a pre-visualizacao apresenta um indicador colorido ao lado de cada Colaborador para sinalizar reativacao, primeiro cadastro ou atualizacao;
+- a confirmacao final ocorre pelo botao `Criar/Atualizar Colaboradores`;
+- no campo de envio do e-mail de boas-vindas, o valor `1` solicita o envio e o valor `0` impede o envio;
+- o e-mail de boas-vindas via planilha so pode ser enviado uma vez e esse campo nao pode ser atualizado posteriormente;
+- campos opcionais podem ser deixados em branco ou representados por duas virgulas consecutivas (`,,`); quando a planilha for montada em colunas, a celula pode permanecer vazia;
+- para atualizar um Colaborador por upload, o e-mail informado deve ser o mesmo que ja esta cadastrado no sistema;
+- o limite informado para a planilha e de ate 100 Colaboradores por importacao;
+- o arquivo preparado no Excel ou no Google Sheets deve ser exportado como `.csv` com os elementos separados por virgulas.
+
+#### Como essa regra deve orientar um card
+
+- Diferenciar cadastro manual, importacao de novos Colaboradores, reativacao e atualizacao de cadastro, registrando o estado indicado na pre-visualizacao.
+- Validar o caminho para baixar o modelo, preservar a primeira linha, respeitar a ordem das colunas, usar virgulas como delimitador e limitar o arquivo a 100 Colaboradores.
+- Testar os indicadores de primeiro cadastro, atualizacao e reativacao e conferir que a confirmacao por `Criar/Atualizar Colaboradores` persiste exatamente os dados exibidos na pre-visualizacao.
+- Testar os valores `1` e `0` do e-mail de boas-vindas, a regra de envio unico e a impossibilidade de atualizar esse campo em uma importacao posterior, sem registrar credenciais ou links reais.
+- Para atualizacoes, validar a correspondencia pelo e-mail existente, o tratamento de e-mail novo ou divergente, a ausencia de duplicidade e a preservacao dos demais dados do Colaborador.
+- Confirmar com produto e tecnologia o significado exato das cores e estados, os campos do modelo, a regra para reativacao, o tratamento de erros ou processamento parcial, a permissao para importar e atualizar e a auditoria das alteracoes.
+
+### Upload de novos participantes
+
+Com base no artigo [Upload de Novos Participantes](https://intercom.help/compliasset/pt-BR/articles/8095579-upload-de-novos-participantes), publicado em 5 de julho de 2023:
+
+- a importacao em massa e iniciada em `Participantes` > `Todos os Participantes`, pela acao `+` > `Importar uma Lista de Participantes`;
+- o sistema disponibiliza um modelo padrao de planilha para a importacao; a primeira linha, que contem os nomes e orientacoes das colunas, nao deve ser removida;
+- os dados devem ser preenchidos a partir da segunda linha e exportados como arquivo `.csv` com os elementos separados por virgulas;
+- as colunas do modelo sao `Nome Completo/Razao Social`, `Nome fantasia`, `Tipo de Pessoa`, `E-mail`, `CPF/CNPJ`, `Data de entrada`, `Data de Saida` e `Risco`;
+- `Nome Completo/Razao Social`, `Tipo de Pessoa`, `E-mail` e `CPF/CNPJ` sao obrigatorios; o nome e a razao social aceitam ate 255 caracteres e o e-mail aceita ate 255 caracteres;
+- os valores documentados para `Tipo de Pessoa` sao `1` para Pessoa Juridica, `2` para Pessoa Fisica e `3` para Estrangeiro;
+- os valores documentados para `Risco` sao `1` para baixo, `2` para medio, `3` para alto e `0` para `N/A`;
+- as datas devem seguir o formato `dd/mm/yyyy`; para deixar um campo vazio, a linha deve manter a separacao das colunas usando duas virgulas consecutivas;
+- depois de selecionar o `.csv`, o sistema apresenta uma simulacao dos dados carregados para conferencia;
+- a confirmacao ocorre pela acao `Criar/Atualizar Participantes`; o artigo nao detalha quais campos identificam um participante existente nem em que situacoes a operacao atualiza ou cria um cadastro;
+- o artigo orienta procurar o chat ou `suporte@compliasset.com` em caso de duvida.
+
+#### Como essa regra deve orientar um card
+
+- Diferenciar a importacao geral em `Todos os Participantes` da importacao de participantes em `Grupos`; os fluxos possuem telas, modelos e objetivos diferentes.
+- Registrar empresa ou ambiente, usuario responsavel, arquivo de origem, quantidade de linhas, resultado da simulacao, registros criados ou atualizados e erros por linha, sem expor CPF, CNPJ, e-mail ou outros dados pessoais desnecessarios.
+- Validar a preservacao da primeira linha do modelo, a leitura por virgulas, a extensao `.csv`, as colunas na ordem esperada, os campos obrigatorios, os limites de caracteres, o formato de data e os codigos de tipo de pessoa e risco.
+- Testar campos opcionais vazios sem deslocar os valores das colunas seguintes e conferir a correspondencia entre a simulacao e os dados efetivamente persistidos.
+- Diferenciar a simulacao da confirmacao: nenhum participante deve ser criado ou atualizado antes de `Criar/Atualizar Participantes`, salvo regra atual confirmada em sentido contrario.
+- Confirmar com produto e tecnologia a permissao para importar, a chave de identificacao de registros existentes, a semantica de `Atualizar`, tratamento de duplicidades, rollback ou processamento parcial, limite de linhas, codificacao do arquivo, mensagens de erro, auditoria e efeitos em participantes ja vinculados a Eventos ou outros modulos.
+
+### Regras gerais para upload de planilhas
+
+Com base no artigo [Regras e Orientacao para Upload de Planilhas](https://intercom.help/compliasset/pt-BR/articles/11830342-regras-e-orientacao-para-upload-de-planilhas), publicado em 25 de julho de 2025:
+
+- as importacoes descritas devem usar arquivo `.CSV`, inclusive quando a planilha tiver sido preparada no Excel ou no Google Sheets;
+- a primeira coluna do modelo nao deve ser apagada nem reestruturada;
+- campos obrigatorios devem ser preenchidos; campos opcionais podem ficar em branco ou ser representados por duas virgulas consecutivas (`,,`);
+- depois de preparar o arquivo, o usuario deve carrega-lo na area de importacao e selecionar `Importar`;
+- antes da confirmacao, o sistema exibe os dados da planilha e destaca informacoes fora do padrao; enquanto houver erro, a importacao nao pode ser concluida e o botao permanece desabilitado;
+- a importacao de Colaboradores aceita no maximo 100 registros por vez; exige `Nome` e `E-mail` e envia o e-mail de boas-vindas somente para novos usuarios;
+- a planilha de Colaboradores pode atualizar cadastros existentes, mas `Nome` e `E-mail` nao podem ser alterados por esse fluxo; o e-mail identifica novos cadastros e atualizacoes e evita duplicidades;
+- ao adicionar uma data de contratacao e remover a data de demissao de um Colaborador ja cadastrado, o sistema reativa automaticamente o perfil, alterando o status de desligado para usuario ativo;
+- a importacao de Fundos exige `Nome` e `CPF/CNPJ` e aceita no maximo 1000 registros por vez; o sistema usa o CNPJ para identificar novos cadastros e atualizacoes;
+- a importacao de Investidores exige `Nome` e `CPF/CNPJ`; o artigo informa o limite de 1000 registros por vez, embora descreva esse limite como `fundos`, ponto que precisa ser confirmado;
+- a importacao de Terceiros exige `Razao Social/Nome Completo`, `CPF/CNPJ/Passaporte/RNE`, `CEP`, `Endereco`, `Numero`, `Estado`, `Cidade` e `Pais`, e aceita no maximo 1000 registros por vez;
+- para Terceiros, o sistema identifica novos cadastros e atualizacoes pelos documentos `CPF/CNPJ`; o artigo nao esclarece a identificacao quando o participante usa Passaporte ou RNE;
+- para Fundos, Investidores e Terceiros, os campos obrigatorios ausentes interrompem a importacao, e os registros sao identificados para evitar duplicidades.
+
+#### Como essa regra deve orientar um card
+
+- Separar as regras transversais de arquivo e validacao das regras especificas de Colaboradores, Fundos, Investidores e Terceiros, sem assumir que o mesmo identificador ou limite vale para todos.
+- Registrar tipo de cadastro, empresa ou ambiente, usuario responsavel, arquivo, quantidade de linhas, resultado da pre-validacao, erros destacados, registros criados ou atualizados e status final, minimizando dados pessoais nas evidencias.
+- Validar que a primeira coluna permanece intacta, que o arquivo esta em `.CSV`, que campos opcionais vazios nao deslocam colunas e que o botao de importacao fica bloqueado enquanto houver erro de formato ou campo obrigatorio.
+- Para Colaboradores, testar limite de 100 registros, envio de boas-vindas somente para novos cadastros, impossibilidade de alterar Nome e E-mail e reativacao ao informar contratacao e remover desligamento.
+- Para Fundos, Investidores e Terceiros, testar limite de 1000 registros, identificacao de existentes, ausencia de duplicidade e interrupcao por campos obrigatorios ausentes.
+- Nao transformar em criterio de aceite o limite descrito como `1000 fundos` para Investidores sem confirmar se se trata de erro editorial ou regra do produto.
+- Confirmar com produto e tecnologia a codificacao e delimitador aceitos, o limite real por modulo, os identificadores de atualizacao, o tratamento de CPF/CNPJ/Passaporte/RNE, processamento parcial ou rollback, auditoria, mensagens de erro e efeitos da reativacao sobre acesso, historico e notificacoes.
 
 ### Grupos, departamentos e funcoes
 
@@ -1519,5 +1866,19 @@ Use os status desta forma:
 | ART-062 | [Aceites de Documentos](https://intercom.help/compliasset/pt-BR/articles/7938792-aceites-de-documentos) | Criacao, acompanhamento e acoes de campanhas | Vigente a confirmar | 2026-09-03 | Publicado em 30/09/2025; confirmar avisos, acoes, filtros e exclusao de campanha |
 | ART-063 | [Recusa de Aceite de Documentos](https://intercom.help/compliasset/pt-BR/articles/9822903-recusa-de-aceite-de-documentos) | Recusa, justificativa e tratamento de Aceites | Vigente a confirmar | 2026-09-03 | Publicado em 09/09/2024; confirmar semantica da recusa, lembretes e permissoes |
 | ART-064 | [Remover Colaborador de Aceite de Documento](https://intercom.help/compliasset/pt-BR/articles/11602780-remover-colaborador-de-aceite-de-documento) | Remocao individual de participantes de Aceites | Vigente a confirmar | 2026-09-03 | Publicado em 20/06/2025; confirmar permissoes, efeitos em acesso, lembretes e historico |
+| ART-065 | [Upload de Novos Participantes](https://intercom.help/compliasset/pt-BR/articles/8095579-upload-de-novos-participantes) | Importacao em massa de participantes por CSV | Vigente a confirmar | 2026-09-10 | Publicado em 05/07/2023; confirmar identificacao de registros, atualizacao, limites, permissao e tratamento de erros |
+| ART-066 | [Regras e Orientacao para Upload de Planilhas](https://intercom.help/compliasset/pt-BR/articles/11830342-regras-e-orientacao-para-upload-de-planilhas) | Regras gerais de importacao de Colaboradores, Fundos, Investidores e Terceiros | Vigente a confirmar | 2026-09-10 | Publicado em 25/07/2025; confirmar limites, identificadores, validacao bloqueante, reativacao e inconsistencia do limite de Investidores |
+| ART-067 | [7 Funcionalidades Coringas na Secao de Relacionados](https://intercom.help/compliasset/pt-BR/articles/15350862-7-funcionalidades-coringas-na-secao-de-relacionados) | Atalhos, acessos, evidencias, Eventos e Due Diligence em Relacionados | Vigente a confirmar | 2026-09-10 | Publicado em 03/06/2026; confirmar permissoes, transferencia de demandas, escopo de visibilidade, auditoria e ciclos de DDQ |
+| ART-068 | [Upload de Novos Colaboradores](https://intercom.help/compliasset/pt-BR/articles/5520614-upload-de-novos-colaboradores) | Importacao, atualizacao e reativacao de Colaboradores por CSV | Vigente a confirmar | 2026-09-10 | Publicado em 26/04/2024; confirmar modelo, estados da pre-visualizacao, envio unico de boas-vindas, limite e regras de atualizacao |
+| ART-069 | [Atribuicoes do Perfil Colaborador](https://intercom.help/compliasset/pt-BR/articles/7183438-atribuicoes-do-perfil-colaborador) | Visao de Colaborador, demandas, evidencias e permissoes | Vigente a confirmar | 2026-09-10 | Publicado em 20/05/2026; confirmar secoes, cartoes, acoes permitidas, certificados, exportacao de respostas e isolamento de acesso |
+| ART-070 | [Alteracao de Colaborador para Membro](https://intercom.help/compliasset/pt-BR/articles/7153535-alteracao-de-colaborador-para-membro) | Promocao de Colaborador, perfis de Membro e acessos por secao | Vigente a confirmar | 2026-09-10 | Publicado em 24/10/2024; confirmar pre-condicoes, menor privilegio, areas configuraveis, permissao administrativa e efeitos em sessoes |
+| ART-071 | [Compartilhar Fundos, Investidores e Terceiros com Colaboradores](https://intercom.help/compliasset/pt-BR/articles/5596387-compartilhar-fundos-investidores-e-terceiros-com-colaboradores) | Permissao pontual de acesso a perfis de Relacionados | Vigente a confirmar | 2026-09-10 | Publicado em 20/09/2024; confirmar prazos, notificacoes, permissoes de comentario e anexo, revogacao e isolamento de acesso |
+| ART-072 | [Categorizar Colaboradores em Funcoes](https://intercom.help/compliasset/pt-BR/articles/4636444-categorizar-colaboradores-em-funcoes) | Funcoes, classificacao e associacao de Colaboradores | Vigente a confirmar | 2026-09-10 | Publicado em 23/05/2025; confirmar permissoes, associacoes multiplas, duplicidade, exclusao e impactos em filtros e campanhas |
+| ART-073 | [Investimentos Pessoais de Colaboradores](https://intercom.help/compliasset/pt-BR/articles/4951125-investimentos-pessoais-de-colaboradores) | Canal de Compliance, aprovacao e Eventos de investimentos pessoais | Vigente a confirmar | 2026-09-10 | Publicado em 24/10/2024; confirmar destinatarios, natureza, status, decisao, notificacoes, permissoes e retencao de dados |
+| ART-074 | [Editar 'Atalhos' na Visao de Colaborador](https://intercom.help/compliasset/pt-BR/articles/4561615-editar-atalhos-na-visao-de-colaborador) | Naturezas de Eventos, Atalhos e Reportes de Compliance | Vigente a confirmar | 2026-09-10 | Publicado em 05/12/2024; confirmar permissao administrativa, dependencia entre colunas, natureza, confirmacao, reportes e efeitos em Eventos existentes |
+| ART-075 | [Desativar Acesso de Colaborador](https://intercom.help/compliasset/pt-BR/articles/4582671-desativar-acesso-de-colaborador) | Desligamento, bloqueio de acesso e transferencia de responsabilidades | Vigente a confirmar | 2026-09-10 | Publicado em 22/11/2024; confirmar datas, momento da transferencia, status elegiveis, permissao, sessoes, auditoria e retencao |
+| ART-076 | [Retornar Acesso de Ex-Colaborador](https://intercom.help/compliasset/pt-BR/articles/8733090-retornar-acesso-de-ex-colaborador) | Reativacao de Ex-Colaborador por perfil ou planilha | Vigente a confirmar | 2026-09-10 | Publicado em 19/08/2024; confirmar limpeza da Data de Demissao, login preservado, reativacao em massa, permissao e tratamento de excluidos |
+| ART-077 | [Mandatos de Colaboradores](https://intercom.help/compliasset/pt-BR/articles/9516488-mandatos-de-colaboradores) | Mandatos, poderes de atuacao e historico de Colaboradores | Vigente a confirmar | 2026-09-10 | Publicado em 22/08/2024; confirmar campos, permissoes, vigencias, multiplos mandatos, exclusao e auditoria no Historico |
+| ART-078 | [Certificacoes de Colaboradores](https://intercom.help/compliasset/pt-BR/articles/9761125-certificacoes-de-colaboradores) | Certificacoes, pontuacao PEC, anexos e alertas de vencimento | Vigente a confirmar | 2026-09-10 | Publicado em 16/06/2026; confirmar campos, periodos, pontuacao, permissoes, anexos, notificacoes e auditoria |
 
 Atualize esta base quando uma regra documentada, fonte ou contexto permanente mudar. Registre regras especificas de produto nos documentos do respectivo modulo e mantenha neste arquivo apenas o contexto necessario para orientar novas demandas. Mantenha o processo de trabalho de PM e PO no [guia operacional de abertura de cards](guia_abertura_cards_pm_po.md).
