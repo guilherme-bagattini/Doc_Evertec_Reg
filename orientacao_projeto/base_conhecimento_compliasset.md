@@ -193,6 +193,28 @@ Com base no artigo [Compartilhar Fundos, Investidores e Terceiros com Colaborado
 - Diferenciar compartilhamento de perfil especifico de promocao para Membro e de atribuicao de uma demanda; nenhum desses fluxos deve conceder acesso amplo por inferencia.
 - Confirmar com produto e seguranca quem pode convidar, revogar ou renovar a permissao, os efeitos em sessoes ativas, notificacoes, anexos, auditoria, retencao e isolamento entre empresas e ambientes.
 
+### Cadastro de Investidores
+
+Com base no artigo [Cadastro de Investidores](https://intercom.help/compliasset/pt-BR/articles/4360283-cadastro-de-investidores), publicado em 30 de setembro de 2025:
+
+- o cadastro pode ser iniciado em `Investidores` > `Novo Investidor` ou em `Todos os Investidores` > `+`;
+- o perfil deve ser classificado como Pessoa Juridica, Pessoa Fisica ou Estrangeiro;
+- conforme o tipo, o cadastro utiliza CNPJ, CPF ou Documento, alem de Razao Social ou Nome Completo, Nome fantasia quando aplicavel, E-mail e Risco;
+- todos os tipos podem receber `Data de entrada`, `Data de saida` e vinculacao a um Grupo;
+- a inclusao e concluida pela acao `Confirmar`;
+- em `Todos os Investidores`, e possivel acessar, editar, excluir e exportar cadastros;
+- o perfil apresenta informacoes gerais, `Eventos Relacionados`, `Dossie Reputacional do Data Engine` e `Discussao` para comentarios, anotacoes e anexos;
+- uma Data de saida passada transfere automaticamente o Investidor de `Ativos` para `Inativos`.
+
+#### Como essa regra deve orientar um card
+
+- Registrar tipo de pessoa, identificador, nome ou razao social, e-mail, risco, datas, Grupo, usuario executor, ambiente, acao e resultado, minimizando documentos pessoais nas evidencias.
+- Validar os caminhos de cadastro manual e por lote, os campos dependentes do tipo de pessoa, `Confirmar`, persistencia, edicao, exclusao e exportacao.
+- Testar Data de entrada, Data de saida passada ou futura, transicao entre `Ativos` e `Inativos`, reabertura do perfil e efeitos sobre Eventos e Grupos.
+- Conferir que `Eventos Relacionados`, Dossie Reputacional e `Discussao` respeitam as permissoes do perfil, preservam historico e nao ampliam acesso por estarem disponiveis no cadastro.
+- Diferenciar cadastro, exportacao, Dossie Reputacional e envolvimento em Evento; confirmar formatos, custos, limites, auditoria, retencao e comportamento de exclusao.
+- Confirmar com produto, seguranca e privacidade campos obrigatorios por tipo de pessoa, validacao de CPF/CNPJ/Documento, regras de risco, filtros de Ativos e Inativos, permissao de exportacao e efeitos em Grupos e Eventos existentes.
+
 ### Categorizar Colaboradores em Funcoes
 
 Com base no artigo [Categorizar Colaboradores em Funcoes](https://intercom.help/compliasset/pt-BR/articles/4636444-categorizar-colaboradores-em-funcoes), publicado em 23 de maio de 2025:
@@ -356,6 +378,31 @@ Com base no artigo [Retornar Acesso de Ex-Colaborador](https://intercom.help/com
 - Conferir a restauracao de acesso, sessoes, notificacoes, responsabilidades, dossies, integracoes e historico, sem apagar a evidencia do desligamento anterior.
 - Confirmar com produto e seguranca quem pode reativar, o momento efetivo do desbloqueio, regras de recontratacao, expiracao de credenciais, auditoria e tratamento de e-mail divergente ou cadastro excluido.
 
+### Exclusao de Colaboradores
+
+Com base no artigo [Exclusao de Colaboradores](https://intercom.help/compliasset/pt-BR/articles/9970843-exclusao-de-colaboradores), publicado em 22 de novembro de 2024:
+
+- para habilitar a exclusao, primeiro e necessario remover todas as atribuicoes, responsabilidades e permissoes associadas ao Colaborador;
+- a verificacao deve abranger as listagens `Eventos de sua Responsabilidade`, `Eventos Relacionados`, `Eventos de Aceites`, `Eventos de Treinamento` e `Permissoes de Acesso`;
+- tambem e necessario verificar a `Agenda` e as `Obrigacoes Estruturais` para identificar Atividades sob responsabilidade do Colaborador;
+- depois da remocao de todos os vinculos em dossies, como envolvido, responsavel e usuario com permissao, a exclusao pode ser iniciada pela acao `Excluir` na listagem ou pelo icone de lixeira no perfil;
+- a exclusao nao apaga comentarios feitos pelo Colaborador em dossies de Atividades e Obrigacoes Estruturais;
+- quando um dossie de Evento associado ao Colaborador e removido, discussoes, assinaturas de documentos e demais informacoes daquele Evento podem ser permanentemente perdidas;
+- para cadastrar novamente um Colaborador excluido, informar o e-mail na area de novos Colaboradores faz o sistema reconhecer e preencher Nome e E-mail anteriores;
+- o novo cadastro nao restaura permissoes removidas nem responsabilidades anteriores;
+- a exclusao deve ser tratada como operacao de alto impacto; o artigo recomenda desativar o perfil quando for necessario preservar dados e permitir consultas futuras.
+
+#### Como essa regra deve orientar um card
+
+- Registrar Colaborador, usuario executor, empresa ou ambiente, vinculos encontrados, responsabilidades, permissoes, dossies afetados, confirmacao da remocao e resultado da exclusao.
+- Validar cada listagem de vinculos e tambem Agenda e Obrigacoes Estruturais antes de liberar `Excluir`; nao considerar apenas a ausencia de uma responsabilidade na tela principal.
+- Testar exclusao pela listagem e pelo perfil, garantindo que a acao bloqueia enquanto houver envolvimento, responsabilidade ou permissao pendente.
+- Diferenciar a preservacao de comentarios em Atividades e Obrigacoes da perda de dados de Eventos removidos, incluindo discussoes, assinaturas e evidencias associadas.
+- Testar a recriacao por e-mail e confirmar que somente Nome e E-mail sao reaproveitados, sem restaurar acessos, responsabilidades, dossies ou permissoes anteriores.
+- Preferir desativacao quando o objetivo for bloquear acesso sem eliminar o cadastro e os dados; nao usar exclusao para simular desligamento ou afastamento temporario.
+- Tratar a exclusao de dossies e assinaturas como risco de retencao, auditoria e conformidade; exigir evidencia da decisao, permissao adequada, avaliacao de impacto e minimizacao de dados no card.
+- Confirmar com produto, seguranca e Compliance as regras de exclusao em cascata, perfis autorizados, comportamento de sessoes, historico, notificacoes, integracoes, retencao, recuperacao e tratamento de Eventos, Aceites, Treinamentos e Formularios vinculados.
+
 ### Funcionalidades coringas na secao de Relacionados
 
 Com base no artigo [7 Funcionalidades Coringas na Secao de Relacionados](https://intercom.help/compliasset/pt-BR/articles/15350862-7-funcionalidades-coringas-na-secao-de-relacionados), publicado em 3 de junho de 2026:
@@ -382,6 +429,159 @@ Com base no artigo [7 Funcionalidades Coringas na Secao de Relacionados](https:/
 - Para `Superior Imediato`, testar desativacao de Colaborador com e sem superior cadastrado, transferencia de demandas, conflitos de responsabilidade, notificacoes, historico e reversao, sem apagar a atribuicao original.
 - Para Due Diligence de Terceiros, validar questionario, prazo, lembretes, envio do link, recebimento de documentos, avaliacao, mudanca para `Contratado`, periodicidade e novos ciclos de DDQ.
 - Confirmar com produto e seguranca quem pode executar cada atalho, o alcance da visibilidade concedida, o momento da transferencia de demandas, o tratamento de sessoes e notificacoes, a retencao de documentos e dossies reputacionais e as regras de auditoria.
+
+### Realizando DD Inicial e Periodica de Terceiros
+
+Com base no artigo [Realizando DD Inicial e Periodica de Terceiros](https://intercom.help/compliasset/pt-BR/articles/7170567-realizando-dd-inicial-e-periodica-de-terceiros), publicado em 29 de abril de 2026:
+
+- o processo de Due Diligence de Terceiros usa abordagem baseada em risco, recebe documentos enviados pelo Terceiro e pode gerar dossies reputacionais;
+- o fluxo comeca pelo cadastro de um novo Terceiro ou pela abertura de um cadastro existente em `Todos os Terceiros`;
+- no perfil do Terceiro, o painel `Due Diligence` inicia com a situacao `Selecao e Contratacao`;
+- as situacoes disponiveis sao `Selecao e Contratacao`, `Contratado`, `Rescindido` e `Rejeitado`;
+- na situacao inicial, e possivel selecionar uma ferramenta de `Background Check`, usando o Data Engine ou `Nenhuma`;
+- o questionario pode ser um dos sete DDQs disponibilizados a partir da Anbima ou um questionario proprio armazenado na Biblioteca de Documentos;
+- para usar questionario proprio, a opcao correspondente deve ser habilitada antes da selecao;
+- o cadastro da DDQ exige prazo de resposta em dias corridos e pode habilitar e-mails de cobranca apos o vencimento;
+- `Criar Due Diligence Inicial` abre automaticamente um Evento de Due Diligence Inicial vinculado ao Terceiro e envia e-mail ao endereco cadastrado com o link do questionario;
+- o Terceiro envia o questionario respondido e os arquivos pelo link recebido; os documentos ficam no dossie do Evento, em `Discussao` > `Comentarios`;
+- o Evento pode ser localizado em `Todos os Eventos` ou na aba `Eventos Relacionados` do perfil do Terceiro;
+- `Solicitar Mais Informacoes do Terceiro` permite pedir novos dados ou arquivos quando a resposta estiver incompleta;
+- quando selecionado, o Background Check integrado fica disponivel no perfil do Terceiro;
+- ao mudar a situacao para `Contratado`, a empresa pode definir pontuacao, risco, data inicial da revisao e periodicidade da DDQ;
+- `Iniciar Revisao Periodica` automatiza novos ciclos de Due Diligence conforme a periodicidade definida;
+- contratos rescindidos ou recusados devem refletir a situacao correspondente no painel e podem exigir edicao posterior.
+
+#### Como essa regra deve orientar um card
+
+- Registrar Terceiro, situacao, questionario, versao, ferramenta de Background Check, prazo, cobrancas, Evento, documentos, solicitacoes adicionais, pontuacao, risco, revisao e resultado.
+- Validar o cadastro ou selecao do Terceiro, o painel `Due Diligence`, as quatro situacoes e as transicoes permitidas, sem confundir `Rejeitado` com `Rescindido`.
+- Testar questionario Anbima, questionario proprio da Biblioteca, habilitacao da opcao correspondente, prazo em dias corridos e cobrancas apos vencimento.
+- Conferir a criacao do Evento, envio do e-mail, acesso pelo link, upload de documentos, disponibilidade em `Discussao` > `Comentarios` e localizacao por `Todos os Eventos` e `Eventos Relacionados`.
+- Testar `Solicitar Mais Informacoes do Terceiro`, preservando respostas anteriores, documentos recebidos, solicitacoes feitas e historico do dossie.
+- Validar Background Check com Data Engine e `Nenhuma`, tratando custo, resultado, disponibilidade, dados pessoais e permissao de consulta como pontos separados.
+- Para `Contratado`, testar pontuacao, risco, data inicial, periodicidade e `Iniciar Revisao Periodica`, incluindo novos ciclos, alteracao de periodicidade, rescisao e rejeicao.
+- Confirmar com produto, Compliance, seguranca e privacidade os perfis autorizados, questionarios vigentes, regras de risco e pontuacao, limites de anexos, prazos, reenvios, notificacoes, retencao, auditoria, custos do Data Engine e tratamento de falhas no portal do Terceiro.
+
+### Prorrogacao de Prazos em Due Diligence
+
+Com base no artigo [Prorrogacao de Prazos em Due Diligence](https://intercom.help/compliasset/pt-BR/articles/4360593-prorrogacao-de-prazos-em-due-diligence), publicado em 5 de dezembro de 2024:
+
+- o prazo para resposta da Due Diligence e definido em dias corridos e pode ser alterado depois que o processo for iniciado;
+- o usuario acessa `Todos os Terceiros`, localiza o Terceiro, abre o perfil e consulta a secao `Eventos Relacionados`;
+- o Evento de Due Diligence cujo prazo sera alterado deve ser aberto pelo titulo;
+- dentro do dossie, a acao `Editar` permite informar o novo valor em `Prazo para resolucao`;
+- durante a mesma edicao, outros campos e informacoes do Evento tambem podem ser ajustados;
+- a alteracao e concluida pela acao `Atualizar Evento`.
+
+#### Como essa regra deve orientar um card
+
+- Registrar Terceiro, Evento de Due Diligence, prazo anterior e novo, unidade em dias corridos, usuario executor, motivo, data, demais campos alterados e resultado da atualizacao.
+- Validar o caminho `Todos os Terceiros` > perfil > `Eventos Relacionados` > titulo do Evento > `Editar` > `Prazo para resolucao` > `Atualizar Evento`.
+- Testar aumento e reducao do prazo, prazo vencido, prazo em andamento, novo prazo invalido e alteracoes simultaneas em outros campos, preservando o dossie e os documentos ja recebidos.
+- Conferir o efeito da prorrogacao sobre cobrancas, notificacoes, acesso do Terceiro, status do Evento, revisoes periodicas e historico, sem criar um novo Evento ou apagar o prazo anterior.
+- Confirmar com produto e Compliance os perfis autorizados, limites e formato do prazo, regra para prazos vencidos, calculo de dias corridos, auditoria, notificacoes, reenvio do link e comportamento em DDQ inicial ou periodica.
+
+### Cadastro de Fundos
+
+Com base no artigo [Cadastro de Fundos](https://intercom.help/compliasset/pt-BR/articles/4582372-cadastro-de-fundos), publicado em 6 de outubro de 2025:
+
+- o cadastro pode ser iniciado em `Fundos` > `Novo Fundo` ou em `Todos os Fundos` > `+`;
+- `CNPJ`, nome e risco sao obrigatorios;
+- tambem podem ser informados familia/estrategia, data de criacao, data de fechamento, termino do prazo de investimento, gestor responsavel, administrador, observacao e Grupo;
+- `Confirmar` salva o cadastro;
+- Fundos com data de fechamento passada aparecem na aba `Desativados`;
+- a listagem permite filtrar por familia/estrategia e gestor, pesquisar pela lupa e exportar pela acao `Exportar`.
+
+#### Como essa regra deve orientar um card
+
+- Registrar Fundo, CNPJ, nome, risco, estrategia, datas, gestor, administrador, Grupo, usuario, acao e resultado.
+- Validar campos obrigatorios, datas, vinculo a Grupo, `Confirmar`, filtros, busca, exportacao e transicao para `Desativados`.
+- Confirmar com produto a regra de fechamento, permissoes, validacao de CNPJ, comportamento de datas futuras e passadas, custos, auditoria e retencao.
+
+### Upload de Novos Fundos
+
+Com base no artigo [Upload de Novos Fundos](https://intercom.help/compliasset/pt-BR/articles/7903584-upload-de-novos-fundos), publicado em 14 de agosto de 2023:
+
+- o upload ocorre em `Fundos` > `Todos os Fundos` > `+` > `Importar uma Lista de Fundos`;
+- o modelo usa `Nome`, `Familia / Estrategia`, `CPF/CNPJ`, `Criado em`, `Data de fechamento`, `Termino do prazo de investimento`, `Administrador` e `Observacao`;
+- `Nome` e CPF/CNPJ sao obrigatorios; a primeira linha deve ser mantida e os dados comecam na segunda;
+- campos opcionais podem ficar vazios com virgulas consecutivas (`,,`);
+- o arquivo deve ser `.csv`, com campos separados por virgulas;
+- `Importar` exibe simulacao e `Criar/Atualizar Fundos` confirma a carga.
+
+#### Como essa regra deve orientar um card
+
+- Validar modelo, ordem das colunas, CSV, campos obrigatorios, datas, campos vazios, simulacao e confirmacao.
+- Registrar linhas criadas ou atualizadas, erros, duplicidades, identificador, arquivo, usuario, permissao e resultado sem expor CNPJ ou dados pessoais completos.
+- Confirmar identificacao de registros existentes, limite, processamento parcial ou rollback, auditoria e efeitos em Grupos e Eventos.
+
+### Reenvio de Due Diligence para Terceiros
+
+Com base no artigo [Reenvio de Due Diligence para Terceiros](https://intercom.help/compliasset/pt-BR/articles/12961469-reenvio-de-due-diligence-para-terceiros), publicado em 28 de novembro de 2025:
+
+- no perfil do Terceiro, o Evento de Due Diligence fica em `Eventos Relacionados`;
+- ao abrir o Evento, `Reenviar lembrete` dispara novamente o e-mail com as informacoes de acesso e o prazo de resposta;
+- todos os reenvios ficam registrados no Historico do Evento.
+
+#### Como essa regra deve orientar um card
+
+- Registrar Terceiro, Evento, usuario, data, motivo, destinatario, prazo vigente, quantidade de reenvios, entrega e resultado, sem armazenar link ou token.
+- Validar `Eventos Relacionados`, titulo do Evento, `Reenviar lembrete`, mensagem, prazo, duplicidade de envio e Historico.
+- Confirmar com produto e seguranca perfis autorizados, limites, intervalo de reenvio, auditoria, protecao contra abuso e efeitos sobre cobrancas.
+
+### Upload de Novos Terceiros
+
+Com base no artigo [Upload de Novos Terceiros](https://intercom.help/compliasset/pt-BR/articles/8260556-upload-de-novos-terceiros), publicado em 15 de agosto de 2023:
+
+- o upload ocorre em `Terceiros` > `Todos os Terceiros` > `+` > `Importar uma Lista de Terceiros`;
+- o modelo usa `Tipo Parceiro`, `Razao Social / Nome Completo`, `Nome Fantasia`, `CPF/CNPJ/Passaporte/RNE`, `E-mail`, `CEP`, `Endereco`, `Numero`, `Complemento`, `Estado`, `Cidade`, `Pais` e `Risco`;
+- sao obrigatorios Razao Social/Nome, documento, E-mail, CEP, Endereco, Numero, Estado, Cidade e Pais;
+- os codigos de pessoa sao `1`, `2` e `3`, e os de risco sao `1`, `2`, `3` e `0`;
+- a primeira linha deve ser mantida, campos vazios usam `,,` e o arquivo deve ser `.csv`;
+- a simulacao ocorre depois de `Importar` e a confirmacao ocorre por `Criar/Atualizar Terceiros`.
+
+#### Como essa regra deve orientar um card
+
+- Validar modelo, obrigatoriedade, códigos, CSV, campos vazios, simulacao e confirmacao.
+- Testar documentos CPF/CNPJ/Passaporte/RNE, duplicidades, dados invalidos, processamento parcial, permissao, auditoria e efeitos em Due Diligence e Eventos.
+- Confirmar chave de identificacao, limites, codificacao, tratamento de Passaporte/RNE, mensagens de erro e retencao do arquivo.
+
+### Cadastro de Terceiros
+
+Com base no artigo [Cadastro de Terceiros](https://intercom.help/compliasset/pt-BR/articles/8257454-cadastro-de-terceiros), publicado em 30 de setembro de 2025:
+
+- o cadastro ocorre em `Terceiros` > `Novo Terceiro` ou em `Todos os Terceiros` > `+`;
+- deve-se selecionar Pessoa Juridica, Pessoa Fisica ou Estrangeiro e preencher os campos obrigatorios correspondentes;
+- o cadastro pode conter data de entrada, telefone, categoria e, para Pessoa Juridica, pessoa de contato;
+- `Adicionar nova categoria`, lapis e lixeira permitem gerir categorias;
+- `Criar Terceiro` salva o registro;
+- o perfil apresenta dados gerais, painel de Due Diligence, `Eventos Relacionados`, Dossie Reputacional do Data Engine e `Discussao`;
+- Terceiros podem ser incluidos em Grupos para selecao em Eventos;
+- o CNPJ aceita formato alfanumerico conforme a regra anunciada para 2026.
+
+#### Como essa regra deve orientar um card
+
+- Registrar tipo de pessoa, documento, nome, e-mail, endereco, contato, categoria, data de entrada, Grupo, usuario, acao e resultado.
+- Validar campos dependentes do tipo, categoria, `Criar Terceiro`, edicao, Due Diligence, Eventos, Dossie Reputacional e Discussao.
+- Confirmar regra de CNPJ alfanumerico, validacoes, permissoes, filtros, retencao e efeitos de categorias e Grupos em Eventos.
+
+### Diferenca entre Dossie Reputacional e Due Diligence de Terceiros
+
+Com base no artigo [Diferenca entre Dossie Reputacional e Due Diligence de Terceiros](https://intercom.help/compliasset/pt-BR/articles/8429615-diferenca-entre-dossie-reputacional-e-due-diligence-de-terceiros), publicado em 29 de abril de 2026:
+
+- o Dossie Reputacional do Data Engine e uma consulta externa baseada em nome e CPF/CNPJ, disponivel em dossies e perfis de Relacionados;
+- o artigo informa custo de R$15 para CPF e R$25 para CNPJ, com retorno em alguns minutos, valores que devem ser confirmados antes de uso comercial;
+- Due Diligence de Terceiros e um processo de investigacao anterior a contrato ou acordo financeiro;
+- a DD pode usar Background Check do Data Engine, mas essa consulta e opcional e nao substitui o questionario;
+- a DD tambem pode usar sete questionarios da Anbima ou questionario proprio da Biblioteca de Documentos;
+- Dossie Reputacional e consulta pontual; Due Diligence inclui questionario, documentos, avaliacao, risco e acompanhamento do Terceiro.
+
+#### Como essa regra deve orientar um card
+
+- Classificar a demanda como consulta reputacional ou Due Diligence antes de definir fluxo, permissao, evidencia e criterio de aceite.
+- Registrar nome, documento mascarado, origem, finalidade, custo informado, resultado, questionario, documentos, risco e decisao, sem expor dados pessoais completos.
+- Validar que uma consulta do Data Engine pode integrar a DD, mas nao substitui questionario, documentos, avaliacao ou historico do processo.
+- Confirmar com produto, juridico, seguranca e privacidade custos, perfis autorizados, escopos, retencao, auditoria e tratamento de erro ou retorno incompleto.
 
 ### Guia de primeiros passos
 
@@ -959,6 +1159,73 @@ Com base no artigo [Upload de Novos Colaboradores](https://intercom.help/complia
 - Testar os valores `1` e `0` do e-mail de boas-vindas, a regra de envio unico e a impossibilidade de atualizar esse campo em uma importacao posterior, sem registrar credenciais ou links reais.
 - Para atualizacoes, validar a correspondencia pelo e-mail existente, o tratamento de e-mail novo ou divergente, a ausencia de duplicidade e a preservacao dos demais dados do Colaborador.
 - Confirmar com produto e tecnologia o significado exato das cores e estados, os campos do modelo, a regra para reativacao, o tratamento de erros ou processamento parcial, a permissao para importar e atualizar e a auditoria das alteracoes.
+
+### Atualizacao de Colaboradores por Upload de Planilha
+
+Com base no artigo [Atualizacao de Colaboradores](https://intercom.help/compliasset/pt-BR/articles/15001248-atualizacao-de-colaboradores), publicado em 7 de maio de 2026:
+
+- a atualizacao em massa e iniciada em `Colaboradores` > `Todos os Colaboradores`, pela acao `+`;
+- o sistema disponibiliza um modelo de planilha em `Baixe o arquivo modelo de importacao`, acompanhado de instrucoes;
+- `Nome` e `E-mail` devem ser informados como campos obrigatorios de identificacao para que os dados sejam atualizados;
+- Nome e E-mail nao devem ser alterados pela planilha; solicitacoes para altera-los devem ser encaminhadas a equipe tecnica pelo e-mail `suporte@compliasset.com`;
+- os demais campos podem ser atualizados, incluindo `Ramal`, `Celular`, `CEP`, `Endereco`, `Numero`, `Complemento`, `Cidade`, `Estado`, `Pais`, `CPF`, `RG`, `Profissao`, `Departamento`, `Cargo`, `Data de Contratacao` e `Data de Demissao`;
+- a coluna de envio de e-mail de boas-vindas deve permanecer com o valor `0`, embora seu preenchimento seja obrigatorio;
+- a primeira linha do modelo nao deve ser apagada e nenhuma coluna deve ser excluida; campos sem preenchimento devem permanecer vazios;
+- e-mails apagados podem reativar os cadastros correspondentes, conforme a regra descrita no artigo;
+- cada importacao aceita no maximo 100 Colaboradores e o arquivo deve possuir extensao `.csv`;
+- o e-mail de boas-vindas nao e enviado para Colaboradores atualizados, pois esse envio ocorre somente na criacao de um novo Colaborador;
+- durante a importacao, o sistema identifica os registros em atualizacao; ao final, o usuario seleciona `Importar` para confirmar a operacao.
+
+#### Como essa regra deve orientar um card
+
+- Registrar Colaboradores, campos alterados, Nome e E-mail usados como identificadores, usuario executor, arquivo, quantidade de linhas, estado exibido durante a importacao e resultado final, sem expor dados pessoais desnecessarios.
+- Validar o caminho `Colaboradores` > `Todos os Colaboradores` > `+`, o download do modelo, a preservacao da primeira linha, a ordem das colunas e a extensao `.csv`.
+- Testar a atualizacao de cada campo permitido e confirmar que Nome e E-mail nao podem ser alterados pelo upload, direcionando essas solicitacoes ao fluxo tecnico de suporte.
+- Validar o valor `0` na coluna de boas-vindas, sua obrigatoriedade, a ausencia de envio para atualizacoes e o envio somente no cadastro de um novo Colaborador.
+- Testar ate 100 registros, arquivo acima do limite, campos vazios, colunas removidas, formato invalido, e-mail inexistente, e-mail apagado e processamento parcial ou bloqueado.
+- Conferir que os dados apresentados ou identificados como em atualizacao correspondem aos dados efetivamente persistidos somente apos a confirmacao por `Importar`.
+- Diferenciar atualizacao cadastral, reativacao por e-mail e criacao de novo Colaborador; nenhum desses fluxos deve apagar responsabilidades, historico ou evidencias sem regra especifica.
+- Confirmar com produto, tecnologia e suporte os campos aceitos, a semantica de e-mails apagados, o comportamento de erros e duplicidades, o processamento parcial ou rollback, as permissoes, a auditoria e os efeitos sobre acesso, notificacoes e responsabilidades.
+
+### Upload de Relacionados via Planilha
+
+Com base no artigo [Upload de Relacionados via Planilha](https://intercom.help/compliasset/pt-BR/articles/4570873-upload-de-relacionados-via-planilha), publicado em 15 de agosto de 2023:
+
+- o upload de planilhas permite carregar multiplos cadastros de Relacionados sem inclusao manual registro a registro;
+- o artigo orienta o upload de `Fundos`, `Investidores` e `Terceiros`, alem de indicar uma secao propria para `Colaboradores`;
+- cada area possui um modelo de planilha diferente, que deve ser preenchido conforme as instrucoes da respectiva secao;
+- as regras de campos, identificadores, formatos, limites, atualizacao e tratamento de erros devem ser consultadas no artigo especifico de cada tipo de Relacionado;
+- o suporte indicado para duvidas sobre o upload e o chat ou o e-mail `suporte@compliasset.com`.
+
+#### Como essa regra deve orientar um card
+
+- Classificar o cadastro como Fundo, Investidor, Terceiro ou Colaborador antes de definir o modelo, os campos e o fluxo de importacao.
+- Registrar empresa ou ambiente, tipo de Relacionado, usuario executor, modelo utilizado, quantidade de registros, resultado da validacao, registros criados ou atualizados e erros por linha, minimizando dados pessoais nas evidencias.
+- Nao reutilizar o modelo de uma area em outra nem inferir campos obrigatorios, identificadores ou limites a partir deste artigo geral; consultar a fonte especifica do cadastro.
+- Validar a preservacao da estrutura do modelo, a extensao e o delimitador aceitos, campos vazios, duplicidades, pre-visualizacao, confirmacao, processamento parcial ou rollback conforme a regra do tipo de Relacionado.
+- Diferenciar carga inicial, atualizacao de cadastros existentes e reativacao; cada operacao deve explicitar sua chave de identificacao, permissao, auditoria e efeito nos vinculos com Eventos, Grupos e demais dossies.
+- Confirmar com produto e tecnologia os caminhos de acesso, modelos vigentes, campos obrigatorios, identificadores, limites, codificacao, mensagens de erro, permissao de importacao e retencao dos arquivos enviados.
+
+### Upload de Novos Investidores
+
+Com base no artigo [Upload de Novos Investidores](https://intercom.help/compliasset/pt-BR/articles/7919004-upload-de-novos-investidores), publicado em 5 de julho de 2023:
+
+- o upload e iniciado em `Investidores` > `Todos os Investidores` > `+` > `Importar uma Lista de Investidores`;
+- o sistema disponibiliza um modelo de importacao com as colunas `Nome Completo/Razao Social`, `Nome fantasia`, `Tipo de Pessoa`, `E-mail`, `CPF/CNPJ`, `Data de entrada`, `Data de Saida` e `Risco`;
+- `Nome Completo/Razao Social`, `Tipo de Pessoa`, `E-mail` e `CPF/CNPJ` sao obrigatorios; nomes e e-mails aceitam ate 255 caracteres;
+- os codigos documentados sao `1` para Pessoa Juridica, `2` para Pessoa Fisica e `3` para Estrangeiro, e `1`, `2`, `3` e `0` para risco baixo, medio, alto e `N/A`;
+- as datas devem usar o formato `dd/mm/yyyy`; campos vazios devem preservar a separacao por virgulas consecutivas (`,,`);
+- a primeira linha do modelo deve ser mantida e os dados devem comecar na segunda linha;
+- o arquivo precisa ser `.csv`, com elementos separados por virgulas;
+- depois de `Importar`, o sistema exibe uma simulacao para conferencia e a confirmacao ocorre por `Criar/Atualizar Investidores`.
+
+#### Como essa regra deve orientar um card
+
+- Registrar modelo, Investidor, usuario executor, quantidade de linhas, simulacao, registros criados ou atualizados, erros por linha e resultado final, minimizando CPF, CNPJ e e-mails nas evidencias.
+- Validar o caminho de importacao, a preservacao da primeira linha, a ordem das colunas, a extensao `.csv`, o delimitador, os campos obrigatorios, limites de caracteres, codigos de pessoa e risco e formato de datas.
+- Testar campos opcionais vazios, acentos e codificacao do arquivo, duplicidades, e-mail ou CPF/CNPJ invalidos e a correspondencia entre simulacao e dados persistidos.
+- Diferenciar simulacao de confirmacao: nenhum registro deve ser criado ou atualizado antes de `Criar/Atualizar Investidores`, salvo regra atual confirmada em contrario.
+- Confirmar com produto e tecnologia a chave de identificacao de registros existentes, semantica de `Atualizar`, limite de linhas, processamento parcial ou rollback, permissao, auditoria e efeitos sobre Eventos e Grupos.
 
 ### Upload de novos participantes
 
@@ -1880,5 +2147,18 @@ Use os status desta forma:
 | ART-076 | [Retornar Acesso de Ex-Colaborador](https://intercom.help/compliasset/pt-BR/articles/8733090-retornar-acesso-de-ex-colaborador) | Reativacao de Ex-Colaborador por perfil ou planilha | Vigente a confirmar | 2026-09-10 | Publicado em 19/08/2024; confirmar limpeza da Data de Demissao, login preservado, reativacao em massa, permissao e tratamento de excluidos |
 | ART-077 | [Mandatos de Colaboradores](https://intercom.help/compliasset/pt-BR/articles/9516488-mandatos-de-colaboradores) | Mandatos, poderes de atuacao e historico de Colaboradores | Vigente a confirmar | 2026-09-10 | Publicado em 22/08/2024; confirmar campos, permissoes, vigencias, multiplos mandatos, exclusao e auditoria no Historico |
 | ART-078 | [Certificacoes de Colaboradores](https://intercom.help/compliasset/pt-BR/articles/9761125-certificacoes-de-colaboradores) | Certificacoes, pontuacao PEC, anexos e alertas de vencimento | Vigente a confirmar | 2026-09-10 | Publicado em 16/06/2026; confirmar campos, periodos, pontuacao, permissoes, anexos, notificacoes e auditoria |
+| ART-079 | [Atualizacao de Colaboradores](https://intercom.help/compliasset/pt-BR/articles/15001248-atualizacao-de-colaboradores) | Atualizacao em massa de Colaboradores por planilha | Vigente a confirmar | 2026-09-10 | Publicado em 07/05/2026; confirmar campos identificadores, campos atualizaveis, reativacao por e-mail, limite, permissoes, erros e auditoria |
+| ART-080 | [Exclusao de Colaboradores](https://intercom.help/compliasset/pt-BR/articles/9970843-exclusao-de-colaboradores) | Exclusao, perda de dados de Eventos e recriacao de Colaboradores | Vigente a confirmar | 2026-09-10 | Publicado em 22/11/2024; confirmar pre-requisitos, impactos em dossies, permissoes, recuperacao, retencao e alternativa de desativacao |
+| ART-081 | [Upload de Relacionados via Planilha](https://intercom.help/compliasset/pt-BR/articles/4570873-upload-de-relacionados-via-planilha) | Upload de Fundos, Investidores, Terceiros e Colaboradores por modelos especificos | Vigente a confirmar | 2026-09-10 | Publicado em 15/08/2023; confirmar modelos, campos, identificadores, limites, permissoes, erros e fontes especificas por tipo de Relacionado |
+| ART-082 | [Realizando DD Inicial e Periodica de Terceiros](https://intercom.help/compliasset/pt-BR/articles/7170567-realizando-dd-inicial-e-periodica-de-terceiros) | Due Diligence inicial, revisao periodica, DDQ e Background Check de Terceiros | Vigente a confirmar | 2026-09-10 | Publicado em 29/04/2026; confirmar situacoes, questionarios, prazos, cobrancas, documentos, riscos, periodicidade, permissoes e custos do Data Engine |
+| ART-083 | [Prorrogacao de Prazos em Due Diligence](https://intercom.help/compliasset/pt-BR/articles/4360593-prorrogacao-de-prazos-em-due-diligence) | Alteracao do prazo de resolucao de Eventos de Due Diligence | Vigente a confirmar | 2026-09-10 | Publicado em 05/12/2024; confirmar permissao, dias corridos, prazos vencidos, cobrancas, notificacoes, auditoria e efeitos em DDQ inicial e periodica |
+| ART-084 | [Upload de Novos Investidores](https://intercom.help/compliasset/pt-BR/articles/7919004-upload-de-novos-investidores) | Importacao em massa de Investidores por CSV | Vigente a confirmar | 2026-09-10 | Publicado em 05/07/2023; confirmar modelo, campos obrigatorios, codigos de pessoa e risco, limites, simulacao, identificacao e processamento |
+| ART-085 | [Cadastro de Investidores](https://intercom.help/compliasset/pt-BR/articles/4360283-cadastro-de-investidores) | Cadastro, perfil, status, Eventos e Dossie Reputacional de Investidores | Vigente a confirmar | 2026-09-10 | Publicado em 30/09/2025; confirmar campos por tipo, datas, Grupos, Ativos/Inativos, permissoes, exportacao, auditoria e exclusao |
+| ART-086 | [Cadastro de Fundos](https://intercom.help/compliasset/pt-BR/articles/4582372-cadastro-de-fundos) | Cadastro, grupos, status e exportacao de Fundos | Vigente a confirmar | 2026-09-10 | Publicado em 06/10/2025; confirmar campos obrigatorios, risco, datas, gestores, Grupos, Desativados, filtros, permissoes e exportacao |
+| ART-087 | [Upload de Novos Fundos](https://intercom.help/compliasset/pt-BR/articles/7903584-upload-de-novos-fundos) | Importacao em massa de Fundos por CSV | Vigente a confirmar | 2026-09-10 | Publicado em 14/08/2023; confirmar modelo, campos, CSV, simulacao, identificacao, limites, processamento e auditoria |
+| ART-088 | [Reenvio de Due Diligence para Terceiros](https://intercom.help/compliasset/pt-BR/articles/12961469-reenvio-de-due-diligence-para-terceiros) | Reenvio de lembrete, prazo e historico de Due Diligence | Vigente a confirmar | 2026-09-10 | Publicado em 28/11/2025; confirmar permissoes, limites de reenvio, entrega, cobrancas, protecao contra abuso e Historico |
+| ART-089 | [Upload de Novos Terceiros](https://intercom.help/compliasset/pt-BR/articles/8260556-upload-de-novos-terceiros) | Importacao em massa de Terceiros por CSV | Vigente a confirmar | 2026-09-10 | Publicado em 15/08/2023; confirmar campos obrigatorios, documentos, codigos, simulacao, limites, identificacao e efeitos em DDQ |
+| ART-090 | [Cadastro de Terceiros](https://intercom.help/compliasset/pt-BR/articles/8257454-cadastro-de-terceiros) | Cadastro, categorias, grupos e perfil de Terceiros | Vigente a confirmar | 2026-09-10 | Publicado em 30/09/2025; confirmar campos por tipo, CNPJ alfanumerico, categorias, Grupos, permissoes, DD e Dossie Reputacional |
+| ART-091 | [Diferenca entre Dossie Reputacional e Due Diligence de Terceiros](https://intercom.help/compliasset/pt-BR/articles/8429615-diferenca-entre-dossie-reputacional-e-due-diligence-de-terceiros) | Diferenciacao entre consulta reputacional e Due Diligence | Vigente a confirmar | 2026-09-10 | Publicado em 29/04/2026; confirmar custos, escopo, questionarios, documentos, risco, permissoes, privacidade e retencao |
 
 Atualize esta base quando uma regra documentada, fonte ou contexto permanente mudar. Registre regras especificas de produto nos documentos do respectivo modulo e mantenha neste arquivo apenas o contexto necessario para orientar novas demandas. Mantenha o processo de trabalho de PM e PO no [guia operacional de abertura de cards](guia_abertura_cards_pm_po.md).
