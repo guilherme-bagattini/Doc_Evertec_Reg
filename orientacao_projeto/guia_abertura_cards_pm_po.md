@@ -340,6 +340,27 @@ Abra um card quando houver uma unidade de trabalho rastreavel, como:
 
 Nao abra um card separado para cada subtarefa tecnica quando elas fazem parte da mesma entrega. Separe cards quando houver valor, responsavel, criterio de aceite ou ciclo de validacao independente.
 
+### Perguntas para abrir e priorizar uma demanda
+
+Use estas perguntas antes de transformar um pedido em compromisso de entrega. Registre respostas, fontes e pontos ainda desconhecidos no Product Brief, no card ou em uma decisao vinculada.
+
+- Qual problema estamos tentando resolver?
+- Quem e afetado e em qual contexto o problema acontece?
+- Que evidencia confirma o problema? O que ainda e hipotese?
+- Qual e o impacto de nao fazer isso agora?
+- Existe prazo, janela de oportunidade ou custo de atraso conhecido?
+- Existe risco regulatorio, financeiro, operacional, de seguranca ou reputacional?
+- Quantos clientes, usuarios ou areas sao impactados? Qual e a criticidade desses perfis?
+- A demanda esta conectada a qual objetivo, iniciativa ou estrategia do produto?
+- Qual resultado queremos alcançar e como saberemos que funcionou?
+- Existe uma alternativa temporaria, manual ou de menor esforco?
+- Qual e o menor escopo capaz de gerar valor ou reduzir a incerteza?
+- Qual e o esforco estimado e quais dependencias, restricoes ou bloqueios existem?
+- O que precisa ser investigado antes de decidir ou implementar?
+- Quem precisa participar da decisao e quem sera responsavel pelo proximo passo?
+
+Se alguma resposta for desconhecida, registre-a como pendencia com responsavel e proxima acao. Uma demanda pode ser priorizada para investigacao mesmo quando ainda nao existe clareza suficiente para priorizar a implementacao.
+
 ## Como priorizar
 
 A prioridade deve ter uma justificativa registrada, e nao depender apenas da ordem de chegada ou da pessoa que solicitou a demanda. Considere:

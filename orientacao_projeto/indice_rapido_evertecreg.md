@@ -27,6 +27,8 @@ Permitir que voce encontre rapidamente:
 
 ## Onde consultar o contexto principal
 
+- [Contexto de negocio do EvertecReg](contexto_negocio_evertecreg.md)
+- [Contexto do CompliAsset (plataforma GRC)](contexto_compliasset_evertecreg.md)
 - [Resumo operacional do projeto](resumo_operacional_evertecreg.md)
 - [Mapa mestre do projeto](mapa_mestre_evertecreg.md)
 - [Guia de reuniao para PO](guia_reuniao_po_evertecreg.md)

@@ -11,36 +11,27 @@ Organizar a base de conhecimento do projeto para facilitar:
 - preparacao para reunioes;
 - acompanhamento de decisoes do MVP;
 - registro de duvidas e pendencias;
-- consulta de referencias funcionais e tecnicas.
+- consulta de referencias funcionais e tecnicas;
+- consulta de pesquisa com clientes (entrevistas, retencao, churn).
 
-## Como usar este repositorio
+## Indice rapido — por pergunta
 
-Se voce precisa entender o projeto rapidamente, siga esta ordem:
+| Preciso saber... | Vá para |
+| --- | --- |
+| Contexto de negocio / o que e o EvertecReg | [orientacao_projeto/contexto_negocio_evertecreg.md](orientacao_projeto/contexto_negocio_evertecreg.md) |
+| Visao geral rapida do projeto | [orientacao_projeto/indice_rapido_evertecreg.md](orientacao_projeto/indice_rapido_evertecreg.md) |
+| O que ja foi decidido para o MVP | [orientacao_projeto/decisoes_mvp_evertecreg.md](orientacao_projeto/decisoes_mvp_evertecreg.md) |
+| O que ainda esta em aberto | [orientacao_projeto/duvidas_em_aberto_evertecreg.md](orientacao_projeto/duvidas_em_aberto_evertecreg.md) |
+| Como me preparar para reuniao de PO | [orientacao_projeto/guia_reuniao_po_evertecreg.md](orientacao_projeto/guia_reuniao_po_evertecreg.md) |
+| Como abrir/definir um card | [orientacao_projeto/guia_abertura_cards_pm_po.md](orientacao_projeto/guia_abertura_cards_pm_po.md) |
+| Visao tecnica/arquitetura | [orientacao_projeto/resumo_arquitetura_evertecreg.md](orientacao_projeto/resumo_arquitetura_evertecreg.md) |
+| O que aprendemos com clientes (entrevistas, uso, churn, retencao) | [estudo_clientes_Compli/README.md](estudo_clientes_Compli/README.md) |
 
-1. [Indice rapido](orientacao_projeto/indice_rapido_evertecreg.md)
-2. [Resumo operacional](orientacao_projeto/resumo_operacional_evertecreg.md)
-3. [Decisoes do MVP](orientacao_projeto/decisoes_mvp_evertecreg.md)
+## Estrutura do repositorio
 
-Se precisar aprofundar:
-
-1. [Mapa mestre](orientacao_projeto/mapa_mestre_evertecreg.md)
-2. [Resumo de arquitetura](orientacao_projeto/resumo_arquitetura_evertecreg.md)
-3. [Perguntas e respostas da etapa](orientacao_projeto/perguntas_respostas_etapa_evertecreg.md)
-
-## Estrutura principal
-
-- [orientacao_projeto/README.md](orientacao_projeto/README.md): entrada da pasta de orientacao
-- [orientacao_projeto/indice_rapido_evertecreg.md](orientacao_projeto/indice_rapido_evertecreg.md): navegação rapida
-- [orientacao_projeto/duvidas_em_aberto_evertecreg.md](orientacao_projeto/duvidas_em_aberto_evertecreg.md): pendencias e pontos a validar
-- [orientacao_projeto/guia_reuniao_po_evertecreg.md](orientacao_projeto/guia_reuniao_po_evertecreg.md): apoio para reunioes de PO
-
-## Referencias base
-
-- [EvertecReg.pdf](orientacao_projeto/EvertecReg.pdf)
-- [Desenvolvimento do EvertecReg.pdf](orientacao_projeto/Desenvolvimento%20do%20EvertecReg.pdf)
-- [EvertecReg-birds-eye.drawio.pdf](orientacao_projeto/EvertecReg-birds-eye.drawio.pdf)
-- [EvertecReg-Impacto-Monitoramento.drawio.pdf](orientacao_projeto/EvertecReg-Impacto-Monitoramento.drawio.pdf)
+- [orientacao_projeto/](orientacao_projeto/README.md): contexto de negocio, decisoes de MVP, arquitetura e pendencias do projeto EvertecReg. Ponto de entrada: [orientacao_projeto/README.md](orientacao_projeto/README.md).
+- [estudo_clientes_Compli/](estudo_clientes_Compli/README.md): pesquisa com clientes (entrevistas, transcricoes, sinteses), demandas extraidas e paineis de engajamento/churn. Ponto de entrada: [estudo_clientes_Compli/README.md](estudo_clientes_Compli/README.md).
 
 ## Observacao
 
-Este repositorio prioriza organizacao e contexto. O objetivo aqui e dar clareza para discussoes de produto e alinhamento entre negocio, operacao e tecnologia.
+Este repositorio prioriza organizacao e contexto. O objetivo aqui e dar clareza para discussoes de produto e alinhamento entre negocio, operacao e tecnologia. Detalhes de cada pasta ficam no README proprio dela, para evitar duplicar conteudo aqui.
