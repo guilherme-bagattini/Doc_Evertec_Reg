@@ -14,6 +14,7 @@ Esta pasta reune pesquisa com clientes (entrevistas, transcricoes, sinteses) e o
 | Classificacao de risco/uso por cliente | [sinteses/2026-07-07_classificacao_estrelas_clientes.md](sinteses/2026-07-07_classificacao_estrelas_clientes.md) |
 | Plano de retencao/renovacao por conta | [sinteses/plano_reativacao_renovacao_clientes.md](sinteses/plano_reativacao_renovacao_clientes.md) |
 | Painel visual de engajamento/churn | [dashboard_clientes.html](dashboard_clientes.html) |
+| Analise detalhada de usabilidade e risco de churn | [dashboard_usabilidade_churn.html](dashboard_usabilidade_churn.html) |
 
 ## Estrutura
 
